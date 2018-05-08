@@ -25,7 +25,6 @@ class HomePageController extends Controller
      */
     public function loadHomePage(Request $request) {
 
-        return new Response($this->render('page_views/frontpage.html.twig'));
+        return $this->render('frontpage.html.twig');
     }
-
 }
