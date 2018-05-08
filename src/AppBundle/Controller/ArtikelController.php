@@ -6,16 +6,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-<<<<<<< HEAD
 use AppBundle\Entity\Artikel;
 use AppBundle\Entity\Klant;
 use AppBundle\Form\ArtikelType;
 use AppBundle\Form\ProductSoortType;
-=======
-use AppBundle\Entity\Klant;
 //use Symfony\Component\HttpFoundation\Response;
-
->>>>>>> parent of 389fddd... homepage working
 class ArtikelController extends Controller
 {
     /**
