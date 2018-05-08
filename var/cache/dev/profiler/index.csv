@@ -47,3 +47,17 @@ df0d7d,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,
 b11a29,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525774986,,500
 b8f725,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525775021,,200
 7a6fba,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525775057,,200
+ed33b5,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777683,6f2478,200
+6f2478,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777683,,500
+444eb8,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777767,6e7b6e,200
+6e7b6e,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777767,,404
+f985e2,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777788,259a84,200
+259a84,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777788,,500
+a2bc27,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777957,7c9915,200
+7c9915,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777958,,500
+59198e,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777993,8d24e0,200
+8d24e0,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777994,,500
+16f549,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525778035,130c79,200
+130c79,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525778035,,500
+89ff27,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/product/nieuw,1525779618,a808f1,200
+a808f1,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/product/nieuw,1525779618,,404

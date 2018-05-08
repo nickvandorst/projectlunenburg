@@ -105,9 +105,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::alleArtikelen',  '_route' => 'alleartikelen',);
         }
 
-        // nieuwartikel
-        if ($pathinfo === '/nieuw/arikel') {
-            return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwArtikel',  '_route' => 'nieuwartikel',);
+        if (0 === strpos($pathinfo, '/nieuw')) {
+            // nieuwartikel
+            if ($pathinfo === '/nieuw/arikel') {
+                return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwArtikel',  '_route' => 'nieuwartikel',);
+            }
+
+            // nieuwbestelserie
+            if ($pathinfo === '/nieuw/bestelserie') {
+                return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwBestelserie',  '_route' => 'nieuwbestelserie',);
+            }
+
         }
 
         // homepage
