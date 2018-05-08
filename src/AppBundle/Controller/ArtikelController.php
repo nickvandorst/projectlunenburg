@@ -7,11 +7,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use AppBundle\Entity\Artikel;
 use AppBundle\Entity\Klant;
 use AppBundle\Form\ArtikelType;
 use AppBundle\Form\ProductSoortType;
 =======
+=======
+>>>>>>> parent of 389fddd... homepage working
 use AppBundle\Entity\Klant;
 //use Symfony\Component\HttpFoundation\Response;
 
