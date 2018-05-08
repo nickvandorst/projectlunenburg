@@ -102,6 +102,13 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        // nieuwproduct
+        if ($pathinfo === '/product/nieuw') {
+            return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwProduct',  '_route' => 'nieuwproduct',);
+=======
+>>>>>>> parent of 05c9e36... wijzig artikel added
         // alleartikelen
         if ($pathinfo === '/alle/artikelen') {
             return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::alleArtikelen',  '_route' => 'alleartikelen',);
@@ -148,6 +155,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         }
 
         // artikelwijzigen
@@ -164,6 +172,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 =======
 >>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
 >>>>>>> parent of 389fddd... homepage working
+=======
+>>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
+>>>>>>> parent of 05c9e36... wijzig artikel added
         }
 
         // homepage

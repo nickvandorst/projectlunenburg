@@ -6,10 +6,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+<<<<<<< HEAD
 use AppBundle\Entity\Artikel;
 use AppBundle\Entity\Klant;
 use AppBundle\Form\ArtikelType;
 use AppBundle\Form\ProductSoortType;
+=======
+use AppBundle\Entity\Klant;
+>>>>>>> parent of 05c9e36... wijzig artikel added
 //use Symfony\Component\HttpFoundation\Response;
 class ArtikelController extends Controller
 {
@@ -55,6 +59,7 @@ class ArtikelController extends Controller
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
     }
 
+<<<<<<< HEAD
     /**
      * @Route("/artikel/wijzig/{artikelnummer}", name="artikelwijzigen")
      */
@@ -84,3 +89,6 @@ class ArtikelController extends Controller
     */
     }}
 
+=======
+}
+>>>>>>> parent of 05c9e36... wijzig artikel added
