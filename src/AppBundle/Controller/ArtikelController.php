@@ -9,11 +9,14 @@ use Symfony\Component\HttpFoundation\Response;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use AppBundle\Entity\Artikel;
 use AppBundle\Entity\Klant;
 use AppBundle\Form\ArtikelType;
 use AppBundle\Form\ProductSoortType;
 =======
+=======
+>>>>>>> parent of 389fddd... homepage working
 =======
 >>>>>>> parent of 389fddd... homepage working
 =======

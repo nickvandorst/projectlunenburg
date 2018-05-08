@@ -6,12 +6,17 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/app/Resources/views/frontpage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/frontpage.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config/parameters.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/parameters.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ArtikelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ArtikelController.php" afterDir="false" />
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Bestelserie.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Bestelserie.php" afterDir="false" />
 =======
+=======
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/page_views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/page_views/frontpage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/frontpage.html.twig" afterDir="false" />
+>>>>>>> parent of 389fddd... homepage working
 =======
       <change beforePath="$PROJECT_DIR$/app/Resources/views/page_views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/page_views/frontpage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/frontpage.html.twig" afterDir="false" />
@@ -40,7 +45,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of 5619b66... homepage working again
+=======
+      <change beforePath="$PROJECT_DIR$/var/sessions/dev/sess_gor830vch03f4je3nilpqc3rtf" beforeDir="false" afterPath="$PROJECT_DIR$/var/sessions/dev/sess_gor830vch03f4je3nilpqc3rtf" afterDir="false" />
+>>>>>>> parent of 389fddd... homepage working
 =======
       <change beforePath="$PROJECT_DIR$/var/sessions/dev/sess_gor830vch03f4je3nilpqc3rtf" beforeDir="false" afterPath="$PROJECT_DIR$/var/sessions/dev/sess_gor830vch03f4je3nilpqc3rtf" afterDir="false" />
 >>>>>>> parent of 389fddd... homepage working
@@ -78,6 +87,7 @@
       <file leaf-file-name="ArtikelController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ArtikelController.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -139,6 +149,10 @@
             <state relative-caret-position="377">
               <caret line="35" column="67" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="67" />
 >>>>>>> parent of 389fddd... homepage working
+=======
+            <state relative-caret-position="377">
+              <caret line="35" column="67" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="67" />
+>>>>>>> parent of 389fddd... homepage working
               <folding>
                 <element signature="e#40#99#0#PHP" expanded="true" />
               </folding>
@@ -157,8 +171,12 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
               <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
 >>>>>>> parent of 5619b66... homepage working again
+=======
+              <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+>>>>>>> parent of 389fddd... homepage working
 =======
               <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
 >>>>>>> parent of 389fddd... homepage working
@@ -203,6 +221,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ArtikelController.php" />
 <<<<<<< HEAD
@@ -210,6 +229,8 @@
 =======
         <option value="$PROJECT_DIR$/src/AppBundle/Form/ArtikelType.php" />
 >>>>>>> parent of 5619b66... homepage working again
+=======
+>>>>>>> parent of 389fddd... homepage working
 =======
 >>>>>>> parent of 389fddd... homepage working
 =======
@@ -398,12 +419,16 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1525768868986" duration="10497000" />
       <workItem from="1525781397318" duration="528000" />
       <workItem from="1525781933037" duration="206000" />
 =======
       <workItem from="1525768868986" duration="10380000" />
 >>>>>>> parent of 5619b66... homepage working again
+=======
+      <workItem from="1525768868986" duration="6146000" />
+>>>>>>> parent of 389fddd... homepage working
 =======
       <workItem from="1525768868986" duration="6146000" />
 >>>>>>> parent of 389fddd... homepage working
@@ -421,10 +446,14 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="12527000" />
 =======
     <option name="totallyTimeSpent" value="11676000" />
 >>>>>>> parent of 5619b66... homepage working again
+=======
+    <option name="totallyTimeSpent" value="7442000" />
+>>>>>>> parent of 389fddd... homepage working
 =======
     <option name="totallyTimeSpent" value="7442000" />
 >>>>>>> parent of 389fddd... homepage working
@@ -470,6 +499,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -502,6 +532,8 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
+=======
+>>>>>>> parent of 389fddd... homepage working
 =======
 >>>>>>> parent of 389fddd... homepage working
 =======
@@ -751,6 +783,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
         </state>
       </provider>
@@ -800,6 +833,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret lean-forward="true" />
+=======
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+>>>>>>> parent of 389fddd... homepage working
 =======
           <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
 >>>>>>> parent of 389fddd... homepage working
