@@ -7,6 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Klant;
+use AppBundle\Entity\Artikel;
+use AppBundle\Form\ArtikelType;
+use AppBundle\Form\ProductSoortType;
 //use Symfony\Component\HttpFoundation\Response;
 
 class ArtikelController extends Controller
@@ -26,17 +29,23 @@ class ArtikelController extends Controller
  	 * @Route("/alle/artikelen", name="alleartikelen")
  	 */
  	 public function alleArtikelen(Request $request) {
- 	 	$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
- 	 	$tekst = "";
- 	 	foreach($artikelen as $artikel) {
- 	 	$tekst = $tekst . $artikel->getArtikelnummer() . $artikel->getInkoopprijs() . $artikel->getMagazijnlocatie() . $artikel->getOmschrijving() . $artikel->getVoorraadaantal() . "<br/ >";
+ 	 	//$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+ 	 	$form = "";
 
- 	  }
- 	  return new Response($tekst);
+ 	  return new Response($this->render('alle_artikelen.html.twig', array('form' => $form->createView())));
  	 }
 
     /**
-     * @Route("/nieuw/arikel", name="nieuwartikel")
+     * @Route("/alle/klanten", name="alleklanten")
+     */
+    public function alleKlanten(Request $request){
+        $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findAll();
+
+        return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
+    }
+
+    /**
+     * @Route("/nieuw/artikel", name="nieuwartikel")
      */
     public function nieuwArtikel(Request $request) {
         $nieuwArtikel = new Artikel();
