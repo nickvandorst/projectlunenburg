@@ -207,5 +207,8 @@ a46806,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,
 =======
 >>>>>>> 7bf0e977af59a647fc212a7e67a7f96dabb5c390
 >>>>>>> 032539f35ec64cd2e4a6064ae989efdd5d67248b
+<<<<<<< HEAD
 a08742,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525781503,,200
 >>>>>>> 5619b66265752583316922f5d24c6a749114b969
+=======
+>>>>>>> parent of 5619b66... homepage working again

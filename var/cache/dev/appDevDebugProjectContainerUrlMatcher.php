@@ -119,9 +119,23 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 >>>>>>> 5619b66265752583316922f5d24c6a749114b969
         }
 
+<<<<<<< HEAD
+        if (0 === strpos($pathinfo, '/nieuw')) {
+            // nieuwartikel
+            if ($pathinfo === '/nieuw/arikel') {
+                return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwArtikel',  '_route' => 'nieuwartikel',);
+            }
+
+            // nieuwbestelserie
+            if ($pathinfo === '/nieuw/bestelserie') {
+                return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwBestelserie',  '_route' => 'nieuwbestelserie',);
+            }
+
+=======
         // nieuwartikel
         if ($pathinfo === '/nieuw/artikel') {
             return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwArtikel',  '_route' => 'nieuwartikel',);
+<<<<<<< HEAD
 <<<<<<< HEAD
         }
 
@@ -130,6 +144,12 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'artikelwijzigen')), array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::wijzigArtikel',));
 =======
 >>>>>>> 5619b66265752583316922f5d24c6a749114b969
+=======
+=======
+>>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
+>>>>>>> 7bf0e977af59a647fc212a7e67a7f96dabb5c390
+>>>>>>> 032539f35ec64cd2e4a6064ae989efdd5d67248b
+>>>>>>> parent of 5619b66... homepage working again
         }
 
         // homepage
