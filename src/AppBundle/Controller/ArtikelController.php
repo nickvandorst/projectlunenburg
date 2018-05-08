@@ -6,7 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\Klant;
+use AppBundle\Entity\Artikel;
 //use Symfony\Component\HttpFoundation\Response;
 
 class ArtikelController extends Controller
@@ -48,6 +48,27 @@ class ArtikelController extends Controller
             $em->persist($nieuwArtikel);
             $em->flush();
             return $this->redirect($this->generateUrl("alleproducten"));
+        }
+
+        return new Response($this->render('form.html.twig', array('form' => $form->createView())));
+    }
+
+    /**
+     * @Route("/artikel/wijzig/{artikelnummer}", name="artikelwijzigen")
+     */
+    public function wijzigArtikel(Request $request, $artikelnummer) {
+        $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find(
+            $artikelnummer);
+        $nieuwArtikel = new artikel();
+        $form = $this->createForm(KlantType::class, 
+            $bestaandArtikel);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($bestaandArtikel);
+            $em->flush();
+            return $this->redirect($this->generateurl("artikelwijzigen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
         }
 
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
