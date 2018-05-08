@@ -100,28 +100,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of 05c9e36... wijzig artikel added
-        // nieuwproduct
-        if ($pathinfo === '/product/nieuw') {
-            return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwProduct',  '_route' => 'nieuwproduct',);
-=======
-<<<<<<< HEAD
->>>>>>> parent of 05c9e36... wijzig artikel added
-=======
->>>>>>> parent of 05c9e36... wijzig artikel added
-        // alleartikelen
-        if ($pathinfo === '/alle/artikelen') {
-            return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::alleArtikelen',  '_route' => 'alleartikelen',);
-=======
         if (0 === strpos($pathinfo, '/alle')) {
             // alleartikelen
             if ($pathinfo === '/alle/artikelen') {
@@ -133,88 +111,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::alleKlanten',  '_route' => 'alleklanten',);
             }
 
->>>>>>> 5619b66265752583316922f5d24c6a749114b969
-=======
-=======
->>>>>>> parent of 389fddd... homepage working
-=======
->>>>>>> parent of 389fddd... homepage working
-=======
->>>>>>> parent of 389fddd... homepage working
-        // nieuwproduct
-        if ($pathinfo === '/product/nieuw') {
-            return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwProduct',  '_route' => 'nieuwproduct',);
-=======
-        // alleartikelen
-        if ($pathinfo === '/alle/artikelen') {
-            return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::alleArtikelen',  '_route' => 'alleartikelen',);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 389fddd... homepage working
-=======
->>>>>>> parent of 389fddd... homepage working
-=======
->>>>>>> parent of 389fddd... homepage working
-=======
->>>>>>> parent of 389fddd... homepage working
         }
 
-<<<<<<< HEAD
-        if (0 === strpos($pathinfo, '/nieuw')) {
-            // nieuwartikel
-            if ($pathinfo === '/nieuw/arikel') {
-                return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwArtikel',  '_route' => 'nieuwartikel',);
-            }
-
-            // nieuwbestelserie
-            if ($pathinfo === '/nieuw/bestelserie') {
-                return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwBestelserie',  '_route' => 'nieuwbestelserie',);
-            }
-
-=======
         // nieuwartikel
-        if ($pathinfo === '/nieuw/arikel') {
+        if ($pathinfo === '/nieuw/artikel') {
             return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwArtikel',  '_route' => 'nieuwartikel',);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        }
-
-        // artikelwijzigen
-        if (0 === strpos($pathinfo, '/artikel/wijzig') && preg_match('#^/artikel/wijzig/(?P<artikelnummer>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'artikelwijzigen')), array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::wijzigArtikel',));
-=======
->>>>>>> 5619b66265752583316922f5d24c6a749114b969
-=======
-=======
->>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
->>>>>>> 7bf0e977af59a647fc212a7e67a7f96dabb5c390
->>>>>>> 032539f35ec64cd2e4a6064ae989efdd5d67248b
->>>>>>> parent of 5619b66... homepage working again
-=======
->>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
->>>>>>> parent of 389fddd... homepage working
-=======
->>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
->>>>>>> parent of 05c9e36... wijzig artikel added
-=======
->>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
->>>>>>> parent of 389fddd... homepage working
-=======
->>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
->>>>>>> parent of 389fddd... homepage working
-=======
->>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
->>>>>>> parent of 389fddd... homepage working
-=======
->>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
->>>>>>> parent of 05c9e36... wijzig artikel added
         }
 
         // homepage

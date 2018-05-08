@@ -82,48 +82,7 @@ df0d7d,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,
 b11a29,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525774986,,500
 b8f725,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525775021,,200
 7a6fba,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525775057,,200
-<<<<<<< HEAD
-ed33b5,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777683,6f2478,200
-6f2478,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777683,,500
-444eb8,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777767,6e7b6e,200
-6e7b6e,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777767,,404
-f985e2,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777788,259a84,200
-259a84,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777788,,500
-a2bc27,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777957,7c9915,200
-7c9915,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777958,,500
-59198e,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777993,8d24e0,200
-8d24e0,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525777994,,500
-16f549,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525778035,130c79,200
-130c79,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/bestelserie,1525778035,,500
-89ff27,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/product/nieuw,1525779618,a808f1,200
-a808f1,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/product/nieuw,1525779618,,404
-=======
 >>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-8745f0,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/klant/nieuw,1525780930,9600cc,200
-9600cc,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/klant/nieuw,1525780930,,404
-768b92,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525780939,bb44f7,200
-bb44f7,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525780939,,404
-5d014b,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525780953,2e4101,200
-2e4101,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525780953,,500
-b45c3c,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525781002,dccb38,200
-dccb38,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525781002,,404
-cd5cc0,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/wijzig/artikel,1525781257,99a01c,200
-99a01c,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/wijzig/artikel,1525781258,,404
-e8c01c,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/wijzig/artikel,1525781441,08ed72,200
-08ed72,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/wijzig/artikel,1525781441,,404
-57fbf9,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/homer,1525781576,8a340c,200
-8a340c,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/homer,1525781576,,404
-0e3a09,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525781579,8ff048,200
-8ff048,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525781579,,500
-=======
-<<<<<<< HEAD
 2ea324,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525775541,c71c4e,200
 c71c4e,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525775541,,500
 e3c35a,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525775552,234d8d,200
@@ -210,27 +169,4 @@ a46806,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,
 595e28,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525780845,,200
 2348ab,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525780853,4ec9b3,200
 4ec9b3,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525780853,,500
-<<<<<<< HEAD
-465d27,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525783868,,200
-=======
-=======
->>>>>>> 7bf0e977af59a647fc212a7e67a7f96dabb5c390
->>>>>>> 032539f35ec64cd2e4a6064ae989efdd5d67248b
-<<<<<<< HEAD
-a08742,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525781503,,200
->>>>>>> 5619b66265752583316922f5d24c6a749114b969
-=======
->>>>>>> parent of 5619b66... homepage working again
-=======
->>>>>>> parent of 389fddd... homepage working
-=======
->>>>>>> parent of 05c9e36... wijzig artikel added
-=======
->>>>>>> parent of 389fddd... homepage working
-=======
->>>>>>> parent of 389fddd... homepage working
-=======
->>>>>>> parent of 389fddd... homepage working
-=======
->>>>>>> parent of 05c9e36... wijzig artikel added
->>>>>>> 8eb891e5e39c1f73ace83306c8b340a42a2a22b7
+8c97a2,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525784138,,200
