@@ -5,6 +5,8 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\BrowserKit\Response;
+//use Symfony\Component\HttpFoundation\Response;
 
 class ArtikelController extends Controller
 {
@@ -36,4 +38,5 @@ class ArtikelController extends Controller
 
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
     }
+
 }
