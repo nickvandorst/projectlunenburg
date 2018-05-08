@@ -6,12 +6,28 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\Klant;
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 use AppBundle\Entity\Artikel;
+use AppBundle\Entity\Klant;
 use AppBundle\Form\ArtikelType;
 use AppBundle\Form\ProductSoortType;
+=======
+=======
+>>>>>>> parent of 389fddd... homepage working
+=======
+>>>>>>> parent of 389fddd... homepage working
+=======
+>>>>>>> parent of 389fddd... homepage working
+=======
+>>>>>>> parent of 05c9e36... wijzig artikel added
+use AppBundle\Entity\Klant;
 //use Symfony\Component\HttpFoundation\Response;
 
+>>>>>>> parent of 389fddd... homepage working
 class ArtikelController extends Controller
 {
     /**
@@ -29,23 +45,17 @@ class ArtikelController extends Controller
  	 * @Route("/alle/artikelen", name="alleartikelen")
  	 */
  	 public function alleArtikelen(Request $request) {
- 	 	//$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
- 	 	$form = "";
+ 	 	$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+ 	 	$tekst = "";
+ 	 	foreach($artikelen as $artikel) {
+ 	 	$tekst = $tekst . $artikel->getArtikelnummer() . $artikel->getInkoopprijs() . $artikel->getMagazijnlocatie() . $artikel->getOmschrijving() . $artikel->getVoorraadaantal() . "<br/ >";
 
- 	  return new Response($this->render('alle_artikelen.html.twig', array('form' => $form->createView())));
+ 	  }
+ 	  return new Response($tekst);
  	 }
 
     /**
-     * @Route("/alle/klanten", name="alleklanten")
-     */
-    public function alleKlanten(Request $request){
-        $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findAll();
-
-        return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
-    }
-
-    /**
-     * @Route("/nieuw/artikel", name="nieuwartikel")
+     * @Route("/nieuw/arikel", name="nieuwartikel")
      */
     public function nieuwArtikel(Request $request) {
         $nieuwArtikel = new Artikel();
@@ -62,4 +72,36 @@ class ArtikelController extends Controller
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
     }
 
+<<<<<<< HEAD
+    /**
+     * @Route("/artikel/wijzig/{artikelnummer}", name="artikelwijzigen")
+     */
+    public function wijzigArtikel(Request $request, $artikelnummer) {
+        $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find(
+            $artikelnummer);
+        $nieuwArtikel = new artikel();
+        $form = $this->createForm(KlantType::class, $bestaandArtikel);
+
+    /**
+    * @Route("/nieuw/bestelserie", name="nieuwbestelserie")
+    */
+    /*
+    public function nieuwBestelserie(Request $request) {
+        $nieuwBestelserie = new Bestelserie($minimumvoorraad - $voorraadaantal);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($bestaandArtikel);
+            $em->flush();
+            return $this->redirect($this->generateurl("artikelwijzigen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
+        }
+
+        return new Response($this->render('form.html.twig', array('form' => $form->createView())));
+      }
+    */
+    }}
+
+=======
 }
+>>>>>>> parent of 05c9e36... wijzig artikel added
