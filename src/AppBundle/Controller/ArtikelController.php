@@ -63,18 +63,18 @@ class ArtikelController extends Controller
     /**
      * @Route("/artikel/wijzig/{artikelnummer}", name="artikelwijzigen")
      */
-<<<<<<< HEAD
     public function wijzigArtikel(Request $request, $artikelnummer) {
         $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find(
             $artikelnummer);
         $nieuwArtikel = new artikel();
-        $form = $this->createForm(KlantType::class, 
-            $bestaandArtikel);
-=======
+        $form = $this->createForm(KlantType::class, $bestaandArtikel);
 
-      public function nieuwBestelserie(Request $request) {
-      $nieuwBestelserie = new Bestelserie(/*$minimumvoorraad - $voorraadaantal*/);
->>>>>>> parent of 5619b66... homepage working again
+    /**
+    * @Route("/nieuw/bestelserie", name="nieuwbestelserie")
+    */
+    /*
+    public function nieuwBestelserie(Request $request) {
+        $nieuwBestelserie = new Bestelserie($minimumvoorraad - $voorraadaantal);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -85,14 +85,7 @@ class ArtikelController extends Controller
         }
 
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
-<<<<<<< HEAD
-    }
-=======
-        }
+      }
+    */
+    }}
 
-
-
->>>>>>> parent of 5619b66... homepage working again
-}
-
-?>
