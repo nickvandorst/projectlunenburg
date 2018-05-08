@@ -4,6 +4,13 @@
     <list default="true" id="8e243806-8158-457b-97a4-b9ccd3e7af9b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ArtikelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ArtikelController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlGenerator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlMatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlMatcher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/+/X/ATHJpIqtTcwf7AIa4VZi" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/+/X/ATHJpIqtTcwf7AIa4VZi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/5/7/MwPMH7zU2MKB0q8nLqHQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/5/7/MwPMH7zU2MKB0q8nLqHQ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/O/O/FCY2RgpNoG0wH1afwogX" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/O/O/FCY2RgpNoG0wH1afwogX" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/P/O/BgdKUiIuprTJxpN+dyDQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/P/O/BgdKUiIuprTJxpN+dyDQ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/logs/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/logs/dev.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,11 +37,8 @@
       <file leaf-file-name="ArtikelController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ArtikelController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="69" column="76" selection-start-line="69" selection-start-column="76" selection-end-line="69" selection-end-column="76" />
-              <folding>
-                <element signature="e#40#99#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="479">
+              <caret line="109" column="1" selection-start-line="109" selection-start-column="1" selection-end-line="109" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -70,7 +74,7 @@
         <entry file="file://$PROJECT_DIR$/app/Resources/views/frontpage.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+              <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -316,12 +320,12 @@
       <workItem from="1525687522361" duration="40000" />
       <workItem from="1525688849806" duration="338000" />
       <workItem from="1525768868986" duration="10497000" />
-      <workItem from="1525781397318" duration="103000" />
+      <workItem from="1525781397318" duration="491000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11896000" />
+    <option name="totallyTimeSpent" value="12284000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -387,9 +391,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding>
-            <element signature="e#40#99#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -565,17 +566,14 @@
     <entry file="file://$PROJECT_DIR$/app/Resources/views/frontpage.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ArtikelController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="69" column="76" selection-start-line="69" selection-start-column="76" selection-end-line="69" selection-end-column="76" />
-          <folding>
-            <element signature="e#40#99#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="479">
+          <caret line="109" column="1" selection-start-line="109" selection-start-column="1" selection-end-line="109" selection-end-column="1" />
         </state>
       </provider>
     </entry>
