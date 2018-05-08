@@ -169,3 +169,4 @@ a46806,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,
 595e28,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525780845,,200
 2348ab,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525780853,4ec9b3,200
 4ec9b3,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525780853,,500
+465d27,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525783868,,200
