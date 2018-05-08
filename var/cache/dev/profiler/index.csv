@@ -212,3 +212,7 @@ a08742,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525781503
 >>>>>>> 5619b66265752583316922f5d24c6a749114b969
 =======
 >>>>>>> parent of 5619b66... homepage working again
+e158a5,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525782533,b625fe,200
+b625fe,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525782533,,500
+dcf1ee,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525782543,c1a3db,200
+c1a3db,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525782543,,500
