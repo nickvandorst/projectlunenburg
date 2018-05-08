@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Welkom</h1>
+        <div>
+            <form method="post" action="">
+                {{ form_widget(form) }}
+                <input class="btn btn-default" type="submit">
+                <a href="javascript:history.back()">Annuleren</a>
+            </form>
+        </div>
+{% endblock %}
