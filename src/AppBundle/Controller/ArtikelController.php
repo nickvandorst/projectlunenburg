@@ -13,8 +13,9 @@ use AppBundle\Form\ArtikelType;
 use AppBundle\Form\ProductSoortType;
 =======
 use AppBundle\Entity\Klant;
->>>>>>> parent of 05c9e36... wijzig artikel added
 //use Symfony\Component\HttpFoundation\Response;
+
+>>>>>>> parent of 389fddd... homepage working
 class ArtikelController extends Controller
 {
     /**
@@ -59,7 +60,6 @@ class ArtikelController extends Controller
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
     }
 
-<<<<<<< HEAD
     /**
      * @Route("/artikel/wijzig/{artikelnummer}", name="artikelwijzigen")
      */
@@ -89,6 +89,3 @@ class ArtikelController extends Controller
     */
     }}
 
-=======
-}
->>>>>>> parent of 05c9e36... wijzig artikel added
