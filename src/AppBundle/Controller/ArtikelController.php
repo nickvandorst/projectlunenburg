@@ -6,16 +6,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-<<<<<<< HEAD
 use AppBundle\Entity\Artikel;
-=======
 use AppBundle\Entity\Klant;
-use AppBundle\Entity\Artikel;
 use AppBundle\Form\ArtikelType;
 use AppBundle\Form\ProductSoortType;
->>>>>>> 5619b66265752583316922f5d24c6a749114b969
-//use Symfony\Component\HttpFoundation\Response;
-
 class ArtikelController extends Controller
 {
     /**
@@ -67,7 +61,6 @@ class ArtikelController extends Controller
     }
 
     /**
-<<<<<<< HEAD
      * @Route("/artikel/wijzig/{artikelnummer}", name="artikelwijzigen")
      */
     public function wijzigArtikel(Request $request, $artikelnummer) {
@@ -87,26 +80,6 @@ class ArtikelController extends Controller
 
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
     }
-=======
-     * @Route("/nieuw/bestelserie", name="nieuwbestelserie")
-     */
-/*
-      public function nieuwBestelserie(Request $request) {
-      $nieuwBestelserie = new Bestelserie($minimumvoorraad - $voorraadaantal);
-
-        //if ($voorraadaantal < $minimumvoorraad) {
-        if ($nieuwBestelserie->isSubmitted() && $nieuwBestelserie->isValid()) {
-          $em = $this->getDoctrine()->getManager();
-          $em->persist($nieuwbestelserie);
-          $em->flush();
-        }
-
-        return new Response($this->render('form.html.twig', array('form' => $form->createView())));
-        }
-*/
-
->>>>>>> 5619b66265752583316922f5d24c6a749114b969
-
 }
 
 ?>
