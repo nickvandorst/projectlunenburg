@@ -47,6 +47,7 @@ class appDevDebugProjectContainerUrlGenerator extends Symfony\Component\Routing\
 <<<<<<< HEAD
         'nieuwartikel' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwArtikel',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/nieuw/arikel',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
 <<<<<<< HEAD
+<<<<<<< HEAD
         'artikelwijzigen' => array (  0 =>   array (    0 => 'artikelnummer',  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\ArtikelController::wijzigArtikel',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'artikelnummer',    ),    1 =>     array (      0 => 'text',      1 => '/artikel/wijzig',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
 =======
         'alleklanten' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\ArtikelController::alleKlanten',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/alle/klanten',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
@@ -83,6 +84,9 @@ class appDevDebugProjectContainerUrlGenerator extends Symfony\Component\Routing\
         'nieuwartikel' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwArtikel',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/nieuw/arikel',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
 >>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
 >>>>>>> parent of 389fddd... homepage working
+=======
+>>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
+>>>>>>> parent of 05c9e36... wijzig artikel added
         'homepage' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\HomePageController::indexAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
         'home' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\HomePageController::loadHomePage',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/home',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
     );

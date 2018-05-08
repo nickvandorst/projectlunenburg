@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use AppBundle\Entity\Artikel;
 use AppBundle\Entity\Klant;
 use AppBundle\Form\ArtikelType;
@@ -21,6 +22,8 @@ use AppBundle\Form\ProductSoortType;
 >>>>>>> parent of 389fddd... homepage working
 =======
 >>>>>>> parent of 389fddd... homepage working
+=======
+>>>>>>> parent of 05c9e36... wijzig artikel added
 use AppBundle\Entity\Klant;
 //use Symfony\Component\HttpFoundation\Response;
 
@@ -69,6 +72,7 @@ class ArtikelController extends Controller
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
     }
 
+<<<<<<< HEAD
     /**
      * @Route("/artikel/wijzig/{artikelnummer}", name="artikelwijzigen")
      */
@@ -98,3 +102,6 @@ class ArtikelController extends Controller
     */
     }}
 
+=======
+}
+>>>>>>> parent of 05c9e36... wijzig artikel added

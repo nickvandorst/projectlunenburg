@@ -461,6 +461,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <argument>vZloeMWSkzqh14pqd6yPbV</argument>
 =======
                 <argument>TVVjOAJkLwZUZy3ZEJ2tUR</argument>
@@ -480,6 +481,9 @@
 =======
                 <argument>mMP15TBYoVsNz1m50gUgoy</argument>
 >>>>>>> parent of 389fddd... homepage working
+=======
+                <argument>mMP15TBYoVsNz1m50gUgoy</argument>
+>>>>>>> parent of 05c9e36... wijzig artikel added
                 <argument>C:\xampp\htdocs\projectlunenburg\var\cache\dev/pools</argument>
                 <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                 <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -668,6 +672,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <argument>vZloeMWSkzqh14pqd6yPbV</argument>
 =======
       <argument>TVVjOAJkLwZUZy3ZEJ2tUR</argument>
@@ -687,6 +692,9 @@
 =======
       <argument>mMP15TBYoVsNz1m50gUgoy</argument>
 >>>>>>> parent of 389fddd... homepage working
+=======
+      <argument>mMP15TBYoVsNz1m50gUgoy</argument>
+>>>>>>> parent of 05c9e36... wijzig artikel added
       <argument>C:\xampp\htdocs\projectlunenburg\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -702,6 +710,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <argument>vZloeMWSkzqh14pqd6yPbV</argument>
 =======
       <argument>TVVjOAJkLwZUZy3ZEJ2tUR</argument>
@@ -721,6 +730,9 @@
 =======
       <argument>mMP15TBYoVsNz1m50gUgoy</argument>
 >>>>>>> parent of 389fddd... homepage working
+=======
+      <argument>mMP15TBYoVsNz1m50gUgoy</argument>
+>>>>>>> parent of 05c9e36... wijzig artikel added
       <argument>C:\xampp\htdocs\projectlunenburg\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1718,6 +1730,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <argument>5af191c13c5932.56959196</argument>
 =======
             <argument>5af18f5d9b47e9.54285597</argument>
@@ -1737,6 +1750,9 @@
 =======
             <argument>5af175e51e3e52.56909697</argument>
 >>>>>>> parent of 389fddd... homepage working
+=======
+            <argument>5af175e51e3e52.56909697</argument>
+>>>>>>> parent of 05c9e36... wijzig artikel added
           </service>
         </argument>
       </argument>
@@ -1890,6 +1906,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <argument>5af191c13c5932.56959196</argument>
 =======
             <argument>5af18f5d9b47e9.54285597</argument>
@@ -1909,6 +1926,9 @@
 =======
             <argument>5af175e51e3e52.56909697</argument>
 >>>>>>> parent of 389fddd... homepage working
+=======
+            <argument>5af175e51e3e52.56909697</argument>
+>>>>>>> parent of 05c9e36... wijzig artikel added
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
