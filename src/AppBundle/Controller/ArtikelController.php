@@ -65,9 +65,9 @@ class ArtikelController extends Controller
     /**
      * @Route("/nieuw/bestelserie", name="nieuwbestelserie")
      */
-
+/*
       public function nieuwBestelserie(Request $request) {
-      $nieuwBestelserie = new Bestelserie(/*$minimumvoorraad - $voorraadaantal*/);
+      $nieuwBestelserie = new Bestelserie($minimumvoorraad - $voorraadaantal);
 
         //if ($voorraadaantal < $minimumvoorraad) {
         if ($nieuwBestelserie->isSubmitted() && $nieuwBestelserie->isValid()) {
@@ -78,7 +78,7 @@ class ArtikelController extends Controller
 
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
         }
-
+*/
 
 
 }
