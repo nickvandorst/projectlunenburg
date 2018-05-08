@@ -100,23 +100,28 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        // alleartikelen
+        if ($pathinfo === '/alle/artikelen') {
+            return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::alleArtikelen',  '_route' => 'alleartikelen',);
+        }
+
+        // nieuwartikel
+        if ($pathinfo === '/nieuw/arikel') {
+            return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwArtikel',  '_route' => 'nieuwartikel',);
+        }
+
         // homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
                 return $this->redirect($pathinfo.'/', 'homepage');
             }
 
-            return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::indexAction',  '_route' => 'homepage',);
-        }
-
-        // nieuwproduct
-        if ($pathinfo === '/product/nieuw') {
-            return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwProduct',  '_route' => 'nieuwproduct',);
+            return array (  '_controller' => 'AppBundle\\Controller\\HomePageController::indexAction',  '_route' => 'homepage',);
         }
 
         // home
         if ($pathinfo === '/home') {
-            return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::loadHomePage',  '_route' => 'home',);
+            return array (  '_controller' => 'AppBundle\\Controller\\HomePageController::loadHomePage',  '_route' => 'home',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

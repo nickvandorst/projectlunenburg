@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\Klant;
 //use Symfony\Component\HttpFoundation\Response;
 
 class ArtikelController extends Controller
@@ -22,18 +23,31 @@ class ArtikelController extends Controller
     }
 
     /**
-     * @Route("/product/nieuw", name="nieuwproduct")
+ 	 * @Route("/alle/artikelen", name="alleartikelen")
+ 	 */
+ 	 public function alleArtikelen(Request $request) {
+ 	 	$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+ 	 	$tekst = "";
+ 	 	foreach($artikelen as $artikel) {
+ 	 	$tekst = $tekst . $artikel->getArtikelnummer() . $artikel->getInkoopprijs() . $artikel->getMagazijnlocatie() . $artikel->getOmschrijving() . $artikel->getVoorraadaantal() . "<br/ >";
+
+ 	  }
+ 	  return new Response($tekst);
+ 	 }
+
+    /**
+     * @Route("/nieuw/arikel", name="nieuwartikel")
      */
-    public function nieuwProduct(Request $request) {
-        $nieuwProduct = new Product();
-        $form = $this->createForm(ProductType::class, $nieuwProduct);
+    public function nieuwArtikel(Request $request) {
+        $nieuwArtikel = new Artikel();
+        $form = $this->createForm(ArtikelType::class, $nieuwArtikel);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($nieuwProduct);
+            $em->persist($nieuwArtikel);
             $em->flush();
-            return $this->redirect($this->generateUrl("nieuwproduct"));
+            return $this->redirect($this->generateUrl("alleproducten"));
         }
 
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
