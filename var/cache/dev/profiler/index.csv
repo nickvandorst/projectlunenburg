@@ -170,3 +170,5 @@ a46806,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,
 2348ab,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525780853,4ec9b3,200
 4ec9b3,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525780853,,500
 8c97a2,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525784138,,200
+0e7448,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525784344,1693af,200
+1693af,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525784344,,500
