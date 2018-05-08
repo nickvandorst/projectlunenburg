@@ -100,19 +100,36 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+<<<<<<< HEAD
         // alleartikelen
         if ($pathinfo === '/alle/artikelen') {
             return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::alleArtikelen',  '_route' => 'alleartikelen',);
+=======
+        if (0 === strpos($pathinfo, '/alle')) {
+            // alleartikelen
+            if ($pathinfo === '/alle/artikelen') {
+                return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::alleArtikelen',  '_route' => 'alleartikelen',);
+            }
+
+            // alleklanten
+            if ($pathinfo === '/alle/klanten') {
+                return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::alleKlanten',  '_route' => 'alleklanten',);
+            }
+
+>>>>>>> 5619b66265752583316922f5d24c6a749114b969
         }
 
         // nieuwartikel
-        if ($pathinfo === '/nieuw/arikel') {
+        if ($pathinfo === '/nieuw/artikel') {
             return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwArtikel',  '_route' => 'nieuwartikel',);
+<<<<<<< HEAD
         }
 
         // artikelwijzigen
         if (0 === strpos($pathinfo, '/artikel/wijzig') && preg_match('#^/artikel/wijzig/(?P<artikelnummer>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'artikelwijzigen')), array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::wijzigArtikel',));
+=======
+>>>>>>> 5619b66265752583316922f5d24c6a749114b969
         }
 
         // homepage

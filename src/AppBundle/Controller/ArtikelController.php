@@ -6,7 +6,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+<<<<<<< HEAD
 use AppBundle\Entity\Artikel;
+=======
+use AppBundle\Entity\Klant;
+use AppBundle\Entity\Artikel;
+use AppBundle\Form\ArtikelType;
+use AppBundle\Form\ProductSoortType;
+>>>>>>> 5619b66265752583316922f5d24c6a749114b969
 //use Symfony\Component\HttpFoundation\Response;
 
 class ArtikelController extends Controller
@@ -26,17 +33,23 @@ class ArtikelController extends Controller
  	 * @Route("/alle/artikelen", name="alleartikelen")
  	 */
  	 public function alleArtikelen(Request $request) {
- 	 	$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
- 	 	$tekst = "";
- 	 	foreach($artikelen as $artikel) {
- 	 	$tekst = $tekst . $artikel->getArtikelnummer() . $artikel->getInkoopprijs() . $artikel->getMagazijnlocatie() . $artikel->getOmschrijving() . $artikel->getVoorraadaantal() . "<br/ >";
+ 	 	//$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+ 	 	$form = "";
 
- 	  }
- 	  return new Response($tekst);
+ 	  return new Response($this->render('alle_artikelen.html.twig', array('form' => $form->createView())));
  	 }
 
     /**
-     * @Route("/nieuw/arikel", name="nieuwartikel")
+     * @Route("/alle/klanten", name="alleklanten")
+     */
+    public function alleKlanten(Request $request){
+        $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findAll();
+
+        return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
+    }
+
+    /**
+     * @Route("/nieuw/artikel", name="nieuwartikel")
      */
     public function nieuwArtikel(Request $request) {
         $nieuwArtikel = new Artikel();
@@ -54,6 +67,7 @@ class ArtikelController extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * @Route("/artikel/wijzig/{artikelnummer}", name="artikelwijzigen")
      */
     public function wijzigArtikel(Request $request, $artikelnummer) {
@@ -73,5 +87,26 @@ class ArtikelController extends Controller
 
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
     }
+=======
+     * @Route("/nieuw/bestelserie", name="nieuwbestelserie")
+     */
+/*
+      public function nieuwBestelserie(Request $request) {
+      $nieuwBestelserie = new Bestelserie($minimumvoorraad - $voorraadaantal);
+
+        //if ($voorraadaantal < $minimumvoorraad) {
+        if ($nieuwBestelserie->isSubmitted() && $nieuwBestelserie->isValid()) {
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($nieuwbestelserie);
+          $em->flush();
+        }
+
+        return new Response($this->render('form.html.twig', array('form' => $form->createView())));
+        }
+*/
+
+>>>>>>> 5619b66265752583316922f5d24c6a749114b969
 
 }
+
+?>
