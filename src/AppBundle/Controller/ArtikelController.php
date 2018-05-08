@@ -62,4 +62,25 @@ class ArtikelController extends Controller
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
     }
 
+    /**
+     * @Route("/nieuw/bestelserie", name="nieuwbestelserie")
+     */
+
+      public function nieuwBestelserie(Request $request) {
+      $nieuwBestelserie = new Bestelserie(/*$minimumvoorraad - $voorraadaantal*/);
+
+        //if ($voorraadaantal < $minimumvoorraad) {
+        if ($nieuwBestelserie->isSubmitted() && $nieuwBestelserie->isValid()) {
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($nieuwbestelserie);
+          $em->flush();
+        }
+
+        return new Response($this->render('form.html.twig', array('form' => $form->createView())));
+        }
+
+
+
 }
+
+?>
