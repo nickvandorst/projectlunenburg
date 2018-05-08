@@ -103,6 +103,7 @@ a808f1,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/product/nieuw,1
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 8745f0,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/klant/nieuw,1525780930,9600cc,200
 9600cc,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/klant/nieuw,1525780930,,404
 768b92,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525780939,bb44f7,200
@@ -219,5 +220,7 @@ a08742,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525781503
 >>>>>>> parent of 389fddd... homepage working
 =======
 >>>>>>> parent of 05c9e36... wijzig artikel added
+=======
+>>>>>>> parent of 389fddd... homepage working
 =======
 >>>>>>> parent of 389fddd... homepage working

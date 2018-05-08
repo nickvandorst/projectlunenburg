@@ -43,6 +43,7 @@ class appDevDebugProjectContainerUrlGenerator extends Symfony\Component\Routing\
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         'nieuwartikel' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwArtikel',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/nieuw/arikel',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
 <<<<<<< HEAD
         'artikelwijzigen' => array (  0 =>   array (    0 => 'artikelnummer',  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\ArtikelController::wijzigArtikel',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'artikelnummer',    ),    1 =>     array (      0 => 'text',      1 => '/artikel/wijzig',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
@@ -69,6 +70,10 @@ class appDevDebugProjectContainerUrlGenerator extends Symfony\Component\Routing\
 =======
 >>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
 >>>>>>> parent of 05c9e36... wijzig artikel added
+=======
+        'nieuwartikel' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwArtikel',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/nieuw/arikel',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+>>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
+>>>>>>> parent of 389fddd... homepage working
 =======
         'nieuwartikel' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwArtikel',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/nieuw/arikel',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
 >>>>>>> 55d5363a366b44b7467d0f3533b181173958f8eb
