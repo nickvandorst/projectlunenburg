@@ -280,6 +280,19 @@ b93eac,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/gebruikers
 74e72d,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuwe/gebruiker,1525854426,6ca5de,200
 6ca5de,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuwe/gebruiker,1525854426,,404
 <<<<<<< HEAD
+258f5e,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525854688,,200
+456957,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525854694,88c55f,200
+88c55f,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525854694,,500
+90cd17,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525854712,da927e,200
+da927e,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525854712,,500
+f79d8c,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525854719,8905f6,200
+8905f6,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525854719,,500
+d35cba,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525854956,,200
+d7c8d2,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525854963,,200
+ea5d68,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525855005,90c1aa,200
+90c1aa,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525855005,,500
+=======
+<<<<<<< HEAD
 8ceff4,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525854623,,200
 d7b03b,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525854626,3b46ed,200
 3b46ed,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525854626,,500
@@ -327,6 +340,10 @@ f1571a,::1,POST,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,
 =======
 >>>>>>> 2d5d74c7653b35ca9a61361849490611787137d7
 >>>>>>> bb444375dbce90bc7d1732bdb4d84968388bbd8d
+<<<<<<< HEAD
 80d6f4,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525855988,81df39,200
 81df39,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525855989,,500
 93d16d,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525856136,,200
+=======
+>>>>>>> d171e6f58c1e107a4be2fcd19bff1ba94449c9e5
+>>>>>>> 65779e7a918d622a16361db4bb1ea28111dfdf8d
