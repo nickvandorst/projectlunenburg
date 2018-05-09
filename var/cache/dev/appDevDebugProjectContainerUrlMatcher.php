@@ -101,9 +101,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         if (0 === strpos($pathinfo, '/alle')) {
-            // alleartikelen
+            // alleArtikelen
             if ($pathinfo === '/alle/artikelen') {
-                return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::alleArtikelen',  '_route' => 'alleartikelen',);
+                return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::alleArtikelen',  '_route' => 'alleArtikelen',);
             }
 
             // alleklanten
