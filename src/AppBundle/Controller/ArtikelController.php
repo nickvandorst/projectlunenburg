@@ -29,10 +29,9 @@ class ArtikelController extends Controller
  	 * @Route("/alle/artikelen", name="alleartikelen")
  	 */
  	 public function alleArtikelen(Request $request) {
- 	 	//$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
- 	 	$form = "";
+ 	 	$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
 
- 	  return new Response($this->render('alle_artikelen.html.twig', array('form' => $form->createView())));
+ 	  return new Response($this->render('alle_artikelen.html.twig', array('artkelen' => $artikelen)));
  	 }
 
     /**

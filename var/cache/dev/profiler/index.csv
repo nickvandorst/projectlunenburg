@@ -172,3 +172,7 @@ a46806,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,
 3cedb2,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525784922,,200
 87b9e4,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525784938,,200
 276ef3,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525785301,,200
+8a03ae,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/klanten,1525785938,fcc180,200
+fcc180,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/klanten,1525785938,,500
+2989f6,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525785961,95479f,200
+95479f,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525785961,,500
