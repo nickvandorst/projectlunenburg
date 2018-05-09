@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<h1> Overzicht van alle artikelen</h1>
+	{% for artikel in artikelen %}
+
+  <table style="width:80%">
+  <tr>
+    <h4> Artikel:</h4>
+    <li style="color:black"> {{ artikel.artikelnummer }}</li>
+    <li style="color:black"> {{ artikel.omschrijving }}</li>
+    <li style="color:black"> {{ artikel.magazijnlocatie }}</li>
+    <li style="color:black"> {{ artikel.voorraadaantal }}</li>
+
+	{% endfor %}
+{% endblock %}
