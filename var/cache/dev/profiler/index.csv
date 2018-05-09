@@ -172,6 +172,12 @@ a46806,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,
 3cedb2,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525784922,,200
 87b9e4,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525784938,,200
 276ef3,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525785301,,200
+<<<<<<< HEAD
+8a03ae,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/klanten,1525785938,fcc180,200
+fcc180,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/klanten,1525785938,,500
+2989f6,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525785961,95479f,200
+95479f,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525785961,,500
+=======
 bdd291,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525785599,,200
 0b05b7,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/gebruikers,1525786263,85e48a,200
 85e48a,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/gebruikers,1525786264,,404
@@ -273,6 +279,7 @@ b93eac,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/gebruikers
 47daf7,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/gebruikers,1525854384,,404
 74e72d,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuwe/gebruiker,1525854426,6ca5de,200
 6ca5de,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuwe/gebruiker,1525854426,,404
+<<<<<<< HEAD
 8ceff4,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525854623,,200
 d7b03b,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525854626,3b46ed,200
 3b46ed,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525854626,,500
@@ -317,3 +324,6 @@ f1571a,::1,POST,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,
 5a315d,::1,POST,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525855525,,500
 2c3a87,::1,POST,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,1525855566,,302
 7bf852,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,1525855566,,200
+=======
+>>>>>>> 2d5d74c7653b35ca9a61361849490611787137d7
+>>>>>>> bb444375dbce90bc7d1732bdb4d84968388bbd8d

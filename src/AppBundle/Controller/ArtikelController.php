@@ -29,10 +29,17 @@ class ArtikelController extends Controller
  	 * @Route("/alle/artikelen", name="alleArtikelen")
  	 */
  	 public function alleArtikelen(Request $request) {
-     $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
-     $tekst = "";
-     return new Response($this->render('alle_artikelen.html.twig', array('artikelen' => $artikelen)));
- 	 	 }
+
+ 	 	$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+
+ 	  return new Response($this->render('alle_artikelen.html.twig', array('artkelen' => $artikelen)));
+ 	 }
+
+    // $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+    // $tekst = "";
+    // return new Response($this->render('alle_artikelen.html.twig', array('artikelen' => $artikelen)));
+ 	// 	 }
+
 
     /**
      * @Route("/alle/klanten", name="alleklanten")
