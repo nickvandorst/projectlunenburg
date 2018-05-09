@@ -7,9 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Klant;
+use AppBundle\Entity\KlantType;
 use AppBundle\Entity\Artikel;
 use AppBundle\Form\ArtikelType;
-use AppBundle\Form\ProductSoortType;
 //use Symfony\Component\HttpFoundation\Response;
 
 class ArtikelController extends Controller
@@ -29,20 +29,19 @@ class ArtikelController extends Controller
  	 * @Route("/alle/artikelen", name="alleartikelen")
  	 */
  	 public function alleArtikelen(Request $request) {
- 	 	//$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
- 	 	$form = "";
-
- 	  return new Response($this->render('alle_artikelen.html.twig', array('form' => $form->createView())));
- 	 }
+     $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+     $tekst = "";
+     return new Response($this->render('alle_artikelen.html.twig', array('artikelen' => $artikelen)));
+ 	 	 }
 
     /**
      * @Route("/alle/klanten", name="alleklanten")
      */
-    public function alleKlanten(Request $request){
-        $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findAll();
-
-        return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
-    }
+     public function KlantOpVoornaam(Request $request) {
+      $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findAll();
+     	$tekst = "";
+     	return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
+ 		 	}
 
     /**
      * @Route("/nieuw/artikel", name="nieuwartikel")
