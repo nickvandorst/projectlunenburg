@@ -5,8 +5,8 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-class HomePageController extends Controller
+
+class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
@@ -15,16 +15,7 @@ class HomePageController extends Controller
     {
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..') . DIRECTORY_SEPARATOR,
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
     }
-
-    /**
-     * @Route("/home", name="home")
-     */
-    public function loadHomePage(Request $request) {
-
-        return $this->render('frontpage.html.twig');
-    }
 }
-?>

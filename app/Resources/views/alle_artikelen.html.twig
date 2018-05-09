@@ -1,21 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h1>Welkom</h1>
-    <table style="width:100%">
-        <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Age</th>
-        </tr>
-        <tr>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-        </tr>
-        <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-        </tr>
-    </table>
+	<h1> Overzicht van alle artikelen</h1>
+	{% for artikel in artikelen %}
+
+  <table style="width:80%">
+  <tr>
+    <h4> Artikel:</h4>
+    <li style="color:black"> {{ artikel.artikelnummer }}</li>
+    <li style="color:black"> {{ artikel.omschrijving }}</li>
+    <li style="color:black"> {{ artikel.magazijnlocatie }}</li>
+    <li style="color:black"> {{ artikel.voorraadaantal }}</li>
+
+	{% endfor %}
 {% endblock %}
