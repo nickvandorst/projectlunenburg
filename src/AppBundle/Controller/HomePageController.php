@@ -27,3 +27,4 @@ class HomePageController extends Controller
         return $this->render('frontpage.html.twig');
     }
 }
+?>

@@ -26,7 +26,7 @@ class ArtikelController extends Controller
     }
 
     /**
- 	 * @Route("/alle/artikelen", name="alleartikelen")
+ 	 * @Route("/alle/artikelen", name="alleArtikelen")
  	 */
  	 public function alleArtikelen(Request $request) {
      $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
@@ -55,10 +55,10 @@ class ArtikelController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($nieuwArtikel);
             $em->flush();
-            return $this->redirect($this->generateUrl("alleproducten"));
+            return $this->redirect($this->generateUrl("alleArtikelen"));
         }
 
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
     }
-
 }
+?>
