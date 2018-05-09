@@ -327,3 +327,6 @@ f1571a,::1,POST,http://localhost/projectlunenburg/web/app_dev.php/nieuw/artikel,
 =======
 >>>>>>> 2d5d74c7653b35ca9a61361849490611787137d7
 >>>>>>> bb444375dbce90bc7d1732bdb4d84968388bbd8d
+80d6f4,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525855988,81df39,200
+81df39,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525855989,,500
+93d16d,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1525856136,,200
