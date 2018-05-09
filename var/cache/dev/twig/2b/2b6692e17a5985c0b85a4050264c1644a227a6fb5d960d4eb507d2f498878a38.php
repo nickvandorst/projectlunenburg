@@ -15,19 +15,11 @@ class __TwigTemplate_7f3efa14b3e00bb0d837819fe4a24c88d7293928576281043c8131216f8
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-<<<<<<< HEAD
-        $__internal_a9c01bc06cc2e0bf35fc9f87dfeed44640f346d6e536a59189d5172306a0a74a = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_a9c01bc06cc2e0bf35fc9f87dfeed44640f346d6e536a59189d5172306a0a74a->enter($__internal_a9c01bc06cc2e0bf35fc9f87dfeed44640f346d6e536a59189d5172306a0a74a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/time.svg"));
+        $__internal_a433db914382fbe1f175584fbef76a744972cbb77d16e8d19ae5038edc6adcb2 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_a433db914382fbe1f175584fbef76a744972cbb77d16e8d19ae5038edc6adcb2->enter($__internal_a433db914382fbe1f175584fbef76a744972cbb77d16e8d19ae5038edc6adcb2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/time.svg"));
 
-        $__internal_2f9a306cb8956a7f0ba804e3fe9099c19c556fa79ad3bc36d7fc3748d34b5567 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_2f9a306cb8956a7f0ba804e3fe9099c19c556fa79ad3bc36d7fc3748d34b5567->enter($__internal_2f9a306cb8956a7f0ba804e3fe9099c19c556fa79ad3bc36d7fc3748d34b5567_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/time.svg"));
-=======
-        $__internal_fd6ba53af41086de6a84775ff4b4881198ba1f0662e293b0953d71b63ec74c56 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_fd6ba53af41086de6a84775ff4b4881198ba1f0662e293b0953d71b63ec74c56->enter($__internal_fd6ba53af41086de6a84775ff4b4881198ba1f0662e293b0953d71b63ec74c56_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/time.svg"));
-
-        $__internal_44824fac81761f82cc7bbe3bd6ba01d5c4d92c3f75fbcb4201f0f95df1b898f0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_44824fac81761f82cc7bbe3bd6ba01d5c4d92c3f75fbcb4201f0f95df1b898f0->enter($__internal_44824fac81761f82cc7bbe3bd6ba01d5c4d92c3f75fbcb4201f0f95df1b898f0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/time.svg"));
->>>>>>> 65779e7a918d622a16361db4bb1ea28111dfdf8d
+        $__internal_b8308146f9b4d7d664ea49a1cd8120ec7d41dd4e838ff65b169b3d4732d6d253 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_b8308146f9b4d7d664ea49a1cd8120ec7d41dd4e838ff65b169b3d4732d6d253->enter($__internal_b8308146f9b4d7d664ea49a1cd8120ec7d41dd4e838ff65b169b3d4732d6d253_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/time.svg"));
 
         // line 1
         echo "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" enable-background=\"new 0 0 24 24\" xml:space=\"preserve\">
@@ -37,17 +29,10 @@ class __TwigTemplate_7f3efa14b3e00bb0d837819fe4a24c88d7293928576281043c8131216f8
 </svg>
 ";
         
-<<<<<<< HEAD
-        $__internal_a9c01bc06cc2e0bf35fc9f87dfeed44640f346d6e536a59189d5172306a0a74a->leave($__internal_a9c01bc06cc2e0bf35fc9f87dfeed44640f346d6e536a59189d5172306a0a74a_prof);
+        $__internal_a433db914382fbe1f175584fbef76a744972cbb77d16e8d19ae5038edc6adcb2->leave($__internal_a433db914382fbe1f175584fbef76a744972cbb77d16e8d19ae5038edc6adcb2_prof);
 
         
-        $__internal_2f9a306cb8956a7f0ba804e3fe9099c19c556fa79ad3bc36d7fc3748d34b5567->leave($__internal_2f9a306cb8956a7f0ba804e3fe9099c19c556fa79ad3bc36d7fc3748d34b5567_prof);
-=======
-        $__internal_fd6ba53af41086de6a84775ff4b4881198ba1f0662e293b0953d71b63ec74c56->leave($__internal_fd6ba53af41086de6a84775ff4b4881198ba1f0662e293b0953d71b63ec74c56_prof);
-
-        
-        $__internal_44824fac81761f82cc7bbe3bd6ba01d5c4d92c3f75fbcb4201f0f95df1b898f0->leave($__internal_44824fac81761f82cc7bbe3bd6ba01d5c4d92c3f75fbcb4201f0f95df1b898f0_prof);
->>>>>>> 65779e7a918d622a16361db4bb1ea28111dfdf8d
+        $__internal_b8308146f9b4d7d664ea49a1cd8120ec7d41dd4e838ff65b169b3d4732d6d253->leave($__internal_b8308146f9b4d7d664ea49a1cd8120ec7d41dd4e838ff65b169b3d4732d6d253_prof);
 
     }
 

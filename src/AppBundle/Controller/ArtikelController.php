@@ -32,7 +32,7 @@ class ArtikelController extends Controller
 
  	 	$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
 
- 	  return new Response($this->render('alle_artikelen.html.twig', array('artkelen' => $artikelen)));
+ 	  return new Response($this->render('alle_artikelen.html.twig', array('artikelen' => $artikelen)));
  	 }
 
     // $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();

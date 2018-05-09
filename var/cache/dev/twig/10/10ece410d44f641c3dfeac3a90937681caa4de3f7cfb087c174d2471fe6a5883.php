@@ -15,19 +15,11 @@ class __TwigTemplate_eb80fefacdc93726ba1f8c13f5df0e300d6b527245e6f3e10f45f4a079e
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-<<<<<<< HEAD
-        $__internal_98df2af4bb038f2afd4db8337e70f6d5459195feb7d551bffe16de681c57b293 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_98df2af4bb038f2afd4db8337e70f6d5459195feb7d551bffe16de681c57b293->enter($__internal_98df2af4bb038f2afd4db8337e70f6d5459195feb7d551bffe16de681c57b293_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/memory.svg"));
+        $__internal_9433c37cd2ea77172119e3a6f7fe9f11412ac7995ccb82af11accf15e11f0c10 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_9433c37cd2ea77172119e3a6f7fe9f11412ac7995ccb82af11accf15e11f0c10->enter($__internal_9433c37cd2ea77172119e3a6f7fe9f11412ac7995ccb82af11accf15e11f0c10_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/memory.svg"));
 
-        $__internal_e43f56e82ab36eeff1996f7375323ac0d50c6f8eaa96b633930228596de99492 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e43f56e82ab36eeff1996f7375323ac0d50c6f8eaa96b633930228596de99492->enter($__internal_e43f56e82ab36eeff1996f7375323ac0d50c6f8eaa96b633930228596de99492_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/memory.svg"));
-=======
-        $__internal_60abd401b9234d5a17ed26859fe98766dba7470cef8edfa1d7931936e16c4946 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_60abd401b9234d5a17ed26859fe98766dba7470cef8edfa1d7931936e16c4946->enter($__internal_60abd401b9234d5a17ed26859fe98766dba7470cef8edfa1d7931936e16c4946_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/memory.svg"));
-
-        $__internal_4b481a7bffbb9ccd0a78517e6675f1aac2eb2a10b599143dedbe9273dc97775f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_4b481a7bffbb9ccd0a78517e6675f1aac2eb2a10b599143dedbe9273dc97775f->enter($__internal_4b481a7bffbb9ccd0a78517e6675f1aac2eb2a10b599143dedbe9273dc97775f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/memory.svg"));
->>>>>>> 65779e7a918d622a16361db4bb1ea28111dfdf8d
+        $__internal_c7d4b0313c7ef61eebcc71971f3624910aca304eba09b0189c848f8be37551ae = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_c7d4b0313c7ef61eebcc71971f3624910aca304eba09b0189c848f8be37551ae->enter($__internal_c7d4b0313c7ef61eebcc71971f3624910aca304eba09b0189c848f8be37551ae_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/memory.svg"));
 
         // line 1
         echo "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" enable-background=\"new 0 0 24 24\" xml:space=\"preserve\">
@@ -37,17 +29,10 @@ class __TwigTemplate_eb80fefacdc93726ba1f8c13f5df0e300d6b527245e6f3e10f45f4a079e
 </svg>
 ";
         
-<<<<<<< HEAD
-        $__internal_98df2af4bb038f2afd4db8337e70f6d5459195feb7d551bffe16de681c57b293->leave($__internal_98df2af4bb038f2afd4db8337e70f6d5459195feb7d551bffe16de681c57b293_prof);
+        $__internal_9433c37cd2ea77172119e3a6f7fe9f11412ac7995ccb82af11accf15e11f0c10->leave($__internal_9433c37cd2ea77172119e3a6f7fe9f11412ac7995ccb82af11accf15e11f0c10_prof);
 
         
-        $__internal_e43f56e82ab36eeff1996f7375323ac0d50c6f8eaa96b633930228596de99492->leave($__internal_e43f56e82ab36eeff1996f7375323ac0d50c6f8eaa96b633930228596de99492_prof);
-=======
-        $__internal_60abd401b9234d5a17ed26859fe98766dba7470cef8edfa1d7931936e16c4946->leave($__internal_60abd401b9234d5a17ed26859fe98766dba7470cef8edfa1d7931936e16c4946_prof);
-
-        
-        $__internal_4b481a7bffbb9ccd0a78517e6675f1aac2eb2a10b599143dedbe9273dc97775f->leave($__internal_4b481a7bffbb9ccd0a78517e6675f1aac2eb2a10b599143dedbe9273dc97775f_prof);
->>>>>>> 65779e7a918d622a16361db4bb1ea28111dfdf8d
+        $__internal_c7d4b0313c7ef61eebcc71971f3624910aca304eba09b0189c848f8be37551ae->leave($__internal_c7d4b0313c7ef61eebcc71971f3624910aca304eba09b0189c848f8be37551ae_prof);
 
     }
 
