@@ -3,7 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+<<<<<<< HEAD
 //test
+=======
+
+>>>>>>> 9225ddbad0198aa0a64d22a6a830361c786aa604
 /**
  
  *
