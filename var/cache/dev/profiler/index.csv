@@ -200,3 +200,8 @@ dc9456,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen,
 525b16,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/alle/js/bootstrap.min.js,1526300819,,404
 c7c8b6,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/js/bootstrap.min.js,1526300864,60df50,200
 60df50,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/js/bootstrap.min.js,1526300864,,404
+ca83f5,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/js/bootstrap.min.js,1526300909,db00ff,200
+db00ff,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/js/bootstrap.min.js,1526300909,,404
+d519a8,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1526300914,,200
+888c67,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/js/bootstrap.min.js,1526300915,9dc168,200
+9dc168,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/js/bootstrap.min.js,1526300916,,404
