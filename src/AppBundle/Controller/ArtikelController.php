@@ -23,6 +23,7 @@ class ArtikelController extends Controller
         ]);
     }
 
+    //Hier wordt een overzicht van alle artikelen aangeroepen
     /**
  	 * @Route("/alle/artikelen", name="alleartikelen")
  	 */
@@ -33,6 +34,23 @@ class ArtikelController extends Controller
  	  return new Response($this->render('alle_artikelen.html.twig', array('artikelen' => $artikelen)));
  	 }
 
+
+    // $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+    // $tekst = "";
+    // return new Response($this->render('alle_artikelen.html.twig', array('artikelen' => $artikelen)));
+ 	// 	 }
+
+
+    /**
+     * @Route("/alle/klanten", name="alleklanten")
+     */
+     public function KlantOpVoornaam(Request $request) {
+      $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findAll();
+     	$tekst = "";
+     	return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
+ 		 	}
+
+ 	//Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
     /**
      * @Route("/nieuw/artikel", name="nieuwartikel")
      */

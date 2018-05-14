@@ -19,6 +19,7 @@ class HomePageController extends Controller
         ]);
     }
 
+    //Hier wordt de link naar de homepagina gemaakt
     /**
      * @Route("/home", name="home")
      */
