@@ -205,3 +205,8 @@ db00ff,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/nieuw/js/bootst
 d519a8,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1526300914,,200
 888c67,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/js/bootstrap.min.js,1526300915,9dc168,200
 9dc168,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/js/bootstrap.min.js,1526300916,,404
+a01bfa,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1526301053,,200
+bd2b99,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/js/bootstrap.min.js,1526301056,0325bc,200
+0325bc,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/js/bootstrap.min.js,1526301056,,404
+f29599,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/js/bootstrap.min.js,1526301056,bf325f,200
+bf325f,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/js/bootstrap.min.js,1526301056,,404
