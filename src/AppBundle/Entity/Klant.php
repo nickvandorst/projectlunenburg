@@ -5,8 +5,6 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- 
- *
  * @ORM\Table(name="Klant")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\klantRepository")
  */
@@ -76,7 +74,7 @@ class Klant
     public function setKlantnummer($klantnummer)
     {
         $this->klantnummer = $klantnummer;
-    
+
         return $this;
     }
 
@@ -100,7 +98,7 @@ class Klant
     public function setVoornaam($voornaam)
     {
         $this->voornaam = $voornaam;
-    
+
         return $this;
     }
 
@@ -124,7 +122,7 @@ class Klant
     public function setAchternaam($achternaam)
     {
         $this->achternaam = $achternaam;
-    
+
         return $this;
     }
 
@@ -148,7 +146,7 @@ class Klant
     public function setWoonplaats($woonplaats)
     {
         $this->woonplaats = $woonplaats;
-    
+
         return $this;
     }
 
@@ -172,7 +170,7 @@ class Klant
     public function setTelefoonnummer($telefoonnummer)
     {
         $this->telefoonnummer = $telefoonnummer;
-    
+
         return $this;
     }
 
@@ -196,7 +194,7 @@ class Klant
     public function setEmail($email)
     {
         $this->email = $email;
-    
+
         return $this;
     }
 
@@ -210,4 +208,3 @@ class Klant
         return $this->email;
     }
 }
-
