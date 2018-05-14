@@ -1,128 +1,304 @@
 <?php
-//src/AppBundle/Entity/Artikel.php
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
-* @ORM\Entity
-* @ORM\Table(name="Artikel")
-*/
+ 
+ *
+ * @ORM\Table(name="Artikel")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\artikelRepository")
+ */
+class Artikel
+{
+    /**
+     * @var string
+     * @ORM\Id
+     * @ORM\Column(name="artikelnummer", type="string", length=35, unique=true)
+     */
+    private $artikelnummer;
 
-class Artikel {
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codevervangendartikel", type="string", length=35, nullable=true)
+     */
+    private $codevervangendartikel;
 
-  /**
-  * @ORM\Id
-  * @ORM\Column(name="artikelnummer")
-  */
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="inkoopprijs", type="integer")
+     */
+    private $inkoopprijs;
 
-  private $artikelnummer;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="bestelserie", type="integer", nullable=true)
+     */
+    private $bestelserie;
 
-/**
-* @ORM\Column(name="omschrijving")
-*/
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="magazijnlocatie", type="string", length=35)
+     */
+    private $magazijnlocatie;
 
-  private $omschrijving;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="minimumvoorraad", type="integer")
+     */
+    private $minimumvoorraad;
 
-  private $technischespecificaties;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="omschrijving", type="string", length=35, nullable=true)
+     */
+    private $omschrijving;
 
-  /**
-  * @ORM\Column(name="magazijnlocatie")
-  */
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="technischespecificaties", type="string", length=35, nullable=true)
+     */
+    private $technischespecificaties;
 
-  private $magazijnlocatie;
-
-  /**
-  * @ORM\Column(name="inkoopprijs")
-  */
-
-  private $inkoopprijs;
-
-  private $codevervangendartikel;
-
-  private $minimumvoorraad;
-
-  /**
-  * @ORM\Column(name="voorraadaantal")
-  */
-
-  private $voorraadaantal;
-
-  private $bestelserie;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="voorraadaantal", type="integer")
+     */
+    private $voorraadaantal;
 
 
-  public function setArtikelnummer($artikelnummer) {
-    $this->artikelnummer = $artikelnummer;
-  }
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-  public function getArtikelnummer() {
-    return $this->artikelnummer;
-  }
+    /**
+     * Set artikelnummer
+     *
+     * @param string $artikelnummer
+     *
+     * @return artikel
+     */
+    public function setArtikelnummer($artikelnummer)
+    {
+        $this->artikelnummer = $artikelnummer;
+    
+        return $this;
+    }
 
-  public function setOmschrijving($omschrijving) {
-    $this->omschrijving = $omschrijving;
-  }
+    /**
+     * Get artikelnummer
+     *
+     * @return string
+     */
+    public function getArtikelnummer()
+    {
+        return $this->artikelnummer;
+    }
 
-  public function getOmschrijving() {
-    return $this->omschrijving;
-  }
+    /**
+     * Set codevervangendartikel
+     *
+     * @param string $codevervangendartikel
+     *
+     * @return artikel
+     */
+    public function setCodevervangendartikel($codevervangendartikel)
+    {
+        $this->codevervangendartikel = $codevervangendartikel;
+    
+        return $this;
+    }
 
-  public function setTechnischespecificaties($technischespecificaties) {
-    $this->technischespecificaties = $technischespecificaties;
-  }
+    /**
+     * Get codevervangendartikel
+     *
+     * @return string
+     */
+    public function getCodevervangendartikel()
+    {
+        return $this->codevervangendartikel;
+    }
 
-  public function getTechnischespecificaties() {
-    return $this->technischespecificaties;
-  }
+    /**
+     * Set inkoopprijs
+     *
+     * @param integer $inkoopprijs
+     *
+     * @return artikel
+     */
+    public function setInkoopprijs($inkoopprijs)
+    {
+        $this->inkoopprijs = $inkoopprijs;
+    
+        return $this;
+    }
 
-  public function setMagazijnlocatie($magazijnlocatie) {
-    $this->magazijnlocatie = $magazijnlocatie;
-  }
+    /**
+     * Get inkoopprijs
+     *
+     * @return integer
+     */
+    public function getInkoopprijs()
+    {
+        return $this->inkoopprijs;
+    }
 
-  public function getMagazijnlocatie() {
-    return $this->magazijnlocatie;
-  }
+    /**
+     * Set bestelserie
+     *
+     * @param integer $bestelserie
+     *
+     * @return artikel
+     */
+    public function setBestelserie($bestelserie)
+    {
+        $this->bestelserie = $bestelserie;
+    
+        return $this;
+    }
 
-  public function setInkoopprijs($inkoopprijs) {
-    $this->inkoopprijs = $inkoopprijs;
-  }
+    /**
+     * Get bestelserie
+     *
+     * @return integer
+     */
+    public function getBestelserie()
+    {
+        return $this->bestelserie;
+    }
 
-  public function getInkoopprijs() {
-    return $this->inkoopprijs;
-  }
+    /**
+     * Set magazijnlocatie
+     *
+     * @param string $magazijnlocatie
+     *
+     * @return artikel
+     */
+    public function setMagazijnlocatie($magazijnlocatie)
+    {
+        $this->magazijnlocatie = $magazijnlocatie;
+    
+        return $this;
+    }
 
-  public function setCodevervangendartikel($codevervangendartikel) {
-    $this->codevervangendartikel = $codevervangendartikel;
-  }
+    /**
+     * Get magazijnlocatie
+     *
+     * @return string
+     */
+    public function getMagazijnlocatie()
+    {
+        return $this->magazijnlocatie;
+    }
 
-  public function getCodevervangendartikel() {
-    return $this->codevervangendartikel;
-  }
+    /**
+     * Set minimumvoorraad
+     *
+     * @param integer $minimumvoorraad
+     *
+     * @return artikel
+     */
+    public function setMinimumvoorraad($minimumvoorraad)
+    {
+        $this->minimumvoorraad = $minimumvoorraad;
+    
+        return $this;
+    }
 
-  public function setMinimumvoorraad($minimumvoorraad) {
-    $this->minmumvoorraad = $minimumvoorraad;
-  }
+    /**
+     * Get minimumvoorraad
+     *
+     * @return integer
+     */
+    public function getMinimumvoorraad()
+    {
+        return $this->minimumvoorraad;
+    }
 
-  public function getMinimumvoorraad() {
-    return $this->minimumvoorraad;
-  }
+    /**
+     * Set omschrijving
+     *
+     * @param string $omschrijving
+     *
+     * @return artikel
+     */
+    public function setOmschrijving($omschrijving)
+    {
+        $this->omschrijving = $omschrijving;
+    
+        return $this;
+    }
 
-  public function setVoorraadaantal($voorraadaantal) {
-    $this->voorraadaantal = $voorraadaantal;
-  }
+    /**
+     * Get omschrijving
+     *
+     * @return string
+     */
+    public function getOmschrijving()
+    {
+        return $this->omschrijving;
+    }
 
-  public function getVoorraadaantal() {
-    return $this->voorraadaantal;
-  }
+    /**
+     * Set technischespecificaties
+     *
+     * @param string $technischespecificaties
+     *
+     * @return artikel
+     */
+    public function setTechnischespecificaties($technischespecificaties)
+    {
+        $this->technischespecificaties = $technischespecificaties;
+    
+        return $this;
+    }
 
-  public function setBestelserie($bestelserie) {
-    $this->bestelserie = $bestelserie;
-  }
+    /**
+     * Get technischespecificaties
+     *
+     * @return string
+     */
+    public function getTechnischespecificaties()
+    {
+        return $this->technischespecificaties;
+    }
 
-  public function getBestelserie() {
-    return $this->bestelserie;
-  }
+    /**
+     * Set voorraadaantal
+     *
+     * @param integer $voorraadaantal
+     *
+     * @return artikel
+     */
+    public function setVoorraadaantal($voorraadaantal)
+    {
+        $this->voorraadaantal = $voorraadaantal;
+    
+        return $this;
+    }
 
+    /**
+     * Get voorraadaantal
+     *
+     * @return integer
+     */
+    public function getVoorraadaantal()
+    {
+        return $this->voorraadaantal;
+    }
 }
-
 ?>
