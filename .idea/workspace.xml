@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e243806-8158-457b-97a4-b9ccd3e7af9b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/alle_artikelen.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/alle_artikelen.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/+/X/ATHJpIqtTcwf7AIa4VZi" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/+/X/ATHJpIqtTcwf7AIa4VZi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/-/S/gWw0LKjtNtSeaFcb7KM9" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/-/S/gWw0LKjtNtSeaFcb7KM9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/L/7/RLdc6U4jaBeJrBNEEw34" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/L/7/RLdc6U4jaBeJrBNEEw34" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/O/O/FCY2RgpNoG0wH1afwogX" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/O/O/FCY2RgpNoG0wH1afwogX" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/R/5/DodJ-OgO1Gn4EEOWKAWz" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/R/5/DodJ-OgO1Gn4EEOWKAWz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/V/Y/vX4+wn8QBI4p4tG+ig5C" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/V/Y/vX4+wn8QBI4p4tG+ig5C" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/logs/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/logs/dev.log" afterDir="false" />
     </list>
@@ -287,16 +279,15 @@
       <workItem from="1525768868986" duration="10380000" />
       <workItem from="1525785000499" duration="1445000" />
       <workItem from="1525853905610" duration="912000" />
-      <workItem from="1526293957299" duration="810000" />
+      <workItem from="1526293957299" duration="1114000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14843000" />
+    <option name="totallyTimeSpent" value="15147000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24963397" />
       <window_info anchor="bottom" id="TODO" order="6" />
