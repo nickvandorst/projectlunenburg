@@ -22,7 +22,7 @@ class ArtikelType extends AbstractType
             ->add('bestelserie', TextType::class)
         ;
         $builder
-            ->add('codevervangendartikel', TextType::class)
+            ->add('codevervangendartikel', TextType::class, array('required'=>false))
         ;
         $builder
             ->add('inkoopprijs', MoneyType::class)
