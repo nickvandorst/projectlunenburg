@@ -1,6 +1,7 @@
 [2018-05-09 11:17:57] request.INFO: Matched route "home". {"route":"home","route_parameters":{"_controller":"AppBundle\\Controller\\HomePageController::loadHomePage","_route":"home"},"request_uri":"http://localhost/projectlunenburg/web/app_dev.php/home","method":"GET"} []
 [2018-05-09 11:17:57] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
 [2018-05-09 11:17:58] request.INFO: Matched route "_wdt". {"route":"_wdt","route_parameters":{"_controller":"web_profiler.controller.profiler:toolbarAction","token":"aadd00","_route":"_wdt"},"request_uri":"http://localhost/projectlunenburg/web/app_dev.php/_wdt/aadd00","method":"GET"} []
+
 [2018-05-09 11:31:00] request.INFO: Matched route "home". {"route":"home","route_parameters":{"_controller":"AppBundle\\Controller\\HomePageController::loadHomePage","_route":"home"},"request_uri":"http://localhost/projectlunenburg/web/app_dev.php/home","method":"GET"} []
 [2018-05-09 11:31:00] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
 [2018-05-09 11:31:01] request.INFO: Matched route "_wdt". {"route":"_wdt","route_parameters":{"_controller":"web_profiler.controller.profiler:toolbarAction","token":"1d372c","_route":"_wdt"},"request_uri":"http://localhost/projectlunenburg/web/app_dev.php/_wdt/1d372c","method":"GET"} []
@@ -169,7 +170,7 @@
 [2018-05-09 12:25:57] request.INFO: Matched route "alleartikelen". {"route":"alleartikelen","route_parameters":{"_controller":"AppBundle\\Controller\\ArtikelController::alleArtikelen","_route":"alleartikelen"},"request_uri":"http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen","method":"GET"} []
 [2018-05-09 12:25:57] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
 [2018-05-09 12:25:57] doctrine.DEBUG: SELECT t0.artikelnummer AS artikelnummer_1, t0.omschrijving AS omschrijving_2, t0.magazijnlocatie AS magazijnlocatie_3, t0.inkoopprijs AS inkoopprijs_4, t0.voorraadaantal AS voorraadaantal_5 FROM Artikel t0 [] []
-[2018-05-09 12:25:58] request.INFO: Matched route "_wdt". {"route":"_wdt","route_parameters":{"_controller":"web_profiler.controller.profiler:toolbarAction","token":"de8e5b","_route":"_wdt"},"request_uri":"http://localhost/projectlunenburg/web/app_dev.php/_wdt/de8e5b","method":"GET"} []
+[2018-05-09 12:25:58] request.INFO: Matchd route "_wdt". {"route":"_wdt","route_parameters":{"_controller":"web_profiler.controller.profiler:toolbarAction","token":"de8e5b","_route":"_wdt"},"request_uri":"http://localhost/projectlunenburg/web/app_dev.php/_wdt/de8e5b","method":"GET"} []
 [2018-05-09 12:26:29] request.INFO: Matched route "alleartikelen". {"route":"alleartikelen","route_parameters":{"_controller":"AppBundle\\Controller\\ArtikelController::alleArtikelen","_route":"alleartikelen"},"request_uri":"http://localhost/projectlunenburg/web/app_dev.php/alle/artikelen","method":"GET"} []
 [2018-05-09 12:26:29] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
 [2018-05-09 12:26:29] doctrine.DEBUG: SELECT t0.artikelnummer AS artikelnummer_1, t0.omschrijving AS omschrijving_2, t0.magazijnlocatie AS magazijnlocatie_3, t0.inkoopprijs AS inkoopprijs_4, t0.voorraadaantal AS voorraadaantal_5 FROM Artikel t0 [] []
