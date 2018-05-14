@@ -50,6 +50,7 @@ class ArtikelController extends Controller
 
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
     }
+
         /**
          * @Route("/wijzig/artikel/{artikelnummer}", name="wijzigartikel")
          */

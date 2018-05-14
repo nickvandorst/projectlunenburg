@@ -301,4 +301,4 @@ class Artikel
         return $this->voorraadaantal;
     }
 }
-
+?>

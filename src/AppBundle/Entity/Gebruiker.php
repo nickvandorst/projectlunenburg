@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+
  * Gebruiker
  *
  * @ORM\Table(name="gebruiker")
@@ -138,3 +139,4 @@ class Gebruiker
     }
 }
 
+?>

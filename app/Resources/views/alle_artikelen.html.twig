@@ -6,11 +6,14 @@
   <table style="width:80%">
   <tr>
     <h4> {{artikel.artikelnummer}}</h4>
+
+
     <li style="color:black"> {{ artikel.artikelnummer }}</li>
     <li style="color:black"> {{ artikel.omschrijving }}</li>
     <li style="color:black"> {{ artikel.magazijnlocatie }}</li>
     <li style="color:black"> {{ artikel.voorraadaantal }}</li>
+
     <li><a href="{{ path('wijzigartikel',{'artikelnummer':artikel.artikelnummer}) }}">WijzigArtikel</a></li>
-    
+
 	{% endfor %}
 {% endblock %}
