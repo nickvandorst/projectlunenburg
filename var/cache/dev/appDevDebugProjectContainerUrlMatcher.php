@@ -100,22 +100,19 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        if (0 === strpos($pathinfo, '/alle')) {
-            // alleartikelen
-            if ($pathinfo === '/alle/artikelen') {
-                return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::alleArtikelen',  '_route' => 'alleartikelen',);
-            }
-
-            // alleklanten
-            if ($pathinfo === '/alle/klanten') {
-                return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::KlantOpVoornaam',  '_route' => 'alleklanten',);
-            }
-
+        // alleartikelen
+        if ($pathinfo === '/alle/artikelen') {
+            return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::alleArtikelen',  '_route' => 'alleartikelen',);
         }
 
         // nieuwartikel
         if ($pathinfo === '/nieuw/artikel') {
             return array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::nieuwArtikel',  '_route' => 'nieuwartikel',);
+        }
+
+        // wijzigartikel
+        if (0 === strpos($pathinfo, '/wijzig/artikel') && preg_match('#^/wijzig/artikel/(?P<artikelnummer>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'wijzigartikel')), array (  '_controller' => 'AppBundle\\Controller\\ArtikelController::wijzigArtikel',));
         }
 
         // homepage
@@ -130,6 +127,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         // home
         if ($pathinfo === '/home') {
             return array (  '_controller' => 'AppBundle\\Controller\\HomePageController::loadHomePage',  '_route' => 'home',);
+        }
+
+        // alleklanten
+        if ($pathinfo === '/alle/klanten') {
+            return array (  '_controller' => 'AppBundle\\Controller\\KlantController::AlleKlanten',  '_route' => 'alleklanten',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
