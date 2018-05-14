@@ -21,6 +21,8 @@
                     <th>Omschrijving</th>
                     <th>Magazijnlocatie</th>
                     <th>Voorraad</th>
+                    <th>Bestelserie</th>
+                    <th>Artikelinformatie wijzigen</th>
                 </tr>
     {% for artikel in artikelen %}
             <tr>
@@ -28,6 +30,8 @@
                 <td>{{ artikel.omschrijving }}</td>
                 <td>{{ artikel.magazijnlocatie }}</td>
                 <td>{{ artikel.voorraadaantal }}</td>
+                <td>{{ artikel.bestelserie }}</td>
+                <td><a href="{{ path('wijzigartikel',{'artikelnummer':artikel.artikelnummer}) }}">Wijzigen</a></td>
             </tr>
     {% endfor %}
         </table>
