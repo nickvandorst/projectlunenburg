@@ -19,9 +19,6 @@ class ArtikelType extends AbstractType
             ->add('artikelnummer', TextType::class)
         ;
         $builder
-            ->add('bestelserie', TextType::class)
-        ;
-        $builder
             ->add('codevervangendartikel', TextType::class, array('required'=>false))
         ;
         $builder

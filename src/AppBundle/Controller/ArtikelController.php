@@ -45,6 +45,7 @@ class ArtikelController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $nieuwArtikel->setBestelserie($nieuwArtikel->getMinimumvoorraad() - $nieuwArtikel->getVoorraadaantal());
             $em->persist($nieuwArtikel);
             $em->flush();
             return $this->redirect($this->generateUrl("alleartikelen"));
@@ -64,12 +65,13 @@ class ArtikelController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVoorraadaantal());
             $em->persist($bestaandArtikel);
             $em->flush();
             return $this->redirect($this->generateurl("alleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
           }
             return new Response ($this->render('form.html.twig', array('form' =>$form->createView())));
-  
+
 }
 }
 ?>

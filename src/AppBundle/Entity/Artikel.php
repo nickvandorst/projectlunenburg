@@ -5,8 +5,6 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
- 
- *
  * @ORM\Table(name="Artikel")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\artikelRepository")
  */
@@ -39,8 +37,6 @@ class Artikel
      * @ORM\Column(name="bestelserie", type="integer")
      */
     private $bestelserie;
-
-
 
     /**
      * @var string
@@ -126,7 +122,7 @@ class Artikel
     public function setArtikelnummer($artikelnummer)
     {
         $this->artikelnummer = $artikelnummer;
-    
+
         return $this;
     }
 
@@ -150,7 +146,7 @@ class Artikel
     public function setCodevervangendartikel($codevervangendartikel)
     {
         $this->codevervangendartikel = $codevervangendartikel;
-    
+
         return $this;
     }
 
@@ -174,7 +170,7 @@ class Artikel
     public function setInkoopprijs($inkoopprijs)
     {
         $this->inkoopprijs = $inkoopprijs;
-    
+
         return $this;
     }
 
@@ -198,7 +194,7 @@ class Artikel
     public function setBestelserie($bestelserie)
     {
         $this->bestelserie = $bestelserie;
-    
+
         return $this;
     }
 
@@ -222,7 +218,7 @@ class Artikel
     public function setMagazijnlocatie($magazijnlocatie)
     {
         $this->magazijnlocatie = $magazijnlocatie;
-    
+
         return $this;
     }
 
@@ -246,7 +242,7 @@ class Artikel
     public function setMinimumvoorraad($minimumvoorraad)
     {
         $this->minimumvoorraad = $minimumvoorraad;
-    
+
         return $this;
     }
 
@@ -270,7 +266,7 @@ class Artikel
     public function setOmschrijving($omschrijving)
     {
         $this->omschrijving = $omschrijving;
-    
+
         return $this;
     }
 
@@ -294,7 +290,7 @@ class Artikel
     public function setTechnischespecificaties($technischespecificaties)
     {
         $this->technischespecificaties = $technischespecificaties;
-    
+
         return $this;
     }
 
@@ -318,7 +314,7 @@ class Artikel
     public function setVoorraadaantal($voorraadaantal)
     {
         $this->voorraadaantal = $voorraadaantal;
-    
+
         return $this;
     }
 

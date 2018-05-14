@@ -2,8 +2,71 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e243806-8158-457b-97a4-b9ccd3e7af9b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ArtikelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ArtikelController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Artikel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Artikel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Form/ArtikelType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Form/ArtikelType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/+/X/ATHJpIqtTcwf7AIa4VZi" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/+/X/ATHJpIqtTcwf7AIa4VZi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/-/S/gWw0LKjtNtSeaFcb7KM9" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/-/S/gWw0LKjtNtSeaFcb7KM9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/0/A/Fcl8UjIjV8WFTJnWPZD0" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/0/A/Fcl8UjIjV8WFTJnWPZD0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/0/X/GVXY9jLu4WVNVQDcA+Uo" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/0/X/GVXY9jLu4WVNVQDcA+Uo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/2/3/qDueb1sRA5W9kmc52fN5" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/2/3/qDueb1sRA5W9kmc52fN5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/5/7/MwPMH7zU2MKB0q8nLqHQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/5/7/MwPMH7zU2MKB0q8nLqHQ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/5/U/PJoS-k5zYSmVyKShGlm-" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/5/U/PJoS-k5zYSmVyKShGlm-" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/5/Z/TQ74DwAOSsbErQEaV4AV" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/5/Z/TQ74DwAOSsbErQEaV4AV" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/6/J/IMkBoYMjdX2Z4ZZv-O52" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/6/J/IMkBoYMjdX2Z4ZZv-O52" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/7/T/y7Zx1DD9xkqmm69SHFLY" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/7/T/y7Zx1DD9xkqmm69SHFLY" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/8/R/nb2+LxVdNJnPi9ibI8CB" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/8/R/nb2+LxVdNJnPi9ibI8CB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/A/G/FT+ony8rJq-uN9Neh0qq" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/A/G/FT+ony8rJq-uN9Neh0qq" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/A/Q/3rEOJYij7xXtwSJ9DqOe" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/A/Q/3rEOJYij7xXtwSJ9DqOe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/A/W/pWowK1X+V-+JqrMMX7nx" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/A/W/pWowK1X+V-+JqrMMX7nx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/C/N/t0GC1c8G2fe8T3S3Zall" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/C/N/t0GC1c8G2fe8T3S3Zall" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/D/D/tPDRBvcYW7kkwfAAgC0n" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/D/D/tPDRBvcYW7kkwfAAgC0n" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/D/H/DjmJrPlxNfPeCqzSbL6f" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/D/H/DjmJrPlxNfPeCqzSbL6f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/E/H/eSWnf8V7uSKfroiTvt6-" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/E/H/eSWnf8V7uSKfroiTvt6-" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/F/I/GRWKH7-g8GCoiD8vjZc6" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/F/I/GRWKH7-g8GCoiD8vjZc6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/G/M/1ez+fzCi-nbBAtghBFVa" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/G/M/1ez+fzCi-nbBAtghBFVa" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/G/V/6iHRKi9ZkQWJq5vIXT5d" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/G/V/6iHRKi9ZkQWJq5vIXT5d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/H/-/YLKkA40R9hGfvE+TypGl" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/H/-/YLKkA40R9hGfvE+TypGl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/H/A/OKwsmiaeWeXU29NcQ7X5" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/H/A/OKwsmiaeWeXU29NcQ7X5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/H/J/y72dIil0Qq-V76cc88g3" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/H/J/y72dIil0Qq-V76cc88g3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/I/5/chIHOx1o6+SLSW7cqiny" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/I/5/chIHOx1o6+SLSW7cqiny" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/I/7/iuYaVs5mFQ7rm+bDBTqf" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/I/7/iuYaVs5mFQ7rm+bDBTqf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/J/E/84yxqyEYtP2w0pIN0VxZ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/J/E/84yxqyEYtP2w0pIN0VxZ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/J/S/TRv2Eupj1HWY74NqcJ23" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/J/S/TRv2Eupj1HWY74NqcJ23" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/L/7/RLdc6U4jaBeJrBNEEw34" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/L/7/RLdc6U4jaBeJrBNEEw34" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/M/F/o0ypjG6G9xe9dFimGO02" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/M/F/o0ypjG6G9xe9dFimGO02" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/M/M/LxmN0zdnFMTx3Z4B0i3Z" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/M/M/LxmN0zdnFMTx3Z4B0i3Z" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/M/W/tKwQrMiflSp2FFPjlVsJ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/M/W/tKwQrMiflSp2FFPjlVsJ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/N/U/cB4mry8l8QmuAvszgaEU" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/N/U/cB4mry8l8QmuAvszgaEU" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/O/C/kk2eNsXNvqLNJlgjx8Lp" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/O/C/kk2eNsXNvqLNJlgjx8Lp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/O/O/FCY2RgpNoG0wH1afwogX" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/O/O/FCY2RgpNoG0wH1afwogX" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/O/S/NIom65FTazzK8jbRDIJJ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/O/S/NIom65FTazzK8jbRDIJJ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/P/O/BgdKUiIuprTJxpN+dyDQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/P/O/BgdKUiIuprTJxpN+dyDQ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Q/+/Wfu9sUXtta1rYehCmhSz" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Q/+/Wfu9sUXtta1rYehCmhSz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Q/W/4Qum0xMOblX1ETi3s5HC" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Q/W/4Qum0xMOblX1ETi3s5HC" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Q/Z/7CCqf9-1m0v4ILmjQWso" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Q/Z/7CCqf9-1m0v4ILmjQWso" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/R/5/DodJ-OgO1Gn4EEOWKAWz" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/R/5/DodJ-OgO1Gn4EEOWKAWz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/R/6/BnYFoNNsW8AId5gcvdJ2" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/R/6/BnYFoNNsW8AId5gcvdJ2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/R/9/gO4L-OnOoflaS5r7I6QL" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/R/9/gO4L-OnOoflaS5r7I6QL" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/R/T/xCcbWBwP0dAIQ4wP4aD-" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/R/T/xCcbWBwP0dAIQ4wP4aD-" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/S/K/8YMYJkU6IbXK99i4aglw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/S/K/8YMYJkU6IbXK99i4aglw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/T/B/myyfxRlR2NIk96Abo6Ta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/T/B/myyfxRlR2NIk96Abo6Ta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/T/Y/eMF4ITBs9UiNmoWMvenq" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/T/Y/eMF4ITBs9UiNmoWMvenq" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/V/0/QxO2M+KkvHgv1JEB9qNB" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/V/0/QxO2M+KkvHgv1JEB9qNB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/V/H/YJWVQKhE0QL+CSE-Rb7x" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/V/H/YJWVQKhE0QL+CSE-Rb7x" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/V/L/Wne1p1fboFyaoxX3mGlK" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/V/L/Wne1p1fboFyaoxX3mGlK" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/V/W/OJwX-3z+9+63CJPDw+6j" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/V/W/OJwX-3z+9+63CJPDw+6j" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/V/Y/vX4+wn8QBI4p4tG+ig5C" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/V/Y/vX4+wn8QBI4p4tG+ig5C" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/W/H/bWW7vVaXlGuXJosJMBYt" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/W/H/bWW7vVaXlGuXJosJMBYt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/X/F/cEsIu34Rl94xTM38v6Xd" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/X/F/cEsIu34Rl94xTM38v6Xd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/X/T/b+lBMrqZaWzJniS2Tik0" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/X/T/b+lBMrqZaWzJniS2Tik0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Y/+/7moJ9g9oSSl2VipherWD" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Y/+/7moJ9g9oSSl2VipherWD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Y/A/YQY7m+Xuz0SWmmSb1dS0" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Y/A/YQY7m+Xuz0SWmmSb1dS0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Z/A/A7-h4OllWwgBKblf8c-W" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Z/A/A7-h4OllWwgBKblf8c-W" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Z/H/8U7g05hGgqN83+BmCA6d" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Z/H/8U7g05hGgqN83+BmCA6d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Z/Q/TRv1Ho+LsjbN0oJXW4XM" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Z/Q/TRv1Ho+LsjbN0oJXW4XM" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Z/T/6f63jYzqCall9-3TNJr9" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Z/T/6f63jYzqCall9-3TNJr9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Z/W/rdy7uPRgWbOWH9kC65EO" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/x8CAfK1BN9/Z/W/rdy7uPRgWbOWH9kC65EO" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/logs/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/logs/dev.log" afterDir="false" />
     </list>
@@ -19,15 +82,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ArtikelController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ArtikelController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
-              <caret line="61" column="36" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="alle_artikelen.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/alle_artikelen.html.twig">
           <provider selected="true" editor-type-id="text-editor">
@@ -71,8 +125,8 @@
       <file leaf-file-name="Artikel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Artikel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-527">
-              <caret line="38" column="53" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
+            <state relative-caret-position="-561">
+              <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
               <folding>
                 <element signature="e#36#68#0#PHP" expanded="true" />
               </folding>
@@ -83,8 +137,8 @@
       <file leaf-file-name="ArtikelType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/ArtikelType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="24" column="85" selection-start-line="24" selection-start-column="85" selection-end-line="24" selection-end-column="85" />
+            <state relative-caret-position="51">
+              <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
               <folding>
                 <element signature="e#34#74#0#PHP" expanded="true" />
               </folding>
@@ -96,18 +150,23 @@
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Bestelserie.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="18" column="10" lean-forward="true" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+              <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.csv" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/var/cache/dev/profiler/index.csv">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -149,6 +208,7 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Form/ArtikelType.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" />
       </list>
     </option>
   </component>
@@ -199,7 +259,7 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="697" />
@@ -287,6 +347,21 @@
               <item name="var" type="462c0819:PsiDirectoryNode" />
               <item name="cache" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="projectlunenburg" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projectlunenburg" type="462c0819:PsiDirectoryNode" />
+              <item name="var" type="462c0819:PsiDirectoryNode" />
+              <item name="cache" type="462c0819:PsiDirectoryNode" />
+              <item name="dev" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projectlunenburg" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projectlunenburg" type="462c0819:PsiDirectoryNode" />
+              <item name="var" type="462c0819:PsiDirectoryNode" />
+              <item name="cache" type="462c0819:PsiDirectoryNode" />
+              <item name="dev" type="462c0819:PsiDirectoryNode" />
+              <item name="profiler" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -346,12 +421,12 @@
       <workItem from="1525858351153" duration="7065000" />
       <workItem from="1526282932161" duration="9778000" />
       <workItem from="1526300085229" duration="758000" />
-      <workItem from="1526301714712" duration="1795000" />
+      <workItem from="1526301714712" duration="2056000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33433000" />
+    <option name="totallyTimeSpent" value="33694000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -411,7 +486,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/alle_artikelen.html.twig" />
     <entry file="file://$PROJECT_DIR$/app/Resources/views/frontpage.html.twig" />
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/KlantType.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -587,8 +661,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ArtikelController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="61" column="36" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
+        <state relative-caret-position="969">
+          <caret line="62" column="36" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -611,8 +685,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/ArtikelType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="24" column="85" selection-start-line="24" selection-start-column="85" selection-end-line="24" selection-end-column="85" />
+        <state relative-caret-position="51">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
           <folding>
             <element signature="e#34#74#0#PHP" expanded="true" />
           </folding>
@@ -622,7 +696,7 @@
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Bestelserie.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -641,8 +715,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Artikel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-527">
-          <caret line="38" column="53" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
+        <state relative-caret-position="-561">
+          <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
           <folding>
             <element signature="e#36#68#0#PHP" expanded="true" />
           </folding>
@@ -652,9 +726,12 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="18" column="10" lean-forward="true" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+          <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/var/cache/dev/profiler/index.csv">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
