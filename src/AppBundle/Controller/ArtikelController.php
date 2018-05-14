@@ -6,8 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\Klant;
-use AppBundle\Entity\KlantType;
 use AppBundle\Entity\Artikel;
 use AppBundle\Form\ArtikelType;
 //use Symfony\Component\HttpFoundation\Response;
@@ -35,21 +33,6 @@ class ArtikelController extends Controller
  	  return new Response($this->render('alle_artikelen.html.twig', array('artikelen' => $artikelen)));
  	 }
 
-    // $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
-    // $tekst = "";
-    // return new Response($this->render('alle_artikelen.html.twig', array('artikelen' => $artikelen)));
- 	// 	 }
-
-
-    /**
-     * @Route("/alle/klanten", name="alleklanten")
-     */
-     public function KlantOpVoornaam(Request $request) {
-      $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findAll();
-     	$tekst = "";
-     	return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
- 		 	}
-
     /**
      * @Route("/nieuw/artikel", name="nieuwartikel")
      */
@@ -67,5 +50,23 @@ class ArtikelController extends Controller
 
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
     }
+        /**
+         * @Route("/wijzig/artikel/{artikelnummer}", name="wijzigartikel")
+         */
+    public function wijzigArtikel(Request $request, $artikelnummer) {
+        $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
+
+        $form = $this->createForm(ArtikelType::class, $bestaandArtikel);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($bestaandArtikel);
+            $em->flush();
+            return $this->redirect($this->generateurl("alleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
+          }
+            return new Response ($this->render('form.html.twig', array('form' =>$form->createView())));
+  
+}
 }
 ?>

@@ -1,102 +1,213 @@
 <?php
 
-//src/AppBundle/Entity/Klant.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-* @ORM\Entity
-* @ORM\Table(name="Klant")
-*/
+ 
+ *
+ * @ORM\Table(name="Klant")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\klantRepository")
+ */
+class Klant
+{
 
-class Klant {
+    /**
+     * @var int
+     * @ORM\Id
+     * @ORM\Column(name="klantnummer", type="integer", unique=true)
+     */
+    private $klantnummer;
 
-  /**
-  * @ORM\Id
-  * @ORM\Column(name="klantnummer")
-  */
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="voornaam", type="string", length=35)
+     */
+    private $voornaam;
 
-  private $klantnummer;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="achternaam", type="string", length=35)
+     */
+    private $achternaam;
 
-/**
-* @ORM\Column(name="voornaam")
-*/
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="woonplaats", type="string", length=35)
+     */
+    private $woonplaats;
 
-  private $voornaam;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefoonnummer", type="string", length=100)
+     */
+    private $telefoonnummer;
 
-  /**
-  * @ORM\Column(name="achternaam")
-  */
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=35)
+     */
+    private $email;
 
-  private $achternaam;
 
-  /**
-  * @ORM\Column(name="woonplaats")
-  */
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-  private $woonplaats;
+    /**
+     * Set klantnummer
+     *
+     * @param integer $klantnummer
+     *
+     * @return klant
+     */
+    public function setKlantnummer($klantnummer)
+    {
+        $this->klantnummer = $klantnummer;
+    
+        return $this;
+    }
 
-  /**
-  * @ORM\Column(name="telefoonnummer")
-  */
+    /**
+     * Get klantnummer
+     *
+     * @return integer
+     */
+    public function getKlantnummer()
+    {
+        return $this->klantnummer;
+    }
 
-  private $telefoonnummer;
+    /**
+     * Set voornaam
+     *
+     * @param string $voornaam
+     *
+     * @return klant
+     */
+    public function setVoornaam($voornaam)
+    {
+        $this->voornaam = $voornaam;
+    
+        return $this;
+    }
 
-  /**
-  * @ORM\Column(name="email")
-  */
+    /**
+     * Get voornaam
+     *
+     * @return string
+     */
+    public function getVoornaam()
+    {
+        return $this->voornaam;
+    }
 
-  private $email;
+    /**
+     * Set achternaam
+     *
+     * @param string $achternaam
+     *
+     * @return klant
+     */
+    public function setAchternaam($achternaam)
+    {
+        $this->achternaam = $achternaam;
+    
+        return $this;
+    }
 
-public function setKlantnummer($klantnummer) {
-  $this->klantnummer = $klantnummer;
+    /**
+     * Get achternaam
+     *
+     * @return string
+     */
+    public function getAchternaam()
+    {
+        return $this->achternaam;
+    }
+
+    /**
+     * Set woonplaats
+     *
+     * @param string $woonplaats
+     *
+     * @return klant
+     */
+    public function setWoonplaats($woonplaats)
+    {
+        $this->woonplaats = $woonplaats;
+    
+        return $this;
+    }
+
+    /**
+     * Get woonplaats
+     *
+     * @return string
+     */
+    public function getWoonplaats()
+    {
+        return $this->woonplaats;
+    }
+
+    /**
+     * Set telefoonnummer
+     *
+     * @param string $telefoonnummer
+     *
+     * @return klant
+     */
+    public function setTelefoonnummer($telefoonnummer)
+    {
+        $this->telefoonnummer = $telefoonnummer;
+    
+        return $this;
+    }
+
+    /**
+     * Get telefoonnummer
+     *
+     * @return string
+     */
+    public function getTelefoonnummer()
+    {
+        return $this->telefoonnummer;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return klant
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
 }
 
-public function getKlantnummer() {
-  return $this->klantnummer;
-}
-
-public function setVoornaam($voornaam) {
-  $this->voornaam = $voornaam;
-}
-
-public function getVoornaam() {
-  return $this->voornaam;
-}
-
-public function setAchternaam($achternaam) {
-  $this->achternaam = $achternaam;
-}
-
-public function getAchternaam() {
-  return $this->achternaam;
-}
-
-public function setWoonplaats($woonplaats) {
-  $this->woonplaats = $woonplaats;
-}
-
-public function getWoonplaats() {
-  return $this->woonplaats;
-}
-
-public function setTelefoonnummer($telefoonnummer) {
-  $this->telefoonnummer = $telefoonnummer;
-}
-
-public function getTelefoonnummer() {
-  return $this->telefoonnummer;
-}
-
-public function setEmail($email) {
-  $this->email = $email;
-}
-
-public function getEmail($email) {
-  return $this->email;
-}
-
-}
-
-?>
