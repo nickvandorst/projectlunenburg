@@ -25,6 +25,7 @@ class ArtikelController extends Controller
         ]);
     }
 
+    //Hier wordt een overzicht van alle artikelen aangeroepen
     /**
  	 * @Route("/alle/artikelen", name="alleartikelen")
  	 */
@@ -50,6 +51,7 @@ class ArtikelController extends Controller
      	return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
  		 	}
 
+ 	//Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
     /**
      * @Route("/nieuw/artikel", name="nieuwartikel")
      */

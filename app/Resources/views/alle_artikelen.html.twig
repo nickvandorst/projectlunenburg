@@ -1,15 +1,33 @@
 {% extends 'base.html.twig' %}
+{% block head %}
+    <link rel="stylesheet" href="interface.css">
+{% endblock %}
 {% block body %}
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 5px;
+        }
+    </style>
 	<h1> Overzicht van alle artikelen</h1>
-	{% for artikel in artikelen %}
-
-  <table style="width:80%">
-  <tr>
-    <h4>{{ artikel.artikelnummer }}</h4>
-    <li style="color:black"> {{ artikel.artikelnummer }}</li>
-    <li style="color:black"> {{ artikel.omschrijving }}</li>
-    <li style="color:black"> {{ artikel.magazijnlocatie }}</li>
-    <li style="color:black"> {{ artikel.voorraadaantal }}</li>
-
-	{% endfor %}
+        <table class="alle_artikelen">
+                <tr>
+                    <th>Artikelnummer</th>
+                    <th>Omschrijving</th>
+                    <th>Magazijnlocatie</th>
+                    <th>Voorraad</th>
+                </tr>
+    {% for artikel in artikelen %}
+            <tr>
+                <td>{{ artikel.artikelnummer }}</td>
+                <td>{{ artikel.omschrijving }}</td>
+                <td>{{ artikel.magazijnlocatie }}</td>
+                <td>{{ artikel.voorraadaantal }}</td>
+            </tr>
+    {% endfor %}
+        </table>
 {% endblock %}
