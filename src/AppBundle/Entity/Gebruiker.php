@@ -62,7 +62,7 @@ class Gebruiker
     public function setGebruikersnaam($gebruikersnaam)
     {
         $this->gebruikersnaam = $gebruikersnaam;
-    
+
         return $this;
     }
 
@@ -76,6 +76,8 @@ class Gebruiker
         return $this->gebruikersnaam;
     }
 
+  
+
     /**
      * Set wachtwoord
      *
@@ -86,7 +88,7 @@ class Gebruiker
     public function setWachtwoord($wachtwoord)
     {
         $this->wachtwoord = $wachtwoord;
-    
+
         return $this;
     }
 
@@ -110,7 +112,7 @@ class Gebruiker
     public function setID($iD)
     {
         $this->iD = $iD;
-    
+
         return $this;
     }
 
@@ -124,7 +126,7 @@ class Gebruiker
     public function setFunctie($functie)
     {
         $this->functie = $functie;
-    
+
         return $this;
     }
 
