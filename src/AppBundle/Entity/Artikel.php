@@ -4,9 +4,11 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Table(name="Artikel")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\artikelRepository")
+ * @UniqueEntity(fields={"artikelnummer"}, message="Dit artikelnummer bestaat al.")
  */
 class Artikel
 {
@@ -14,8 +16,15 @@ class Artikel
      * @var string
      * @ORM\Id
      * @ORM\Column(name="artikelnummer", type="string", length=35, unique=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 10,
+     *      minMessage = "artikelnummer moet 10 karakters hebben",
+     *      maxMessage = "artikelnummer moet 10 karakters hebben"
+     *)
      */
-    private $artikelnummer;
+
+    protected $artikelnummer;
 
     /**
      * @var string

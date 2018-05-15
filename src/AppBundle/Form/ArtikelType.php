@@ -10,14 +10,16 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class ArtikelType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('artikelnummer', TextType::class)
+            ->add('artikelnummer', TextType::class, array('disabled' => true))
         ;
+
         $builder
             ->add('codevervangendartikel', TextType::class, array('required'=>false))
         ;
@@ -31,10 +33,10 @@ class ArtikelType extends AbstractType
             ->add('minimumvoorraad', IntegerType::class)
         ;
         $builder
-            ->add('omschrijving', TextType::class)
+            ->add('omschrijving', TextType::class, array('required'=>false))
         ;
         $builder
-            ->add('technischespecificaties', TextType::class)
+            ->add('technischespecificaties', TextType::class, array('required'=>false))
         ;
         $builder
             ->add('voorraadaantal', TextType::class)

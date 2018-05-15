@@ -42,6 +42,8 @@ class ArtikelController extends Controller
         $nieuwArtikel = new Artikel();
         $form = $this->createForm(ArtikelType::class, $nieuwArtikel);
 
+        
+
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
