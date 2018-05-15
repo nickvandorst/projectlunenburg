@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class ArtikelType extends AbstractType
 {
+    //Het formulier voor het aanmaken van een nieuw artikel wordt in deze gegenereerd
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

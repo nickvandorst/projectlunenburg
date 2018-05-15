@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class ArtikelWijzigenType extends AbstractType
 {
+    //Het formulier voor het wijzigen van artikelen wordt in deze klasse gegenereerd
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

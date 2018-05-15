@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class KlantController extends Controller
 {
+    //Hier wordt een overzicht van alle klanten in de database gegenereerd
     /**
      * @Route("/alle/klanten", name="alleklanten")
      */

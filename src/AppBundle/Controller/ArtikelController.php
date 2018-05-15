@@ -25,16 +25,15 @@ class ArtikelController extends Controller
 
     //Hier wordt een overzicht van alle artikelen aangeroepen
     /**
- 	 * @Route("/alle/artikelen", name="alleartikelen")
- 	 */
- 	 public function alleArtikelen(Request $request) {
+     * @Route("/alle/artikelen", name="alleartikelen")
+     */
+    public function alleArtikelen(Request $request) {
 
- 	 	$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+        return new Response($this->render('alle_artikelen.html.twig', array('artikelen' => $artikelen)));
+    }
 
- 	  return new Response($this->render('alle_artikelen.html.twig', array('artikelen' => $artikelen)));
- 	 }
-
- 	//Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
+    //Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
     /**
      * @Route("/nieuw/artikel", name="nieuwartikel")
      */
@@ -42,27 +41,25 @@ class ArtikelController extends Controller
         $nieuwArtikel = new Artikel();
         $form = $this->createForm(ArtikelType::class, $nieuwArtikel);
 
-        
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             if ($nieuwArtikel->getVoorraadaantal() > $nieuwArtikel->getMinimumvoorraad()) {
-              $nieuwArtikel->setBestelserie(0);
+                $nieuwArtikel->setBestelserie(0);
             }else {
-              $nieuwArtikel->setBestelserie($nieuwArtikel->getMinimumvoorraad() - $nieuwArtikel->getVoorraadaantal());
+                $nieuwArtikel->setBestelserie($nieuwArtikel->getMinimumvoorraad() - $nieuwArtikel->getVoorraadaantal());
             }
             $em->persist($nieuwArtikel);
             $em->flush();
             return $this->redirect($this->generateUrl("alleartikelen"));
         }
-
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
     }
 
-        /**
-         * @Route("/wijzig/artikel/{artikelnummer}", name="wijzigartikel")
-         */
+    //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
+    /**
+     * @Route("/wijzig/artikel/{artikelnummer}", name="wijzigartikel")
+     */
     public function wijzigArtikel(Request $request, $artikelnummer) {
         $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
 
@@ -72,16 +69,15 @@ class ArtikelController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             if ($bestaandArtikel->getVoorraadaantal() > $bestaandArtikel->getMinimumvoorraad()) {
-              $bestaandArtikel->setBestelserie(0);
+                $bestaandArtikel->setBestelserie(0);
             }else {
-              $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVoorraadaantal());
+                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVoorraadaantal());
             }
             $em->persist($bestaandArtikel);
             $em->flush();
             return $this->redirect($this->generateurl("alleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
-          }
-            return new Response ($this->render('form.html.twig', array('form' =>$form->createView())));
-
-  }
+        }
+        return new Response ($this->render('form.html.twig', array('form' =>$form->createView())));
+    }
 }
 ?>
