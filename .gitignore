@@ -15,3 +15,7 @@ var/cache/dev/profiler/index.csv
 .idea/workspace.xml
 var/logs/prod.log
 var/logs/dev.log
+var\logs\
+var\cache\
+.idea\*
+.idea\workspace.xml

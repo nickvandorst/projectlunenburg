@@ -17,6 +17,8 @@ class KlantController extends Controller
      public function AlleKlanten(Request $request) {
       $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findAll();
         $tekst = "";
-        return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
-            }}
+        return new Response($this->render('alle_klanten.html.twig', array('klanten' => $klanten)));
+            }
+}
+
 ?>

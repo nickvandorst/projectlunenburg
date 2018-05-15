@@ -10,27 +10,27 @@
 <body>
 
 <div class="container">
-  <h2>Artikeloverzicht</h2>
+  <h2>Klantenoverzicht</h2>
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Artikelnummer</th>
-        <th>Omschrijving</th>
-        <th>Magazijnlocatie</th>
-        <th>Voorraad</th>
-        <th>Bestelserie</th>
-        <th>Artikelinformatie wijzigen</th>
+        <th>Klantnummer</th>
+        <th>Voornaam</th>
+        <th>Achternaam</th>
+        <th>Woonplaats</th>
+        <th>Telefoonnummer</th>
+        <th>E-mail</th>
       </tr>
     </thead>
     <tbody>
-     {% for artikel in artikelen %}
+     {% for klant in klanten %}
       <tr>
-        <td>{{ artikel.artikelnummer }}</td>
-        <td>{{ artikel.omschrijving }}</td>
-        <td>{{ artikel.magazijnlocatie }}</td>
-        <td>{{ artikel.voorraadaantal }}</td>
-        <td>{{ artikel.bestelserie }}</td>
-        <td><a href="{{ path('wijzigartikel',{'artikelnummer':artikel.artikelnummer}) }}">Wijzigen</a></td></td>
+        <td>{{ klant.klantnummer }}</td>
+        <td>{{ klant.voornaam }}</td>
+        <td>{{ klant.achternaam }}</td>
+        <td>{{ klant.woonplaats }}</td>
+        <td>{{ klant.telefoonnummer }}</td>
+        <td>{{ klant.email }}</td>
       </tr>
     </tbody>
     {% endfor %}
