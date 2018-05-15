@@ -6,8 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\Klant;
-use AppBundle\Entity\KlantType;
 use AppBundle\Entity\Artikel;
 use AppBundle\Form\ArtikelType;
 //use Symfony\Component\HttpFoundation\Response;
@@ -25,31 +23,17 @@ class ArtikelController extends Controller
         ]);
     }
 
+    //Hier wordt een overzicht van alle artikelen aangeroepen
     /**
- 	 * @Route("/alle/artikelen", name="alleartikelen")
- 	 */
- 	 public function alleArtikelen(Request $request) {
-
- 	 	$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
-
- 	  return new Response($this->render('alle_artikelen.html.twig', array('artikelen' => $artikelen)));
- 	 }
-
-    // $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
-    // $tekst = "";
-    // return new Response($this->render('alle_artikelen.html.twig', array('artikelen' => $artikelen)));
- 	// 	 }
-
-
-    /**
-     * @Route("/alle/klanten", name="alleklanten")
+     * @Route("/alle/artikelen", name="alleartikelen")
      */
-     public function KlantOpVoornaam(Request $request) {
-      $klanten = $this->getDoctrine()->getRepository("AppBundle:Klant")->findAll();
-     	$tekst = "";
-     	return new Response($this->render('klanten.html.twig', array('klanten' => $klanten)));
- 		 	}
+    public function alleArtikelen(Request $request) {
 
+        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+        return new Response($this->render('alle_artikelen.html.twig', array('artikelen' => $artikelen)));
+    }
+
+    //Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
     /**
      * @Route("/nieuw/artikel", name="nieuwartikel")
      */
@@ -60,12 +44,40 @@ class ArtikelController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            if ($nieuwArtikel->getVoorraadaantal() > $nieuwArtikel->getMinimumvoorraad()) {
+                $nieuwArtikel->setBestelserie(0);
+            }else {
+                $nieuwArtikel->setBestelserie($nieuwArtikel->getMinimumvoorraad() - $nieuwArtikel->getVoorraadaantal());
+            }
             $em->persist($nieuwArtikel);
             $em->flush();
             return $this->redirect($this->generateUrl("alleartikelen"));
         }
-
         return new Response($this->render('form.html.twig', array('form' => $form->createView())));
+    }
+
+    //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
+    /**
+     * @Route("/wijzig/artikel/{artikelnummer}", name="wijzigartikel")
+     */
+    public function wijzigArtikel(Request $request, $artikelnummer) {
+        $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
+
+        $form = $this->createForm(ArtikelType::class, $bestaandArtikel);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            if ($bestaandArtikel->getVoorraadaantal() > $bestaandArtikel->getMinimumvoorraad()) {
+                $bestaandArtikel->setBestelserie(0);
+            }else {
+                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVoorraadaantal());
+            }
+            $em->persist($bestaandArtikel);
+            $em->flush();
+            return $this->redirect($this->generateurl("alleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
+        }
+        return new Response ($this->render('form.html.twig', array('form' =>$form->createView())));
     }
 }
 ?>

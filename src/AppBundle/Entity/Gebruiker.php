@@ -1,64 +1,144 @@
 <?php
 
-//src/AppBundle/Entity/Gebruiker.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-* @ORM\Entity
-* @ORM\Table(name="Gebruiker")
-*/
 
-class Gebruiker {
+ * Gebruiker
+ *
+ * @ORM\Table(name="gebruiker")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\GebruikerRepository")
+ */
+class Gebruiker
+{
+    /**
+     * @var string
+     * @ORM\Id
+     * @ORM\Column(name="gebruikersnaam", type="string", length=64, unique=true)
+     */
+    private $gebruikersnaam;
 
-  /**
-  * @ORM\Id
-  * @ORM\Column(name="gebruikersnaam")
-  */
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="wachtwoord", type="string", length=20)
+     */
+    private $wachtwoord;
 
-  private $gebruikersnaam;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="ID", type="integer")
+     */
+    private $ID;
 
-/**
-* @ORM\Column(name="wachtwoord")
-*/
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="functie", type="string", length=54)
+     */
+    private $functie;
 
-  private $wachtwoord;
 
-  /**
-  * @ORM\Column(name="ID")
-  */
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-  private $ID;
+    /**
+     * Set gebruikersnaam
+     *
+     * @param string $gebruikersnaam
+     *
+     * @return Gebruiker
+     */
+    public function setGebruikersnaam($gebruikersnaam)
+    {
+        $this->gebruikersnaam = $gebruikersnaam;
 
-  /**
-  * @ORM\Column(name="functie")
-  */
+        return $this;
+    }
 
-  private $functie;
+    /**
+     * Get gebruikersnaam
+     *
+     * @return string
+     */
+    public function getGebruikersnaam()
+    {
+        return $this->gebruikersnaam;
+    }
 
-  public function setGebruikersnaam($gebruikersnaam) {
-    $this->gebruikersnaam = $gebruikersnaam;
-  }
+  
 
-  public function getGebruikersnaam() {
-    return $this->gebruikersnaam;
-  }
+    /**
+     * Set wachtwoord
+     *
+     * @param string $wachtwoord
+     *
+     * @return Gebruiker
+     */
+    public function setWachtwoord($wachtwoord)
+    {
+        $this->wachtwoord = $wachtwoord;
 
-  public function setWachtwoord($wachtwoord) {
-    $this->wachtwoord = $wachtwoord;
-  }
+        return $this;
+    }
 
-  public function getWachtwoord() {
-    return $this->wachtwoord;
-  }
+    /**
+     * Get wachtwoord
+     *
+     * @return string
+     */
+    public function getWachtwoord()
+    {
+        return $this->wachtwoord;
+    }
 
-  public function setID($ID) {
-    $this->ID = $ID;
-  }
+    /**
+     * Set iD
+     *
+     * @param integer $iD
+     *
+     * @return Gebruiker
+     */
+    public function setID($iD)
+    {
+        $this->iD = $iD;
 
-  public function getID() {
-    return $this->ID;
-  }
+        return $this;
+    }
+
+    /**
+     * Set functie
+     *
+     * @param string $functie
+     *
+     * @return Gebruiker
+     */
+    public function setFunctie($functie)
+    {
+        $this->functie = $functie;
+
+        return $this;
+    }
+
+    /**
+     * Get functie
+     *
+     * @return string
+     */
+    public function getFunctie()
+    {
+        return $this->functie;
+    }
+}
 
 ?>

@@ -1,12 +1,35 @@
-{% extends 'base.html.twig' %}
-{% block body %}
-    <h1>Welkom</h1>
-        <div class="vertical-menu">
-            <a href="{{ path('alleartikelen') }}">Alle artikelen</a></br>
-            <a href="{{ path('nieuwartikel') }}">Nieuw artikel toevoegen</a></br>
-            <a href="#">Artikelinformatie</a></br>
-            <a href="#">Gebruikers toevoegen</a></br>
-            <a href="#">Link 3</a></br>
-            <a href="#">Link 4</a></br>
-        </div>
-{% endblock %}
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="jumbotron text-center">
+<h1 style="font-size: 65px; font-family: 'Garamond', cursive;"><font color="#DF0101"><B>Lunenburg</B></font></P></h1>
+  </div>
+<div class="container">
+
+  <h2 style = "text-align:center; font-size: 35px">Welkom</h2>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Artikelen</h3>
+      <h4><a href="{{ path('alleartikelen') }}">Alle artikelen/artikel wijzigen</a></br></h4>
+      <h4><a href="{{ path('nieuwartikel') }}">Nieuw artikel toevoegen</a></br></h4>
+    </div>
+    <!--
+    <div class="col-sm-4">
+      <h3>Klanten</h3>
+        <h4><a href="{{ path('alleklanten') }}">Alle klanten</a></br></h4>
+    </div>
+    -->
+  </div>
+</div>
+
+</body>
+</html>
