@@ -1,7 +1,6 @@
 <?php
 namespace AppBundle\Form;
 
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -11,16 +10,19 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class ArtikelWijzigenType extends AbstractType
+class ArtikelMagazijnbeheerderType extends AbstractType
 {
     //Het formulier voor het wijzigen van artikelen wordt in deze klasse gegenereerd
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('artikelnummer', TextType::class, array('disabled' => true))
+        ;
+        $builder
             ->add('bestelserie', TextType::class)
         ;
         $builder
-            ->add('codevervangendartikel', TextType::class)
+            ->add('codevervangendartikel', TextType::class, array('required'=>false))
         ;
         $builder
             ->add('inkoopprijs', MoneyType::class)
@@ -32,10 +34,10 @@ class ArtikelWijzigenType extends AbstractType
             ->add('minimumvoorraad', IntegerType::class)
         ;
         $builder
-            ->add('omschrijving', TextType::class)
+            ->add('omschrijving', TextType::class, array('required'=>false))
         ;
         $builder
-            ->add('technischespecificaties', TextType::class)
+            ->add('technischespecificaties', TextType::class, array('required'=>false))
         ;
         $builder
             ->add('voorraadaantal', TextType::class)

@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Artikel;
 use AppBundle\Form\ArtikelType;
+use AppBundle\Form\ArtikelInkoperType;
+use AppBundle\Form\ArtikelMagazijnbeheerderType;
 //use Symfony\Component\HttpFoundation\Response;
 
 class ArtikelController extends Controller
@@ -58,12 +60,33 @@ class ArtikelController extends Controller
 
     //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
     /**
-     * @Route("/wijzig/artikel/{artikelnummer}", name="wijzigartikel")
+     * @Route("/inkoper/wijzigartikel/{artikelnummer}", name="inkoperwijzigartikel")
      */
     public function wijzigArtikel(Request $request, $artikelnummer) {
         $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
+        $form = $this->createForm(ArtikelInkoperType::class, $bestaandArtikel);
 
-        $form = $this->createForm(ArtikelType::class, $bestaandArtikel);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            if ($bestaandArtikel->getVoorraadaantal() > $bestaandArtikel->getMinimumvoorraad()) {
+                $bestaandArtikel->setBestelserie(0);
+            }else {
+                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVoorraadaantal());
+            }
+            $em->persist($bestaandArtikel);
+            $em->flush();
+            return $this->redirect($this->generateurl("alleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
+        }
+        return new Response ($this->render('form.html.twig', array('form' =>$form->createView())));
+    }
+
+    /**
+     * @Route("/magazijnbeheerder/wijzigartikel/{artikelnummer}", name="magazijnbeheerderwijzigartikel")
+     */
+    public function magazijnbeheerderWijzigartikel(Request $request, $artikelnummer) {
+        $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
+        $form = $this->createForm(ArtikelMagazijnbeheerderType::class, $bestaandArtikel);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

@@ -2,13 +2,13 @@
 {% block body %}
 	<h1>Artikel wijzigen</h1>
 	<ol>
-	{% for artikel in artikelen %}	
+	{% for artikel in artikelen %}
 	<li>
-	 
+
 	{{ artikel.artikelnummer }}
 	<a href="{{ path('artikelwijzigen',{'artikelnummer':artikel.artikelnummer}) }}">Wijzig</a>
 	</li>
-		
+
 	{% endfor %}
 	</ol>
 {% endblock %}
