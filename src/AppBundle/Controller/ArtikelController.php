@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Artikel;
 use AppBundle\Form\ArtikelType;
 use AppBundle\Form\ArtikelInkoperType;
-use AppBundle\Form\ArtikelMagazijnbeheerderType;
+use AppBundle\Form\ArtikelMagazijnmeesterType;
 //use Symfony\Component\HttpFoundation\Response;
 
 class ArtikelController extends Controller
@@ -82,11 +82,11 @@ class ArtikelController extends Controller
     }
 
     /**
-     * @Route("/magazijnbeheerder/wijzigartikel/{artikelnummer}", name="magazijnbeheerderwijzigartikel")
+     * @Route("/magazijnmeester/wijzigartikel/{artikelnummer}", name="magazijnmeesterwijzigartikel")
      */
-    public function magazijnbeheerderWijzigartikel(Request $request, $artikelnummer) {
+    public function magazijnmeesterWijzigartikel(Request $request, $artikelnummer) {
         $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
-        $form = $this->createForm(ArtikelMagazijnbeheerderType::class, $bestaandArtikel);
+        $form = $this->createForm(ArtikelMagazijnmeesterType::class, $bestaandArtikel);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
