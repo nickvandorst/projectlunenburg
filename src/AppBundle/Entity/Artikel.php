@@ -36,7 +36,7 @@ class Artikel
     /**
      * @var int
      *
-     * @ORM\Column(name="inkoopprijs", type="integer")
+     * @ORM\Column(name="inkoopprijs", type="decimal", precision=3, scale=1)
      */
     private $inkoopprijs;
 
