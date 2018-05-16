@@ -9,9 +9,9 @@ security:
                         password: inkoper
                         roles: 'ROLE_INKOPER'
 
-                    magazijnbeheerder:
+                    magazijnmeester:
                         password: magazijn
-                        roles: 'ROLE_MAGAZIJNBEHEERDER'
+                        roles: 'ROLE_MAGAZIJNMEESTER'
 
                   #  testgebruiker:
                       #  password: test
@@ -19,7 +19,7 @@ security:
 
     access_control:
         - { path: '^/inkoper/*', roles: [ROLE_INKOPER] }
-        - { path: '^/magazijnbeheerder/*', roles: [ROLE_MAGAZIJNBEHEERDER] }
+        - { path: '^/magazijnmeester/*', roles: [ROLE_MAGAZIJNMEESTER] }
       #  - { path: '/logout', roles: [ROLE_INKOPER]}
 
     encoders:
