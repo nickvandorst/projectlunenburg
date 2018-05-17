@@ -10,35 +10,28 @@
 <body>
 
 <div class="container">
-  <h2>Artikeloverzicht</h2>
-  <table class="table table-striped">
+  <div class="page-header">
+  <h1>Artikeloverzicht</h1>
+  <p class="lead"><small>Welkom magazijnmeester!</small></p>
+  <h4><button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><a href="{{ path('nieuwartikel') }}"><font color="white"> Nieuw artikel</font></a></button></br></h4>
+  <table class="table table-striped table-hover">
     <thead>
       <tr>
         <th>Artikelnummer</th>
-        <th>Omschrijving</th>
-        <th>Technische specificaties</th>
         <th>Magazijnlocatie</th>
         <th>Voorraad</th>
         <th>Code vervangend artikel</th>
-        <th>Bestelserie</th>
-        <th>Inkoopprijs</th>
-        <th>Artikelinformatie wijzigen magazijnmeester:</th>
-        <th>Artikelinformatie wijzigen inkoper:</th>
+        <th>Artikelinformatie wijzigen:</th>
        </tr>
     </thead>
     <tbody>
      {% for artikel in artikelen %}
       <tr>
         <td>{{ artikel.artikelnummer }}</td>
-        <td>{{ artikel.omschrijving }}</td>
-        <td>{{ artikel.technischespecificaties }}</td>
         <td>{{ artikel.magazijnlocatie }}</td>
         <td>{{ artikel.voorraadaantal }}</td>
         <td>{{ artikel.codevervangendartikel }}</td>
-        <td>{{ artikel.bestelserie }}</td>
-        <td>{{ artikel.inkoopprijs }}</td>
         <td><a href="{{ path('magazijnmeesterwijzigartikel',{'artikelnummer':artikel.artikelnummer}) }}">Wijzigen</a></td></td>
-        <td><a href="{{ path('inkoperwijzigartikel',{'artikelnummer':artikel.artikelnummer}) }}">Wijzigen</a></td></td>
       </tr>
     </tbody>
     {% endfor %}

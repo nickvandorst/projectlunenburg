@@ -15,19 +15,15 @@
 <div class="container">
 
   <h2 style = "text-align:center; font-size: 35px">Welkom</h2>
-
   <div class="row">
-    <div class="col-sm-4">
-      <h3>Artikelen</h3>
-      <h4><a href="{{ path('alleartikelen') }}">Alle artikelen/artikel wijzigen</a></br></h4>
-      <h4><a href="{{ path('nieuwartikel') }}">Nieuw artikel toevoegen</a></br></h4>
+      <div class="align-left">
+      <h3>Inkoper:</h3>
+      <h4><button class="btn btn-info btn-lg"><span class="glyphicon glyphicon-log-in"></span><a href="{{ path('inkoperalleartikelen') }}"><font color="white"> Inloggen</font></a></button></br></h4>
     </div>
-    <!--
-    <div class="col-sm-4">
-      <h3>Klanten</h3>
-        <h4><a href="{{ path('alleklanten') }}">Alle klanten</a></br></h4>
+      <div class="align-left">
+      <h3>Magazijnmeester:</h3>
+        <h4><button class="btn btn-info btn-lg"><span class="glyphicon glyphicon-log-in"></span><a href="{{ path('magazijnmeesteralleartikelen') }}"><font color="white"> Inloggen</font></a></button></br></h4>
     </div>
-    -->
   </div>
 </div>
 
