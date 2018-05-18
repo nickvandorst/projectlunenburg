@@ -47,9 +47,9 @@ class ArtikelController extends Controller
 
     //Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
     /**
-     * @Route("/nieuw/artikel", name="nieuwartikel")
+     * @Route("/inkoper/nieuwartikel", name="inkopernieuwartikel")
      */
-    public function nieuwArtikel(Request $request) {
+    public function inkoperNieuwartikel(Request $request) {
         $nieuwArtikel = new Artikel();
         $form = $this->createForm(ArtikelType::class, $nieuwArtikel);
 
@@ -63,9 +63,10 @@ class ArtikelController extends Controller
             }
             $em->persist($nieuwArtikel);
             $em->flush();
-            return $this->redirect($this->generateUrl("alleartikelen"));
+            return $this->redirect($this->generateUrl("inkoperalleartikelen"));
         }
         return new Response($this->renderView('form2.html.twig', array('form' => $form->createView())));
+        return new Response("Artikel is succesvol toegevoegd!");
     }
 
     //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
