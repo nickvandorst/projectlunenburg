@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+    <form method="POST" action="">
+
+        <table>
+            <tr>
+                <td>Ontvangstdatum:</td>
+                <td><input type="text"/></td>
+            </tr>
+            <tr>
+                <td>Omschrijving</td>
+                <td><input type="text"/></td>
+            </tr>
+            <tr>
+                <td>Hoeveelheid</td>
+                <td><input type="text"/></td>
+            </tr>
+            <tr>
+                <td>Keuringscode</td>
+                <td><input type="text"/></td>
+            </tr>
+            <tr>
+                <td>Artikelnummer</td>
+                <td><input type="text"/></td>
+            </tr>
+            <tr>
+                <td>Naam Leverancier</td>
+                <td><input type="T"/></td>
+            </tr>
+
+        </table>
+
+        <input class="btn btn-default" type="submit" />
+        <a href="javascript:history.back()">Annuleren</a>
+    </form>
+{% endblock %}

@@ -5,7 +5,6 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- 
  *
  * @ORM\Table(name="Productsoort")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\productsoortRepository")
@@ -48,7 +47,7 @@ class Productsoort
     public function setTid($tid)
     {
         $this->tid = $tid;
-    
+
         return $this;
     }
 
@@ -72,7 +71,7 @@ class Productsoort
     public function setBeschrijving($beschrijving)
     {
         $this->beschrijving = $beschrijving;
-    
+
         return $this;
     }
 
@@ -86,4 +85,3 @@ class Productsoort
         return $this->beschrijving;
     }
 }
-
