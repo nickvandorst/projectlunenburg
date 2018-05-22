@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+  <title>Lunenburg</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h5><span class="glyphicon glyphicon-log-out"></span><a href="{{ path('security_logout') }}"><font color="black"> Uitloggen</font></a></br></h5>
+  <h2>Artikeloverzicht</h2>
+  <h4><button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><a href="{{ path('inkopernieuwartikel') }}"><font color="white"> Nieuw artikel</font></a></button></br></h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Artikelnummer</th>
+        <th>Omschrijving</th>
+        <th>Technische specificaties</th>
+        <th>Magazijnlocatie</th>
+        <th>Minimumvoorraad</th>
+        <th>Voorraad</th>
+        <th>Code vervangend artikel</th>
+        <th>Bestelserie</th>
+        <th>Inkoopprijs</th>
+        <th>Artikelinformatie wijzigen:</th>
+       </tr>
+    </thead>
+    <tbody>
+     {% for artikel in artikelen %}
+      <tr>
+        <td>{{ artikel.artikelnummer }}</td>
+        <td>{{ artikel.omschrijving }}</td>
+        <td>{{ artikel.technischespecificaties }}</td>
+        <td>{{ artikel.magazijnlocatie }}</td>
+        <td>{{ artikel.minimumvoorraad }}</td>
+        <td>{{ artikel.voorraadaantal }}</td>
+        <td>{{ artikel.codevervangendartikel }}</td>
+        <td>{{ artikel.bestelserie }}</td>
+        <td>{{ artikel.inkoopprijs }}</td>
+        <td><a href="{{ path('inkoperwijzigartikel',{'artikelnummer':artikel.artikelnummer}) }}">Wijzigen</a></td></td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+
+</body>
+</html>

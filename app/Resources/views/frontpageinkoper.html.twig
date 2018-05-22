@@ -14,17 +14,13 @@
   </div>
 <div class="container">
 
-  <h2 style = "text-align:center; font-size: 35px">Welkom</h2>
+  <h2 style = "text-align:center; font-size: 35px">Welkom inkoper!</h2>
   <div class="row">
-      <div class="align-left">
-      <h3>Inkoper:</h3>
-      <h4><button class="btn btn-info btn-lg"><span class="glyphicon glyphicon-log-in"></span><a href="{{ path('inkoperhome') }}"><font color="white"> Inloggen</font></a></button></br></h4>
+      <div class="col-sm-4">
+      <h3>Artikelen</h3>
+      <h4><button class="btn btn-info btn-lg"><a href="{{ path('inkoperalleartikelen') }}"><font color="white">Alle artikelen </font></a><span class="glyphicon glyphicon-chevron-right"></span></button></br></h4>
+      <h4><button class="btn btn-info btn-lg"><span class="glyphicon glyphicon-plus"></span><a href="{{ path('inkopernieuwartikel') }}"><font color="white"> Nieuw artikel toevoegen</font></a></button></br></h4>
     </div>
-      <div class="align-left">
-      <h3>Magazijnmeester:</h3>
-        <h4><button class="btn btn-info btn-lg"><span class="glyphicon glyphicon-log-in"></span><a href="{{ path('magazijnmeesterhome') }}"><font color="white"> Inloggen</font></a></button></br></h4>
-    </div>
-  </div>
 </div>
 
 </body>
