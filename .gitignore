@@ -19,5 +19,3 @@ var\logs\
 var\cache\
 .idea\*
 .idea\workspace.xml
-*.php
-app/Resources/views/nieuw_goederenontvangst.html.twig
