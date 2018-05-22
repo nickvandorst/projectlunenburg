@@ -31,7 +31,7 @@ class ArtikelMagazijnmeesterType extends AbstractType
             ->add('magazijnlocatie', TextType::class)
         ;
         $builder
-            ->add('minimumvoorraad', IntegerType::class)
+            ->add('minimumvoorraad', IntegerType::class, array('disabled' => true))
         ;
         $builder
             ->add('omschrijving', TextType::class, array('required'=>false))
