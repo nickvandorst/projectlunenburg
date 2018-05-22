@@ -108,7 +108,7 @@ class ArtikelController extends Controller
             }
             $em->persist($bestaandArtikel);
             $em->flush();
-            return $this->redirect($this->generateurl("alleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
+            return $this->redirect($this->generateurl("inkoperalleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
         }
         return new Response ($this->renderView('form.html.twig', array('form' =>$form->createView())));
     }
@@ -130,7 +130,7 @@ class ArtikelController extends Controller
             }
             $em->persist($bestaandArtikel);
             $em->flush();
-            return $this->redirect($this->generateurl("alleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
+            return $this->redirect($this->generateurl("magazijnmeesteralleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
         }
         return new Response ($this->renderView('form.html.twig', array('form' =>$form->createView())));
     }
