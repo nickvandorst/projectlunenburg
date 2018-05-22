@@ -66,7 +66,28 @@ class ArtikelController extends Controller
             return $this->redirect($this->generateUrl("inkoperalleartikelen"));
         }
         return new Response($this->renderView('form2.html.twig', array('form' => $form->createView())));
-        return new Response("Artikel is succesvol toegevoegd!");
+    }
+
+    /**
+     * @Route("/magazijnmeester/nieuwartikel", name="magazijnmeesternieuwartikel")
+     */
+    public function magazijnmeesterNieuwartikel(Request $request) {
+        $nieuwArtikel = new Artikel();
+        $form = $this->createForm(ArtikelType::class, $nieuwArtikel);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            if ($nieuwArtikel->getVoorraadaantal() > $nieuwArtikel->getMinimumvoorraad()) {
+                $nieuwArtikel->setBestelserie(0);
+            }else {
+                $nieuwArtikel->setBestelserie($nieuwArtikel->getMinimumvoorraad() - $nieuwArtikel->getVoorraadaantal());
+            }
+            $em->persist($nieuwArtikel);
+            $em->flush();
+            return $this->redirect($this->generateUrl("magazijnmeesteralleartikelen"));
+        }
+        return new Response($this->renderView('form2.html.twig', array('form' => $form->createView())));
     }
 
     //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
