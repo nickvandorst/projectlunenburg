@@ -14,7 +14,7 @@ class Goederenontvangst
   /**
    * @var int
    * @ORM\Column(type="integer",)
-   * 
+   *
    * @ORM\Id
    */
   private $id;
@@ -49,6 +49,7 @@ class Goederenontvangst
      * @var string
      *
      * @ORM\Column(name="artikelnummer", type="string", length=10)
+     * 
      */
     private $artikelnummer;
 
