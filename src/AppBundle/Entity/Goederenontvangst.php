@@ -48,7 +48,7 @@ class Goederenontvangst
 
     /**
      * @var string
-     *
+     * @ORM\id
      * @ORM\Column(name="naamleverancier", type="string", length=6)
      */
     private $naamleverancier;
@@ -71,7 +71,7 @@ class Goederenontvangst
      *
      * @return goederenontvangst
      */
-    public function setOnvangtdatum($ontvangstdatum)
+    public function setOntvangstdatum($ontvangstdatum)
     {
         $this->ontvangstdatum = $ontvangstdatum;
 
@@ -167,7 +167,7 @@ class Goederenontvangst
      *
      * @return goederenontvangst
      */
-    public function setArtikelnummer($telefoonnummer)
+    public function setArtikelnummer($artikelnummer)
     {
         $this->artikelnummer = $artikelnummer;
 

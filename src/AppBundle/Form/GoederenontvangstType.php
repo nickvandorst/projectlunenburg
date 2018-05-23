@@ -17,10 +17,10 @@ class GoederenontvangstType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('ontvangstdatum', DateType::class, array(
-                  'placeholder' => array(
-                  'year' => 'Jaar', 'month' => 'Maand', 'day' => 'Dag',
-                   )));
+          ->add('ontvangstdatum', DateType::class, array(
+                'placeholder' => array(
+                'year' => 'Jaar', 'month' => 'Maand', 'day' => 'Dag',
+              )));
         ;
         $builder
             ->add('omschrijving', TextType::class)

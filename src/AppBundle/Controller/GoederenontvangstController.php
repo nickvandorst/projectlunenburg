@@ -18,8 +18,8 @@ class GoederenontvangstController extends Controller
 public function nieuwGoederenontvangst(Request $request) {
     $nieuwGoederenontvangst = new Goederenontvangst();
     $form = $this->createForm(GoederenontvangstType::class, $nieuwGoederenontvangst);
-
     $form->handleRequest($request);
+
     if ($form->isSubmitted() && $form->isValid()) {
         $em = $this->getDoctrine()->getManager();
         $em->persist($nieuwGoederenontvangst);
