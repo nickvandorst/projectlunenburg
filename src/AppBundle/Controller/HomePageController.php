@@ -27,5 +27,21 @@ class HomePageController extends Controller
 
         return $this->render('frontpage.html.twig');
     }
+
+    /**
+     * @Route("inkoper/home", name="inkoperhome")
+     */
+    public function loadInkoperHomePage(Request $request) {
+
+        return $this->render('frontpageinkoper.html.twig');
+    }
+
+    /**
+     * @Route("magazijnmeester/home", name="magazijnmeesterhome")
+     */
+    public function loadMagazijnmeesterHomePage(Request $request) {
+
+        return $this->render('frontpagemagazijnmeester.html.twig');
+    }
 }
 ?>

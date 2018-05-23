@@ -65,7 +65,7 @@ class ArtikelController extends Controller
             $em->flush();
             return $this->redirect($this->generateUrl("inkoperalleartikelen"));
         }
-        return new Response($this->renderView('form2.html.twig', array('form' => $form->createView())));
+        return new Response($this->renderView('form_artikel_toevoegen.html.twig', array('form' => $form->createView())));
     }
 
     /**
@@ -87,7 +87,7 @@ class ArtikelController extends Controller
             $em->flush();
             return $this->redirect($this->generateUrl("magazijnmeesteralleartikelen"));
         }
-        return new Response($this->renderView('form2.html.twig', array('form' => $form->createView())));
+        return new Response($this->renderView('form_artikel_toevoegen.html.twig', array('form' => $form->createView())));
     }
 
     //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
@@ -110,7 +110,7 @@ class ArtikelController extends Controller
             $em->flush();
             return $this->redirect($this->generateurl("inkoperalleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
         }
-        return new Response ($this->renderView('form.html.twig', array('form' =>$form->createView())));
+        return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
     }
 
     /**
@@ -132,7 +132,7 @@ class ArtikelController extends Controller
             $em->flush();
             return $this->redirect($this->generateurl("magazijnmeesteralleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
         }
-        return new Response ($this->renderView('form.html.twig', array('form' =>$form->createView())));
+        return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
     }
 
 
