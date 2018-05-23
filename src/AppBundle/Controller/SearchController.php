@@ -27,6 +27,25 @@ public function inkoperZoekomschrijving(Request $request) {
   return new Response($this->renderView("omschrijvingzoek.html.twig", array('artikelen'=>$artikelen)));
   }
 
+   /**
+   * @Route("/inkoper/zoekartikel", name="inkoperzoekartikel")
+   */
+public function inkoperZoekartikel(Request $request) {
+  $em = $this->getDoctrine()->getManager();
+  $artikelen = $em->getRepository('AppBundle:Artikel');
+  $zoekwaarde = $request->request->get('artikelnummer');
+  if ($zoekwaarde == null) {
+    return new Response ("Het zoekveld is leeg!");
+  }
+  else {
+      $request->isMethod('POST'); 
+      $artikelnummer = $request->get('artikelnummer');
+      $artikelen = $em->getRepository('AppBundle:Artikel')->findBy(array("artikelnummer"=>$artikelnummer));
+      }
+
+  return new Response($this->renderView("zoek.html.twig", array('artikelen'=>$artikelen)));
+  }
+
 }
 
 ?>
