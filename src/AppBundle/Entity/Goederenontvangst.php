@@ -11,7 +11,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Goederenontvangst
 {
-
+  /**
+   * @var int
+   * @ORM\Column(type="integer",)
+   * 
+   * @ORM\Id
+   */
+  private $id;
     /**
      * @var date
      * @ORM\Column(name="ontvangstdatum", type="date", unique=false)
@@ -48,10 +54,35 @@ class Goederenontvangst
 
     /**
      * @var string
-     * @ORM\id
+     *
      * @ORM\Column(name="naamleverancier", type="string", length=6)
      */
     private $naamleverancier;
+
+
+    /**
+     * Set Id
+     *
+     * @param int $Id
+     *
+     * @return goederenontvangst
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get Id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
 
     /**
