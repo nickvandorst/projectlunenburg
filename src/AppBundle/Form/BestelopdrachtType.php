@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Form\Type;
+namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,11 +18,11 @@ class BestelopdrachtType extends AbstractType
     {
         //gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
         $builder
-            ->add('naam leverancier', TextType::class) //naam is b.v. een attribuut of variabele van klant
+            ->add('naamleverancier', TextType::class) //naam is b.v. een attribuut of variabele van klant
         ;
 
         $builder
-            ->add('bestelordernummer', TextType::class) //naam is b.v. een attribuut of variabele van klant
+            ->add('bestelordernummer', IntegerType::class) //naam is b.v. een attribuut of variabele van klant
         ;
 
         $builder
@@ -30,7 +30,7 @@ class BestelopdrachtType extends AbstractType
         ;
 
         $builder
-            ->add('naam', TextType::class) //naam is b.v. een attribuut of variabele van klant
+            ->add('omschrijving', TextType::class) //naam is b.v. een attribuut of variabele van klant
         ;
 
         $builder

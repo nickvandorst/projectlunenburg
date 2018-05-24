@@ -2,12 +2,12 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
- * @ORM\Table(name="Artikel")
+ * @ORM\Table(name="Bestelopdract")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\artikelRepository")
  * @UniqueEntity(fields={"artikelnummer"}, message="Dit artikelnummer bestaat al.")
  */
@@ -27,18 +27,19 @@ class Bestelopdracht
 
     /**
      * @var integer
+     * @ORM/Id
      */
     Private $bestelordernummer;
 
     /**
      * @var varchar
      */
-    Private $artikelnummer;
+    Private $artikelnummers;
 
     /**
      * @var varchar
      */
-    Private $naam;
+    Private $omschrijving;
 
     /**
      * @var integer
@@ -113,49 +114,49 @@ class Bestelopdracht
     }
 
     /**
-     * Set artikelnummer
-     * @param varchar $artikelnummer
+     * Set artikelnummers
+     * @param varchar $artikelnummers
      *
      * @return bestelopdracht
      */
-    Public function setArtikelnummer ($artikelnummer)
+    Public function setArtikelnummers ($artikelnummers)
     {
-        $this->artikelnummer = $artikelnummer;
+        $this->artikelnummers = $artikelnummers;
 
         Return $this;
     }
 
     /**
-     * Get artikelnummer
+     * Get artikelnummers
      *
      * @return varchar
      */
-    Public function getArtikelnummer()
+    Public function getArtikelnummers()
     {
-        Return $this->artikelnummer;
+        Return $this->artikelnummers;
     }
 
     /**
-     * Set naam
-     * @param varchar $artikelnummer
+     * Set omschrijving
+     * @param varchar $omschrijving
      *
      * @return bestelopdracht
      */
-    Public function setNaam ($naam)
+    Public function setOmschrijving ($omschrijving)
     {
-        $this->naam = $naam;
+        $this->omschrijving = $omschrijving;
 
         Return $this;
     }
 
     /**
-     * Get naam
+     * Get omschrijving
      *
      * @return varchar
      */
-    Public function getNaam()
+    Public function getOmschrijving()
     {
-        Return $this->naam;
+        Return $this->omschrijving;
     }
 
     /**

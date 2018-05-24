@@ -11,7 +11,7 @@ use AppBundle\Form\ArtikelType;
 use AppBundle\Form\ArtikelInkoperType;
 use AppBundle\Form\ArtikelMagazijnmeesterType;
 use AppBundle\Entity\Bestelopdracht;
-use AppBundle\Controller\BestelopdrachtType;
+use AppBundle\Form\BestelopdrachtType;
 //use Symfony\Component\HttpFoundation\Response;
 
 class ArtikelController extends Controller
@@ -152,7 +152,7 @@ class ArtikelController extends Controller
             $em->flush();
             return $this->redirect($this->generateUrl("inkoperbestelopdracht"));
         }
-        return new Response($this->render('form.html.twig', array('form' => $form->createView())));
+        return new Response($this->render('nieuw_bestelorder.html.twig', array('form' => $form->createView())));
     }
 }
 ?>
