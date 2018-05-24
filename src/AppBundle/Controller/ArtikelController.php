@@ -25,7 +25,8 @@ class ArtikelController extends Controller
         ]);
     }
 
-    //Hier wordt een overzicht van alle artikelen voor de inkoper aangeroepen
+    //ROL: inkoper
+        //Hier wordt een overzicht van alle artikelen aangeroepen
     /**
      * @Route("/inkoper/alleartikelen", name="inkoperalleartikelen")
      */
@@ -35,7 +36,8 @@ class ArtikelController extends Controller
         return new Response($this->renderView('alle_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
     }
 
-    //Hier wordt een overzicht van alle artikelen voor de magazijnmeester aangeroepen
+    //ROL: magazijnmeester
+        //Hier wordt een overzicht van alle artikelen aangeroepen
     /**
      * @Route("/magazijnmeester/alleartikelen", name="magazijnmeesteralleartikelen")
      */
@@ -45,7 +47,8 @@ class ArtikelController extends Controller
         return new Response($this->renderView('alle_artikelen_magazijnmeester.html.twig', array('artikelen' => $artikelen)));
     }
 
-    //Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
+    //ROL: inkoper
+        //Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
     /**
      * @Route("/inkoper/nieuwartikel", name="inkopernieuwartikel")
      */
@@ -68,6 +71,8 @@ class ArtikelController extends Controller
         return new Response($this->renderView('form_artikel_toevoegen.html.twig', array('form' => $form->createView())));
     }
 
+    //ROL: magazijnmeester
+        //Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
     /**
      * @Route("/magazijnmeester/nieuwartikel", name="magazijnmeesternieuwartikel")
      */
@@ -90,11 +95,12 @@ class ArtikelController extends Controller
         return new Response($this->renderView('form_artikel_toevoegen.html.twig', array('form' => $form->createView())));
     }
 
-    //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
+    //ROL: inkoper
+        //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
     /**
      * @Route("/inkoper/wijzigartikel/{artikelnummer}", name="inkoperwijzigartikel")
      */
-    public function inkoperWijziartikel(Request $request, $artikelnummer) {
+    public function inkoperWijzigartikel(Request $request, $artikelnummer) {
         $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
         $form = $this->createForm(ArtikelInkoperType::class, $bestaandArtikel);
 
@@ -113,6 +119,8 @@ class ArtikelController extends Controller
         return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
     }
 
+    //ROL: inkoper
+        //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
     /**
      * @Route("/magazijnmeester/wijzigartikel/{artikelnummer}", name="magazijnmeesterwijzigartikel")
      */

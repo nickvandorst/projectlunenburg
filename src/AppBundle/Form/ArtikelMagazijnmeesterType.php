@@ -19,9 +19,6 @@ class ArtikelMagazijnmeesterType extends AbstractType
             ->add('artikelnummer', TextType::class, array('disabled' => true))
         ;
         $builder
-            ->add('bestelserie', TextType::class)
-        ;
-        $builder
             ->add('codevervangendartikel', TextType::class, array('required'=>false))
         ;
         $builder

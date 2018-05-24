@@ -10,7 +10,7 @@
 <body>
 
 <div class="container">
-  <h5><span class="glyphicon glyphicon-log-out"></span><a href="{{ path('inkoperhome') }}"><font color="black"> Inkoper homepagina</font></a></br></h5>
+  <h5><span class="glyphicon glyphicon-home"></span><a href="{{ path('inkoperhome') }}"><font color="black"> Home</font></a><br/></h5>
   <h2>Artikeloverzicht</h2>
   <h4><button class="btn btn-info"><span class="glyphicon glyphicon-search"></span><a href="{{ path('inkoperzoekartikel') }}"><font color="white"> Zoek een artikel op artikelnummer</font></a></button></br></h4>
   <h4><button class="btn btn-info"><span class="glyphicon glyphicon-search"></span><a href="{{ path('inkoperzoekomschrijving') }}"><font color="white"> Zoek een artikel op omschrijving</font></a></button></br></h4>
@@ -21,7 +21,7 @@
         <th>Artikelnummer</th>
         <th>Omschrijving</th>
         <th>Technische specificaties</th>
-        <th>Magazijnlocatie</th>
+        <th>Minimumvoorraad</th>
         <th>Voorraad</th>
         <th>Code vervangend artikel</th>
         <th>Bestelserie</th>
@@ -35,7 +35,7 @@
         <td>{{ artikel.artikelnummer }}</td>
         <td>{{ artikel.omschrijving }}</td>
         <td>{{ artikel.technischespecificaties }}</td>
-        <td>{{ artikel.magazijnlocatie }}</td>
+        <td>{{ artikel.minimumvoorraad }}</td>
         <td>{{ artikel.voorraadaantal }}</td>
         <td>{{ artikel.codevervangendartikel }}</td>
         <td>{{ artikel.bestelserie }}</td>
