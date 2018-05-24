@@ -1,143 +1,93 @@
 <?php
-
+// src/Entity/Gebruiker.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
-
- * Gebruiker
- *
- * @ORM\Table(name="gebruiker")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\GebruikerRepository")
+ * @ORM\Table(name="app_users")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class Gebruiker
+class Gebruiker implements UserInterface, \Serializable
 {
     /**
-     * @var string
+     * @ORM\Column(type="integer")
      * @ORM\Id
-     * @ORM\Column(name="gebruikersnaam", type="string", length=64, unique=true)
-     */
-    private $gebruikersnaam;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="wachtwoord", type="string", length=20)
-     */
-    private $wachtwoord;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="ID", type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO", unique=true)
      */
     private $ID;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="functie", type="string", length=54)
+     * @ORM\Column(type="string", length=25, unique=true)
      */
-    private $functie;
-
+    private $gebruikersnaam;
 
     /**
-     * Get id
-     *
-     * @return integer
+     * @ORM\Column(type="string", length=64)
      */
-    public function getId()
+    private $wachtwoord;
+
+ /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+
+    public function __construct()
     {
-        return $this->id;
+        $this->isActive = true;
+        // may not be needed, see section on salt below
+        // $this->salt = md5(uniqid('', true));
     }
 
-    /**
-     * Set gebruikersnaam
-     *
-     * @param string $gebruikersnaam
-     *
-     * @return Gebruiker
-     */
-    public function setGebruikersnaam($gebruikersnaam)
+    public function getUsername()
     {
-        $this->gebruikersnaam = $gebruikersnaam;
-
-        return $this;
+        return $this->username;
     }
 
-    /**
-     * Get gebruikersnaam
-     *
-     * @return string
-     */
-    public function getGebruikersnaam()
+    public function getSalt()
     {
-        return $this->gebruikersnaam;
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
     }
 
-  
-
-    /**
-     * Set wachtwoord
-     *
-     * @param string $wachtwoord
-     *
-     * @return Gebruiker
-     */
-    public function setWachtwoord($wachtwoord)
+    public function getPassword()
     {
-        $this->wachtwoord = $wachtwoord;
-
-        return $this;
+        return $this->password;
     }
 
-    /**
-     * Get wachtwoord
-     *
-     * @return string
-     */
-    public function getWachtwoord()
+    public function getRoles()
     {
-        return $this->wachtwoord;
+        return array('ROLE_USER');
     }
 
-    /**
-     * Set iD
-     *
-     * @param integer $iD
-     *
-     * @return Gebruiker
-     */
-    public function setID($iD)
+    public function eraseCredentials()
     {
-        $this->iD = $iD;
-
-        return $this;
     }
 
-    /**
-     * Set functie
-     *
-     * @param string $functie
-     *
-     * @return Gebruiker
-     */
-    public function setFunctie($functie)
+    /** @see \Serializable::serialize() */
+    public function serialize()
     {
-        $this->functie = $functie;
-
-        return $this;
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
     }
 
-    /**
-     * Get functie
-     *
-     * @return string
-     */
-    public function getFunctie()
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
     {
-        return $this->functie;
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized, ['allowed_classes' => false]);
     }
 }
 
