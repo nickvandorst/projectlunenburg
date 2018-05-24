@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
+
 //EntiteitType vervangen door b.v. GoederenontvangstType
 class GoederenontvangstType extends AbstractType
 {

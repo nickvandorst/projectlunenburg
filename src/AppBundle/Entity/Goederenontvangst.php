@@ -26,7 +26,7 @@ class Goederenontvangst
 
     /**
      * @var string
-     *
+     * 
      * @ORM\Column(name="omschrijving", type="string")
      */
     private $omschrijving;
@@ -49,7 +49,7 @@ class Goederenontvangst
      * @var string
      *
      * @ORM\Column(name="artikelnummer", type="string", length=10)
-     * 
+     *
      */
     private $artikelnummer;
 
