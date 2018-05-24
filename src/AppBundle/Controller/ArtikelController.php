@@ -10,6 +10,8 @@ use AppBundle\Entity\Artikel;
 use AppBundle\Form\ArtikelType;
 use AppBundle\Form\ArtikelInkoperType;
 use AppBundle\Form\ArtikelMagazijnmeesterType;
+use AppBundle\Entity\Bestelopdracht;
+use AppBundle\Controller\BestelopdrachtType;
 //use Symfony\Component\HttpFoundation\Response;
 
 class ArtikelController extends Controller
@@ -134,8 +136,23 @@ class ArtikelController extends Controller
         }
         return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
     }
+    /**
+     * @Route("/inkoper/bestelopdracht", name="inkoperbestelopdracht")
+     */
+    Public function inkoperBestelopdracht(Request $request)
+    {
+        $bestelopdracht = new Bestelopdracht();
+        $form = $this->createForm(BestelopdrachtType::class, $bestelopdracht);
 
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
 
-
+            $em->persist($bestelopdracht);
+            $em->flush();
+            return $this->redirect($this->generateUrl("inkoperbestelopdracht"));
+        }
+        return new Response($this->render('form.html.twig', array('form' => $form->createView())));
+    }
 }
 ?>

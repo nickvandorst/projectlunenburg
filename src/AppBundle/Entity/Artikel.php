@@ -10,7 +10,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\artikelRepository")
  * @UniqueEntity(fields={"artikelnummer"}, message="Dit artikelnummer bestaat al.")
  */
-// test
 class Artikel
 {
     /**
@@ -37,7 +36,7 @@ class Artikel
     /**
      * @var int
      *
-     * @ORM\Column(name="inkoopprijs", type="decimal", precision=3, scale=1)
+     * @ORM\Column(name="inkoopprijs", type="integer")
      */
     private $inkoopprijs;
 
@@ -110,6 +109,12 @@ class Artikel
      * @ORM\Column(name="voorraadaantal", type="integer")
      */
     private $voorraadaantal;
+
+    /**
+     * @var int
+     * @ORM\OneToMany(targetEntity="bestelRegel", mappedBy="artikel")
+     */
+    public $bestelregels;
 
 
     /**
@@ -337,5 +342,32 @@ class Artikel
     {
         return $this->voorraadaantal;
     }
+
+    /**
+     * Set bestelregels
+     * @param integer $bestelregels
+     *
+     * @return artikel
+     */
+    Public function setBestelregels($bestelregels)
+    {
+        $this->bestelregels = $bestelregels;
+
+        Return $this;
+    }
+
+    /**
+     * Get bestelregels
+     *
+     * @return integer
+     */
+    Public function getBestelregels()
+    {
+        return $this->bestelregels;
+    }
+    Public function __construct()
+    {   $bestelregels = new ArrayCollection();
+    }
+
 }
 ?>
