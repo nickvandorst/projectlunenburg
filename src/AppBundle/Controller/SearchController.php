@@ -12,6 +12,8 @@ use AppBundle\Form\ArtikelInkoperType;
 
 class SearchController extends Controller {
 
+  //Onderstaande functie laat de inkoper zoeken op omschrijving en aan de hand van de query kan de inkoper zoeken op ook een deel van de omschrijving. 
+
   /**
      * @Route("/inkoper/zoekomschrijving", name="inkoperzoekomschrijving")
      */
@@ -32,6 +34,8 @@ class SearchController extends Controller {
 
     return new Response($this->renderView("omschrijvingzoek.html.twig", array('artikelen'=>$artikelen)));
     }
+
+    //Inkoper kan zoeken via het artikelnummer. Dit wordt gegenereert met alleen het juiste artikelnummer hieronder.
 
   /**
   * @Route("/inkoper/zoekartikel", name="inkoperzoekartikel")
