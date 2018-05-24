@@ -141,14 +141,14 @@ class ArtikelController extends Controller
      */
     Public function inkoperBestelopdracht(Request $request)
     {
-        $bestelopdracht = new Bestelopdracht();
-        $form = $this->createForm(BestelopdrachtType::class, $bestelopdracht);
+        $nieuwBestelopdracht = new Bestelopdracht();
+        $form = $this->createForm(BestelopdrachtType::class, $nieuwBestelopdracht);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $em->persist($bestelopdracht);
+            $em->persist($nieuwBestelopdracht);
             $em->flush();
             return $this->redirect($this->generateUrl("inkoperbestelopdracht"));
         }

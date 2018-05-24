@@ -2,12 +2,13 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping;
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Table;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
- * @ORM\Table(name="Bestelopdract")
+ * @ORM\Table(name="Bestelopdracht")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\artikelRepository")
  * @UniqueEntity(fields={"artikelnummer"}, message="Dit artikelnummer bestaat al.")
  */
@@ -22,27 +23,32 @@ class Bestelopdracht
 
     /**
      * @var varchar
+     * @ORM\Column(name="naamleverancier", type="string", length=6)
      */
     Private $naamleverancier;
 
     /**
      * @var integer
-     * @ORM/Id
+     * @ORM\Id
+     * @ORM\Column(name="bestelordernummer", type="integer", length=10, unique=true)
      */
     Private $bestelordernummer;
 
     /**
      * @var varchar
+     * @ORM\Column(name="artikelnummer", type="string", length=10)
      */
-    Private $artikelnummers;
+    Private $artikelnummer;
 
     /**
      * @var varchar
+     * @ORM\Column(name="omschrijving", type="string", length=35)
      */
     Private $omschrijving;
 
     /**
      * @var integer
+     * @ORM\Column(name="hoeveelheid", type="integer", length=3)
      */
     Private $hoeveelheid;
 
@@ -114,26 +120,26 @@ class Bestelopdracht
     }
 
     /**
-     * Set artikelnummers
-     * @param varchar $artikelnummers
+     * Set artikelnummer
+     * @param varchar $artikelnummer
      *
      * @return bestelopdracht
      */
-    Public function setArtikelnummers ($artikelnummers)
+    Public function setArtikelnummer ($artikelnummer)
     {
-        $this->artikelnummers = $artikelnummers;
+        $this->artikelnummer = $artikelnummer;
 
         Return $this;
     }
 
     /**
-     * Get artikelnummers
+     * Get artikelnummer
      *
      * @return varchar
      */
-    Public function getArtikelnummers()
+    Public function getArtikelnummer()
     {
-        Return $this->artikelnummers;
+        Return $this->artikelnummer;
     }
 
     /**

@@ -26,7 +26,7 @@ class BestelopdrachtType extends AbstractType
         ;
 
         $builder
-            ->add('artikelnummers', TextType::class) //naam is b.v. een attribuut of variabele van klant
+            ->add('artikelnummer', TextType::class) //naam is b.v. een attribuut of variabele van klant
         ;
 
         $builder

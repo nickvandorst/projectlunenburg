@@ -26,15 +26,15 @@ class Bestelregel
     Public $id;
 
     /**
-     *
+     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Artikel", inversedBy="bestelregels")
      * @ORM\JoinColumn(name="artikelnummer", referencedColumnName="artikelnummer")
      */
     Public $artikelnummer;
 
     /**
-     *
-     * @ORM\ManyToOne(targetEntity="bestelopdracht", inversedBy="bestelregels")
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="Bestelopdracht", inversedBy="bestelregels")
      * @ORM\JoinColumn(name="bestelordernummer", referencedColumnName="bestelordernummer")
      */
     Public $bestelordernummer;
