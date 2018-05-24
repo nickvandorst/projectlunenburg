@@ -100,7 +100,7 @@ class ArtikelController extends Controller
     /**
      * @Route("/inkoper/wijzigartikel/{artikelnummer}", name="inkoperwijzigartikel")
      */
-    public function inkoperWijziartikel(Request $request, $artikelnummer) {
+    public function inkoperWijzigartikel(Request $request, $artikelnummer) {
         $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
         $form = $this->createForm(ArtikelInkoperType::class, $bestaandArtikel);
 
