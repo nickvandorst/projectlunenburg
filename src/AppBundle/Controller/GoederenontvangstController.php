@@ -14,6 +14,8 @@ use Symfony\Component\Serializer\Serializer;
 
 class GoederenontvangstController extends Controller
 {
+    //ROL: magazijnbeheerder
+      //Hier wordt het overzicht van alle ontvangen goederen gegenereerd
 
   /**
    * @Route("/magazijnmeester/alleontvangengoederen", name="alleontvangengoederen")
@@ -23,8 +25,10 @@ class GoederenontvangstController extends Controller
       $goederen = $this->getDoctrine()->getRepository("AppBundle:Goederenontvangst")->findAll();
       return new Response($this->renderView('alle_ontvangen_goederen.html.twig', array('goederen' => $goederen)));
   }
-//Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
-/**
+
+  //ROL: magazijnbeheerder
+    //Hier wordt het formulier voor het registreren van ontvangen goederen gegenereerd
+  /**
  * @Route("/nieuw/goederenontvangst", name="nieuwgoederenontvangst")
  */
 public function nieuwGoederenontvangst(Request $request) {
