@@ -35,22 +35,10 @@ class Bestelopdracht
     Private $bestelordernummer;
 
     /**
-     * @var varchar
-     * @ORM\Column(name="artikelnummer", type="string", length=10)
-     */
-    Private $artikelnummer;
-
-    /**
-     * @var varchar
-     * @ORM\Column(name="omschrijving", type="string", length=35)
-     */
-    Private $omschrijving;
-
-    /**
-     * @var integer
-     * @ORM\Column(name="hoeveelheid", type="integer", length=3)
-     */
-    Private $hoeveelheid;
+ * @var varchar
+ * @ORM\Column(name="artikelinformatie")
+ */
+    Private $artikelinformatie;
 
     /**
      * Set bestelregels
@@ -120,72 +108,26 @@ class Bestelopdracht
     }
 
     /**
-     * Set artikelnummer
-     * @param varchar $artikelnummer
+     * Set artikelinformatie
+     * @param varchar $artikelinformatie
      *
      * @return bestelopdracht
      */
-    Public function setArtikelnummer ($artikelnummer)
+    Public function setArtikelinformatie ($artikelinformatie)
     {
-        $this->artikelnummer = $artikelnummer;
+        $this->artikelinformatie = $artikelinformatie;
 
         Return $this;
     }
 
     /**
-     * Get artikelnummer
+     * Get artikelinformatie
      *
      * @return varchar
      */
-    Public function getArtikelnummer()
+    Public function getArtikelinformatie()
     {
-        Return $this->artikelnummer;
-    }
-
-    /**
-     * Set omschrijving
-     * @param varchar $omschrijving
-     *
-     * @return bestelopdracht
-     */
-    Public function setOmschrijving ($omschrijving)
-    {
-        $this->omschrijving = $omschrijving;
-
-        Return $this;
-    }
-
-    /**
-     * Get omschrijving
-     *
-     * @return varchar
-     */
-    Public function getOmschrijving()
-    {
-        Return $this->omschrijving;
-    }
-
-    /**
-     * Set hoeveelheid
-     * @param integer
-     *
-     * @return bestelopdracht
-     */
-    Public function setHoeveelheid ($hoeveelheid)
-    {
-        $this->hoeveelheid = $hoeveelheid;
-
-        Return $this;
-    }
-
-    /**
-     * Get hoeveelheid
-     *
-     * @return integer
-     */
-    Public function getHoeveelheid()
-    {
-        Return $this->hoeveelheid;
+        Return $this->artikelinformatie;
     }
 
     Public function __construct()
