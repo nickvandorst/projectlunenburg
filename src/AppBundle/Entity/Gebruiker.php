@@ -1,94 +1,109 @@
 <?php
-// src/Entity/Gebruiker.php
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Table(name="app_users")
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * Gebruiker
+ *
+ * @ORM\Table(name="gebruiker")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\GebruikerRepository")
  */
-class Gebruiker implements UserInterface, \Serializable
+class Gebruiker
 {
-    /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO", unique=true)
-     */
-    private $ID;
 
     /**
-     * @ORM\Column(type="string", length=25, unique=true)
+     * @var string
+     *
+     * @ORM\Column(name="wachtwoord", type="string", length=20)
+     */
+    private $wachtwoord;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="functie", type="string", length=50)
+     */
+    private $functie;
+
+    /**
+     * @var string
+     * @ORM\Id
+     * @ORM\Column(name="gebruikersnaam", type="string",unique=true, length=64)
      */
     private $gebruikersnaam;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * Set wachtwoord
+     *
+     * @param string $wachtwoord
+     *
+     * @return Gebruiker
      */
-    private $wachtwoord;
+    public function setWachtwoord($wachtwoord)
+    {
+        $this->wachtwoord = $wachtwoord;
+    
+        return $this;
+    }
 
- /**
-     * @ORM\Column(name="is_active", type="boolean")
+    /**
+     * Get wachtwoord
+     *
+     * @return string
      */
-    private $isActive;
-
-    public function __construct()
+    public function getWachtwoord()
     {
-        $this->isActive = true;
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid('', true));
+        return $this->wachtwoord;
     }
 
-    public function getUsername()
+    /**
+     * Set functie
+     *
+     * @param string $functie
+     *
+     * @return Gebruiker
+     */
+    public function setFunctie($functie)
     {
-        return $this->username;
+        $this->functie = $functie;
+    
+        return $this;
     }
 
-    public function getSalt()
+    /**
+     * Get functie
+     *
+     * @return string
+     */
+    public function getFunctie()
     {
-        // you *may* need a real salt depending on your encoder
-        // see section on salt below
-        return null;
+        return $this->functie;
     }
 
-    public function getPassword()
+    /**
+     * Set gebruikersnaam
+     *
+     * @param string $gebruikersnaam
+     *
+     * @return Gebruiker
+     */
+    public function setGebruikersnaam($gebruikersnaam)
     {
-        return $this->password;
+        $this->gebruikersnaam = $gebruikersnaam;
+    
+        return $this;
     }
 
-    public function getRoles()
+    /**
+     * Get gebruikersnaam
+     *
+     * @return string
+     */
+    public function getGebruikersnaam()
     {
-        return array('ROLE_USER');
-    }
-
-    public function eraseCredentials()
-    {
-    }
-
-    /** @see \Serializable::serialize() */
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt,
-        ));
-    }
-
-    /** @see \Serializable::unserialize() */
-    public function unserialize($serialized)
-    {
-        list (
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt
-        ) = unserialize($serialized, ['allowed_classes' => false]);
+        return $this->gebruikersnaam;
     }
 }
 
-?>
