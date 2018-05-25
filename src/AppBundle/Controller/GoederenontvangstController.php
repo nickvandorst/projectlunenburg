@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Goederenontvangst;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Form\GoederenontvangstType;
+use AppBundle\Form\LeverancierToevoegenType;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
@@ -23,17 +24,15 @@ class GoederenontvangstController extends Controller
   public function alleOntvangenGoederen(Request $request) {
 
       $goederen = $this->getDoctrine()->getRepository("AppBundle:Goederenontvangst")->findAll();
-      return new Response($this->renderView('alle_ontvangen_goederen.html.twig', array('goederen' => $goederen)));
+      return new Response($this->renderView('ontvangstmelding.html.twig', array('goederen' => $goederen)));
   }
 
-  //ROL: magazijnbeheerder
-    //Hier wordt het formulier voor het registreren van ontvangen goederen gegenereerd
   /**
- * @Route("/nieuw/goederenontvangst", name="nieuwgoederenontvangst")
+ * @Route("/nieuw/leverancier", name="nieuwleverancier")
  */
 public function nieuwGoederenontvangst(Request $request) {
     $nieuwGoederenontvangst = new Goederenontvangst();
-    $form = $this->createForm(GoederenontvangstType::class, $nieuwGoederenontvangst);
+    $form = $this->createForm(LeverancierToevoegenType::class, $nieuwGoederenontvangst);
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
@@ -42,8 +41,9 @@ public function nieuwGoederenontvangst(Request $request) {
         $em->flush();
         return $this->redirect($this->generateUrl("alleontvangengoederen"));
     }
-    return new Response($this->renderView('nieuw_goederenontvangst.html.twig', array('form' => $form->createView())));
+    return new Response($this->renderView('nieuw_leverancier.html.twig', array('form' => $form->createView())));
 }
+
 }
 
 ?>
