@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
-class BestelopdrachtType extends AbstractType
+class BestelorderType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -35,7 +35,7 @@ class BestelopdrachtType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Bestelopdracht', //Entiteit vervangen door b.v. product
+            'data_class' => 'AppBundle\Entity\bestelorder', //Entiteit vervangen door b.v. product
 		));
 	}
 }

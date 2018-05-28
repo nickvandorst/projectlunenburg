@@ -34,7 +34,7 @@ class Bestelregel
 
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Bestelopdracht", inversedBy="bestelregels")
+     * @ORM\ManyToOne(targetEntity="bestelorder", inversedBy="bestelregels")
      * @ORM\JoinColumn(name="bestelordernummer", referencedColumnName="bestelordernummer")
      */
     Public $bestelordernummer;

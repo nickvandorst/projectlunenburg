@@ -10,8 +10,8 @@ use AppBundle\Entity\Artikel;
 use AppBundle\Form\ArtikelType;
 use AppBundle\Form\ArtikelInkoperType;
 use AppBundle\Form\ArtikelMagazijnmeesterType;
-use AppBundle\Entity\Bestelopdracht;
-use AppBundle\Form\BestelopdrachtType;
+use AppBundle\Entity\bestelorder;
+use AppBundle\Form\bestelorderType;
 //use Symfony\Component\HttpFoundation\Response;
 
 class ArtikelController extends Controller
@@ -137,20 +137,20 @@ class ArtikelController extends Controller
         return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
     }
     /**
-     * @Route("/inkoper/bestelopdracht", name="inkoperbestelopdracht")
+     * @Route("/inkoper/bestelorder", name="inkoperbestelorder")
      */
-    Public function inkoperBestelopdracht(Request $request)
+    Public function inkoperbestelorder(Request $request)
     {
-        $nieuwBestelopdracht = new Bestelopdracht();
-        $form = $this->createForm(BestelopdrachtType::class, $nieuwBestelopdracht);
+        $nieuwbestelorder = new bestelorder();
+        $form = $this->createForm(bestelorderType::class, $nieuwbestelorder);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $em->persist($nieuwBestelopdracht);
+            $em->persist($nieuwbestelorder);
             $em->flush();
-            return $this->redirect($this->generateUrl("inkoperbestelopdracht"));
+            return $this->redirect($this->generateUrl("inkoperbestelorder"));
         }
         return new Response($this->render('nieuw_bestelorder.html.twig', array('form' => $form->createView())));
     }

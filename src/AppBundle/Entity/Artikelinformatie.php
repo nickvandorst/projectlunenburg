@@ -32,7 +32,7 @@ class Artikelinformatie
      * Set artikelnummer
      * @param varchar $artikelnummer
      *
-     * @return bestelopdracht
+     * @return bestelorder
      */
     Public function setArtikelnummer ($artikelnummer)
     {
@@ -55,7 +55,7 @@ class Artikelinformatie
      * Set omschrijving
      * @param varchar $omschrijving
      *
-     * @return bestelopdracht
+     * @return bestelorder
      */
     Public function setOmschrijving ($omschrijving)
     {
@@ -78,7 +78,7 @@ class Artikelinformatie
      * Set hoeveelheid
      * @param integer
      *
-     * @return bestelopdracht
+     * @return bestelorder
      */
     Public function setHoeveelheid ($hoeveelheid)
     {

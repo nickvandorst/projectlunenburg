@@ -8,12 +8,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
- * @ORM\Table(name="Bestelopdracht")
+ * @ORM\Table(name="bestelorder")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\artikelRepository")
  * @UniqueEntity(fields={"artikelnummer"}, message="Dit artikelnummer bestaat al.")
  */
 // test
-class Bestelopdracht
+class Bestelorder
 {
     /**
      * @var int
@@ -66,7 +66,7 @@ class Bestelopdracht
      * Set naamleverancier
      * @param varchar $naamleverancier
      *
-     * @return bestelopdracht
+     * @return bestelorder
      */
     Public function setNaamleverancier ($naamleverancier)
     {
@@ -88,7 +88,7 @@ class Bestelopdracht
      * Set bestelordernummer
      * @param integer $bestelordernummer
      *
-     * @return bestelopdracht
+     * @return bestelorder
      */
     Public function setBestelordernummer ($bestelordernummer)
     {
@@ -111,7 +111,7 @@ class Bestelopdracht
      * Set artikelinformatie
      * @param varchar $artikelinformatie
      *
-     * @return bestelopdracht
+     * @return bestelorder
      */
     Public function setArtikelinformatie ($artikelinformatie)
     {
