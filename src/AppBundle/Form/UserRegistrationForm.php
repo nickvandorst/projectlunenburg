@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
+//registratie veld voor het toevoegen van een nieuwe gebruiker
 class UserRegistrationForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -21,6 +22,7 @@ class UserRegistrationForm extends AbstractType
             ->add('gebruikersnaam', TextType::class);
          $builder
          	->add('functie', TextType::class);
+            //herhaalfunctie via symfony, hier moet het wachtwoord overeenkomen met het eerste ingevulde veld
          $builder
             ->add('wachtwoord', RepeatedType::class, [
                 'type' => PasswordType::class

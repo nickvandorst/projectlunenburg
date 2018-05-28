@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\UserRegistrationForm;
 use AppBundle\Entity\Gebruiker;
 use Symfony\Component\HttpFoundation\Response;
-
+//controller voor de gebruiker
 class UserController extends Controller
 {
 /**
@@ -28,6 +28,7 @@ class UserController extends Controller
     }
     return new Response($this->renderView('gebruikerregistreren.html.twig', array('form' => $form->createView())));
 }
+// een overzicht van alle gebruikers dit wordt gegenereerd als er een nieuwe gebruiker is aangemaakt door de administrator
 /**
      * @Route("/administrator/allegebruikers", name="allegebruikers")
      */
