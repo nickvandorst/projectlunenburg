@@ -16,29 +16,17 @@ class GoederenontvangstType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
-          ->add('id', IntegerType::class)
+          ->add('Artikelnummer', IntegerType::class)
         ;
+
         $builder
-          ->add('ontvangstdatum', DateType::class, array(
-                'placeholder' => array(
-                'year' => 'Jaar', 'month' => 'Maand', 'day' => 'Dag',
-              )));
+            ->add('Omschrijving', TextType::class)
         ;
+
         $builder
-            ->add('omschrijving', TextType::class)
-        ;
-        $builder
-            ->add('hoeveelheid', IntegerType::class)
-        ;
-        $builder
-            ->add('keuringscode', TextType::class)
-        ;
-        $builder
-            ->add('artikelnummer', TextType::class)
-        ;
-        $builder
-            ->add('naamleverancier', TextType::class)
+            ->add('Hoeveelheid', TextType::class)
         ;
     }
 

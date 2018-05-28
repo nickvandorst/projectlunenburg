@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+  <title>Lunenburg</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h5><span class="glyphicon glyphicon-home"></span><a href="{{ path('magazijnmeesterhome') }}"><font color="black"> Home</font></a><br/></h5>
+  <h2>Ontvangstmeldingen</h2>
+  <button class="btn btn-info btn-default"><span class="glyphicon glyphicon-plus"></span><a href="{{ path('magazijnmeesternieuwgoederenontvangst') }}"><font color="white"> Artikel toevoegen aan ontvangstmelding</font></a></button></br>
+  <table class="table table-striped">
+    {% for goederenontvangst in goederen %}
+    <thead>
+      <tr>
+        <th><h4><u><font color="blue">Leverancier:</font></u></h4></th>
+        <td><h4><font color="blue">{{ goederenontvangst.naamleverancier }}</font></h4></td>
+      </tr>
+      <tr>
+        <th><h4><u><font color="blue">Ontvangstdatum:</font></u></h4></th>
+        <td><h4><font color="blue">{{ goederenontvangst.ontvangstdatum|date('d-m-Y') }}</font></h4></td>
+       </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <th>Artikelnummer</th>
+      <th>Omschrijving</th>
+      <th>Hoeveelheid</th>
+      <th>Kwaliteit</th>
+    </tr>
+    {% for artikel in artikelen %}
+    <tr>
+      <td>{{ artikel.artikelnummer }}</td>
+      <td>{{ artikel.omschrijving }}</td>
+      {% for ontvangstregel in ontvangstregels %}
+      <td>{{ ontvangstregel.hoeveelheid }}</td>
+      <td>{{ ontvangstregel.kwaliteit }}</td>
+      </tr>
+      {% endfor %}
+      {% endfor %}
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+
+</body>
+</html>

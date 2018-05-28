@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <title>Lunenburg</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h5><span class="glyphicon glyphicon-home"></span><a href="{{ path('magazijnmeesterhome') }}"><font color="black"> Home</font></a><br/></h5>
+  <h2>Overzicht ontvangen goederen</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ontvangstdatum</th>
+        <th>Omschrijving</th>
+        <th>Hoeveelheid</th>
+        <th>Keuringscode</th>
+        <th>Artikelnummer</th>
+        <th>Naam Leverancier</th>
+       </tr>
+    </thead>
+    <tbody>
+     {% for goederenontvangst in goederen %}
+      <tr>
+        <td>{{ goederenontvangst.Id }}</td>
+        <td>{{ goederenontvangst.ontvangstdatum|date('Y-m-d') }}</td>
+        <td>{{ goederenontvangst.omschrijving }}</td>
+        <td>{{ goederenontvangst.hoeveelheid }}</td>
+        <td>{{ goederenontvangst.keuringscode }}</td>
+        <td>{{ goederenontvangst.artikelnummer }}</td>
+        <td>{{ goederenontvangst.naamleverancier }}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+
+</body>
+</html>

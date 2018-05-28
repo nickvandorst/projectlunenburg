@@ -11,23 +11,39 @@ use AppBundle\Form\GoederenontvangstType;
 
 class GoederenontvangstController extends Controller
 {
-//Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
-/**
- * @Route("/nieuw/goederenontvangst", name="nieuwgoederenontvangst")
- */
-public function nieuwGoederenontvangst(Request $request) {
-    $nieuwGoederenontvangst = new Goederenontvangst();
-    $form = $this->createForm(GoederenontvangstType::class, $nieuwGoederenontvangst);
-    $form->handleRequest($request);
+    /**
+     * @Route("/magazijnmeester/nieuwleverancier", name="magazijnmeesternieuwleverancier")
+     */
+    public function magazijnmeesterNieuwgoederenontvangst(Request $request) {
+        $nieuwGoederenontvangst = new Goederenontvangst();
+        $form = $this->createForm(LeverancierToevoegenType::class, $nieuwGoederenontvangst);
+        $form->handleRequest($request);
 
-    if ($form->isSubmitted() && $form->isValid()) {
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($nieuwGoederenontvangst);
-        $em->flush();
-        return $this->redirect($this->generateUrl("nieuwgoederenontvangst"));
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($nieuwGoederenontvangst);
+            $em->flush();
+            return $this->redirect($this->generateUrl("magazijnmeesterontvangstmelding"));
+        }
+        return new Response($this->renderView('nieuw_leverancier.html.twig', array('form' => $form->createView())));
     }
-    return new Response($this->renderView('nieuw_goederenontvangst.html.twig', array('form' => $form->createView())));
-}
+
+    /**
+     * @Route("/magazijnmeester/nieuwgoederenontvangst", name="magazijnmeesternieuwgoederenontvangst")
+     */
+    public function magazijnmeesterNieuwgoederenontvangst2(Request $request) {
+        $nieuwGoederenontvangst2 = new Goederenontvangst();
+        $form = $this->createForm(GoederenontvangstType::class, $nieuwGoederenontvangst2);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($nieuwGoederenontvangst2);
+            $em->flush();
+            return $this->redirect($this->generateUrl("magazijnmeesterontvangstmelding"));
+        }
+        return new Response($this->renderView('nieuw_goederenontvangst.html.twig', array('form' => $form->createView())));
+    }
 }
 
 ?>
