@@ -13,30 +13,32 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 
 //EntiteitType vervangen door b.v. GoederenontvangstType
-class LeverancierToevoegenType extends AbstractType
+class GoederenontvangstType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
         $builder
-          ->add('ontvangstdatum', DateType::class, array(
-                'data' => new \DateTime()
-              ));
+          ->add('Artikelnummer', IntegerType::class)
         ;
 
         $builder
-            ->add('naamleverancier', TextType::class)
+            ->add('Omschrijving', TextType::class)
         ;
 
         $builder
-            ->add('id', TextType::class)
+            ->add('Hoeveelheid', TextType::class)
+        ;
+
+        $builder
+            ->add('Kwaliteit', TextType::class)
         ;
     }
 
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
-			'data_class' => 'AppBundle\Entity\Goederenontvangst',
+			'data_class' => 'AppBundle\Entity\Goederenontvangst', 
 		));
 	}
 }

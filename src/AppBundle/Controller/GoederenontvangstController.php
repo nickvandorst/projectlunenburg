@@ -9,6 +9,8 @@ use AppBundle\Entity\Goederenontvangst;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Form\GoederenontvangstType;
 use AppBundle\Form\LeverancierToevoegenType;
+use AppBundle\Entity\Artikel;
+use AppBundle\Entity\Ontvangstregel;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
@@ -19,18 +21,20 @@ class GoederenontvangstController extends Controller
       //Hier wordt het overzicht van alle ontvangen goederen gegenereerd
 
   /**
-   * @Route("/magazijnmeester/alleontvangengoederen", name="alleontvangengoederen")
+   * @Route("/magazijnmeester/ontvangstmelding", name="magazijnmeesterontvangstmelding")
    */
-  public function alleOntvangenGoederen(Request $request) {
+  public function magazijnmeesterOntvangstmelding(Request $request) {
 
       $goederen = $this->getDoctrine()->getRepository("AppBundle:Goederenontvangst")->findAll();
-      return new Response($this->renderView('ontvangstmelding.html.twig', array('goederen' => $goederen)));
+      $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel");
+      $ontvangstregels = $this->getDoctrine()->getRepository("AppBundle:Ontvangstregel");
+      return new Response($this->renderView('ontvangstmelding.html.twig', array('goederen' => $goederen, 'artikelen' => $artikelen, 'ontvangstregels' => $ontvangstregels)));
   }
 
   /**
- * @Route("/nieuw/leverancier", name="nieuwleverancier")
- */
-public function nieuwGoederenontvangst(Request $request) {
+   * @Route("/magazijnmeester/nieuwleverancier", name="magazijnmeesternieuwleverancier")
+   */
+public function magazijnmeesterNieuwgoederenontvangst(Request $request) {
     $nieuwGoederenontvangst = new Goederenontvangst();
     $form = $this->createForm(LeverancierToevoegenType::class, $nieuwGoederenontvangst);
     $form->handleRequest($request);
@@ -39,9 +43,26 @@ public function nieuwGoederenontvangst(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $em->persist($nieuwGoederenontvangst);
         $em->flush();
-        return $this->redirect($this->generateUrl("alleontvangengoederen"));
+        return $this->redirect($this->generateUrl("magazijnmeesterontvangstmelding"));
     }
     return new Response($this->renderView('nieuw_leverancier.html.twig', array('form' => $form->createView())));
+}
+
+/**
+ * @Route("/magazijnmeester/nieuwgoederenontvangst", name="magazijnmeesternieuwgoederenontvangst")
+ */
+public function magazijnmeesterNieuwgoederenontvangst2(Request $request) {
+  $nieuwGoederenontvangst2 = new Goederenontvangst();
+  $form = $this->createForm(GoederenontvangstType::class, $nieuwGoederenontvangst2);
+  $form->handleRequest($request);
+
+  if ($form->isSubmitted() && $form->isValid()) {
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($nieuwGoederenontvangst2);
+      $em->flush();
+      return $this->redirect($this->generateUrl("magazijnmeesterontvangstmelding"));
+  }
+  return new Response($this->renderView('nieuw_goederenontvangst.html.twig', array('form' => $form->createView())));
 }
 
 }

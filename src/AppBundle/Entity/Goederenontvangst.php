@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Colections\Arraycollection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Goederenontvangst
@@ -18,7 +18,6 @@ class Goederenontvangst
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -51,7 +50,6 @@ class Goederenontvangst
     public function __construct() {
           $this->goederen = new ArrayCollection();
     }
-
 
     /**
      * Get id

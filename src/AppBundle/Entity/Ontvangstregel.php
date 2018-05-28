@@ -17,7 +17,6 @@ class Ontvangstregel
      *
      * @ORM\Column(name="regelid", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $regelid;
 
@@ -32,7 +31,7 @@ class Ontvangstregel
      * @var string
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Artikel", inversedBy="artikelen")
-     * @ORM\JoinColumn(name="artikel", referencedColumnName="artikelnummer", type="string", length=10, unique=true)
+     * @ORM\Column(name="artikelid", type="integer", unique=true)
      */
     private $artikelid;
 
