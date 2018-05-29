@@ -17,13 +17,11 @@ class LeverancierToevoegenType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
         $builder
-          ->add('ontvangstdatum', DateType::class, array(
+            ->add('ontvangstdatum', DateType::class, array(
                 'data' => new \DateTime()
               ));
         ;
-
         $builder
             ->add('naamleverancier', TextType::class)
         ;

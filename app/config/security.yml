@@ -13,13 +13,13 @@ security:
                         password: magazijn
                         roles: 'ROLE_MAGAZIJNMEESTER'
 
-                  #  testgebruiker:
-                      #  password: test
-                      #  roles: 'ROLE_GEBRUIKER'
-
+                    administrator:
+                        password: administrator
+                        roles: 'ROLE_ADMINISTRATOR'
     access_control:
         - { path: '^/inkoper/*', roles: [ROLE_INKOPER] }
         - { path: '^/magazijnmeester/*', roles: [ROLE_MAGAZIJNMEESTER] }
+        - { path: '^/administrator/*', roles: [ROLE_ADMINISTRATOR] }
         - { path: '/logout', roles: [IS_AUTHENTICATED_ANONYMOUSLY] }
 
     encoders:
@@ -40,3 +40,4 @@ security:
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login:
+

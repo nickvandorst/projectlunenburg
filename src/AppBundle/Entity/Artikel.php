@@ -7,11 +7,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
- * @ORM\Table(name="Artikel")
+ * @ORM\Table(name="artikel")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\artikelRepository")
  * @UniqueEntity(fields={"artikelnummer"}, message="Dit artikelnummer bestaat al.")
  */
-// test
 class Artikel
 {
     /**
@@ -38,7 +37,7 @@ class Artikel
     /**
      * @var int
      *
-     * @ORM\Column(name="inkoopprijs", type="decimal", precision=3, scale=1)
+     * @ORM\Column(name="inkoopprijs", type="integer")
      */
     private $inkoopprijs;
 
@@ -116,11 +115,6 @@ class Artikel
      * @ORM\OneToMany(targetEntity="Ontvangstregel", mappedBy="artikel")
      */
     private $artikelen;
-
-    public function __construct() {
-          $this->artikelen = new ArrayCollection();
-    }
-
 
     /**
      * Get id
@@ -347,5 +341,32 @@ class Artikel
     {
         return $this->voorraadaantal;
     }
+
+    /**
+     * Set bestelregels
+     * @param integer $bestelregels
+     *
+     * @return artikel
+     */
+    Public function setBestelregels($bestelregels)
+    {
+        $this->bestelregels = $bestelregels;
+
+        Return $this;
+    }
+
+    /**
+     * Get bestelregels
+     *
+     * @return integer
+     */
+    Public function getBestelregels()
+    {
+        return $this->bestelregels;
+    }
+    Public function __construct()
+    {   $bestelregels = new ArrayCollection();
+    }
+
 }
 ?>

@@ -33,20 +33,19 @@ class GoederenontvangstController extends Controller
   /**
    * @Route("/magazijnmeester/nieuwleverancier", name="magazijnmeesternieuwleverancier")
    */
-public function magazijnmeesterNieuwgoederenontvangst(Request $request) {
-    $nieuwGoederenontvangst = new Goederenontvangst();
-    $form = $this->createForm(LeverancierToevoegenType::class, $nieuwGoederenontvangst);
-    $form->handleRequest($request);
+    public function magazijnmeesterNieuwgoederenontvangst(Request $request) {
+        $nieuwGoederenontvangst = new Goederenontvangst();
+        $form = $this->createForm(LeverancierToevoegenType::class, $nieuwGoederenontvangst);
+        $form->handleRequest($request);
 
-    if ($form->isSubmitted() && $form->isValid()) {
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($nieuwGoederenontvangst);
-        $em->flush();
-        return $this->redirect($this->generateUrl("magazijnmeesterontvangstmelding"));
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($nieuwGoederenontvangst);
+            $em->flush();
+            return $this->redirect($this->generateUrl("magazijnmeesterontvangstmelding"));
+        }
+        return new Response($this->renderView('nieuw_leverancier.html.twig', array('form' => $form->createView())));
     }
-    return new Response($this->renderView('nieuw_leverancier.html.twig', array('form' => $form->createView())));
-}
-
 }
 
 ?>
