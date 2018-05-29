@@ -10,27 +10,30 @@
 <body>
 
 <div class="container">
-  <h2>Klantenoverzicht</h2>
+  <h2>Zoek op omschrijving</h2>
+
+  <form method="POST">
+
+    <input type='text' name="omschrijving">
+
+    <input class="btn btn-info" type='submit', name='submit' value="zoeken">
+
+  </form>
+
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Klantnummer</th>
-        <th>Voornaam</th>
-        <th>Achternaam</th>
-        <th>Woonplaats</th>
-        <th>Telefoonnummer</th>
-        <th>E-mail</th>
-      </tr>
+        <th>Artikelnummer</th>
+        <th>Omschrijving</th>
+        <th>Bestelserie</th>
+       </tr>
     </thead>
     <tbody>
-     {% for klant in klanten %}
+     {% for artikel in artikelen %}
       <tr>
-        <td>{{ klant.klantnummer }}</td>
-        <td>{{ klant.voornaam }}</td>
-        <td>{{ klant.achternaam }}</td>
-        <td>{{ klant.woonplaats }}</td>
-        <td>{{ klant.telefoonnummer }}</td>
-        <td>{{ klant.email }}</td>
+        <td>{{ artikel.artikelnummer }}</td>
+        <td>{{ artikel.omschrijving }}</td>
+        <td>{{ artikel.bestelserie }}</td>
       </tr>
     </tbody>
     {% endfor %}

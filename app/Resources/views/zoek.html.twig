@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Lunenburg</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -10,27 +10,30 @@
 <body>
 
 <div class="container">
-  <h2>Artikeloverzicht</h2>
+  <h2>Zoek op artikelnummer</h2>
+
+  <form method="POST">
+
+    <input type='text' name="artikelnummer">
+
+    <input class="btn btn-info" type='submit', name='submit' value="zoeken">
+
+  </form>
+
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Artikelnummer</th>
         <th>Omschrijving</th>
-        <th>Magazijnlocatie</th>
-        <th>Voorraad</th>
         <th>Bestelserie</th>
-        <th>Artikelinformatie wijzigen</th>
-      </tr>
+       </tr>
     </thead>
     <tbody>
      {% for artikel in artikelen %}
       <tr>
         <td>{{ artikel.artikelnummer }}</td>
         <td>{{ artikel.omschrijving }}</td>
-        <td>{{ artikel.magazijnlocatie }}</td>
-        <td>{{ artikel.voorraadaantal }}</td>
         <td>{{ artikel.bestelserie }}</td>
-        <td><a href="{{ path('wijzigartikel',{'artikelnummer':artikel.artikelnummer}) }}">Wijzigen</a></td></td>
       </tr>
     </tbody>
     {% endfor %}

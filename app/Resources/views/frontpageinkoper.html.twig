@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+  <title>Lunenburg</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="jumbotron text-center">
+  <h1 style="font-size: 65px; font-family: 'Garamond', cursive;"><font color="#DF0101"><B>Lunenburg</B></font><P/></h1>
+</div>
+<div class="container">
+  <h2 style = "text-align:center; font-size: 35px">Welkom inkoper</h2>
+  <!--<h5 style ="text-align:right"><span class="glyphicon glyphicon-home"></span><a href="{{ path('home') }}"><font color="black"> Home</font></a></br></h5>-->
+  <div class="row">
+      <div class="col-sm-4">
+      <h3>Artikelen</h3>
+      <h4><button class="btn btn-info btn-lg"><a href="{{ path('inkoperalleartikelen') }}"><font color="white">Alle artikelen </font></a><span class="glyphicon glyphicon-chevron-right"></span></button></br></h4>
+      <h4><button class="btn btn-info btn-lg"><span class="glyphicon glyphicon-plus"></span><a href="{{ path('inkopernieuwartikel') }}"><font color="white"> Nieuw artikel toevoegen</font></a></button></br></h4>
+    </div>
+</div>
+
+</body>
+</html>

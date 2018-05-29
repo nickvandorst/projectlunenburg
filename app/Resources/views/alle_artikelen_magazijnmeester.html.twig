@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+  <title>Lunenburg</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="page-header">
+  <h5><span class="glyphicon glyphicon-home"></span><a href="{{ path('magazijnmeesterhome') }}"><font color="black"> Home</font></a><br/></h5>
+  <h1>Artikeloverzicht</h1>
+  <h4><button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><a href="{{ path('magazijnmeesternieuwartikel') }}"><font color="white"> Nieuw artikel</font></a></button></br></h4>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Artikelnummer</th>
+        <th>Magazijnlocatie</th>
+        <th>Voorraad</th>
+        <th>Code vervangend artikel</th>
+        <th>Artikelinformatie wijzigen:</th>
+       </tr>
+    </thead>
+    <tbody>
+     {% for artikel in artikelen %}
+      <tr>
+        <td>{{ artikel.artikelnummer }}</td>
+        <td>{{ artikel.magazijnlocatie }}</td>
+        <td>{{ artikel.voorraadaantal }}</td>
+        <td>{{ artikel.codevervangendartikel }}</td>
+        <td><a href="{{ path('magazijnmeesterwijzigartikel',{'artikelnummer':artikel.artikelnummer}) }}">Wijzigen</a></td></td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+
+</body>
+</html>

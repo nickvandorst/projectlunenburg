@@ -5,11 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Table(name="Artikel")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\artikelRepository")
  * @UniqueEntity(fields={"artikelnummer"}, message="Dit artikelnummer bestaat al.")
  */
+// test
 class Artikel
 {
     /**
@@ -36,7 +38,7 @@ class Artikel
     /**
      * @var int
      *
-     * @ORM\Column(name="inkoopprijs", type="integer")
+     * @ORM\Column(name="inkoopprijs", type="decimal", precision=3, scale=1)
      */
     private $inkoopprijs;
 
@@ -109,6 +111,15 @@ class Artikel
      * @ORM\Column(name="voorraadaantal", type="integer")
      */
     private $voorraadaantal;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ontvangstregel", mappedBy="artikel")
+     */
+    private $artikelen;
+
+    public function __construct() {
+          $this->artikelen = new ArrayCollection();
+    }
 
 
     /**

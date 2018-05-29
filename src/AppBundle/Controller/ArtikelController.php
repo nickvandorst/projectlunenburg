@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Artikel;
 use AppBundle\Form\ArtikelType;
+use AppBundle\Form\ArtikelInkoperType;
+use AppBundle\Form\ArtikelMagazijnmeesterType;
 //use Symfony\Component\HttpFoundation\Response;
 
 class ArtikelController extends Controller
@@ -23,21 +25,34 @@ class ArtikelController extends Controller
         ]);
     }
 
-    //Hier wordt een overzicht van alle artikelen aangeroepen
+    //ROL: inkoper
+        //Hier wordt een overzicht van alle artikelen aangeroepen
     /**
-     * @Route("/alle/artikelen", name="alleartikelen")
+     * @Route("/inkoper/alleartikelen", name="inkoperalleartikelen")
      */
-    public function alleArtikelen(Request $request) {
+    public function inkoperAlleartikelen(Request $request) {
 
         $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
-        return new Response($this->render('alle_artikelen.html.twig', array('artikelen' => $artikelen)));
+        return new Response($this->renderView('alle_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
     }
 
-    //Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
+    //ROL: magazijnmeester
+        //Hier wordt een overzicht van alle artikelen aangeroepen
     /**
-     * @Route("/nieuw/artikel", name="nieuwartikel")
+     * @Route("/magazijnmeester/alleartikelen", name="magazijnmeesteralleartikelen")
      */
-    public function nieuwArtikel(Request $request) {
+    public function magazijnmeesterAlleartikelen(Request $request) {
+
+        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+        return new Response($this->renderView('alle_artikelen_magazijnmeester.html.twig', array('artikelen' => $artikelen)));
+    }
+
+    //ROL: inkoper
+        //Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
+    /**
+     * @Route("/inkoper/nieuwartikel", name="inkopernieuwartikel")
+     */
+    public function inkoperNieuwartikel(Request $request) {
         $nieuwArtikel = new Artikel();
         $form = $this->createForm(ArtikelType::class, $nieuwArtikel);
 
@@ -51,19 +66,43 @@ class ArtikelController extends Controller
             }
             $em->persist($nieuwArtikel);
             $em->flush();
-            return $this->redirect($this->generateUrl("alleartikelen"));
+            return $this->redirect($this->generateUrl("inkoperalleartikelen"));
         }
-        return new Response($this->render('form.html.twig', array('form' => $form->createView())));
+        return new Response($this->renderView('form_artikel_toevoegen.html.twig', array('form' => $form->createView())));
     }
 
-    //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
+    //ROL: magazijnmeester
+        //Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
     /**
-     * @Route("/wijzig/artikel/{artikelnummer}", name="wijzigartikel")
+     * @Route("/magazijnmeester/nieuwartikel", name="magazijnmeesternieuwartikel")
      */
-    public function wijzigArtikel(Request $request, $artikelnummer) {
-        $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
+    public function magazijnmeesterNieuwartikel(Request $request) {
+        $nieuwArtikel = new Artikel();
+        $form = $this->createForm(ArtikelType::class, $nieuwArtikel);
 
-        $form = $this->createForm(ArtikelType::class, $bestaandArtikel);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            if ($nieuwArtikel->getVoorraadaantal() > $nieuwArtikel->getMinimumvoorraad()) {
+                $nieuwArtikel->setBestelserie(0);
+            }else {
+                $nieuwArtikel->setBestelserie($nieuwArtikel->getMinimumvoorraad() - $nieuwArtikel->getVoorraadaantal());
+            }
+            $em->persist($nieuwArtikel);
+            $em->flush();
+            return $this->redirect($this->generateUrl("magazijnmeesteralleartikelen"));
+        }
+        return new Response($this->renderView('form_artikel_toevoegen.html.twig', array('form' => $form->createView())));
+    }
+
+    //ROL: inkoper
+        //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
+    /**
+     * @Route("/inkoper/wijzigartikel/{artikelnummer}", name="inkoperwijzigartikel")
+     */
+    public function inkoperWijzigartikel(Request $request, $artikelnummer) {
+        $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
+        $form = $this->createForm(ArtikelInkoperType::class, $bestaandArtikel);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -75,9 +114,36 @@ class ArtikelController extends Controller
             }
             $em->persist($bestaandArtikel);
             $em->flush();
-            return $this->redirect($this->generateurl("alleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
+            return $this->redirect($this->generateurl("inkoperalleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
         }
-        return new Response ($this->render('form.html.twig', array('form' =>$form->createView())));
+        return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
     }
+
+    //ROL: inkoper
+        //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
+    /**
+     * @Route("/magazijnmeester/wijzigartikel/{artikelnummer}", name="magazijnmeesterwijzigartikel")
+     */
+    public function magazijnmeesterWijzigartikel(Request $request, $artikelnummer) {
+        $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
+        $form = $this->createForm(ArtikelMagazijnmeesterType::class, $bestaandArtikel);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            if ($bestaandArtikel->getVoorraadaantal() > $bestaandArtikel->getMinimumvoorraad()) {
+                $bestaandArtikel->setBestelserie(0);
+            }else {
+                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVoorraadaantal());
+            }
+            $em->persist($bestaandArtikel);
+            $em->flush();
+            return $this->redirect($this->generateurl("magazijnmeesteralleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
+        }
+        return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
+    }
+
+
+
 }
 ?>
