@@ -28,6 +28,9 @@ class HomePageController extends Controller
         return $this->render('frontpage.html.twig');
     }
 
+
+    //ROL: inkoper
+        //Bij deze functie wordt het pad voor de homepagina gedefinieerd en aangeroepen
     /**
      * @Route("inkoper/home", name="inkoperhome")
      */
@@ -36,6 +39,9 @@ class HomePageController extends Controller
         return $this->render('frontpageinkoper.html.twig');
     }
 
+
+    //ROL: inkoper
+        //Bij deze functie wordt het pad voor de homepagina gedefinieerd en aangeroepen
     /**
      * @Route("magazijnmeester/home", name="magazijnmeesterhome")
      */
