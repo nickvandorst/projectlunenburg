@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
-
  * Gebruiker
  *
  * @ORM\Table(name="gebruiker")
@@ -14,12 +13,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Gebruiker
 {
-    /**
-     * @var string
-     * @ORM\Id
-     * @ORM\Column(name="gebruikersnaam", type="string", length=64, unique=true)
-     */
-    private $gebruikersnaam;
 
     /**
      * @var string
@@ -29,55 +22,18 @@ class Gebruiker
     private $wachtwoord;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="ID", type="integer")
-     */
-    private $ID;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="functie", type="string", length=54)
+     * @ORM\Column(name="functie", type="string", length=50)
      */
     private $functie;
 
-
     /**
-     * Get id
-     *
-     * @return integer
+     * @var string
+     * @ORM\Id
+     * @ORM\Column(name="gebruikersnaam", type="string",unique=true, length=64)
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set gebruikersnaam
-     *
-     * @param string $gebruikersnaam
-     *
-     * @return Gebruiker
-     */
-    public function setGebruikersnaam($gebruikersnaam)
-    {
-        $this->gebruikersnaam = $gebruikersnaam;
-
-        return $this;
-    }
-
-    /**
-     * Get gebruikersnaam
-     *
-     * @return string
-     */
-    public function getGebruikersnaam()
-    {
-        return $this->gebruikersnaam;
-    }
-
-  
+    private $gebruikersnaam;
 
     /**
      * Set wachtwoord
@@ -89,7 +45,7 @@ class Gebruiker
     public function setWachtwoord($wachtwoord)
     {
         $this->wachtwoord = $wachtwoord;
-
+    
         return $this;
     }
 
@@ -104,20 +60,6 @@ class Gebruiker
     }
 
     /**
-     * Set iD
-     *
-     * @param integer $iD
-     *
-     * @return Gebruiker
-     */
-    public function setID($iD)
-    {
-        $this->iD = $iD;
-
-        return $this;
-    }
-
-    /**
      * Set functie
      *
      * @param string $functie
@@ -127,7 +69,7 @@ class Gebruiker
     public function setFunctie($functie)
     {
         $this->functie = $functie;
-
+    
         return $this;
     }
 
@@ -140,6 +82,29 @@ class Gebruiker
     {
         return $this->functie;
     }
+
+    /**
+     * Set gebruikersnaam
+     *
+     * @param string $gebruikersnaam
+     *
+     * @return Gebruiker
+     */
+    public function setGebruikersnaam($gebruikersnaam)
+    {
+        $this->gebruikersnaam = $gebruikersnaam;
+    
+        return $this;
+    }
+
+    /**
+     * Get gebruikersnaam
+     *
+     * @return string
+     */
+    public function getGebruikersnaam()
+    {
+        return $this->gebruikersnaam;
+    }
 }
 
-?>
