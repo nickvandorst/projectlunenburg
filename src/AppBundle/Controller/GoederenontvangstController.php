@@ -42,8 +42,6 @@ public function nieuwGoederenontvangst(Request $request) {
         $em->flush();
         return $this->redirect($this->generateUrl("alleontvangengoederen"));
     }
-    return new Response($this->renderView('nieuw_goederenontvangst.html.twig', array('form' => $form->createView())));
-}
 }
 
 ?>

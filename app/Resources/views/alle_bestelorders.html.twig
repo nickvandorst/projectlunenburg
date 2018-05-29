@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <title>Lunenburg</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h5><span class="glyphicon glyphicon-home"></span><a href="{{ path('inkoperhome') }}"><font color="black"> Home</font></a><br/></h5>
+    <h2>Bestelorders:</h2>
+    <h4><button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><a href="{{ path('inkoperbestelorder') }}"><font color="white"> Nieuw bestelorder</font></a></button><br/></h4>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Bestelordernummer</th>
+            <th>Naam Leverancier</th>
+            <th>Artikelnummer</th>
+            <th>Omschrijving</th>
+            <th>Hoeveelheid</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for bestelorder in bestelorders %}
+        <tr>
+            <td>{{ bestelorder.bestelordernummer }}</td>
+            <td>{{ bestelorder.naamleverancier }}</td>
+            <td>{{ bestelorder.artikelnummer }}</td>
+            <td>{{ bestelorder.omschrijving }}</td>
+            <td>{{ bestelorder.hoeveelheid }}</td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>
