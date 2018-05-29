@@ -10,8 +10,8 @@ use AppBundle\Entity\Artikel;
 use AppBundle\Form\ArtikelType;
 use AppBundle\Form\ArtikelInkoperType;
 use AppBundle\Form\ArtikelMagazijnmeesterType;
-use AppBundle\Entity\bestelorder;
-use AppBundle\Form\bestelorderType;
+use AppBundle\Entity\Bestelorder;
+use AppBundle\Form\BestelorderType;
 //use Symfony\Component\HttpFoundation\Response;
 
 class ArtikelController extends Controller
@@ -141,14 +141,14 @@ class ArtikelController extends Controller
      */
     Public function inkoperbestelorder(Request $request)
     {
-        $nieuwbestelorder = new bestelorder();
-        $form = $this->createForm(bestelorderType::class, $nieuwbestelorder);
+        $nieuwBestelorder = new Bestelorder();
+        $form = $this->createForm(BestelorderType::class, $nieuwBestelorder);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $em->persist($nieuwbestelorder);
+            $em->persist($nieuwBestelorder);
             $em->flush();
             return $this->redirect($this->generateUrl("inkoperbestelorder"));
         }

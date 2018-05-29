@@ -18,32 +18,28 @@ class BestelorderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', IntegerType::class)
+            ->add('bestelordernummer', IntegerType::class)
         ;
-
+        $builder
+            ->add('naamleverancier', TextType::class)
+        ;
+        $builder
+            ->add('artikelnummer', TextType::class)
+        ;
         $builder
             ->add('omschrijving', TextType::class)
         ;
         $builder
             ->add('hoeveelheid', IntegerType::class)
         ;
-        $builder
-            ->add('keuringscode', TextType::class)
-        ;
-        $builder
-            ->add('artikelnummer', TextType::class)
-        ;
-        $builder
-            ->add('naamleverancier', TextType::class)
-        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\bestelorder', //Entiteit vervangen door b.v. product
-		));
-	}
-}
+            'data_class' => 'AppBundle\Entity\Bestelorder',  //Entiteit vervangen door b.v. product
+        ));
+    }
 
+}
 ?>

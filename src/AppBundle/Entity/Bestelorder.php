@@ -8,93 +8,66 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
+ * Bestelorder
+ *
  * @ORM\Table(name="bestelorder")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\artikelRepository")
- * @UniqueEntity(fields={"artikelnummer"}, message="Dit artikelnummer bestaat al.")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\BestelorderRepository")
  */
-// test
 class Bestelorder
 {
     /**
      * @var int
-     * @ORM\OneToMany(targetEntity="Bestelregel", mappedBy="artikel")
+     * @ORM\Id
+     * @ORM\Column(name="bestelordernummer", type="integer")
      */
-    Public $bestelregels;
+    private $bestelordernummer;
 
     /**
-     * @var varchar
+     * @var string
+     *
      * @ORM\Column(name="naamleverancier", type="string", length=6)
      */
-    Private $naamleverancier;
+    private $naamleverancier;
 
     /**
-     * @var integer
+     * @var string
      * @ORM\Id
-     * @ORM\Column(name="bestelordernummer", type="integer", length=10, unique=true)
+     * @ORM\Column(name="artikelnummer", type="string", length=35, unique=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 10,
+     *      minMessage = "artikelnummer moet 10 karakters hebben",
+     *      maxMessage = "artikelnummer moet 10 karakters hebben"
+     *)
      */
-    Private $bestelordernummer;
+    private $artikelnummer;
 
     /**
- * @var varchar
- * @ORM\Column(name="artikelinformatie")
- */
-    Private $artikelinformatie;
-
-    /**
-     * Set bestelregels
-     * @param integer $bestelregels
+     * @var string
      *
-     * @return artikel
+     * @ORM\Column(name="omschrijving", type="string", length=35)
      */
-    Public function setBestelregels($bestelregels)
-    {
-        $this->bestelregels = $bestelregels;
-
-        Return $this;
-    }
+    private $omschrijving;
 
     /**
-     * Get bestelregels
+     * @var int
      *
-     * @return integer
+     * @ORM\Column(name="hoeveelheid", type="integer")
      */
-    Public function getBestelregels()
-    {
-        return $this->bestelregels;
-    }
-    /**
-     * Set naamleverancier
-     * @param varchar $naamleverancier
-     *
-     * @return bestelorder
-     */
-    Public function setNaamleverancier ($naamleverancier)
-    {
-        $this->naamleverancier = $naamleverancier;
+    private $hoeveelheid;
 
-        Return $this;
-    }
-
-    /**
-     * Get naamleverancier
-     *
-     * @return varchar
-     */
-    Public function getNaamleverancier()
-    {
-        Return $this->naamleverancier;
-    }
     /**
      * Set bestelordernummer
+     *
      * @param integer $bestelordernummer
      *
-     * @return bestelorder
+     * @return Bestelorder
      */
-    Public function setBestelordernummer ($bestelordernummer)
+    public function setBestelordernummer($bestelordernummer)
     {
         $this->bestelordernummer = $bestelordernummer;
-
-        Return $this;
+    
+        return $this;
     }
 
     /**
@@ -102,37 +75,105 @@ class Bestelorder
      *
      * @return integer
      */
-    Public function getBestelordernummer()
+    public function getBestelordernummer()
     {
-        Return $this->bestelordernummer;
+        return $this->bestelordernummer;
     }
 
     /**
-     * Set artikelinformatie
-     * @param varchar $artikelinformatie
+     * Set naamleverancier
      *
-     * @return bestelorder
+     * @param string $naamleverancier
+     *
+     * @return Bestelorder
      */
-    Public function setArtikelinformatie ($artikelinformatie)
+    public function setNaamleverancier($naamleverancier)
     {
-        $this->artikelinformatie = $artikelinformatie;
-
-        Return $this;
+        $this->naamleverancier = $naamleverancier;
+    
+        return $this;
     }
 
     /**
-     * Get artikelinformatie
+     * Get naamleverancier
      *
-     * @return varchar
+     * @return string
      */
-    Public function getArtikelinformatie()
+    public function getNaamleverancier()
     {
-        Return $this->artikelinformatie;
+        return $this->naamleverancier;
     }
 
-    Public function __construct()
-    {   $bestelregels = new ArrayCollection();
+    /**
+     * Set artikelnummer
+     *
+     * @param string $artikelnummer
+     *
+     * @return Bestelorder
+     */
+    public function setArtikelnummer($artikelnummer)
+    {
+        $this->artikelnummer = $artikelnummer;
+    
+        return $this;
+    }
+
+    /**
+     * Get artikelnummer
+     *
+     * @return string
+     */
+    public function getArtikelnummer()
+    {
+        return $this->artikelnummer;
+    }
+
+    /**
+     * Set omschrijving
+     *
+     * @param string $omschrijving
+     *
+     * @return Bestelorder
+     */
+    public function setOmschrijving($omschrijving)
+    {
+        $this->omschrijving = $omschrijving;
+    
+        return $this;
+    }
+
+    /**
+     * Get omschrijving
+     *
+     * @return string
+     */
+    public function getOmschrijving()
+    {
+        return $this->omschrijving;
+    }
+
+    /**
+     * Set hoeveelheid
+     *
+     * @param integer $hoeveelheid
+     *
+     * @return Bestelorder
+     */
+    public function setHoeveelheid($hoeveelheid)
+    {
+        $this->hoeveelheid = $hoeveelheid;
+    
+        return $this;
+    }
+
+    /**
+     * Get hoeveelheid
+     *
+     * @return integer
+     */
+    public function getHoeveelheid()
+    {
+        return $this->hoeveelheid;
     }
 }
 
-?>

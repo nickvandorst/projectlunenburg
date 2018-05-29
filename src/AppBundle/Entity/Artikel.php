@@ -5,8 +5,9 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 /**
- * @ORM\Table(name="Artikel")
+ * @ORM\Table(name="artikel")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\artikelRepository")
  * @UniqueEntity(fields={"artikelnummer"}, message="Dit artikelnummer bestaat al.")
  */
