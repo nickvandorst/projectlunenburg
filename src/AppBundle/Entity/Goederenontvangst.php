@@ -6,53 +6,34 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
+ * Goederenontvangst
  *
  * @ORM\Table(name="goederenontvangst")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\GoederenontvangstRepository")
  */
 class Goederenontvangst
 {
-  /**
-   * @var int
-   * @ORM\Column(type="integer",)
-   *
-   * @ORM\Id
-   */
-  private $id;
     /**
-     * @var date
-     * @ORM\Column(name="ontvangstdatum", type="date", unique=false)
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ontvangstdatum", type="date")
      */
     private $ontvangstdatum;
 
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="omschrijving", type="string")
-     */
-    private $omschrijving;
-
-    /**
      * @var int
      *
-     * @ORM\Column(name="hoeveelheid", type="integer", length=11)
+     * @ORM\Column(name="ontvangstregel", type="integer", nullable=true)
      */
-    private $hoeveelheid;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="keuringscode", type="string", length=10)
-     */
-    private $keuringscode;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="artikelnummer", type="string", length=10)
-     *
-     */
-    private $artikelnummer;
+    private $ontvangstregel;
 
     /**
      * @var string
@@ -61,13 +42,31 @@ class Goederenontvangst
      */
     private $naamleverancier;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Ontvangstregel", mappedBy="goederenontvangst")
+     */
+    private $goederen;
+
+    public function __construct() {
+          $this->goederen = new ArrayCollection();
+    }
 
     /**
-     * Set Id
+     * Get id
      *
-     * @param int $Id
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set id
      *
-     * @return goederenontvangst
+     * @param integer $id
+     *
+     * @return Goederenontvangst
      */
     public function setId($id)
     {
@@ -76,33 +75,13 @@ class Goederenontvangst
         return $this;
     }
 
-    /**
-     * Get Id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
 
     /**
-     * Get ontvangstdatum
+     * Set ontvangstdatum
      *
-     * @return date
-     */
-    public function getOntvangstdatum()
-    {
-        return $this->ontvangstdatum;
-    }
-
-    /**
-     * Set ontvangstdatuma
+     * @param \DateTime $ontvangstdatum
      *
-     * @param date $ontvangstdatum
-     *
-     * @return goederenontvangst
+     * @return Goederenontvangst
      */
     public function setOntvangstdatum($ontvangstdatum)
     {
@@ -112,97 +91,49 @@ class Goederenontvangst
     }
 
     /**
-     * Get omschrijving
+     * Get ontvangstdatum
      *
-     * @return text
+     * @return \DateTime
      */
-    public function getOmschrijving()
+    public function getOntvangstdatum()
     {
-        return $this->omschrijving;
+        return $this->ontvangstdatum;
     }
 
     /**
-     * Set omschrijving
+     * Set ontvangstregel
      *
-     * @param text $omschrijving
+     * @param integer $ontvangstregel
      *
-     * @return goederenontvangst
+     * @return Goederenontvangst
      */
-    public function setOmschrijving($omschrijving)
+    public function setOntvangstregel($ontvangstregel)
     {
-        $this->omschrijving = $omschrijving;
+        $this->ontvangstregel = $ontvangstregel;
 
         return $this;
     }
 
     /**
-     * Get hoeveelheid
+     * Get ontvangstregel
      *
      * @return integer
      */
-    public function getHoeveelheid()
+    public function getOntvangstregel()
     {
-        return $this->hoeveelheid;
+        return $this->ontvangstregel;
     }
 
     /**
-     * Set hoeveelheid
+     * Set naamleverancier
      *
-     * @param int $hoeveelheid
+     * @param string $naamleverancier
      *
-     * @return goederenontvangst
+     * @return Goederenontvangst
      */
-    public function setHoeveelheid($hoeveelheid)
+    public function setNaamleverancier($naamleverancier)
     {
-        $this->hoeveelheid = $hoeveelheid;
-
-        return $this;
-    }
-
-    /**
-     * Get keuringscode
-     *
-     * @return string
-     */
-    public function getKeuringscode()
-    {
-        return $this->keuringscode;
-    }
-
-    /**
-     * Set keuringscode
-     *
-     * @param string $keuringcode
-     *
-     * @return goederenontvangst
-     */
-    public function setKeuringscode($keuringscode)
-    {
-        $this->keuringscode = $keuringscode;
-
-        return $this;
-    }
-
-    /**
-     * Get artikelnummer
-     *
-     * @return string
-     */
-    public function getArtikelnummer()
-    {
-        return $this->artikelnummer;
-    }
-
-    /**
-     * Set artikelnummer
-     *
-     * @param string $artikelnummer
-     *
-     * @return goederenontvangst
-     */
-    public function setArtikelnummer($artikelnummer)
-    {
-        $this->artikelnummer = $artikelnummer;
+        $this->naamleverancier = $naamleverancier;
 
         return $this;
     }
@@ -216,20 +147,4 @@ class Goederenontvangst
     {
         return $this->naamleverancier;
     }
-
-    /**
-     * Set naamleverancier
-     *
-     * @param string $naamleverancier
-     *
-     * @return goederenontvangst
-     */
-    public function setNaamleverancier($naamleverancier)
-    {
-        $this->naamleverancier = $naamleverancier;
-
-        return $this;
-    }
-
 }
-?>

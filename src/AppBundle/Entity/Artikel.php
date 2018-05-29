@@ -112,10 +112,9 @@ class Artikel
     private $voorraadaantal;
 
     /**
-     * @var int
+     * @ORM\OneToMany(targetEntity="Ontvangstregel", mappedBy="artikel")
      */
-    public $bestelregels;
-
+    private $artikelen;
 
     /**
      * Get id
