@@ -16,24 +16,23 @@ class Ontvangstregel
      * @var int
      *
      * @ORM\Column(name="regelid", type="integer")
-     * @ORM\Id
      */
     private $regelid;
 
     /**
      * @var int
      * @ORM\ManyToOne(targetEntity="Goederenontvangst", inversedBy="goederen")
-     * @ORM\Column(name="goederenontvangstid", type="integer", unique=true)
+     * @ORM\Column(name="goederenontvangstid", type="integer", unique=true, nullable=true)
      */
     private $goederenontvangstid;
 
     /**
      * @var string
-     * @ORM\Id
+     *
      * @ORM\ManyToOne(targetEntity="Artikel", inversedBy="artikelen")
-     * @ORM\Column(name="artikelid", type="integer", unique=true)
+     * @ORM\Column(name="artikelnummer", unique=true)
      */
-    private $artikelid;
+    private $artikelnummer;
 
     /**
      * @var int
@@ -49,15 +48,28 @@ class Ontvangstregel
      */
     private $kwaliteit;
 
-
     /**
-     * Get id
+     * Get regelid
      *
      * @return integer
      */
-    public function getId()
+    public function getRegelid()
     {
-        return $this->id;
+        return $this->regelid;
+    }
+
+    /**
+     * Set regelid
+     *
+     * @param integer $regelid
+     *
+     * @return Ontvangstregel
+     */
+    public function setRegelid($regelid)
+    {
+        $this->regelid = $regelid;
+
+        return $this;
     }
 
     /**
@@ -85,27 +97,27 @@ class Ontvangstregel
     }
 
     /**
-     * Set artikelid
+     * Set artikelnummer
      *
-     * @param string $artikelid
+     * @param string $artikelnummer
      *
      * @return Ontvangstregel
      */
-    public function setArtikelid($artikelid)
+    public function setArtikelnummer($artikelnummer)
     {
-        $this->artikelid = $artikelid;
+        $this->artikelnummer = $artikelnummer;
 
         return $this;
     }
 
     /**
-     * Get artikelid
+     * Get artikelnummer
      *
      * @return string
      */
-    public function getArtikelid()
+    public function getArtikelnummer()
     {
-        return $this->artikelid;
+        return $this->artikelnummer;
     }
 
     /**
@@ -155,4 +167,5 @@ class Ontvangstregel
     {
         return $this->kwaliteit;
     }
+
 }
