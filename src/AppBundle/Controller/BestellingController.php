@@ -31,7 +31,7 @@ class BestellingController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($nieuwBestelorder);
             $em->flush();
-            return $this->redirect($this->generateUrl("inkoperbestelorder"));
+            return $this->redirect($this->generateUrl("inkoperallebestelorders"));
         }
         return new Response($this->renderView('nieuw_bestelorder.html.twig', array('form' => $form->createView())));
     }

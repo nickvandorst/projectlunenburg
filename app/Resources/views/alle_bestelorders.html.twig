@@ -12,7 +12,7 @@
 <div class="container">
     <h5><span class="glyphicon glyphicon-home"></span><a href="{{ path('inkoperhome') }}"><font color="black"> Home</font></a><br/></h5>
     <h2>Bestelorders:</h2>
-    <h4><button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><a href="{{ path('inkopernieuwartikel') }}"><font color="white"> Nieuw artikel</font></a></button></br></h4>
+    <h4><button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><a href="{{ path('inkoperbestelorder') }}"><font color="white"> Nieuw bestelorder</font></a></button><br/></h4>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -25,15 +25,13 @@
         </tr>
         </thead>
         <tbody>
-        {% for artikel in artikelen %}
+        {% for bestelorder in bestelorders %}
         <tr>
             <td>{{ bestelorder.bestelordernummer }}</td>
             <td>{{ bestelorder.naamleverancier }}</td>
             <td>{{ bestelorder.artikelnummer }}</td>
             <td>{{ bestelorder.omschrijving }}</td>
-            <td>{{ bestelorder.hoeveelheod }}</td>
-
-            <td><a href="{{ path('inkoperwijzigartikel',{'artikelnummer':artikel.artikelnummer}) }}">Wijzigen</a></td></td>
+            <td>{{ bestelorder.hoeveelheid }}</td>
         </tr>
         </tbody>
         {% endfor %}

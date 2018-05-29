@@ -113,7 +113,6 @@ class Artikel
 
     /**
      * @var int
-     * @ORM\OneToMany(targetEntity="bestelRegel", mappedBy="artikel")
      */
     public $bestelregels;
 
