@@ -30,6 +30,8 @@ class GoederenontvangstController extends Controller
       return new Response($this->renderView('ontvangstmelding.html.twig', array('goederen' => $goederen, 'ontvangstregels' => $ontvangstregels, 'artikelen' => $artikelen)));
   }
 
+//De magazijnmeester kan hierbij een nieuwe leverancier toevoegen, waardoor er een ontvangstmelding gegenereerd kan worden. 
+
   /**
    * @Route("/magazijnmeester/nieuwleverancier", name="magazijnmeesternieuwleverancier")
    */

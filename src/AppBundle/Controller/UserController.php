@@ -11,6 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 //controller voor de gebruiker
 class UserController extends Controller
 {
+
+//de administrator kan een gebruiker regsitreren via onderstaande functie met een twig file. 
+
 /**
      * @Route("administrator/registeren", name="gebruikerregistreren")
      */
