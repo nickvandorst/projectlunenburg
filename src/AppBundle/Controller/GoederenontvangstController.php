@@ -18,7 +18,6 @@ class GoederenontvangstController extends Controller
 {
     //ROL: magazijnbeheerder
       //Hier wordt het overzicht van alle ontvangen goederen gegenereerd
-
   /**
    * @Route("/magazijnmeester/ontvangstmelding", name="magazijnmeesterontvangstmelding")
    */
@@ -30,6 +29,8 @@ class GoederenontvangstController extends Controller
       return new Response($this->renderView('ontvangstmelding.html.twig', array('goederen' => $goederen, 'ontvangstregels' => $ontvangstregels, 'artikelen' => $artikelen)));
   }
 
+  //ROL: magazijnbeheerder
+    //Hier wordt de header van de goederenontvangsttabellen naar de database gestuurd.
   /**
    * @Route("/magazijnmeester/nieuwleverancier", name="magazijnmeesternieuwleverancier")
    */
