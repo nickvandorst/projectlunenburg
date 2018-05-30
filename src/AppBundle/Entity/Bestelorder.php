@@ -12,6 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="bestelorder")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BestelorderRepository")
+ * @UniqueEntity(fields={"bestelordernummer"}, message="Dit bestelordernummer bestaat al.")
  */
 class Bestelorder
 {
@@ -26,6 +27,10 @@ class Bestelorder
      * @var string
      *
      * @ORM\Column(name="naamleverancier", type="string", length=6)
+     * @Assert\Length(
+     *      max = 6,
+     *      maxMessage = "De naam van de leverancier mag maar maximaal 6 karakters hebben"
+     *)
      */
     private $naamleverancier;
 
@@ -36,8 +41,8 @@ class Bestelorder
      * @Assert\Length(
      *      min = 10,
      *      max = 10,
-     *      minMessage = "artikelnummer moet 10 karakters hebben",
-     *      maxMessage = "artikelnummer moet 10 karakters hebben"
+     *      minMessage = "Het artikelnummer moet 10 karakters hebben",
+     *      maxMessage = "Het artikelnummer moet 10 karakters hebben"
      *)
      */
     private $artikelnummer;
@@ -66,7 +71,7 @@ class Bestelorder
     public function setBestelordernummer($bestelordernummer)
     {
         $this->bestelordernummer = $bestelordernummer;
-    
+
         return $this;
     }
 
@@ -90,7 +95,7 @@ class Bestelorder
     public function setNaamleverancier($naamleverancier)
     {
         $this->naamleverancier = $naamleverancier;
-    
+
         return $this;
     }
 
@@ -114,7 +119,7 @@ class Bestelorder
     public function setArtikelnummer($artikelnummer)
     {
         $this->artikelnummer = $artikelnummer;
-    
+
         return $this;
     }
 
@@ -138,7 +143,7 @@ class Bestelorder
     public function setOmschrijving($omschrijving)
     {
         $this->omschrijving = $omschrijving;
-    
+
         return $this;
     }
 
@@ -162,7 +167,7 @@ class Bestelorder
     public function setHoeveelheid($hoeveelheid)
     {
         $this->hoeveelheid = $hoeveelheid;
-    
+
         return $this;
     }
 
@@ -176,4 +181,3 @@ class Bestelorder
         return $this->hoeveelheid;
     }
 }
-
