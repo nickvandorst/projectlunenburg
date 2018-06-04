@@ -10,7 +10,7 @@
 <body>
 
 <div class="container">
-  <h2>Artikeloverzicht</h2>
+  <h2>Verwijderde Artikeloverzicht</h2>
   <div class="pull-left" style="width: 8%">
   <h4><button class="btn btn-primary"><span class="glyphicon glyphicon-home"></span><a href="{{ path('inkoperhome') }}"><font color="white"> Home</font></a><br/></h4>
   </div>
@@ -44,7 +44,7 @@
     <tbody>
 
      {% for artikel in artikelen %}
-     {% if (artikel.inassortiment == 1) %}
+     {% if (artikel.inassortiment == 0) %}
       <tr>
         <td>{{ artikel.artikelnummer }}</td>
         <td>{{ artikel.omschrijving }}</td>

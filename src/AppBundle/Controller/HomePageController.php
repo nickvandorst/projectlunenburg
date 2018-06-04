@@ -38,9 +38,8 @@ class HomePageController extends Controller
 
         return $this->render('frontpageinkoper.html.twig');
     }
-
-
-    //ROL: inkoper
+  
+    //ROL: magazijnmeester
         //Bij deze functie wordt het pad voor de homepagina gedefinieerd en aangeroepen
     /**
      * @Route("magazijnmeester/home", name="magazijnmeesterhome")
@@ -54,7 +53,7 @@ class HomePageController extends Controller
      */
     public function loadAdministratorHomePage(Request $request) {
 
-        return $this->render('frontpageadministrator.html.twig');   
+        return $this->render('frontpageadministrator.html.twig');
     }
 }
 ?>
