@@ -107,9 +107,9 @@ class Artikel
     /**
      * @var int
      *
-     * @ORM\Column(name="voorraadaantal", type="integer")
+     * @ORM\Column(name="vrijevoorraad", type="integer")
      */
-    private $voorraadaantal;
+    private $vrijevoorraad;
 
     /**
      * @ORM\OneToMany(targetEntity="Ontvangstregel", mappedBy="artikel")
@@ -122,6 +122,20 @@ class Artikel
      * @ORM\Column(name="inassortiment", type="string", length=3, nullable=false)
      */
     private $inassortiment;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="technischevoorraad", type="integer")
+     */
+    private $technischevoorraad;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="gereserveerde voorraad", type="integer")
+     */
+    private $gereserveerdevoorraad;
 
     /**
      * Get id
@@ -326,27 +340,27 @@ class Artikel
     }
 
     /**
-     * Set voorraadaantal
+     * Set vrijevoorraad
      *
-     * @param integer $voorraadaantal
+     * @param integer $vrijevoorraad
      *
      * @return artikel
      */
-    public function setVoorraadaantal($voorraadaantal)
+    public function setVrijeVoorraad($vrijevoorraad)
     {
-        $this->voorraadaantal = $voorraadaantal;
+        $this->vrijevoorraad = $vrijevoorraad;
 
         return $this;
     }
 
     /**
-     * Get voorraadaantal
+     * Get vrijevoorraad
      *
      * @return integer
      */
-    public function getVoorraadaantal()
+    public function getVrijeVoorraad()
     {
-        return $this->voorraadaantal;
+        return $this->vrijevoorraad;
     }
 
     /**
@@ -396,6 +410,54 @@ class Artikel
         $this->inassortiment = $inassortiment;
 
         return $this;
+    }
+
+    /**
+     * Set technischevoorraad
+     *
+     * @param integer $technischevoorraad
+     *
+     * @return artikel
+     */
+    public function setTechnischeVoorraad($technischevoorraad)
+    {
+        $this->technischevoorraad = $technischevoorraad;
+
+        return $this;
+    }
+
+    /**
+     * Get technischevoorraad
+     *
+     * @return integer
+     */
+    public function getTechnischeVoorraad()
+    {
+        return $this->technischevoorraad;
+    }
+
+    /**
+     * Set gereserveerdevoorraad
+     *
+     * @param integer $gereserveerdevoorraad
+     *
+     * @return artikel
+     */
+    public function setGereserveerdeVoorraad($gereserveerdevoorraad)
+    {
+        $this->gereserveerdevoorraad = $gereserveerdevoorraad;
+
+        return $this;
+    }
+
+    /**
+     * Get gereserveerdevoorraad
+     *
+     * @return integer
+     */
+    public function getGereserveerdeVoorraad()
+    {
+        return $this->gereserveerdevoorraad;
     }
 }
 ?>

@@ -40,11 +40,11 @@ class SearchController extends Controller {
   /**
   * @Route("/inkoper/zoekartikel", name="inkoperzoekartikel")
   */
-public function inkoperZoekartikel(Request $request) {
- $em = $this->getDoctrine()->getManager();
- $artikelen = $em->getRepository('AppBundle:Artikel');
+  public function inkoperZoekartikel(Request $request) {
+    $em = $this->getDoctrine()->getManager();
+    $artikelen = $em->getRepository('AppBundle:Artikel');
 
- if($request->isMethod('POST')) {
+    if($request->isMethod('POST')) {
      $artikelnummer = $request->get('artikelnummer');
      $query = $em->createQuery(
                   'SELECT a
@@ -54,9 +54,8 @@ public function inkoperZoekartikel(Request $request) {
                    $query->setParameter('artikelnummer', '%' . $artikelnummer . '%');
                    $artikelen = $query->getResult();
      }
- return new Response($this->renderView("zoek.html.twig", array('artikelen'=>$artikelen)));
-
-}
+     return new Response($this->renderView("zoek.html.twig", array('artikelen'=>$artikelen)));
+  }
 }
 
 ?>
