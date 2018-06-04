@@ -57,6 +57,8 @@ class SearchController extends Controller {
      return new Response($this->renderView("zoek_inkoper.html.twig", array('artikelen'=>$artikelen)));
   }
 
+  //ROL: Magazijnmeester
+    //Met deze functie kan de magazijnmeester artikelen zoeken op basis van een omschrijving
   /**
    * @Route("/magazijnmeester/zoekartikel", name="magazijnmeesterzoekartikel")
    */
@@ -77,6 +79,8 @@ class SearchController extends Controller {
        return new Response($this->renderView("zoek_magazijnmeester.html.twig", array('artikelen'=>$artikelen)));
   }
 
+  //ROL: Magazijnmeester
+    //Met deze functie kan de magazijnmeester artikelen zoeken op basis van een omschrijving
   /**
    * @Route("/magazijnmeester/zoekomschrijving", name="magazijnmeesterzoekomschrijving")
    */
