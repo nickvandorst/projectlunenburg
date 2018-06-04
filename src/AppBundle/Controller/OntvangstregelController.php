@@ -18,6 +18,8 @@ use Symfony\Component\Serializer\Serializer;
 class OntvangstregelController extends Controller
 {
 
+//Magazijnmeester voegt een nieuwe ontvangstregel toe aan de hand van de onderstaande controller. 
+
 /**
  * @Route("/magazijnmeester/nieuwontvangstregel", name="magazijnmeesternieuwontvangstregel")
  */
