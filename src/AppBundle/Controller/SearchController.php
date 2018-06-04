@@ -32,7 +32,7 @@ class SearchController extends Controller {
                       $artikelen = $query->getResult();
         }
 
-    return new Response($this->renderView("omschrijvingzoek.html.twig", array('artikelen'=>$artikelen)));
+    return new Response($this->renderView("omschrijvingzoek_inkoper.html.twig", array('artikelen'=>$artikelen)));
     }
 
     //Inkoper kan zoeken via het artikelnummer. Dit wordt gegenereert met alleen het juiste artikelnummer hieronder.
@@ -40,23 +40,63 @@ class SearchController extends Controller {
   /**
   * @Route("/inkoper/zoekartikel", name="inkoperzoekartikel")
   */
-public function inkoperZoekartikel(Request $request) {
- $em = $this->getDoctrine()->getManager();
- $artikelen = $em->getRepository('AppBundle:Artikel');
+  public function inkoperZoekartikel(Request $request) {
+     $em = $this->getDoctrine()->getManager();
+     $artikelen = $em->getRepository('AppBundle:Artikel');
 
- if($request->isMethod('POST')) {
-     $artikelnummer = $request->get('artikelnummer');
-     $query = $em->createQuery(
-                  'SELECT a
-                   FROM AppBundle:Artikel a
-                   WHERE a.artikelnummer LIKE :artikelnummer'
-                   );
-                   $query->setParameter('artikelnummer', '%' . $artikelnummer . '%');
-                   $artikelen = $query->getResult();
-     }
- return new Response($this->renderView("zoek.html.twig", array('artikelen'=>$artikelen)));
+     if($request->isMethod('POST')) {
+         $artikelnummer = $request->get('artikelnummer');
+         $query = $em->createQuery(
+                      'SELECT a
+                       FROM AppBundle:Artikel a
+                       WHERE a.artikelnummer LIKE :artikelnummer'
+                       );
+                       $query->setParameter('artikelnummer', '%' . $artikelnummer . '%');
+                       $artikelen = $query->getResult();
+         }
+     return new Response($this->renderView("zoek_inkoper.html.twig", array('artikelen'=>$artikelen)));
+  }
 
-}
+  /**
+   * @Route("/magazijnmeester/zoekartikel", name="magazijnmeesterzoekartikel")
+   */
+  public function magazijnmeesterZoekartikel(Request $request) {
+      $em = $this->getDoctrine()->getManager();
+      $artikelen = $em->getRepository('AppBundle:Artikel');
+
+       if($request->isMethod('POST')) {
+           $artikelnummer = $request->get('artikelnummer');
+           $query = $em->createQuery(
+               'SELECT a
+                  FROM AppBundle:Artikel a
+                  WHERE a.artikelnummer LIKE :artikelnummer'
+           );
+           $query->setParameter('artikelnummer', '%' . $artikelnummer . '%');
+           $artikelen = $query->getResult();
+       }
+       return new Response($this->renderView("zoek_magazijnmeester.html.twig", array('artikelen'=>$artikelen)));
+  }
+
+  /**
+   * @Route("/magazijnmeester/zoekomschrijving", name="magazijnmeesterzoekomschrijving")
+   */
+  public function magazijnmeesterZoekomschrijving(Request $request) {
+       $em = $this->getDoctrine()->getManager();
+       $artikelen = $em->getRepository('AppBundle:Artikel');
+
+       if($request->isMethod('POST')) {
+           $omschrijving = $request->get('omschrijving');
+           $query = $em->createQuery(
+               'SELECT a
+                     FROM AppBundle:Artikel a
+                     WHERE a.omschrijving LIKE :omschrijving'
+           );
+           $query->setParameter('omschrijving', '%' . $omschrijving . '%');
+           $artikelen = $query->getResult();
+       }
+
+       return new Response($this->renderView("omschrijvingzoek_magazijnmeester.html.twig", array('artikelen'=>$artikelen)));
+    }
 }
 
 ?>
