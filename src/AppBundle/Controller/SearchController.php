@@ -12,7 +12,7 @@ use AppBundle\Form\ArtikelInkoperType;
 
 class SearchController extends Controller {
 
-  //Onderstaande functie laat de inkoper zoeken op omschrijving en aan de hand van de query kan de inkoper zoeken op ook een deel van de omschrijving. 
+  //Onderstaande functie laat de inkoper zoeken op omschrijving en aan de hand van de query kan de inkoper zoeken op ook een deel van de omschrijving.
 
   /**
      * @Route("/inkoper/zoekomschrijving", name="inkoperzoekomschrijving")
@@ -46,7 +46,13 @@ public function inkoperZoekartikel(Request $request) {
 
  if($request->isMethod('POST')) {
      $artikelnummer = $request->get('artikelnummer');
-     $artikelen = $em->getRepository('AppBundle:Artikel')->findBy(array("artikelnummer"=>$artikelnummer));
+     $query = $em->createQuery(
+                  'SELECT a
+                   FROM AppBundle:Artikel a
+                   WHERE a.artikelnummer LIKE :artikelnummer'
+                   );
+                   $query->setParameter('artikelnummer', '%' . $artikelnummer . '%');
+                   $artikelen = $query->getResult();
      }
  return new Response($this->renderView("zoek.html.twig", array('artikelen'=>$artikelen)));
 

@@ -144,6 +144,9 @@ class ArtikelController extends Controller
         }
         return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
     }
+
+//De inkoper kan via onderstaande functie een nieuwe bestelserie toevoegen. 
+
     /**
      * @Route("/inkoper/bestelorder", name="inkoperbestelorder")
      */
