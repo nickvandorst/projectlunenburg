@@ -11,6 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 //controller voor de gebruiker
 class UserController extends Controller
 {
+
+//de administrator kan een gebruiker regsitreren via onderstaande functie met een twig file. 
+
 /**
      * @Route("administrator/registeren", name="gebruikerregistreren")
      */
@@ -34,7 +37,7 @@ class UserController extends Controller
      */
      public function AlleGebruikers(Request $request) {
       $gebruikers = $this->getDoctrine()->getRepository("AppBundle:Gebruiker")->findAll();
-        return new Response($this->render('alle_gebruikers.html.twig', array('gebruikers' => $gebruikers)));
+        return new Response($this->renderView('alle_gebruikers.html.twig', array('gebruikers' => $gebruikers)));
         }
 
 }
