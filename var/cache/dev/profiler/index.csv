@@ -69,3 +69,5 @@ a167aa,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/administrator/h
 82381c,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1528112278,,200
 c35a1d,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/inkoper/home,1528112280,,401
 f903ef,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/magazijnmeester/home,1528112284,,401
+542337,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/home,1528112368,,200
+8f3422,::1,GET,http://localhost/projectlunenburg/web/app_dev.php/inkoper/home,1528112370,,401
