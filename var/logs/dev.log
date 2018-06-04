@@ -324,3 +324,13 @@
 [2018-06-04 13:39:30] security.DEBUG: Access denied, the user is not fully authenticated; redirecting to authentication entry point. {"exception":"[object] (Symfony\\Component\\Security\\Core\\Exception\\AccessDeniedException(code: 403): Access Denied. at C:\\xampp\\htdocs\\projectlunenburg\\vendor\\symfony\\symfony\\src\\Symfony\\Component\\Security\\Http\\Firewall\\AccessListener.php:68)"} []
 [2018-06-04 13:39:30] security.DEBUG: Calling Authentication entry point. [] []
 >>>>>>> e65503f459307a3a4f00e09ae361b8311e14add2
+[2018-06-04 13:43:09] request.INFO: Matched route "home". {"route":"home","route_parameters":{"_controller":"AppBundle\\Controller\\HomePageController::loadHomePage","_route":"home"},"request_uri":"http://localhost/projectlunenburg/web/app_dev.php/home","method":"GET"} []
+[2018-06-04 13:43:09] security.DEBUG: Read existing security token from the session. {"key":"_security_main","token_class":"Symfony\\Component\\Security\\Core\\Authentication\\Token\\UsernamePasswordToken"} []
+[2018-06-04 13:43:09] security.DEBUG: User was reloaded from a user provider. {"provider":"Symfony\\Component\\Security\\Core\\User\\InMemoryUserProvider","username":"inkoper"} []
+[2018-06-04 13:43:10] security.DEBUG: Stored the security token in the session. {"key":"_security_main"} []
+[2018-06-04 13:43:11] request.INFO: Matched route "_wdt". {"route":"_wdt","route_parameters":{"_controller":"web_profiler.controller.profiler:toolbarAction","token":"7fa36d","_route":"_wdt"},"request_uri":"http://localhost/projectlunenburg/web/app_dev.php/_wdt/7fa36d","method":"GET"} []
+[2018-06-04 13:43:13] request.INFO: Matched route "inkoperhome". {"route":"inkoperhome","route_parameters":{"_controller":"AppBundle\\Controller\\HomePageController::loadInkoperHomePage","_route":"inkoperhome"},"request_uri":"http://localhost/projectlunenburg/web/app_dev.php/inkoper/home","method":"GET"} []
+[2018-06-04 13:43:14] security.DEBUG: Read existing security token from the session. {"key":"_security_main","token_class":"Symfony\\Component\\Security\\Core\\Authentication\\Token\\UsernamePasswordToken"} []
+[2018-06-04 13:43:14] security.DEBUG: User was reloaded from a user provider. {"provider":"Symfony\\Component\\Security\\Core\\User\\InMemoryUserProvider","username":"inkoper"} []
+[2018-06-04 13:43:14] security.DEBUG: Stored the security token in the session. {"key":"_security_main"} []
+[2018-06-04 13:43:15] request.INFO: Matched route "_wdt". {"route":"_wdt","route_parameters":{"_controller":"web_profiler.controller.profiler:toolbarAction","token":"9a776f","_route":"_wdt"},"request_uri":"http://localhost/projectlunenburg/web/app_dev.php/_wdt/9a776f","method":"GET"} []
