@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
@@ -42,7 +43,10 @@ class ArtikelType extends AbstractType
             ->add('voorraadaantal', TextType::class)
         ;
         $builder
-            ->add('inassortiment', TextType::class)
+            ->add('inassortiment', ChoiceType::class, array(
+              'choices' => array(
+              'Ja' => true,
+                'Nee' => False,)))
         ;
     }
 
