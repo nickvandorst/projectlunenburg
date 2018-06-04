@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
+
 class ArtikelType extends AbstractType
 {
     //Het formulier voor het aanmaken van een nieuw artikel wordt in deze gegenereerd
@@ -39,6 +40,9 @@ class ArtikelType extends AbstractType
         ;
         $builder
             ->add('voorraadaantal', TextType::class)
+        ;
+        $builder
+            ->add('inassortiment', TextType::class)
         ;
     }
 

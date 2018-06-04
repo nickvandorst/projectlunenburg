@@ -117,6 +117,13 @@ class Artikel
     private $artikelen;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="inassortiment", type="string", length=3, nullable=false)
+     */
+    private $inassortiment;
+
+    /**
      * Get id
      *
      * @return integer
@@ -367,6 +374,28 @@ class Artikel
     Public function __construct()
     {   $bestelregels = new ArrayCollection();
     }
+    /**
+     * Get inassortiment
+     *
+     * @return string
+     */
+    public function getinassortiment()
+    {
+        return $this->inassortiment;
+    }
 
+    /**
+     * Set inassortiment
+     *
+     * @param string $inassortiment
+     *
+     * @return artikel
+     */
+    public function setInassortiment($inassortiment)
+    {
+        $this->inassortiment = $inassortiment;
+
+        return $this;
+    }
 }
 ?>
