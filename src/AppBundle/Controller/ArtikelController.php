@@ -44,7 +44,7 @@ class ArtikelController extends Controller
      */
     public function inkoperAlleverwijderdeartikelen(Request $request) {
 
-        $artikels = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
         return new Response($this->renderView('alle_verwijderde_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
     }
     //ROL: magazijnmeester
