@@ -43,7 +43,7 @@
     </thead>
     <tbody>
      {% for artikel in artikelen %}
-     {% if (artikel.inassortiment == 1) %}
+     {% if (artikel.inassortiment == 0) %}
       <tr>
         <td>{{ artikel.artikelnummer }}</td>
         <td>{{ artikel.omschrijving }}</td>

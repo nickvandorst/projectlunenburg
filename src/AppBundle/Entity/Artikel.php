@@ -117,6 +117,13 @@ class Artikel
     private $artikelen;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="inassortiment", type="integer", length=1, nullable=false)
+     */
+    private $inassortiment;
+
+    /**
      * Get id
      *
      * @return integer
@@ -125,7 +132,29 @@ class Artikel
     {
         return $this->id;
     }
+    /**
+     * Set inassortiment
+     *
+     * @param integer $inassortiment
+     *
+     * @return artikel
+     */
+    public function setInassortiment($inassortiment)
+    {
+        $this->inassortiment = $inassortiment;
 
+        return $this;
+    }
+
+    /**
+     * Get inassortiment
+     *
+     * @return integer
+     */
+    public function getInassortiment()
+    {
+        return $this->inassortiment;
+    }
     /**
      * Set artikelnummer
      *

@@ -37,6 +37,16 @@ class ArtikelController extends Controller
         $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
         return new Response($this->renderView('alle_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
     }
+    //ROL: inkoper
+        //Bij deze functie wordt het pad voor de pagina alle verwijderdea artikelem gedefinieerd en aangeroepen
+    /**
+     * @Route("inkoper/inkoperalleverwijderdeartikelen", name="inkoperalleverwijderdeartikelen")
+     */
+    public function inkoperAlleverwijderdeartikelen(Request $request) {
+
+        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+        return new Response($this->renderView('alle_verwijderde_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
+    }
 
     //ROL: magazijnmeester
         //Hier wordt een overzicht van alle artikelen aangeroepen
@@ -145,7 +155,7 @@ class ArtikelController extends Controller
         return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
     }
 
-//De inkoper kan via onderstaande functie een nieuwe bestelserie toevoegen. 
+//De inkoper kan via onderstaande functie een nieuwe bestelserie toevoegen.
 
     /**
      * @Route("/inkoper/bestelorder", name="inkoperbestelorder")
