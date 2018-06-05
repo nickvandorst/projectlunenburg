@@ -10,7 +10,7 @@
 <body>
 
 <div class="container">
-  <h2>Artikeloverzicht</h2>
+  <h2>Te bestellen artikelen</h2>
   <div class="pull-left" style="width: 8%">
   <h4><button class="btn btn-primary"><span class="glyphicon glyphicon-home"></span><a href="{{ path('inkoperhome') }}"><font color="white"> Home</font></a><br/></h4>
   </div>
@@ -19,13 +19,8 @@
       <tr>
         <th>Artikelnummer</th>
         <th>Omschrijving</th>
-        <th>Technische specificaties</th>
-        <th>Minimumvoorraad</th>
-        <th>Voorraad</th>
-        <th>Code vervangend artikel</th>
         <th>Bestelserie</th>
-        <th>Inkoopprijs</th>
-        <th>Artikel bestellen:</th>
+        <th>Artikel bestellen</th>
        </tr>
     </thead>
     <tbody>
@@ -34,12 +29,7 @@
       <tr>
         <td>{{ artikel.artikelnummer }}</td>
         <td>{{ artikel.omschrijving }}</td>
-        <td>{{ artikel.technischespecificaties }}</td>
-        <td>{{ artikel.minimumvoorraad }}</td>
-        <td>{{ artikel.voorraadaantal }}</td>
-        <td>{{ artikel.codevervangendartikel }}</td>
         <td>{{ artikel.bestelserie }}</td>
-        <td>{{ artikel.inkoopprijs }}</td>
         <td><a href="{{ path('inkoperbestelorder',{'artikelnummer':artikel.artikelnummer}) }}">Bestellen</a></td></td>
       </tr>
     </tbody>
