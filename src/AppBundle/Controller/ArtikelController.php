@@ -12,10 +12,13 @@ use AppBundle\Form\ArtikelInkoperType;
 use AppBundle\Form\ArtikelMagazijnmeesterType;
 use AppBundle\Entity\Bestelorder;
 use AppBundle\Form\BestelorderType;
+use Symfony\Component\HttpFoundation\Session\Session;
+
 //use Symfony\Component\HttpFoundation\Response;
 
 class ArtikelController extends Controller
 {
+
     /**
      * @Route("/", name="homepage")
      */
@@ -36,6 +39,17 @@ class ArtikelController extends Controller
 
         $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
         return new Response($this->renderView('alle_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
+    }
+
+    //ROL: inkoper
+        //Hier wordt een overzicht van alle te bestellen artikelen aangeroepen
+    /**
+     * @Route("/inkoper/alletebestellenartikelen", name="inkoperalletebestellenartikelen")
+     */
+    public function inkoperAlletebestellenartikelen(Request $request) {
+
+        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+        return new Response($this->renderView('alle_tebestellen_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
     }
 
     //ROL: magazijnmeester
@@ -105,12 +119,12 @@ class ArtikelController extends Controller
     public function inkoperWijzigartikel(Request $request, $artikelnummer) {
         $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
         $form = $this->createForm(ArtikelInkoperType::class, $bestaandArtikel);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             if ($bestaandArtikel->getVoorraadaantal() > $bestaandArtikel->getMinimumvoorraad()) {
                 $bestaandArtikel->setBestelserie(0);
+
             }else {
                 $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVoorraadaantal());
             }
@@ -135,6 +149,7 @@ class ArtikelController extends Controller
             $em = $this->getDoctrine()->getManager();
             if ($bestaandArtikel->getVoorraadaantal() > $bestaandArtikel->getMinimumvoorraad()) {
                 $bestaandArtikel->setBestelserie(0);
+
             }else {
                 $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVoorraadaantal());
             }
@@ -145,7 +160,7 @@ class ArtikelController extends Controller
         return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
     }
 
-//De inkoper kan via onderstaande functie een nieuwe bestelserie toevoegen. 
+//De inkoper kan via onderstaande functie een nieuwe bestelserie toevoegen.
 
     /**
      * @Route("/inkoper/bestelorder", name="inkoperbestelorder")
@@ -165,5 +180,6 @@ class ArtikelController extends Controller
         }
         return new Response($this->render('nieuw_bestelorder.html.twig', array('form' => $form->createView())));
     }
+
 }
 ?>
