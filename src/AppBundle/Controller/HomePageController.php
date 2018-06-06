@@ -36,7 +36,8 @@ class HomePageController extends Controller
      */
     public function loadInkoperHomePage(Request $request) {
 
-        return $this->render('frontpageinkoper.html.twig');
+      $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+      return new Response($this->renderView('frontpageinkoper.html.twig', array('artikelen' => $artikelen)));
     }
 
 
@@ -54,7 +55,7 @@ class HomePageController extends Controller
      */
     public function loadAdministratorHomePage(Request $request) {
 
-        return $this->render('frontpageadministrator.html.twig');   
+        return $this->render('frontpageadministrator.html.twig');
     }
 }
 ?>

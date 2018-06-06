@@ -111,9 +111,10 @@ class Artikel
      */
     private $vrijevoorraad;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Ontvangstregel", mappedBy="artikel")
-     */
+     /**
+      * @ORM\OneToMany(targetEntity="Ontvangstregel", mappedBy="artikel")
+      * @ORM\OneToMany(targetEntity="Bestelregel", mappedBy="artikel")
+      */
     private $artikelen;
 
     /**

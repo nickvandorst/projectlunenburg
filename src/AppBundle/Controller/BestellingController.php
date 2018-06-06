@@ -43,7 +43,9 @@ class BestellingController extends Controller
     public function inkoperAllebestelorders(Request $request) {
 
         $bestelorders = $this->getDoctrine()->getRepository("AppBundle:Bestelorder")->findAll();
-        return new Response($this->renderView('alle_bestelorders.html.twig', array('bestelorders' => $bestelorders)));
+        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+        $bestelregels = $this->getDoctrine()->getRepository("AppBundle:Bestelregel")->findAll();
+        return new Response($this->renderView('bestelopdracht.html.twig', array('bestelorders' => $bestelorders, 'artikelen' => $artikelen, 'bestelregels' => $bestelregels)));
     }
 }
 ?>
