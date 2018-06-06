@@ -49,12 +49,20 @@ class HomePageController extends Controller
 
         return $this->render('frontpagemagazijnmeester.html.twig');
     }
-       /**
-     * @Route("administrator/home", name="administratorhome")
-     */
+    /**
+    * @Route("administrator/home", name="administratorhome")
+    */
     public function loadAdministratorHomePage(Request $request) {
 
-        return $this->render('frontpageadministrator.html.twig');   
+        return $this->render('frontpageadministrator.html.twig');
+    }
+
+    /**
+     * @Route("verkoper/home", name="verkoperhome")
+     */
+    public function loadVerkoperHomePage(Request $request) {
+
+        return $this->render('frontpageverkoper.html.twig');
     }
 }
 ?>

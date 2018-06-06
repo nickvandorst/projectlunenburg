@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class ArtikelMagazijnmeesterType extends AbstractType
+class ArtikelVerkoperType extends AbstractType
 {
     //Het formulier voor het wijzigen van artikelen wordt in deze klasse gegenereerd
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -22,10 +22,7 @@ class ArtikelMagazijnmeesterType extends AbstractType
             ->add('omschrijving', TextType::class, array('disabled' => true))
         ;
         $builder
-            ->add('magazijnlocatie', TextType::class)
-        ;
-        $builder
-            ->add('technischevoorraad', IntegerType::class)
+            ->add('gereserveerdevoorraad', IntegerType::class)
         ;
     }
 

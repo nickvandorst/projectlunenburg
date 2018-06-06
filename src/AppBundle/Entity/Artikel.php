@@ -133,7 +133,7 @@ class Artikel
     /**
      * @var int
      *
-     * @ORM\Column(name="gereserveerde voorraad", type="integer")
+     * @ORM\Column(name="gereserveerdevoorraad", type="integer")
      */
     private $gereserveerdevoorraad;
 

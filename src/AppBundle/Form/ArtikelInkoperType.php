@@ -38,8 +38,10 @@ class ArtikelInkoperType extends AbstractType
             ->add('technischespecificaties', TextType::class, array('required'=>false))
         ;
         $builder
-            ->add('voorraadaantal', TextType::class)
-
+            ->add('technischevoorraad', TextType::class)
+        ;
+        $builder
+            ->add('gereserveerdevoorraad', TextType::class)
         ;
         $builder
             ->add('inassortiment', ChoiceType::class, array(
