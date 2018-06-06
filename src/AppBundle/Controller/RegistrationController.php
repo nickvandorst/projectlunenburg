@@ -15,11 +15,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class RegistrationController extends Controller
 {
     /**
-     * @Route("/register", name="user_registration")
+     * @Route("/registeren", name="user_registration")
      */
     public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -43,10 +44,18 @@ class RegistrationController extends Controller
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('allegebruikers');
         }
 
         return $this->render(
             'registration/register.html.twig', array('form' => $form->createView()) );
     }
+    /**
+     * @Route("administrator/alle/gebruikers", name="allegebruikers")
+     */
+     public function AlleGebruikers(Request $request) {
+      $gebruikers = $this->getDoctrine()->getRepository("AppBundle:User")->findAll();
+        
+        return new Response($this->render('alle_gebruikers.html.twig', array('gebruikers' => $gebruikers)));
+            }
 }

@@ -39,6 +39,12 @@ class User implements UserInterface, \Serializable
     private $email;
 
     /**
+     * @ORM\Column(type="string", length=50, unique=false)
+     * @Assert\NotBlank()
+     */
+    private $lastname;
+
+    /**
      * @ORM\Column(type="string", length=50, unique=true)
      * @Assert\NotBlank()
      */
@@ -87,6 +93,16 @@ class User implements UserInterface, \Serializable
     public function setUsername($username)
     {
         $this->username = $username;
+    }
+
+        public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
     }
 
     public function getPlainPassword()

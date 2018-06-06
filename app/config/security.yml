@@ -45,6 +45,4 @@ security:
         - { path: '^/magazijnmeester/*', roles: [ROLE_MAGAZIJNMEESTER] }
         # require ROLE_ADMIN for /admin*
         - { path: '^/administrator/*', roles: [ROLE_ADMINISTRATOR] }
-        - { path: '/logout', roles: [IS_AUTHENTICATED_ANONYMOUSLY] }
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         #- { path: ^/, roles: ROLE_ADMIN }

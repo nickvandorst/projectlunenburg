@@ -16,14 +16,16 @@
     <thead>
       <tr>
         <th>Gebruikersnaam</th>
-        <th>Functie</th>
+        <th>Achternaam</th>
+        <th>Emailadres</th>
       </tr>
     </thead>
     <tbody>
-     {% for gebruiker in gebruikers %}
+     {% for user in gebruikers %}
       <tr>
-        <td>{{ gebruiker.gebruikersnaam }}</td>
-        <td>{{ gebruiker.functie }}</td>
+        <td>{{ user.username}}</td>
+        <td>{{ user.lastname }}</td>
+        <td>{{ user.email }}</td>
       </tr>
     </tbody>
     {% endfor %}
