@@ -1,5 +1,4 @@
 <?php
-
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
@@ -10,28 +9,35 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 //vul aan als je andere invoerveld-typen wilt gebruiken in je formulier
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
-class BestelorderType extends AbstractType
+
+//EntiteitType vervangen door b.v. GoederenontvangstType
+class BestelregelType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
-            ->add('naamleverancier', TextType::class)
+          ->add('Artikelnummer', TextType::class)
         ;
+
         $builder
-            ->add('bestelordernummer', IntegerType::class)
+            ->add('Hoeveelheid', IntegerType::class)
         ;
+
+        $builder
+            ->add('Bestelregelid', IntegerType::class)
+        ;
+
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Bestelorder',  //Entiteit vervangen door b.v. product
-        ));
-    }
-
+	public function configureOptions(OptionsResolver $resolver)
+	{
+		$resolver->setDefaults(array(
+			'data_class' => 'AppBundle\Entity\Bestelregel',
+		));
+	}
 }
+
 ?>
