@@ -1,9 +1,9 @@
 {
-    "Version": "2.1.39.11",
+    "Version": "2.1.31.86",
     "Names": {
         "Arab": "arabisk",
         "Armn": "armenskt",
-        "Beng": "bangla",
+        "Beng": "bengali",
         "Bopo": "bopomofo",
         "Brai": "blindaskrift",
         "Cyrl": "kyrilliskt",
@@ -32,7 +32,7 @@
         "Mlym": "malayalam",
         "Mong": "mongolsk",
         "Mymr": "myanmarskt",
-        "Orya": "odia",
+        "Orya": "oriya",
         "Sinh": "sinhala",
         "Taml": "tamilskt",
         "Telu": "telugu",

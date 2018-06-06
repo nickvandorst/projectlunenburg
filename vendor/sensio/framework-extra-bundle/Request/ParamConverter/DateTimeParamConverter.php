@@ -1,12 +1,12 @@
 <?php
 
 /*
- * This file is part of the Symfony package.
+ * This file is part of the Symfony framework.
  *
  * (c) Fabien Potencier <fabien@symfony.com>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter;
@@ -40,18 +40,11 @@ class DateTimeParamConverter implements ParamConverterInterface
         $value = $request->attributes->get($param);
 
         if (!$value && $configuration->isOptional()) {
-            $request->attributes->set($param, null);
-            return true;
+            return false;
         }
 
-        $class = $configuration->getClass();
-
         if (isset($options['format'])) {
-            $date = $class::createFromFormat($options['format'], $value);
-
-            if (0 < DateTime::getLastErrors()['warning_count']) {
-                $date = false;
-            }
+            $date = DateTime::createFromFormat($options['format'], $value);
 
             if (!$date) {
                 throw new NotFoundHttpException(sprintf('Invalid date given for parameter "%s".', $param));
@@ -61,7 +54,7 @@ class DateTimeParamConverter implements ParamConverterInterface
                 throw new NotFoundHttpException(sprintf('Invalid date given for parameter "%s".', $param));
             }
 
-            $date = new $class($value);
+            $date = new DateTime($value);
         }
 
         $request->attributes->set($param, $date);
@@ -78,6 +71,6 @@ class DateTimeParamConverter implements ParamConverterInterface
             return false;
         }
 
-        return 'DateTime' === $configuration->getClass() || is_subclass_of($configuration->getClass(), PHP_VERSION_ID < 50500 ? 'DateTime' : 'DateTimeInterface');
+        return 'DateTime' === $configuration->getClass();
     }
 }

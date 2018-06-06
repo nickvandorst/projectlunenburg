@@ -1,5 +1,5 @@
 {
-    "Version": "2.1.39.20",
+    "Version": "2.1.32.59",
     "Names": {
         "ADP": [
             "ADP",
@@ -224,10 +224,6 @@
         "CLP": [
             "CLP",
             "chilei peso"
-        ],
-        "CNH": [
-            "CNH",
-            "kínai jüan (offshore)"
         ],
         "CNY": [
             "CNY",
@@ -615,10 +611,6 @@
         ],
         "MRO": [
             "MRO",
-            "mauritániai ouguiya (1973–2017)"
-        ],
-        "MRU": [
-            "MRU",
             "mauritániai ouguiya"
         ],
         "MTL": [
@@ -847,10 +839,6 @@
         ],
         "STD": [
             "STD",
-            "São Tomé és Príncipe-i dobra (1977–2017)"
-        ],
-        "STN": [
-            "STN",
             "São Tomé és Príncipe-i dobra"
         ],
         "SUR": [

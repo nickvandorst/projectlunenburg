@@ -22,7 +22,6 @@ class ValidatorExtensionTest extends TestCase
             ->disableOriginalConstructor()
             ->getMock();
         $metadata = $this->getMockBuilder('Symfony\Component\Validator\Mapping\ClassMetadata')
-            ->setMethods(array('addConstraint', 'addPropertyConstraint'))
             ->disableOriginalConstructor()
             ->getMock();
 

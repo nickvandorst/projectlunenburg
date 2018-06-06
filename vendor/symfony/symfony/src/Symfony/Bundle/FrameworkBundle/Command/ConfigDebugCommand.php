@@ -23,19 +23,16 @@ use Symfony\Component\Yaml\Yaml;
  * A console command for dumping available configuration reference.
  *
  * @author Grégoire Pineau <lyrixx@lyrixx.info>
- *
- * @final since version 3.4
  */
 class ConfigDebugCommand extends AbstractConfigCommand
 {
-    protected static $defaultName = 'debug:config';
-
     /**
      * {@inheritdoc}
      */
     protected function configure()
     {
         $this
+            ->setName('debug:config')
             ->setDefinition(array(
                 new InputArgument('name', InputArgument::OPTIONAL, 'The bundle name or the extension alias'),
                 new InputArgument('path', InputArgument::OPTIONAL, 'The configuration option path'),
@@ -65,12 +62,11 @@ EOF
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
-        $errorIo = $io->getErrorStyle();
 
         if (null === $name = $input->getArgument('name')) {
-            $this->listBundles($errorIo);
-            $errorIo->comment('Provide the name of a bundle as the first argument of this command to dump its configuration. (e.g. <comment>debug:config FrameworkBundle</comment>)');
-            $errorIo->comment('For dumping a specific option, add its path as the second argument of this command. (e.g. <comment>debug:config FrameworkBundle serializer</comment> to dump the <comment>framework.serializer</comment> configuration)');
+            $this->listBundles($io);
+            $io->comment('Provide the name of a bundle as the first argument of this command to dump its configuration. (e.g. <comment>debug:config FrameworkBundle</comment>)');
+            $io->comment('For dumping a specific option, add its path as the second argument of this command. (e.g. <comment>debug:config FrameworkBundle serializer</comment> to dump the <comment>framework.serializer</comment> configuration)');
 
             return;
         }
@@ -102,7 +98,7 @@ EOF
         try {
             $config = $this->getConfigForPath($config, $path, $extensionAlias);
         } catch (LogicException $e) {
-            $errorIo->error($e->getMessage());
+            $io->error($e->getMessage());
 
             return;
         }
@@ -114,7 +110,7 @@ EOF
 
     private function compileContainer()
     {
-        $kernel = clone $this->getApplication()->getKernel();
+        $kernel = clone $this->getContainer()->get('kernel');
         $kernel->boot();
 
         $method = new \ReflectionMethod($kernel, 'buildContainer');

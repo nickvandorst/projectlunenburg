@@ -42,6 +42,11 @@ class TwigExtractor extends AbstractFileExtractor implements ExtractorInterface
      */
     private $prefix = '';
 
+    /**
+     * The twig environment.
+     *
+     * @var Environment
+     */
     private $twig;
 
     public function __construct(Environment $twig)
@@ -54,7 +59,8 @@ class TwigExtractor extends AbstractFileExtractor implements ExtractorInterface
      */
     public function extract($resource, MessageCatalogue $catalogue)
     {
-        foreach ($this->extractFiles($resource) as $file) {
+        $files = $this->extractFiles($resource);
+        foreach ($files as $file) {
             try {
                 $this->extractTemplate(file_get_contents($file->getPathname()), $catalogue);
             } catch (Error $e) {

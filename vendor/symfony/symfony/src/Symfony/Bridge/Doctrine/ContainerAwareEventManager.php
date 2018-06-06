@@ -13,7 +13,7 @@ namespace Symfony\Bridge\Doctrine;
 
 use Doctrine\Common\EventArgs;
 use Doctrine\Common\EventManager;
-use Psr\Container\ContainerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Allows lazy loading of listener services.
@@ -26,6 +26,8 @@ class ContainerAwareEventManager extends EventManager
      * Map of registered listeners.
      *
      * <event> => <listeners>
+     *
+     * @var array
      */
     private $listeners = array();
     private $initialized = array();

@@ -11,7 +11,6 @@
 
 namespace Symfony\Bundle\FrameworkBundle\Command;
 
-use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -21,12 +20,13 @@ use Symfony\Component\Workflow\Marking;
 
 /**
  * @author Grégoire Pineau <lyrixx@lyrixx.info>
- *
- * @final since version 3.4
  */
 class WorkflowDumpCommand extends ContainerAwareCommand
 {
-    protected static $defaultName = 'workflow:dump';
+    public function isEnabled()
+    {
+        return $this->getContainer()->has('workflow.registry');
+    }
 
     /**
      * {@inheritdoc}
@@ -34,6 +34,7 @@ class WorkflowDumpCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
+            ->setName('workflow:dump')
             ->setDefinition(array(
                 new InputArgument('name', InputArgument::REQUIRED, 'A workflow name'),
                 new InputArgument('marking', InputArgument::IS_ARRAY, 'A marking (a list of places)'),
@@ -55,7 +56,7 @@ EOF
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $container = $this->getApplication()->getKernel()->getContainer();
+        $container = $this->getContainer();
         $serviceId = $input->getArgument('name');
         if ($container->has('workflow.'.$serviceId)) {
             $workflow = $container->get('workflow.'.$serviceId);
@@ -64,7 +65,7 @@ EOF
             $workflow = $container->get('state_machine.'.$serviceId);
             $dumper = new StateMachineGraphvizDumper();
         } else {
-            throw new InvalidArgumentException(sprintf('No service found for "workflow.%1$s" nor "state_machine.%1$s".', $serviceId));
+            throw new \InvalidArgumentException(sprintf('No service found for "workflow.%1$s" nor "state_machine.%1$s".', $serviceId));
         }
 
         $marking = new Marking();

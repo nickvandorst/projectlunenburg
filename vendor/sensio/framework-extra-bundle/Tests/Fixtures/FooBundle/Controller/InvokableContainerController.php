@@ -1,12 +1,12 @@
 <?php
 
 /*
- * This file is part of the Symfony package.
+ * This file is part of the Symfony framework.
  *
  * (c) Fabien Potencier <fabien@symfony.com>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Tests\Fixtures\FooBundle\Controller;
@@ -27,35 +27,35 @@ class InvokableContainerController extends Controller
 
     /**
      * @Route("/invokable/another-variable/container/{variable}/")
-     * @Template("@Foo/invokable_container/variable.html.twig")
+     * @Template("FooBundle:InvokableContainer:variable.html.twig")
      */
     public function anotherVariableAction($variable)
     {
-        return [
+        return array(
             'variable' => $variable,
-        ];
+        );
     }
 
     /**
      * @Route("/invokable/variable/container/{variable}/{another_variable}/")
-     * @Template("@Foo/invokable_container/another_variable.html.twig")
+     * @Template("FooBundle:InvokableContainer:another_variable.html.twig")
      */
     public function doubleVariableAction($variable, $another_variable)
     {
-        return [
+        return array(
             'variable' => $variable,
             'another_variable' => $another_variable,
-        ];
+        );
     }
 
     /**
      * @Route("/invokable/predefined/container/")
-     * @Template("@Foo/invokable/predefined.html.twig")
+     * @Template("FooBundle:Invokable:predefined.html.twig")
      */
     public function __invoke()
     {
-        return [
+        return array(
             'foo' => 'bar',
-        ];
+        );
     }
 }

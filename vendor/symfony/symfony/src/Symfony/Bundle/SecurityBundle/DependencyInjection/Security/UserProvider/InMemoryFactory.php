@@ -12,9 +12,9 @@
 namespace Symfony\Bundle\SecurityBundle\DependencyInjection\Security\UserProvider;
 
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
-use Symfony\Component\DependencyInjection\ChildDefinition;
+use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Parameter;
+use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * InMemoryFactory creates services for the memory provider.
@@ -26,15 +26,18 @@ class InMemoryFactory implements UserProviderFactoryInterface
 {
     public function create(ContainerBuilder $container, $id, $config)
     {
-        $definition = $container->setDefinition($id, new ChildDefinition('security.user.provider.in_memory'));
-        $defaultPassword = new Parameter('container.build_id');
-        $users = array();
+        $definition = $container->setDefinition($id, new DefinitionDecorator('security.user.provider.in_memory'));
 
         foreach ($config['users'] as $username => $user) {
-            $users[$username] = array('password' => null !== $user['password'] ? (string) $user['password'] : $defaultPassword, 'roles' => $user['roles']);
-        }
+            $userId = $id.'_'.$username;
 
-        $definition->addArgument($users);
+            $container
+                ->setDefinition($userId, new DefinitionDecorator('security.user.provider.in_memory.user'))
+                ->setArguments(array($username, (string) $user['password'], $user['roles']))
+            ;
+
+            $definition->addMethodCall('createUser', array(new Reference($userId)));
+        }
     }
 
     public function getKey()
@@ -49,10 +52,9 @@ class InMemoryFactory implements UserProviderFactoryInterface
             ->children()
                 ->arrayNode('users')
                     ->useAttributeAsKey('name')
-                    ->normalizeKeys(false)
                     ->prototype('array')
                         ->children()
-                            ->scalarNode('password')->defaultNull()->end()
+                            ->scalarNode('password')->defaultValue(uniqid('', true))->end()
                             ->arrayNode('roles')
                                 ->beforeNormalization()->ifString()->then(function ($v) { return preg_split('/\s*,\s*/', $v); })->end()
                                 ->prototype('scalar')->end()

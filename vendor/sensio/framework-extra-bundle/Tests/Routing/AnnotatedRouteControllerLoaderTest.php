@@ -16,12 +16,12 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Routing\AnnotatedRouteControllerLoader;
 
-class AnnotatedRouteControllerLoaderTest extends \PHPUnit\Framework\TestCase
+class AnnotatedRouteControllerLoaderTest extends \PHPUnit_Framework_TestCase
 {
     public function testServiceOptionIsAllowedOnClass()
     {
         $route = $this->getMockBuilder('Symfony\Component\Routing\Route')
-            ->setMethods(['setDefault'])
+            ->setMethods(array('setDefault'))
             ->disableOriginalConstructor()
             ->getMock()
         ;
@@ -32,11 +32,11 @@ class AnnotatedRouteControllerLoaderTest extends \PHPUnit\Framework\TestCase
             ->with('_controller', 'service:testServiceOptionIsAllowedOnClass')
         ;
 
-        $annotation = new Route([]);
+        $annotation = new Route(array());
         $annotation->setService('service');
 
         $reader = $this->getMockBuilder('Doctrine\Common\Annotations\Reader')
-            ->setMethods(['getClassAnnotation', 'getMethodAnnotations'])
+            ->setMethods(array('getClassAnnotation', 'getMethodAnnotations'))
             ->disableOriginalConstructor()
             ->getMockForAbstractClass()
         ;
@@ -50,17 +50,24 @@ class AnnotatedRouteControllerLoaderTest extends \PHPUnit\Framework\TestCase
         $reader
             ->expects($this->once())
             ->method('getMethodAnnotations')
-            ->will($this->returnValue([]))
+            ->will($this->returnValue(array()))
         ;
 
         $loader = $this->getMockBuilder('Sensio\Bundle\FrameworkExtraBundle\Routing\AnnotatedRouteControllerLoader')
-            ->setConstructorArgs([$reader])
+            ->setConstructorArgs(array($reader))
             ->getMock()
         ;
 
         $r = new \ReflectionMethod($loader, 'configureRoute');
         $r->setAccessible(true);
-        $r->invoke($loader, $route, new \ReflectionClass($this), new \ReflectionMethod($this, 'testServiceOptionIsAllowedOnClass'), null);
+
+        $r->invoke(
+            $loader,
+            $route,
+            new \ReflectionClass($this),
+            new \ReflectionMethod($this, 'testServiceOptionIsAllowedOnClass'),
+            null
+        );
     }
 
     /**
@@ -75,12 +82,12 @@ class AnnotatedRouteControllerLoaderTest extends \PHPUnit\Framework\TestCase
         ;
 
         $reader = $this->getMockBuilder('Doctrine\Common\Annotations\Reader')
-            ->setMethods(['getClassAnnotation', 'getMethodAnnotations'])
+            ->setMethods(array('getClassAnnotation', 'getMethodAnnotations'))
             ->disableOriginalConstructor()
             ->getMockForAbstractClass()
         ;
 
-        $annotation = new Route([]);
+        $annotation = new Route(array());
         $annotation->setService('service');
 
         $reader
@@ -92,17 +99,24 @@ class AnnotatedRouteControllerLoaderTest extends \PHPUnit\Framework\TestCase
         $reader
             ->expects($this->once())
             ->method('getMethodAnnotations')
-            ->will($this->returnValue([$annotation]))
+            ->will($this->returnValue(array($annotation)))
         ;
 
         $loader = $this->getMockBuilder('Sensio\Bundle\FrameworkExtraBundle\Routing\AnnotatedRouteControllerLoader')
-            ->setConstructorArgs([$reader])
+            ->setConstructorArgs(array($reader))
             ->getMock()
         ;
 
         $r = new \ReflectionMethod($loader, 'configureRoute');
         $r->setAccessible(true);
-        $r->invoke($loader, $route, new \ReflectionClass($this), new \ReflectionMethod($this, 'testServiceOptionIsNotAllowedOnMethod'), null);
+
+        $r->invoke(
+            $loader,
+            $route,
+            new \ReflectionClass($this),
+            new \ReflectionMethod($this, 'testServiceOptionIsNotAllowedOnMethod'),
+            null
+        );
     }
 
     public function testLoad()
@@ -113,36 +127,15 @@ class AnnotatedRouteControllerLoaderTest extends \PHPUnit\Framework\TestCase
         $rc = $loader->load('Sensio\Bundle\FrameworkExtraBundle\Tests\Routing\Fixtures\FoobarController');
 
         $this->assertInstanceOf('Symfony\Component\Routing\RouteCollection', $rc);
-        $this->assertCount(3, $rc);
+        $this->assertCount(2, $rc);
 
         $this->assertInstanceOf('Symfony\Component\Routing\Route', $rc->get('index'));
         // depending on the Symfony version, it can return GET or an empty array (on 2.3)
         // which has the same behavior anyway
         $methods = $rc->get('index')->getMethods();
-        $this->assertTrue(empty($methods) || ['GET'] == $methods);
+        $this->assertTrue(empty($methods) || array('GET') == $methods);
 
         $this->assertInstanceOf('Symfony\Component\Routing\Route', $rc->get('new'));
-        $this->assertEquals(['POST'], $rc->get('new')->getMethods());
-
-        $noNameRoute = $rc->get('sensio_frameworkextra_tests_routing_fixtures_foobar_noname');
-        $this->assertInstanceOf('Symfony\Component\Routing\Route', $noNameRoute);
-        $methods = $noNameRoute->getMethods();
-        $this->assertTrue(empty($methods) || ['GET'] == $methods);
-    }
-
-    public function testInvokableControllerLoad()
-    {
-        $loader = new AnnotatedRouteControllerLoader(new AnnotationReader());
-        AnnotationRegistry::registerLoader('class_exists');
-
-        $rc = $loader->load('Sensio\Bundle\FrameworkExtraBundle\Tests\Routing\Fixtures\InvokableController');
-
-        $this->assertInstanceOf('Symfony\Component\Routing\RouteCollection', $rc);
-        $this->assertCount(1, $rc);
-
-        $route = $rc->get('index');
-
-        $this->assertInstanceOf('Symfony\Component\Routing\Route', $route);
-        $this->assertSame(['_controller' => 'Sensio\Bundle\FrameworkExtraBundle\Tests\Routing\Fixtures\InvokableController'], $route->getDefaults());
+        $this->assertEquals(array('POST'), $rc->get('new')->getMethods());
     }
 }

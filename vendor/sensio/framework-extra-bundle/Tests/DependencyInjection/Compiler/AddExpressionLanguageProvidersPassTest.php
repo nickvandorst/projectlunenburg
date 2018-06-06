@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
-class AddExpressionLanguageProvidersPassTest extends \PHPUnit\Framework\TestCase
+class AddExpressionLanguageProvidersPassTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var AddExpressionLanguageProvidersPass
@@ -56,11 +56,11 @@ class AddExpressionLanguageProvidersPassTest extends \PHPUnit\Framework\TestCase
     public function testProcessAddsTaggedServices()
     {
         $provider = new Definition();
-        $provider->setTags([
-            'security.expression_language_provider' => [
-                [],
-            ],
-        ]);
+        $provider->setTags(array(
+            'security.expression_language_provider' => array(
+                array(),
+            ),
+        ));
 
         $this->container->setDefinition('provider', $provider);
 
@@ -68,6 +68,6 @@ class AddExpressionLanguageProvidersPassTest extends \PHPUnit\Framework\TestCase
 
         $methodCalls = $this->expressionLangDefinition->getMethodCalls();
         $this->assertCount(1, $methodCalls);
-        $this->assertEquals(['registerProvider', [new Reference('provider')]], $methodCalls[0]);
+        $this->assertEquals(array('registerProvider', array(new Reference('provider'))), $methodCalls[0]);
     }
 }

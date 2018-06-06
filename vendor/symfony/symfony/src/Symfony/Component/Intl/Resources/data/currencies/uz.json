@@ -1,5 +1,5 @@
 {
-    "Version": "2.1.39.11",
+    "Version": "2.1.32.60",
     "Names": {
         "AED": [
             "AED",
@@ -120,10 +120,6 @@
         "CLP": [
             "CLP",
             "Chili pesosi"
-        ],
-        "CNH": [
-            "CNH",
-            "CNH"
         ],
         "CNY": [
             "CN¥",
@@ -375,10 +371,6 @@
         ],
         "MRO": [
             "MRO",
-            "Mavritaniya uqiyasi (1973–2017)"
-        ],
-        "MRU": [
-            "MRU",
             "Mavritaniya uqiyasi"
         ],
         "MUR": [
@@ -527,10 +519,6 @@
         ],
         "STD": [
             "STD",
-            "San-Tome va Prinsipi dobrasi (1977–2017)"
-        ],
-        "STN": [
-            "STN",
             "San-Tome va Prinsipi dobrasi"
         ],
         "SYP": [

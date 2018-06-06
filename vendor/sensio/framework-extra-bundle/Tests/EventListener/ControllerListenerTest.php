@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
-class ControllerListenerTest extends \PHPUnit\Framework\TestCase
+class ControllerListenerTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
@@ -45,7 +45,7 @@ class ControllerListenerTest extends \PHPUnit\Framework\TestCase
     {
         $controller = new FooControllerCacheAtMethod();
 
-        $this->event = $this->getFilterControllerEvent([$controller, 'barAction'], $this->request);
+        $this->event = $this->getFilterControllerEvent(array($controller, 'barAction'), $this->request);
         $this->listener->onKernelController($this->event);
 
         $this->assertNotNull($this->getReadedCache());
@@ -55,7 +55,7 @@ class ControllerListenerTest extends \PHPUnit\Framework\TestCase
     public function testCacheAnnotationAtClass()
     {
         $controller = new FooControllerCacheAtClass();
-        $this->event = $this->getFilterControllerEvent([$controller, 'barAction'], $this->request);
+        $this->event = $this->getFilterControllerEvent(array($controller, 'barAction'), $this->request);
         $this->listener->onKernelController($this->event);
 
         $this->assertNotNull($this->getReadedCache());
@@ -65,13 +65,13 @@ class ControllerListenerTest extends \PHPUnit\Framework\TestCase
     public function testCacheAnnotationAtClassAndMethod()
     {
         $controller = new FooControllerCacheAtClassAndMethod();
-        $this->event = $this->getFilterControllerEvent([$controller, 'barAction'], $this->request);
+        $this->event = $this->getFilterControllerEvent(array($controller, 'barAction'), $this->request);
         $this->listener->onKernelController($this->event);
 
         $this->assertNotNull($this->getReadedCache());
         $this->assertEquals(FooControllerCacheAtClassAndMethod::METHOD_SMAXAGE, $this->getReadedCache()->getSMaxAge());
 
-        $this->event = $this->getFilterControllerEvent([$controller, 'bar2Action'], $this->request);
+        $this->event = $this->getFilterControllerEvent(array($controller, 'bar2Action'), $this->request);
         $this->listener->onKernelController($this->event);
 
         $this->assertNotNull($this->getReadedCache());
@@ -85,7 +85,7 @@ class ControllerListenerTest extends \PHPUnit\Framework\TestCase
     public function testMultipleAnnotationsOnClassThrowsExceptionUnlessConfigurationAllowsArray()
     {
         $controller = new FooControllerMultipleCacheAtClass();
-        $this->event = $this->getFilterControllerEvent([$controller, 'barAction'], $this->request);
+        $this->event = $this->getFilterControllerEvent(array($controller, 'barAction'), $this->request);
         $this->listener->onKernelController($this->event);
     }
 
@@ -96,15 +96,15 @@ class ControllerListenerTest extends \PHPUnit\Framework\TestCase
     public function testMultipleAnnotationsOnMethodThrowsExceptionUnlessConfigurationAllowsArray()
     {
         $controller = new FooControllerMultipleCacheAtMethod();
-        $this->event = $this->getFilterControllerEvent([$controller, 'barAction'], $this->request);
+        $this->event = $this->getFilterControllerEvent(array($controller, 'barAction'), $this->request);
         $this->listener->onKernelController($this->event);
     }
 
     public function testMultipleParamConverterAnnotationsOnMethod()
     {
-        $paramConverter = new \Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter([]);
+        $paramConverter = new \Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter(array());
         $controller = new FooControllerParamConverterAtClassAndMethod();
-        $this->event = $this->getFilterControllerEvent([$controller, 'barAction'], $this->request);
+        $this->event = $this->getFilterControllerEvent(array($controller, 'barAction'), $this->request);
         $this->listener->onKernelController($this->event);
 
         $annotations = $this->request->attributes->get('_converters');
@@ -120,21 +120,21 @@ class ControllerListenerTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(2, count($annotations));
     }
 
-    private function createRequest(Cache $cache = null)
+    protected function createRequest(Cache $cache = null)
     {
-        return new Request([], [], [
+        return new Request(array(), array(), array(
             '_cache' => $cache,
-        ]);
+        ));
     }
 
-    private function getFilterControllerEvent($controller, Request $request)
+    protected function getFilterControllerEvent($controller, Request $request)
     {
-        $mockKernel = $this->getMockForAbstractClass('Symfony\Component\HttpKernel\Kernel', ['', '']);
+        $mockKernel = $this->getMockForAbstractClass('Symfony\Component\HttpKernel\Kernel', array('', ''));
 
         return new FilterControllerEvent($mockKernel, $controller, $request, HttpKernelInterface::MASTER_REQUEST);
     }
 
-    private function getReadedCache()
+    protected function getReadedCache()
     {
         return $this->request->attributes->get('_cache');
     }

@@ -1,5 +1,5 @@
 {
-    "Version": "2.1.39.11",
+    "Version": "2.1.32.59",
     "Names": {
         "ADP": [
             "ADP",
@@ -224,10 +224,6 @@
         "CLP": [
             "CLP",
             "Çili Pesosu"
-        ],
-        "CNH": [
-            "CNH",
-            "Çin Yuanı (ofşor)"
         ],
         "CNY": [
             "CN¥",
@@ -619,10 +615,6 @@
         ],
         "MRO": [
             "MRO",
-            "Mavritaniya Ugiyası (1973–2017)"
-        ],
-        "MRU": [
-            "MRU",
             "Mavritaniya Ugiyası"
         ],
         "MTP": [
@@ -831,10 +823,6 @@
         ],
         "STD": [
             "STD",
-            "San Tom və Prinsip Dobrası (1977–2017)"
-        ],
-        "STN": [
-            "STN",
             "San Tom və Prinsip Dobrası"
         ],
         "SUR": [

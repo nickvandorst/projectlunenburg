@@ -1,5 +1,5 @@
 {
-    "Version": "2.1.39.11",
+    "Version": "2.1.31.86",
     "Names": {
         "ADP": [
             "ADP",
@@ -240,10 +240,6 @@
         "CLP": [
             "CLP",
             "Čileanski pezos"
-        ],
-        "CNH": [
-            "CNH",
-            "Kineski juan (izvanteritorijalni)"
         ],
         "CNY": [
             "CNY",
@@ -647,10 +643,6 @@
         ],
         "MRO": [
             "MRO",
-            "Mauritanijska ugvija (1973–2017)"
-        ],
-        "MRU": [
-            "MRU",
             "Mauritanijska ugvija"
         ],
         "MTL": [
@@ -879,10 +871,6 @@
         ],
         "STD": [
             "STD",
-            "Dobra Sao Toma i Principa (1977–2017)"
-        ],
-        "STN": [
-            "STN",
             "Dobra Sao Toma i Principa"
         ],
         "SUR": [

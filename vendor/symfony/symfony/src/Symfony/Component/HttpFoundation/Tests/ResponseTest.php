@@ -610,12 +610,6 @@ class ResponseTest extends ResponseTestCase
         $response->setCache(array('private' => false));
         $this->assertTrue($response->headers->hasCacheControlDirective('public'));
         $this->assertFalse($response->headers->hasCacheControlDirective('private'));
-
-        $response->setCache(array('immutable' => true));
-        $this->assertTrue($response->headers->hasCacheControlDirective('immutable'));
-
-        $response->setCache(array('immutable' => false));
-        $this->assertFalse($response->headers->hasCacheControlDirective('immutable'));
     }
 
     public function testSendContent()
@@ -635,22 +629,6 @@ class ResponseTest extends ResponseTestCase
 
         $this->assertTrue($response->headers->hasCacheControlDirective('public'));
         $this->assertFalse($response->headers->hasCacheControlDirective('private'));
-    }
-
-    public function testSetImmutable()
-    {
-        $response = new Response();
-        $response->setImmutable();
-
-        $this->assertTrue($response->headers->hasCacheControlDirective('immutable'));
-    }
-
-    public function testIsImmutable()
-    {
-        $response = new Response();
-        $response->setImmutable();
-
-        $this->assertTrue($response->isImmutable());
     }
 
     public function testSetExpires()
@@ -877,6 +855,19 @@ class ResponseTest extends ResponseTestCase
         $this->addToAssertionCount(1);
     }
 
+    /**
+     * @group legacy
+     * @expectedDeprecation Extending Symfony\Component\HttpFoundation\Response::getDate() in Symfony\Component\HttpFoundation\Tests\ExtendedResponse is deprecated %s.
+     * @expectedDeprecation Extending Symfony\Component\HttpFoundation\Response::setLastModified() in Symfony\Component\HttpFoundation\Tests\ExtendedResponse is deprecated %s.
+     */
+    public function testDeprecations()
+    {
+        new ExtendedResponse();
+
+        // Deprecations should not be triggered twice
+        new ExtendedResponse();
+    }
+
     public function validContentProvider()
     {
         return array(
@@ -946,7 +937,7 @@ class ResponseTest extends ResponseTestCase
 
         $ianaCodesReasonPhrases = array();
 
-        $xpath = new \DOMXPath($ianaHttpStatusCodes);
+        $xpath = new \DomXPath($ianaHttpStatusCodes);
         $xpath->registerNamespace('ns', 'http://www.iana.org/assignments');
 
         $records = $xpath->query('//ns:record');

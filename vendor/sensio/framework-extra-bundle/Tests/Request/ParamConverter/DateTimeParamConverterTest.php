@@ -14,7 +14,7 @@ namespace Sensio\Bundle\FrameworkExtraBundle\Tests\Request\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DateTimeParamConverter;
 
-class DateTimeParamConverterTest extends \PHPUnit\Framework\TestCase
+class DateTimeParamConverterTest extends \PHPUnit_Framework_TestCase
 {
     private $converter;
 
@@ -28,9 +28,6 @@ class DateTimeParamConverterTest extends \PHPUnit\Framework\TestCase
         $config = $this->createConfiguration('DateTime');
         $this->assertTrue($this->converter->supports($config));
 
-        $config = $this->createConfiguration('Tests\\Fixtures\\FooDateTime');
-        $this->assertTrue($this->converter->supports($config));
-
         $config = $this->createConfiguration(__CLASS__);
         $this->assertFalse($this->converter->supports($config));
 
@@ -40,7 +37,7 @@ class DateTimeParamConverterTest extends \PHPUnit\Framework\TestCase
 
     public function testApply()
     {
-        $request = new Request([], [], ['start' => '2012-07-21 00:00:00']);
+        $request = new Request(array(), array(), array('start' => '2012-07-21 00:00:00'));
         $config = $this->createConfiguration('DateTime', 'start');
 
         $this->converter->apply($request, $config);
@@ -51,7 +48,7 @@ class DateTimeParamConverterTest extends \PHPUnit\Framework\TestCase
 
     public function testApplyInvalidDate404Exception()
     {
-        $request = new Request([], [], ['start' => 'Invalid DateTime Format']);
+        $request = new Request(array(), array(), array('start' => 'Invalid DateTime Format'));
         $config = $this->createConfiguration('DateTime', 'start');
 
         $this->setExpectedException('Symfony\Component\HttpKernel\Exception\NotFoundHttpException', 'Invalid date given for parameter "start".');
@@ -60,19 +57,9 @@ class DateTimeParamConverterTest extends \PHPUnit\Framework\TestCase
 
     public function testApplyWithFormatInvalidDate404Exception()
     {
-        $request = new Request([], [], ['start' => '2012-07-21']);
+        $request = new Request(array(), array(), array('start' => '2012-07-21'));
         $config = $this->createConfiguration('DateTime', 'start');
-        $config->expects($this->any())->method('getOptions')->will($this->returnValue(['format' => 'd.m.Y']));
-
-        $this->setExpectedException('Symfony\Component\HttpKernel\Exception\NotFoundHttpException', 'Invalid date given for parameter "start".');
-        $this->converter->apply($request, $config);
-    }
-
-    public function testApplyWithYmdFormatInvalidDate404Exception()
-    {
-        $request = new Request([], [], ['start' => '2012-21-07']);
-        $config = $this->createConfiguration('DateTime', 'start');
-        $config->expects($this->any())->method('getOptions')->will($this->returnValue(['format' => 'Y-m-d']));
+        $config->expects($this->any())->method('getOptions')->will($this->returnValue(array('format' => 'd.m.Y')));
 
         $this->setExpectedException('Symfony\Component\HttpKernel\Exception\NotFoundHttpException', 'Invalid date given for parameter "start".');
         $this->converter->apply($request, $config);
@@ -80,55 +67,30 @@ class DateTimeParamConverterTest extends \PHPUnit\Framework\TestCase
 
     public function testApplyOptionalWithEmptyAttribute()
     {
-        $request = new Request([], [], ['start' => '']);
+        $request = new Request(array(), array(), array('start' => null));
         $config = $this->createConfiguration('DateTime', 'start');
         $config->expects($this->once())
             ->method('isOptional')
             ->will($this->returnValue(true));
 
-        $this->assertTrue($this->converter->apply($request, $config));
+        $this->assertFalse($this->converter->apply($request, $config));
         $this->assertNull($request->attributes->get('start'));
-    }
-
-    public function testApplyCustomClass()
-    {
-        $request = new Request([], [], ['start' => '2016-09-08 00:00:00']);
-        $config = $this->createConfiguration('Tests\\Fixtures\\FooDateTime', 'start');
-
-        $this->converter->apply($request, $config);
-
-        $this->assertInstanceOf('Tests\\Fixtures\\FooDateTime', $request->attributes->get('start'));
-        $this->assertEquals('2016-09-08', $request->attributes->get('start')->format('Y-m-d'));
-    }
-
-    /**
-     * @requires PHP 5.5
-     */
-    public function testApplyDateTimeImmutable()
-    {
-        $request = new Request([], [], ['start' => '2016-09-08 00:00:00']);
-        $config = $this->createConfiguration('DateTimeImmutable', 'start');
-
-        $this->converter->apply($request, $config);
-
-        $this->assertInstanceOf('DateTimeImmutable', $request->attributes->get('start'));
-        $this->assertEquals('2016-09-08', $request->attributes->get('start')->format('Y-m-d'));
     }
 
     public function createConfiguration($class = null, $name = null)
     {
         $config = $this
             ->getMockBuilder('Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter')
-            ->setMethods(['getClass', 'getAliasName', 'getOptions', 'getName', 'allowArray', 'isOptional'])
+            ->setMethods(array('getClass', 'getAliasName', 'getOptions', 'getName', 'allowArray', 'isOptional'))
             ->disableOriginalConstructor()
             ->getMock();
 
-        if (null !== $name) {
+        if ($name !== null) {
             $config->expects($this->any())
                    ->method('getName')
                    ->will($this->returnValue($name));
         }
-        if (null !== $class) {
+        if ($class !== null) {
             $config->expects($this->any())
                    ->method('getClass')
                    ->will($this->returnValue($class));

@@ -15,12 +15,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterMana
 use Sensio\Bundle\FrameworkExtraBundle\Configuration;
 use Symfony\Component\HttpFoundation\Request;
 
-class ParamConverterManagerTest extends \PHPUnit\Framework\TestCase
+class ParamConverterManagerTest extends \PHPUnit_Framework_TestCase
 {
     public function testPriorities()
     {
         $manager = new ParamConverterManager();
-        $this->assertEquals([], $manager->all());
+        $this->assertEquals(array(), $manager->all());
 
         $high = $this->createParamConverterMock();
         $low = $this->createParamConverterMock();
@@ -28,7 +28,7 @@ class ParamConverterManagerTest extends \PHPUnit\Framework\TestCase
         $manager->add($low);
         $manager->add($high, 10);
 
-        $this->assertEquals([$high, $low], $manager->all());
+        $this->assertEquals(array($high, $low), $manager->all());
     }
 
     public function testApply()
@@ -56,11 +56,11 @@ class ParamConverterManagerTest extends \PHPUnit\Framework\TestCase
             ->method('apply')
         ;
 
-        $configurations = [
-            new Configuration\ParamConverter([
+        $configurations = array(
+            new Configuration\ParamConverter(array(
                 'name' => 'var',
-            ]),
-        ];
+            )),
+        );
 
         $manager = new ParamConverterManager();
         $manager->add($supported);
@@ -85,15 +85,15 @@ class ParamConverterManagerTest extends \PHPUnit\Framework\TestCase
         $request = new Request();
         $request->attributes->set('param', '1234');
 
-        $configuration = new Configuration\ParamConverter([
+        $configuration = new Configuration\ParamConverter(array(
             'name' => 'param',
             'class' => 'stdClass',
             'converter' => 'test',
-        ]);
+        ));
 
         $manager = new ParamConverterManager();
         $manager->add($converter, 0, 'test');
-        $manager->apply($request, [$configuration]);
+        $manager->apply($request, array($configuration));
     }
 
     /**
@@ -112,15 +112,15 @@ class ParamConverterManagerTest extends \PHPUnit\Framework\TestCase
         $request = new Request();
         $request->attributes->set('param', '1234');
 
-        $configuration = new Configuration\ParamConverter([
+        $configuration = new Configuration\ParamConverter(array(
             'name' => 'param',
             'class' => 'stdClass',
             'converter' => 'test',
-        ]);
+        ));
 
         $manager = new ParamConverterManager();
         $manager->add($converter, 0, 'test');
-        $manager->apply($request, [$configuration]);
+        $manager->apply($request, array($configuration));
     }
 
     /**
@@ -132,14 +132,14 @@ class ParamConverterManagerTest extends \PHPUnit\Framework\TestCase
         $request = new Request();
         $request->attributes->set('param', '1234');
 
-        $configuration = new Configuration\ParamConverter([
+        $configuration = new Configuration\ParamConverter(array(
             'name' => 'param',
             'class' => 'stdClass',
             'converter' => 'test',
-        ]);
+        ));
 
         $manager = new ParamConverterManager();
-        $manager->apply($request, [$configuration]);
+        $manager->apply($request, array($configuration));
     }
 
     public function testApplyNotCalledOnAlreadyConvertedObjects()
@@ -158,17 +158,17 @@ class ParamConverterManagerTest extends \PHPUnit\Framework\TestCase
         $request = new Request();
         $request->attributes->set('converted', new \stdClass());
 
-        $configuration = new Configuration\ParamConverter([
+        $configuration = new Configuration\ParamConverter(array(
             'name' => 'converted',
             'class' => 'stdClass',
-        ]);
+        ));
 
         $manager = new ParamConverterManager();
         $manager->add($converter);
-        $manager->apply($request, [$configuration]);
+        $manager->apply($request, array($configuration));
     }
 
-    private function createParamConverterMock()
+    protected function createParamConverterMock()
     {
         return $this->getMockBuilder('Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterInterface')->getMock();
     }

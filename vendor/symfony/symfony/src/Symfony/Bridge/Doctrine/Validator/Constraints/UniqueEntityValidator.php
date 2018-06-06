@@ -26,6 +26,9 @@ use Symfony\Component\Validator\ConstraintValidator;
  */
 class UniqueEntityValidator extends ConstraintValidator
 {
+    /**
+     * @var ManagerRegistry
+     */
     private $registry;
 
     public function __construct(ManagerRegistry $registry)
@@ -148,23 +151,15 @@ class UniqueEntityValidator extends ConstraintValidator
          */
         if ($result instanceof \Iterator) {
             $result->rewind();
-            if ($result instanceof \Countable && 1 < \count($result)) {
-                $result = array($result->current(), $result->current());
-            } else {
-                $result = $result->current();
-                $result = null === $result ? array() : array($result);
-            }
-        } elseif (\is_array($result)) {
+        } elseif (is_array($result)) {
             reset($result);
-        } else {
-            $result = null === $result ? array() : array($result);
         }
 
         /* If no entity matched the query criteria or a single entity matched,
          * which is the same as the entity being validated, the criteria is
          * unique.
          */
-        if (!$result || (1 === \count($result) && current($result) === $entity)) {
+        if (0 === count($result) || (1 === count($result) && $entity === ($result instanceof \Iterator ? $result->current() : current($result)))) {
             return;
         }
 
@@ -176,7 +171,6 @@ class UniqueEntityValidator extends ConstraintValidator
             ->setParameter('{{ value }}', $this->formatWithIdentifiers($em, $class, $invalidValue))
             ->setInvalidValue($invalidValue)
             ->setCode(UniqueEntity::NOT_UNIQUE_ERROR)
-            ->setCause($result)
             ->addViolation();
     }
 

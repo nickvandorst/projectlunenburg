@@ -1,12 +1,12 @@
 <?php
 
 /*
- * This file is part of the Symfony package.
+ * This file is part of the Symfony framework.
  *
  * (c) Fabien Potencier <fabien@symfony.com>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Tests\Fixtures\FooBundle\Controller;
@@ -16,7 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * @Template("@Foo/invokable/predefined.html.twig")
+ * @Template("FooBundle:Invokable:predefined.html.twig")
  */
 class MultipleActionsClassLevelTemplateController extends Controller
 {
@@ -25,9 +25,9 @@ class MultipleActionsClassLevelTemplateController extends Controller
      */
     public function firstAction()
     {
-        return [
+        return array(
             'foo' => 'bar',
-        ];
+        );
     }
 
     /**
@@ -36,19 +36,19 @@ class MultipleActionsClassLevelTemplateController extends Controller
      */
     public function secondAction()
     {
-        return [
+        return array(
             'foo' => 'bar',
-        ];
+        );
     }
 
     /**
      * @Route("/multi/one-template/4/")
-     * @Template("@Foo/overwritten.html.twig")
+     * @Template("FooBundle::overwritten.html.twig")
      */
     public function overwriteAction()
     {
-        return [
+        return array(
             'foo' => 'foo bar baz',
-        ];
+        );
     }
 }

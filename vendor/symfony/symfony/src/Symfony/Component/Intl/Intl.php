@@ -15,7 +15,6 @@ use Symfony\Component\Intl\Data\Bundle\Reader\JsonBundleReader;
 use Symfony\Component\Intl\Data\Bundle\Reader\BufferedBundleReader;
 use Symfony\Component\Intl\Data\Bundle\Reader\BundleEntryReader;
 use Symfony\Component\Intl\Data\Bundle\Reader\BundleEntryReaderInterface;
-use Symfony\Component\Intl\Data\Provider\LocaleDataProvider;
 use Symfony\Component\Intl\Data\Provider\ScriptDataProvider;
 use Symfony\Component\Intl\ResourceBundle\CurrencyBundle;
 use Symfony\Component\Intl\ResourceBundle\CurrencyBundleInterface;
@@ -235,7 +234,7 @@ final class Intl
      */
     public static function getIcuStubVersion()
     {
-        return '61.1';
+        return '58.2';
     }
 
     /**
@@ -260,11 +259,6 @@ final class Intl
                 new JsonBundleReader(),
                 self::BUFFER_SIZE
             ));
-            $localeDataProvider = new LocaleDataProvider(
-                self::getDataDirectory().'/'.self::LOCALE_DIR,
-                self::$entryReader
-            );
-            self::$entryReader->setLocaleAliases($localeDataProvider->getAliases());
         }
 
         return self::$entryReader;

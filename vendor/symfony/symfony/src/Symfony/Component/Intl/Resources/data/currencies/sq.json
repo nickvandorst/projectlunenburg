@@ -1,5 +1,5 @@
 {
-    "Version": "2.1.39.11",
+    "Version": "2.1.32.59",
     "Names": {
         "AED": [
             "AED",
@@ -39,7 +39,7 @@
         ],
         "AZN": [
             "AZN",
-            "Manata azerbajxhanase"
+            "Manata e Azerbajxhanit"
         ],
         "BAM": [
             "BAM",
@@ -121,10 +121,6 @@
             "CLP",
             "Pesoja kiliane"
         ],
-        "CNH": [
-            "CNH",
-            "Juani kinez (për treg të jashtëm)"
-        ],
         "CNY": [
             "CN¥",
             "Juani kinez"
@@ -151,7 +147,7 @@
         ],
         "CZK": [
             "CZK",
-            "Koruna e Çekisë"
+            "Koruna e Republikës Çeke"
         ],
         "DJF": [
             "DJF",
@@ -171,7 +167,7 @@
         ],
         "EGP": [
             "EGP",
-            "Sterlina egjiptiane"
+            "Stërlina egjiptiane"
         ],
         "ERN": [
             "ERN",
@@ -227,7 +223,7 @@
         ],
         "HKD": [
             "HK$",
-            "Dollari i Hong-Kongut"
+            "Dollari i Hong Kongut"
         ],
         "HNL": [
             "HNL",
@@ -351,7 +347,7 @@
         ],
         "MDL": [
             "MDL",
-            "Leuja moldave"
+            "Leu moldav"
         ],
         "MGA": [
             "MGA",
@@ -375,10 +371,6 @@
         ],
         "MRO": [
             "MRO",
-            "Ugija mauritane (1973–2017)"
-        ],
-        "MRU": [
-            "MRU",
             "Ugija mauritane"
         ],
         "MUR": [
@@ -443,7 +435,7 @@
         ],
         "PGK": [
             "PGK",
-            "Kina e Guinesë së Re-Papua"
+            "Kina e Papua-Guineas së Re"
         ],
         "PHP": [
             "PHP",
@@ -467,7 +459,7 @@
         ],
         "RON": [
             "RON",
-            "Leuja rumune"
+            "Leu rumun"
         ],
         "RSD": [
             "RSD",
@@ -495,7 +487,7 @@
         ],
         "SDG": [
             "SDG",
-            "Sterlina sudaneze"
+            "Stërlina sudaneze"
         ],
         "SEK": [
             "SEK",
@@ -507,7 +499,7 @@
         ],
         "SHP": [
             "SHP",
-            "Sterlina e Ishullit të Shën-Helenës"
+            "Stërlina e Ishullit të Shën-Helenës"
         ],
         "SLL": [
             "SLL",
@@ -523,14 +515,10 @@
         ],
         "SSP": [
             "SSP",
-            "Sterlina sudanezo-jugore"
+            "Stërlina e Sudanit të Jugut"
         ],
         "STD": [
             "STD",
-            "Dobra e Sao-Tomes dhe Prinsipes (1977–2017)"
-        ],
-        "STN": [
-            "STN",
             "Dobra e Sao-Tomes dhe Prinsipes"
         ],
         "SYP": [

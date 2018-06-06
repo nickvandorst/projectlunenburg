@@ -12,14 +12,12 @@
 namespace Symfony\Bundle\FrameworkBundle\Tests\Console\Descriptor;
 
 use Symfony\Component\DependencyInjection\Alias;
-use Symfony\Component\DependencyInjection\Argument\IteratorArgument;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Routing\Route;
-use Symfony\Component\Routing\CompiledRoute;
 use Symfony\Component\Routing\RouteCollection;
 
 class ObjectsProvider
@@ -37,7 +35,7 @@ class ObjectsProvider
     public static function getRoutes()
     {
         return array(
-            'route_1' => new RouteStub(
+            'route_1' => new Route(
                 '/hello/{name}',
                 array('name' => 'Joseph'),
                 array('name' => '[a-z]+'),
@@ -46,7 +44,7 @@ class ObjectsProvider
                 array('http', 'https'),
                 array('get', 'head')
             ),
-            'route_2' => new RouteStub(
+            'route_2' => new Route(
                 '/name/add',
                 array(),
                 array(),
@@ -107,18 +105,6 @@ class ObjectsProvider
                 ->setSynthetic(false)
                 ->setLazy(true)
                 ->setAbstract(true)
-                ->addArgument(new Reference('definition2'))
-                ->addArgument('%parameter%')
-                ->addArgument(new Definition('inline_service', array('arg1', 'arg2')))
-                ->addArgument(array(
-                    'foo',
-                    new Reference('definition2'),
-                    new Definition('inline_service'),
-                ))
-                ->addArgument(new IteratorArgument(array(
-                    new Reference('definition_1'),
-                    new Reference('definition_2'),
-                )))
                 ->setFactory(array('Full\\Qualified\\FactoryClass', 'get')),
             'definition_2' => $definition2
                 ->setPublic(false)
@@ -186,13 +172,5 @@ class ExtendedCallableClass extends CallableClass
 {
     public static function staticMethod()
     {
-    }
-}
-
-class RouteStub extends Route
-{
-    public function compile()
-    {
-        return new CompiledRoute('', '#PATH_REGEX#', array(), array(), '#HOST_REGEX#');
     }
 }

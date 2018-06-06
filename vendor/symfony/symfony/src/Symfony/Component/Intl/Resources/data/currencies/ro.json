@@ -1,5 +1,5 @@
 {
-    "Version": "2.1.39.20",
+    "Version": "2.1.32.60",
     "Names": {
         "ADP": [
             "ADP",
@@ -172,10 +172,6 @@
         "CLP": [
             "CLP",
             "peso chilian"
-        ],
-        "CNH": [
-            "CNH",
-            "yuan chinezesc (offshore)"
         ],
         "CNY": [
             "CNY",
@@ -531,10 +527,6 @@
         ],
         "MRO": [
             "MRO",
-            "ouguiya mauritană (1973–2017)"
-        ],
-        "MRU": [
-            "MRU",
             "ouguiya mauritană"
         ],
         "MTL": [
@@ -747,10 +739,6 @@
         ],
         "STD": [
             "STD",
-            "dobra Sao Tome și Principe (1977–2017)"
-        ],
-        "STN": [
-            "STN",
             "dobra Sao Tome și Principe"
         ],
         "SUR": [

@@ -60,8 +60,6 @@ class DoctrineOrmTypeGuesser implements FormTypeGuesserInterface
             case Type::DATETIMETZ:
             case 'vardatetime':
                 return new TypeGuess('Symfony\Component\Form\Extension\Core\Type\DateTimeType', array(), Guess::HIGH_CONFIDENCE);
-            case 'dateinterval':
-                return new TypeGuess('Symfony\Component\Form\Extension\Core\Type\DateIntervalType', array(), Guess::HIGH_CONFIDENCE);
             case Type::DATE:
                 return new TypeGuess('Symfony\Component\Form\Extension\Core\Type\DateType', array(), Guess::HIGH_CONFIDENCE);
             case Type::TIME:
@@ -97,7 +95,7 @@ class DoctrineOrmTypeGuesser implements FormTypeGuesserInterface
         $classMetadata = $classMetadatas[0];
 
         // Check whether the field exists and is nullable or not
-        if (isset($classMetadata->fieldMappings[$property])) {
+        if ($classMetadata->hasField($property)) {
             if (!$classMetadata->isNullable($property) && Type::BOOLEAN !== $classMetadata->getTypeOfField($property)) {
                 return new ValueGuess(true, Guess::HIGH_CONFIDENCE);
             }
@@ -126,7 +124,7 @@ class DoctrineOrmTypeGuesser implements FormTypeGuesserInterface
     public function guessMaxLength($class, $property)
     {
         $ret = $this->getMetadata($class);
-        if ($ret && isset($ret[0]->fieldMappings[$property]) && !$ret[0]->hasAssociation($property)) {
+        if ($ret && $ret[0]->hasField($property) && !$ret[0]->hasAssociation($property)) {
             $mapping = $ret[0]->getFieldMapping($property);
 
             if (isset($mapping['length'])) {
@@ -145,7 +143,7 @@ class DoctrineOrmTypeGuesser implements FormTypeGuesserInterface
     public function guessPattern($class, $property)
     {
         $ret = $this->getMetadata($class);
-        if ($ret && isset($ret[0]->fieldMappings[$property]) && !$ret[0]->hasAssociation($property)) {
+        if ($ret && $ret[0]->hasField($property) && !$ret[0]->hasAssociation($property)) {
             if (in_array($ret[0]->getTypeOfField($property), array(Type::DECIMAL, Type::FLOAT))) {
                 return new ValueGuess(null, Guess::MEDIUM_CONFIDENCE);
             }

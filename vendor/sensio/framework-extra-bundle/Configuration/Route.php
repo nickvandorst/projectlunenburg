@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route as BaseRoute;
  */
 class Route extends BaseRoute
 {
-    private $service;
+    protected $service;
 
     public function setService($service)
     {

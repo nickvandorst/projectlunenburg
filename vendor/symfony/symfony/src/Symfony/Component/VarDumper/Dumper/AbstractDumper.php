@@ -23,8 +23,6 @@ abstract class AbstractDumper implements DataDumperInterface, DumperInterface
 {
     const DUMP_LIGHT_ARRAY = 1;
     const DUMP_STRING_LENGTH = 2;
-    const DUMP_COMMA_SEPARATOR = 4;
-    const DUMP_TRAILING_COMMA = 8;
 
     public static $defaultOutput = 'php://output';
 
@@ -101,9 +99,9 @@ abstract class AbstractDumper implements DataDumperInterface, DumperInterface
     /**
      * Sets the indentation pad string.
      *
-     * @param string $pad A string that will be prepended to dumped lines, repeated by nesting level
+     * @param string $pad A string the will be prepended to dumped lines, repeated by nesting level
      *
-     * @return string The previous indent pad
+     * @return string The indent pad
      */
     public function setIndentPad($pad)
     {
@@ -126,10 +124,6 @@ abstract class AbstractDumper implements DataDumperInterface, DumperInterface
         $this->decimalPoint = localeconv();
         $this->decimalPoint = $this->decimalPoint['decimal_point'];
 
-        if ($locale = $this->flags & (self::DUMP_COMMA_SEPARATOR | self::DUMP_TRAILING_COMMA) ? setlocale(LC_NUMERIC, 0) : null) {
-            setlocale(LC_NUMERIC, 'C');
-        }
-
         if ($returnDump = true === $output) {
             $output = fopen('php://memory', 'r+b');
         }
@@ -150,17 +144,13 @@ abstract class AbstractDumper implements DataDumperInterface, DumperInterface
             if ($output) {
                 $this->setOutput($prevOutput);
             }
-            if ($locale) {
-                setlocale(LC_NUMERIC, $locale);
-            }
         }
     }
 
     /**
      * Dumps the current line.
      *
-     * @param int $depth The recursive depth in the dumped structure for the line being dumped,
-     *                   or -1 to signal the end-of-dump to the line dumper callable
+     * @param int $depth The recursive depth in the dumped structure for the line being dumped
      */
     protected function dumpLine($depth)
     {

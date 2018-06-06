@@ -11,8 +11,6 @@
 
 namespace Symfony\Bundle\FrameworkBundle\Tests\DependencyInjection;
 
-use Doctrine\Common\Annotations\Annotation;
-use Symfony\Bundle\FullStack;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 use Symfony\Bundle\FrameworkBundle\DependencyInjection\Compiler\AddAnnotationsCachedReaderPass;
 use Symfony\Bundle\FrameworkBundle\DependencyInjection\FrameworkExtension;
@@ -24,27 +22,18 @@ use Symfony\Component\Cache\Adapter\DoctrineAdapter;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Cache\Adapter\ProxyAdapter;
 use Symfony\Component\Cache\Adapter\RedisAdapter;
-use Symfony\Component\DependencyInjection\ChildDefinition;
-use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Loader\ClosureLoader;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
-use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
-use Symfony\Component\Serializer\Normalizer\DateIntervalNormalizer;
-use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Mapping\Factory\CacheClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\XmlFileLoader;
 use Symfony\Component\Serializer\Mapping\Loader\YamlFileLoader;
 use Symfony\Component\Serializer\Normalizer\DataUriNormalizer;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer;
-use Symfony\Component\Translation\DependencyInjection\TranslatorPass;
-use Symfony\Component\Validator\DependencyInjection\AddConstraintValidatorsPass;
-use Symfony\Component\Workflow\Registry;
 
 abstract class FrameworkExtensionTest extends TestCase
 {
@@ -123,6 +112,13 @@ abstract class FrameworkExtensionTest extends TestCase
         $this->assertTrue($container->hasDefinition('security.csrf.token_manager'));
     }
 
+    public function testProxies()
+    {
+        $container = $this->createContainerFromFile('full');
+
+        $this->assertEquals(array('127.0.0.1', '10.0.0.1'), $container->getParameter('kernel.trusted_proxies'));
+    }
+
     public function testHttpMethodOverride()
     {
         $container = $this->createContainerFromFile('full');
@@ -135,15 +131,6 @@ abstract class FrameworkExtensionTest extends TestCase
         $container = $this->createContainerFromFile('full');
 
         $this->assertTrue($container->hasDefinition('esi'), '->registerEsiConfiguration() loads esi.xml');
-        $this->assertTrue($container->hasDefinition('fragment.renderer.esi'), 'The ESI fragment renderer is registered');
-    }
-
-    public function testEsiDisabled()
-    {
-        $container = $this->createContainerFromFile('esi_disabled');
-
-        $this->assertFalse($container->hasDefinition('fragment.renderer.esi'), 'The ESI fragment renderer is not registered');
-        $this->assertFalse($container->hasDefinition('esi'));
     }
 
     public function testSsi()
@@ -151,24 +138,6 @@ abstract class FrameworkExtensionTest extends TestCase
         $container = $this->createContainerFromFile('full');
 
         $this->assertTrue($container->hasDefinition('ssi'), '->registerSsiConfiguration() loads ssi.xml');
-        $this->assertTrue($container->hasDefinition('fragment.renderer.ssi'), 'The SSI fragment renderer is registered');
-    }
-
-    public function testSsiDisabled()
-    {
-        $container = $this->createContainerFromFile('ssi_disabled');
-
-        $this->assertFalse($container->hasDefinition('fragment.renderer.ssi'), 'The SSI fragment renderer is not registered');
-        $this->assertFalse($container->hasDefinition('ssi'));
-    }
-
-    public function testEsiAndSsiWithoutFragments()
-    {
-        $container = $this->createContainerFromFile('esi_and_ssi_without_fragments');
-
-        $this->assertFalse($container->hasDefinition('fragment.renderer.hinclude'), 'The HInclude fragment renderer is not registered');
-        $this->assertTrue($container->hasDefinition('fragment.renderer.esi'), 'The ESI fragment renderer is registered');
-        $this->assertTrue($container->hasDefinition('fragment.renderer.ssi'), 'The SSI fragment renderer is registered');
     }
 
     public function testEnabledProfiler()
@@ -238,19 +207,6 @@ abstract class FrameworkExtensionTest extends TestCase
         $markingStoreRef = $serviceMarkingStoreWorkflowDefinition->getArgument(1);
         $this->assertInstanceOf(Reference::class, $markingStoreRef);
         $this->assertEquals('workflow_service', (string) $markingStoreRef);
-
-        $this->assertTrue($container->hasDefinition('workflow.registry', 'Workflow registry is registered as a service'));
-        $registryDefinition = $container->getDefinition('workflow.registry');
-        $this->assertGreaterThan(0, count($registryDefinition->getMethodCalls()));
-    }
-
-    /**
-     * @group legacy
-     * @expectedDeprecation The "type" option of the "framework.workflows.missing_type" configuration entry must be defined since Symfony 3.3. The default value will be "state_machine" in Symfony 4.0.
-     */
-    public function testDeprecatedWorkflowMissingType()
-    {
-        $container = $this->createContainerFromFile('workflows_without_type');
     }
 
     /**
@@ -260,24 +216,6 @@ abstract class FrameworkExtensionTest extends TestCase
     public function testWorkflowCannotHaveBothTypeAndService()
     {
         $this->createContainerFromFile('workflow_with_type_and_service');
-    }
-
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage "supports" and "support_strategy" cannot be used together.
-     */
-    public function testWorkflowCannotHaveBothSupportsAndSupportStrategy()
-    {
-        $this->createContainerFromFile('workflow_with_support_and_support_strategy');
-    }
-
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage "supports" or "support_strategy" should be configured.
-     */
-    public function testWorkflowShouldHaveOneOfSupportsAndSupportStrategy()
-    {
-        $this->createContainerFromFile('workflow_without_support_and_support_strategy');
     }
 
     /**
@@ -312,37 +250,13 @@ abstract class FrameworkExtensionTest extends TestCase
         $this->assertSame(array('draft'), $transitions[4]->getArgument(1));
     }
 
-    public function testWorkflowServicesCanBeEnabled()
-    {
-        $container = $this->createContainerFromFile('workflows_enabled');
-
-        $this->assertTrue($container->has(Registry::class));
-        $this->assertTrue($container->hasDefinition('console.command.workflow_dump'));
-    }
-
-    public function testEnabledPhpErrorsConfig()
-    {
-        $container = $this->createContainerFromFile('php_errors_enabled');
-
-        $this->assertEquals(new Reference('logger', ContainerInterface::NULL_ON_INVALID_REFERENCE), $container->getDefinition('debug.debug_handlers_listener')->getArgument(1));
-        $this->assertSame(-1, $container->getParameter('debug.error_handler.throw_at'));
-    }
-
-    public function testDisabledPhpErrorsConfig()
-    {
-        $container = $this->createContainerFromFile('php_errors_disabled');
-
-        $this->assertNull($container->getDefinition('debug.debug_handlers_listener')->getArgument(1));
-        $this->assertSame(0, $container->getParameter('debug.error_handler.throw_at'));
-    }
-
     public function testRouter()
     {
         $container = $this->createContainerFromFile('full');
 
         $this->assertTrue($container->has('router'), '->registerRouterConfiguration() loads routing.xml');
         $arguments = $container->findDefinition('router')->getArguments();
-        $this->assertEquals($container->getParameter('kernel.project_dir').'/config/routing.xml', $container->getParameter('router.resource'), '->registerRouterConfiguration() sets routing resource');
+        $this->assertEquals($container->getParameter('kernel.root_dir').'/config/routing.xml', $container->getParameter('router.resource'), '->registerRouterConfiguration() sets routing resource');
         $this->assertEquals('%router.resource%', $arguments[1], '->registerRouterConfiguration() sets routing resource');
         $this->assertEquals('xml', $arguments[2]['resource_type'], '->registerRouterConfiguration() sets routing resource type');
     }
@@ -445,7 +359,7 @@ abstract class FrameworkExtensionTest extends TestCase
 
         // packages
         $packages = $packages->getArgument(1);
-        $this->assertCount(6, $packages);
+        $this->assertCount(5, $packages);
 
         $package = $container->getDefinition((string) $packages['images_path']);
         $this->assertPathPackage($container, $package, '/foo', 'SomeVersionScheme', '%%s?version=%%s');
@@ -461,11 +375,6 @@ abstract class FrameworkExtensionTest extends TestCase
 
         $package = $container->getDefinition((string) $packages['bar_version_strategy']);
         $this->assertEquals('assets.custom_version_strategy', (string) $package->getArgument(1));
-
-        $package = $container->getDefinition((string) $packages['json_manifest_strategy']);
-        $versionStrategy = $container->getDefinition((string) $package->getArgument(1));
-        $this->assertEquals('assets.json_manifest_version_strategy', $versionStrategy->getParent());
-        $this->assertEquals('/path/to/manifest.json', $versionStrategy->getArgument(0));
     }
 
     public function testAssetsDefaultVersionStrategyAsService()
@@ -478,25 +387,12 @@ abstract class FrameworkExtensionTest extends TestCase
         $this->assertEquals('assets.custom_version_strategy', (string) $defaultPackage->getArgument(1));
     }
 
-    public function testAssetsCanBeDisabled()
-    {
-        $container = $this->createContainerFromFile('assets_disabled');
-
-        $this->assertFalse($container->has('templating.helper.assets'), 'The templating.helper.assets helper service is removed when assets are disabled.');
-    }
-
-    public function testWebLink()
-    {
-        $container = $this->createContainerFromFile('web_link');
-        $this->assertTrue($container->hasDefinition('web_link.add_link_header_listener'));
-    }
-
     public function testTranslator()
     {
         $container = $this->createContainerFromFile('full');
         $this->assertTrue($container->hasDefinition('translator.default'), '->registerTranslatorConfiguration() loads translation.xml');
         $this->assertEquals('translator.default', (string) $container->getAlias('translator'), '->registerTranslatorConfiguration() redefines translator service from identity to real translator');
-        $options = $container->getDefinition('translator.default')->getArgument(4);
+        $options = $container->getDefinition('translator.default')->getArgument(3);
 
         $files = array_map('realpath', $options['resource_files']['en']);
         $ref = new \ReflectionClass('Symfony\Component\Validator\Validation');
@@ -522,11 +418,6 @@ abstract class FrameworkExtensionTest extends TestCase
             $files,
             '->registerTranslatorConfiguration() finds translation resources in custom paths'
         );
-        $this->assertContains(
-            strtr(__DIR__.'/translations/test_default.en.xlf', '/', DIRECTORY_SEPARATOR),
-            $files,
-            '->registerTranslatorConfiguration() finds translation resources in default path'
-        );
 
         $calls = $container->getDefinition('translator.default')->getMethodCalls();
         $this->assertEquals(array('fr'), $calls[1][1][0]);
@@ -538,20 +429,6 @@ abstract class FrameworkExtensionTest extends TestCase
 
         $calls = $container->getDefinition('translator.default')->getMethodCalls();
         $this->assertEquals(array('en', 'fr'), $calls[1][1][0]);
-    }
-
-    public function testTranslatorHelperIsRegisteredWhenTranslatorIsEnabled()
-    {
-        $container = $this->createContainerFromFile('templating_php_translator_enabled');
-
-        $this->assertTrue($container->has('templating.helper.translator'));
-    }
-
-    public function testTranslatorHelperIsNotRegisteredWhenTranslatorIsDisabled()
-    {
-        $container = $this->createContainerFromFile('templating_php_translator_disabled');
-
-        $this->assertFalse($container->has('templating.helper.translator'));
     }
 
     /**
@@ -567,19 +444,13 @@ abstract class FrameworkExtensionTest extends TestCase
     public function testValidation()
     {
         $container = $this->createContainerFromFile('full');
-        $projectDir = $container->getParameter('kernel.project_dir');
 
         $ref = new \ReflectionClass('Symfony\Component\Form\Form');
-        $xmlMappings = array(
-            dirname($ref->getFileName()).'/Resources/config/validation.xml',
-            strtr($projectDir.'/config/validator/foo.xml', '/', DIRECTORY_SEPARATOR),
-        );
+        $xmlMappings = array(dirname($ref->getFileName()).'/Resources/config/validation.xml');
 
         $calls = $container->getDefinition('validator.builder')->getMethodCalls();
 
-        $annotations = !class_exists(FullStack::class) && class_exists(Annotation::class);
-
-        $this->assertCount($annotations ? 7 : 6, $calls);
+        $this->assertCount(6, $calls);
         $this->assertSame('setConstraintValidatorFactory', $calls[0][0]);
         $this->assertEquals(array(new Reference('validator.validator_factory')), $calls[0][1]);
         $this->assertSame('setTranslator', $calls[1][0]);
@@ -588,14 +459,10 @@ abstract class FrameworkExtensionTest extends TestCase
         $this->assertSame(array('%validator.translation_domain%'), $calls[2][1]);
         $this->assertSame('addXmlMappings', $calls[3][0]);
         $this->assertSame(array($xmlMappings), $calls[3][1]);
-        $i = 3;
-        if ($annotations) {
-            $this->assertSame('enableAnnotationMapping', $calls[++$i][0]);
-        }
-        $this->assertSame('addMethodMapping', $calls[++$i][0]);
-        $this->assertSame(array('loadValidatorMetadata'), $calls[$i][1]);
-        $this->assertSame('setMetadataCache', $calls[++$i][0]);
-        $this->assertEquals(array(new Reference('validator.mapping.cache.symfony')), $calls[$i][1]);
+        $this->assertSame('addMethodMapping', $calls[4][0]);
+        $this->assertSame(array('loadValidatorMetadata'), $calls[4][1]);
+        $this->assertSame('setMetadataCache', $calls[5][0]);
+        $this->assertEquals(array(new Reference('validator.mapping.cache.symfony')), $calls[5][1]);
     }
 
     public function testValidationService()
@@ -607,12 +474,10 @@ abstract class FrameworkExtensionTest extends TestCase
 
     public function testAnnotations()
     {
-        $container = $this->createContainerFromFile('full', array(), true, false);
-        $container->addCompilerPass(new TestAnnotationsPass());
-        $container->compile();
+        $container = $this->createContainerFromFile('full');
 
         $this->assertEquals($container->getParameter('kernel.cache_dir').'/annotations', $container->getDefinition('annotations.filesystem_cache')->getArgument(0));
-        $this->assertSame('annotations.filesystem_cache', (string) $container->getDefinition('annotation_reader')->getArgument(1));
+        $this->assertSame('annotations.filesystem_cache', (string) $container->getDefinition('annotations.cached_reader')->getArgument(1));
     }
 
     public function testFileLinkFormat()
@@ -663,7 +528,7 @@ abstract class FrameworkExtensionTest extends TestCase
         $this->assertEquals(array(new Reference('validator.mapping.cache.symfony')), $calls[7][1]);
 
         $xmlMappings = $calls[3][1][0];
-        $this->assertCount(3, $xmlMappings);
+        $this->assertCount(2, $xmlMappings);
         try {
             // Testing symfony/symfony
             $this->assertStringEndsWith('Component'.DIRECTORY_SEPARATOR.'Form/Resources/config/validation.xml', $xmlMappings[0]);
@@ -689,7 +554,7 @@ abstract class FrameworkExtensionTest extends TestCase
 
         $calls = $container->getDefinition('validator.builder')->getMethodCalls();
         $xmlMappings = $calls[3][1][0];
-        $this->assertCount(3, $xmlMappings);
+        $this->assertCount(2, $xmlMappings);
 
         try {
             // Testing symfony/symfony
@@ -711,47 +576,11 @@ abstract class FrameworkExtensionTest extends TestCase
 
         $calls = $container->getDefinition('validator.builder')->getMethodCalls();
 
-        $annotations = !class_exists(FullStack::class) && class_exists(Annotation::class);
-
-        $this->assertCount($annotations ? 6 : 5, $calls);
+        $this->assertCount(5, $calls);
         $this->assertSame('addXmlMappings', $calls[3][0]);
-        $i = 3;
-        if ($annotations) {
-            $this->assertSame('enableAnnotationMapping', $calls[++$i][0]);
-        }
-        $this->assertSame('setMetadataCache', $calls[++$i][0]);
-        $this->assertEquals(array(new Reference('validator.mapping.cache.symfony')), $calls[$i][1]);
+        $this->assertSame('setMetadataCache', $calls[4][0]);
+        $this->assertEquals(array(new Reference('validator.mapping.cache.symfony')), $calls[4][1]);
         // no cache, no annotations, no static methods
-    }
-
-    public function testValidationTranslationDomain()
-    {
-        $container = $this->createContainerFromFile('validation_translation_domain');
-
-        $this->assertSame('messages', $container->getParameter('validator.translation_domain'));
-    }
-
-    public function testValidationStrictEmail()
-    {
-        $container = $this->createContainerFromFile('validation_strict_email');
-
-        $this->assertTrue($container->getDefinition('validator.email')->getArgument(0));
-    }
-
-    public function testValidationMapping()
-    {
-        $container = $this->createContainerFromFile('validation_mapping');
-
-        $calls = $container->getDefinition('validator.builder')->getMethodCalls();
-
-        $this->assertSame('addXmlMappings', $calls[3][0]);
-        $this->assertCount(3, $calls[3][1][0]);
-
-        $this->assertSame('addYamlMappings', $calls[4][0]);
-        $this->assertCount(3, $calls[4][1][0]);
-        $this->assertContains('foo.yml', $calls[4][1][0][0]);
-        $this->assertContains('validation.yml', $calls[4][1][0][1]);
-        $this->assertContains('validation.yaml', $calls[4][1][0][2]);
     }
 
     public function testFormsCanBeEnabledWithoutCsrfProtection()
@@ -783,7 +612,7 @@ abstract class FrameworkExtensionTest extends TestCase
     public function testSerializerDisabled()
     {
         $container = $this->createContainerFromFile('default_config');
-        $this->assertSame(!class_exists(FullStack::class) && class_exists(Serializer::class), $container->has('serializer'));
+        $this->assertFalse($container->has('serializer'));
     }
 
     public function testSerializerEnabled()
@@ -793,12 +622,11 @@ abstract class FrameworkExtensionTest extends TestCase
 
         $argument = $container->getDefinition('serializer.mapping.chain_loader')->getArgument(0);
 
-        $this->assertCount(2, $argument);
+        $this->assertCount(1, $argument);
         $this->assertEquals('Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader', $argument[0]->getClass());
         $this->assertNull($container->getDefinition('serializer.mapping.class_metadata_factory')->getArgument(1));
         $this->assertEquals(new Reference('serializer.name_converter.camel_case_to_snake_case'), $container->getDefinition('serializer.normalizer.object')->getArgument(1));
         $this->assertEquals(new Reference('property_info', ContainerBuilder::IGNORE_ON_INVALID_REFERENCE), $container->getDefinition('serializer.normalizer.object')->getArgument(3));
-        $this->assertEquals(array('setCircularReferenceHandler', array(new Reference('my.circular.reference.handler'))), $container->getDefinition('serializer.normalizer.object')->getMethodCalls()[0]);
     }
 
     public function testRegisterSerializerExtractor()
@@ -815,6 +643,10 @@ abstract class FrameworkExtensionTest extends TestCase
 
     public function testDataUriNormalizerRegistered()
     {
+        if (!class_exists('Symfony\Component\Serializer\Normalizer\DataUriNormalizer')) {
+            $this->markTestSkipped('The DataUriNormalizer has been introduced in the Serializer Component version 3.1.');
+        }
+
         $container = $this->createContainerFromFile('full');
 
         $definition = $container->getDefinition('serializer.normalizer.data_uri');
@@ -824,23 +656,12 @@ abstract class FrameworkExtensionTest extends TestCase
         $this->assertEquals(-920, $tag[0]['priority']);
     }
 
-    public function testDateIntervalNormalizerRegistered()
-    {
-        if (!class_exists(DateIntervalNormalizer::class)) {
-            $this->markTestSkipped('The DateIntervalNormalizer has been introduced in the Serializer Component version 3.4.');
-        }
-
-        $container = $this->createContainerFromFile('full');
-
-        $definition = $container->getDefinition('serializer.normalizer.dateinterval');
-        $tag = $definition->getTag('serializer.normalizer');
-
-        $this->assertEquals(DateIntervalNormalizer::class, $definition->getClass());
-        $this->assertEquals(-915, $tag[0]['priority']);
-    }
-
     public function testDateTimeNormalizerRegistered()
     {
+        if (!class_exists('Symfony\Component\Serializer\Normalizer\DateTimeNormalizer')) {
+            $this->markTestSkipped('The DateTimeNormalizer has been introduced in the Serializer Component version 3.1.');
+        }
+
         $container = $this->createContainerFromFile('full');
 
         $definition = $container->getDefinition('serializer.normalizer.datetime');
@@ -852,6 +673,10 @@ abstract class FrameworkExtensionTest extends TestCase
 
     public function testJsonSerializableNormalizerRegistered()
     {
+        if (!class_exists('Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer')) {
+            $this->markTestSkipped('The JsonSerializableNormalizer has been introduced in the Serializer Component version 3.1.');
+        }
+
         $container = $this->createContainerFromFile('full');
 
         $definition = $container->getDefinition('serializer.normalizer.json_serializable');
@@ -874,6 +699,10 @@ abstract class FrameworkExtensionTest extends TestCase
 
     public function testSerializerCacheActivated()
     {
+        if (!class_exists(CacheClassMetadataFactory::class) || !method_exists(XmlFileLoader::class, 'getMappedClasses') || !method_exists(YamlFileLoader::class, 'getMappedClasses')) {
+            $this->markTestSkipped('The Serializer default cache warmer has been introduced in the Serializer Component version 3.2.');
+        }
+
         $container = $this->createContainerFromFile('serializer_enabled');
 
         $this->assertTrue($container->hasDefinition('serializer.mapping.cache_class_metadata_factory'));
@@ -901,38 +730,6 @@ abstract class FrameworkExtensionTest extends TestCase
 
         $cache = $container->getDefinition('serializer.mapping.class_metadata_factory')->getArgument(1);
         $this->assertEquals(new Reference('foo'), $cache);
-    }
-
-    public function testSerializerMapping()
-    {
-        $container = $this->createContainerFromFile('serializer_mapping', array('kernel.bundles_metadata' => array('TestBundle' => array('namespace' => 'Symfony\\Bundle\\FrameworkBundle\\Tests', 'path' => __DIR__.'/Fixtures/TestBundle', 'parent' => null))));
-        $projectDir = $container->getParameter('kernel.project_dir');
-        $configDir = __DIR__.'/Fixtures/TestBundle/Resources/config';
-        $expectedLoaders = array(
-            new Definition(AnnotationLoader::class, array(new Reference('annotation_reader'))),
-            new Definition(XmlFileLoader::class, array($configDir.'/serialization.xml')),
-            new Definition(YamlFileLoader::class, array($configDir.'/serialization.yml')),
-            new Definition(YamlFileLoader::class, array($projectDir.'/config/serializer/foo.yml')),
-            new Definition(XmlFileLoader::class, array($configDir.'/serializer_mapping/files/foo.xml')),
-            new Definition(YamlFileLoader::class, array($configDir.'/serializer_mapping/files/foo.yml')),
-            new Definition(YamlFileLoader::class, array($configDir.'/serializer_mapping/serialization.yml')),
-            new Definition(YamlFileLoader::class, array($configDir.'/serializer_mapping/serialization.yaml')),
-        );
-
-        foreach ($expectedLoaders as $definition) {
-            if (is_file($arg = $definition->getArgument(0))) {
-                $definition->replaceArgument(0, strtr($arg, '/', DIRECTORY_SEPARATOR));
-            }
-            $definition->setPublic(false);
-        }
-
-        $loaders = $container->getDefinition('serializer.mapping.chain_loader')->getArgument(0);
-        foreach ($loaders as $loader) {
-            if (is_file($arg = $loader->getArgument(0))) {
-                $loader->replaceArgument(0, strtr($arg, '/', DIRECTORY_SEPARATOR));
-            }
-        }
-        $this->assertEquals($expectedLoaders, $loaders);
     }
 
     public function testAssetHelperWhenAssetsAreEnabled()
@@ -991,25 +788,12 @@ abstract class FrameworkExtensionTest extends TestCase
         $this->assertTrue($container->has('property_info'));
     }
 
-    public function testEventDispatcherService()
-    {
-        $container = $this->createContainer(array('kernel.charset' => 'UTF-8', 'kernel.secret' => 'secret'));
-        $container->registerExtension(new FrameworkExtension());
-        $this->loadFromFile($container, 'default_config');
-        $container
-            ->register('foo', \stdClass::class)
-            ->setPublic(true)
-            ->setProperty('dispatcher', new Reference('event_dispatcher'));
-        $container->compile();
-        $this->assertInstanceOf(EventDispatcherInterface::class, $container->get('foo')->dispatcher);
-    }
-
     public function testCacheDefaultRedisProvider()
     {
         $container = $this->createContainerFromFile('cache');
 
         $redisUrl = 'redis://localhost';
-        $providerId = 'cache_connection.'.ContainerBuilder::hash($redisUrl);
+        $providerId = md5($redisUrl);
 
         $this->assertTrue($container->hasDefinition($providerId));
 
@@ -1023,7 +807,7 @@ abstract class FrameworkExtensionTest extends TestCase
         $container = $this->createContainerFromFile('cache_env_var');
 
         $redisUrl = 'redis://paas.com';
-        $providerId = 'cache_connection.'.ContainerBuilder::hash($redisUrl);
+        $providerId = md5($redisUrl);
 
         $this->assertTrue($container->hasDefinition($providerId));
 
@@ -1043,39 +827,24 @@ abstract class FrameworkExtensionTest extends TestCase
         $this->assertCachePoolServiceDefinitionIsCreated($container, 'cache.def', 'cache.app', 11);
     }
 
-    public function testRemovesResourceCheckerConfigCacheFactoryArgumentOnlyIfNoDebug()
-    {
-        $container = $this->createContainer(array('kernel.debug' => true));
-        (new FrameworkExtension())->load(array(), $container);
-        $this->assertCount(1, $container->getDefinition('config_cache_factory')->getArguments());
-
-        $container = $this->createContainer(array('kernel.debug' => false));
-        (new FrameworkExtension())->load(array(), $container);
-        $this->assertEmpty($container->getDefinition('config_cache_factory')->getArguments());
-    }
-
     protected function createContainer(array $data = array())
     {
         return new ContainerBuilder(new ParameterBag(array_merge(array(
             'kernel.bundles' => array('FrameworkBundle' => 'Symfony\\Bundle\\FrameworkBundle\\FrameworkBundle'),
             'kernel.bundles_metadata' => array('FrameworkBundle' => array('namespace' => 'Symfony\\Bundle\\FrameworkBundle', 'path' => __DIR__.'/../..', 'parent' => null)),
             'kernel.cache_dir' => __DIR__,
-            'kernel.project_dir' => __DIR__,
             'kernel.debug' => false,
             'kernel.environment' => 'test',
             'kernel.name' => 'kernel',
             'kernel.root_dir' => __DIR__,
             'kernel.container_class' => 'testContainer',
-            'container.build_hash' => 'Abc1234',
-            'container.build_id' => hash('crc32', 'Abc123423456789'),
-            'container.build_time' => 23456789,
         ), $data)));
     }
 
-    protected function createContainerFromFile($file, $data = array(), $resetCompilerPasses = true, $compile = true)
+    protected function createContainerFromFile($file, $data = array(), $resetCompilerPasses = true)
     {
         $cacheKey = md5(get_class($this).$file.serialize($data));
-        if ($compile && isset(self::$containerCache[$cacheKey])) {
+        if (isset(self::$containerCache[$cacheKey])) {
             return self::$containerCache[$cacheKey];
         }
         $container = $this->createContainer($data);
@@ -1086,12 +855,7 @@ abstract class FrameworkExtensionTest extends TestCase
             $container->getCompilerPassConfig()->setOptimizationPasses(array());
             $container->getCompilerPassConfig()->setRemovingPasses(array());
         }
-        $container->getCompilerPassConfig()->setBeforeRemovingPasses(array(new AddConstraintValidatorsPass(), new TranslatorPass('translator.default', 'translation.reader')));
-        $container->getCompilerPassConfig()->setAfterRemovingPasses(array(new AddAnnotationsCachedReaderPass()));
-
-        if (!$compile) {
-            return $container;
-        }
+        $container->getCompilerPassConfig()->setBeforeRemovingPasses(array(new AddAnnotationsCachedReaderPass()));
         $container->compile();
 
         return self::$containerCache[$cacheKey] = $container;
@@ -1111,14 +875,14 @@ abstract class FrameworkExtensionTest extends TestCase
         return $container;
     }
 
-    private function assertPathPackage(ContainerBuilder $container, ChildDefinition $package, $basePath, $version, $format)
+    private function assertPathPackage(ContainerBuilder $container, DefinitionDecorator $package, $basePath, $version, $format)
     {
         $this->assertEquals('assets.path_package', $package->getParent());
         $this->assertEquals($basePath, $package->getArgument(0));
         $this->assertVersionStrategy($container, $package->getArgument(1), $version, $format);
     }
 
-    private function assertUrlPackage(ContainerBuilder $container, ChildDefinition $package, $baseUrls, $version, $format)
+    private function assertUrlPackage(ContainerBuilder $container, DefinitionDecorator $package, $baseUrls, $version, $format)
     {
         $this->assertEquals('assets.url_package', $package->getParent());
         $this->assertEquals($baseUrls, $package->getArgument(0));
@@ -1143,20 +907,20 @@ abstract class FrameworkExtensionTest extends TestCase
 
         $poolDefinition = $container->getDefinition($id);
 
-        $this->assertInstanceOf(ChildDefinition::class, $poolDefinition, sprintf('Cache pool "%s" is based on an abstract cache pool.', $id));
+        $this->assertInstanceOf(DefinitionDecorator::class, $poolDefinition, sprintf('Cache pool "%s" is based on an abstract cache pool.', $id));
 
         $this->assertTrue($poolDefinition->hasTag('cache.pool'), sprintf('Service definition "%s" is tagged with the "cache.pool" tag.', $id));
         $this->assertFalse($poolDefinition->isAbstract(), sprintf('Service definition "%s" is not abstract.', $id));
 
         $tag = $poolDefinition->getTag('cache.pool');
-        $this->assertArrayHasKey('default_lifetime', $tag[0], 'The default lifetime is stored as an attribute of the "cache.pool" tag.');
+        $this->assertTrue(isset($tag[0]['default_lifetime']), 'The default lifetime is stored as an attribute of the "cache.pool" tag.');
         $this->assertSame($defaultLifetime, $tag[0]['default_lifetime'], 'The default lifetime is stored as an attribute of the "cache.pool" tag.');
 
         $parentDefinition = $poolDefinition;
         do {
             $parentId = $parentDefinition->getParent();
             $parentDefinition = $container->findDefinition($parentId);
-        } while ($parentDefinition instanceof ChildDefinition);
+        } while ($parentDefinition instanceof DefinitionDecorator);
 
         switch ($adapter) {
             case 'cache.adapter.apcu':
@@ -1169,7 +933,6 @@ abstract class FrameworkExtensionTest extends TestCase
                 if (ChainAdapter::class === $parentDefinition->getClass()) {
                     break;
                 }
-                // no break
             case 'cache.adapter.filesystem':
                 $this->assertSame(FilesystemAdapter::class, $parentDefinition->getClass());
                 break;
@@ -1182,17 +945,5 @@ abstract class FrameworkExtensionTest extends TestCase
             default:
                 $this->fail('Unresolved adapter: '.$adapter);
         }
-    }
-}
-
-/**
- * Simulates ReplaceAliasByActualDefinitionPass.
- */
-class TestAnnotationsPass implements CompilerPassInterface
-{
-    public function process(ContainerBuilder $container)
-    {
-        $container->setDefinition('annotation_reader', $container->getDefinition('annotations.cached_reader'));
-        $container->removeDefinition('annotations.cached_reader');
     }
 }

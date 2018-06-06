@@ -1,5 +1,5 @@
 {
-    "Version": "2.1.39.20",
+    "Version": "2.1.32.59",
     "Names": {
         "ADP": [
             "ADP",
@@ -75,7 +75,7 @@
         ],
         "AZN": [
             "AZN",
-            "manat azerbaiyano"
+            "manat azerí"
         ],
         "BAD": [
             "BAD",
@@ -83,7 +83,7 @@
         ],
         "BAM": [
             "BAM",
-            "marco convertible de Bosnia y Herzegovina"
+            "marco convertible de Bosnia-Herzegovina"
         ],
         "BBD": [
             "BBD",
@@ -225,10 +225,6 @@
             "CLP",
             "peso chileno"
         ],
-        "CNH": [
-            "CNH",
-            "yuan chino (extracontinental)"
-        ],
         "CNY": [
             "CNY",
             "yuan"
@@ -355,7 +351,7 @@
         ],
         "GBP": [
             "GBP",
-            "libra esterlina"
+            "libra británica"
         ],
         "GEK": [
             "GEK",
@@ -615,10 +611,6 @@
         ],
         "MRO": [
             "MRO",
-            "uguiya (1973–2017)"
-        ],
-        "MRU": [
-            "MRU",
             "uguiya"
         ],
         "MTL": [
@@ -847,10 +839,6 @@
         ],
         "STD": [
             "STD",
-            "dobra (1977–2017)"
-        ],
-        "STN": [
-            "STN",
             "dobra"
         ],
         "SUR": [
@@ -938,7 +926,7 @@
             "chelín ugandés"
         ],
         "USD": [
-            "US$",
+            "$",
             "dólar estadounidense"
         ],
         "USN": [
@@ -987,7 +975,7 @@
         ],
         "XAF": [
             "XAF",
-            "franco CFA de África Central"
+            "franco CFA BEAC"
         ],
         "XCD": [
             "XCD",
@@ -1007,7 +995,7 @@
         ],
         "XOF": [
             "XOF",
-            "franco CFA de África Occidental"
+            "franco CFA BCEAO"
         ],
         "XPF": [
             "CFPF",
@@ -1051,7 +1039,7 @@
         ],
         "ZMW": [
             "ZMW",
-            "kwacha zambiano"
+            "kuacha zambiano"
         ],
         "ZRN": [
             "ZRN",

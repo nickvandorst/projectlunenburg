@@ -93,19 +93,18 @@ class WebProfilerExtension extends ProfilerExtension
         return str_replace("\n</pre", '</pre', rtrim($dump));
     }
 
-    public function dumpLog(Environment $env, $message, Data $context = null)
+    public function dumpLog(Environment $env, $message, Data $context)
     {
         $message = twig_escape_filter($env, $message);
-        $message = preg_replace('/&quot;(.*?)&quot;/', '&quot;<b>$1</b>&quot;', $message);
 
-        if (null === $context || false === strpos($message, '{')) {
+        if (false === strpos($message, '{')) {
             return '<span class="dump-inline">'.$message.'</span>';
         }
 
         $replacements = array();
-        foreach ($context as $k => $v) {
-            $k = '{'.twig_escape_filter($env, $k).'}';
-            $replacements['&quot;<b>'.$k.'</b>&quot;'] = $replacements['&quot;'.$k.'&quot;'] = $replacements[$k] = $this->dumpData($env, $v);
+        foreach ($context->getRawData()[1] as $k => $v) {
+            $v = '{'.twig_escape_filter($env, $k).'}';
+            $replacements['&quot;'.$v.'&quot;'] = $replacements[$v] = $this->dumpData($env, $context->seek($k));
         }
 
         return '<span class="dump-inline">'.strtr($message, $replacements).'</span>';
@@ -116,7 +115,7 @@ class WebProfilerExtension extends ProfilerExtension
      */
     public function dumpValue($value)
     {
-        @trigger_error(sprintf('The %s() method is deprecated since Symfony 3.2 and will be removed in 4.0. Use the dumpData() method instead.', __METHOD__), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The %s() method is deprecated since version 3.2 and will be removed in 4.0. Use the dumpData() method instead.', __METHOD__), E_USER_DEPRECATED);
 
         if (null === $this->valueExporter) {
             $this->valueExporter = new ValueExporter();

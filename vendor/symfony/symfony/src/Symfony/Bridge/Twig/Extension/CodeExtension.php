@@ -27,6 +27,8 @@ class CodeExtension extends AbstractExtension
     private $charset;
 
     /**
+     * Constructor.
+     *
      * @param string|FileLinkFormatter $fileLinkFormat The format for links to source files
      * @param string                   $rootDir        The project root directory
      * @param string                   $charset        The charset
@@ -70,9 +72,9 @@ class CodeExtension extends AbstractExtension
             list($class, $method) = explode('::', $method, 2);
             $result = sprintf('%s::%s()', $this->abbrClass($class), $method);
         } elseif ('Closure' === $method) {
-            $result = sprintf('<abbr title="%s">%1$s</abbr>', $method);
+            $result = sprintf('<abbr title="%s">%s</abbr>', $method, $method);
         } else {
-            $result = sprintf('<abbr title="%s">%1$s</abbr>()', $method);
+            $result = sprintf('<abbr title="%s">%s</abbr>()', $method, $method);
         }
 
         return $result;
@@ -181,9 +183,7 @@ class CodeExtension extends AbstractExtension
             }
         }
 
-        if (0 < $line) {
-            $text .= ' at line '.$line;
-        }
+        $text = "$text at line $line";
 
         if (false !== $link = $this->getFileLink($file, $line)) {
             return sprintf('<a href="%s" title="Click to open this file" class="file_link">%s</a>', htmlspecialchars($link, ENT_COMPAT | ENT_SUBSTITUTE, $this->charset), $text);
@@ -198,7 +198,7 @@ class CodeExtension extends AbstractExtension
      * @param string $file An absolute file path
      * @param int    $line The line number
      *
-     * @return string|false A link or false
+     * @return string A link of false
      */
     public function getFileLink($file, $line)
     {
@@ -261,6 +261,6 @@ class CodeExtension extends AbstractExtension
             $line .= '</span>';
         }
 
-        return trim($line);
+        return $line;
     }
 }

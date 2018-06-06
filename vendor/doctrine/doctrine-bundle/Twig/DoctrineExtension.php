@@ -1,11 +1,24 @@
 <?php
 
-namespace Doctrine\Bundle\DoctrineBundle\Twig;
+/*
+ * This file is part of the Doctrine Bundle
+ *
+ * The code was originally distributed inside the Symfony framework.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ * (c) Doctrine Project, Benjamin Eberlei <kontakt@beberlei.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-use Symfony\Component\VarDumper\Cloner\Data;
+namespace Doctrine\Bundle\DoctrineBundle\Twig;
 
 /**
  * This class contains the needed functions in order to do the query highlighting
+ *
+ * @author Florin Patan <florinpatan@gmail.com>
+ * @author Christophe Coevoet <stof@notk.org>
  */
 class DoctrineExtension extends \Twig_Extension
 {
@@ -23,29 +36,29 @@ class DoctrineExtension extends \Twig_Extension
      */
     public function getFilters()
     {
-        return [
-            new \Twig_SimpleFilter('doctrine_minify_query', [$this, 'minifyQuery'], ['deprecated' => true]),
-            new \Twig_SimpleFilter('doctrine_pretty_query', [$this, 'formatQuery'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFilter('doctrine_replace_query_parameters', [$this, 'replaceQueryParameters']),
-        ];
+        return array(
+            new \Twig_SimpleFilter('doctrine_minify_query', array($this, 'minifyQuery'), array('deprecated' => true)),
+            new \Twig_SimpleFilter('doctrine_pretty_query', array($this, 'formatQuery'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFilter('doctrine_replace_query_parameters', array($this, 'replaceQueryParameters')),
+        );
     }
 
     /**
      * Get the possible combinations of elements from the given array
      *
-     * @param array $elements
-     * @param int   $combinationsLevel
+     * @param array   $elements
+     * @param integer $combinationsLevel
      *
      * @return array
      */
     private function getPossibleCombinations(array $elements, $combinationsLevel)
     {
         $baseCount = count($elements);
-        $result    = [];
+        $result = array();
 
-        if ($combinationsLevel === 1) {
+        if (1 === $combinationsLevel) {
             foreach ($elements as $element) {
-                $result[] = [$element];
+                $result[] = array($element);
             }
 
             return $result;
@@ -55,22 +68,20 @@ class DoctrineExtension extends \Twig_Extension
 
         foreach ($nextLevelElements as $nextLevelElement) {
             $lastElement = $nextLevelElement[$combinationsLevel - 2];
-            $found       = false;
+            $found = false;
 
             foreach ($elements as $key => $element) {
-                if ($element === $lastElement) {
+                if ($element == $lastElement) {
                     $found = true;
                     continue;
                 }
 
-                if ($found !== true || $key >= $baseCount) {
-                    continue;
+                if ($found == true && $key < $baseCount) {
+                    $tmp = $nextLevelElement;
+                    $newCombination = array_slice($tmp, 0);
+                    $newCombination[] = $element;
+                    $result[] = array_slice($newCombination, 0);
                 }
-
-                $tmp              = $nextLevelElement;
-                $newCombination   = array_slice($tmp, 0);
-                $newCombination[] = $element;
-                $result[]         = array_slice($newCombination, 0);
             }
         }
 
@@ -90,9 +101,9 @@ class DoctrineExtension extends \Twig_Extension
         array_shift($parameters);
         $result = '';
 
-        $maxLength  = $this->maxCharWidth;
+        $maxLength = $this->maxCharWidth;
         $maxLength -= count($parameters) * 5;
-        $maxLength  = $maxLength / count($parameters);
+        $maxLength = $maxLength / count($parameters);
 
         foreach ($parameters as $key => $value) {
             $isLarger = false;
@@ -106,7 +117,7 @@ class DoctrineExtension extends \Twig_Extension
             }
             $value = self::escapeFunction($value);
 
-            if (! is_numeric($value)) {
+            if (!is_numeric($value)) {
                 $value = substr($value, 1, -1);
             }
 
@@ -114,7 +125,7 @@ class DoctrineExtension extends \Twig_Extension
                 $value .= ' [...]';
             }
 
-            $result .= ' ' . $combination[$key] . ' ' . $value;
+            $result .= ' '.$combination[$key].' '.$value;
         }
 
         return trim($result);
@@ -123,9 +134,9 @@ class DoctrineExtension extends \Twig_Extension
     /**
      * Attempt to compose the best scenario minified query so that a user could find it without expanding it
      *
-     * @param string $query
-     * @param array  $keywords
-     * @param int    $required
+     * @param string  $query
+     * @param array   $keywords
+     * @param integer $required
      *
      * @return string
      */
@@ -134,7 +145,7 @@ class DoctrineExtension extends \Twig_Extension
         // Extract the mandatory keywords and consider the rest as optional keywords
         $mandatoryKeywords = array_splice($keywords, 0, $required);
 
-        $combinations      = [];
+        $combinations = array();
         $combinationsCount = count($keywords);
 
         // Compute all the possible combinations of keywords to match the query for
@@ -147,8 +158,8 @@ class DoctrineExtension extends \Twig_Extension
         foreach ($combinations as $combination) {
             $combination = array_merge($mandatoryKeywords, $combination);
 
-            $regexp = implode('(.*) ', $combination) . ' (.*)';
-            $regexp = '/^' . $regexp . '/is';
+            $regexp = implode('(.*) ', $combination).' (.*)';
+            $regexp = '/^'.$regexp.'/is';
 
             if (preg_match($regexp, $query, $matches)) {
                 $result = $this->shrinkParameters($matches, $combination);
@@ -158,8 +169,8 @@ class DoctrineExtension extends \Twig_Extension
         }
 
         // Try and match the simplest query form that contains only the mandatory keywords
-        $regexp = implode(' (.*)', $mandatoryKeywords) . ' (.*)';
-        $regexp = '/^' . $regexp . '/is';
+        $regexp = implode(' (.*)', $mandatoryKeywords).' (.*)';
+        $regexp = '/^'.$regexp.'/is';
 
         if (preg_match($regexp, $query, $matches)) {
             $result = $this->shrinkParameters($matches, $mandatoryKeywords);
@@ -182,29 +193,29 @@ class DoctrineExtension extends \Twig_Extension
      */
     public function minifyQuery($query)
     {
-        $result   = '';
-        $keywords = [];
+        $result = '';
+        $keywords = array();
         $required = 1;
 
         // Check if we can match the query against any of the major types
         switch (true) {
             case stripos($query, 'SELECT') !== false:
-                $keywords = ['SELECT', 'FROM', 'WHERE', 'HAVING', 'ORDER BY', 'LIMIT'];
+                $keywords = array('SELECT', 'FROM', 'WHERE', 'HAVING', 'ORDER BY', 'LIMIT');
                 $required = 2;
                 break;
 
             case stripos($query, 'DELETE') !== false:
-                $keywords = ['DELETE', 'FROM', 'WHERE', 'ORDER BY', 'LIMIT'];
+                $keywords = array('DELETE', 'FROM', 'WHERE', 'ORDER BY', 'LIMIT');
                 $required = 2;
                 break;
 
             case stripos($query, 'UPDATE') !== false:
-                $keywords = ['UPDATE', 'SET', 'WHERE', 'ORDER BY', 'LIMIT'];
+                $keywords = array('UPDATE', 'SET', 'WHERE', 'ORDER BY', 'LIMIT');
                 $required = 2;
                 break;
 
             case stripos($query, 'INSERT') !== false:
-                $keywords = ['INSERT', 'INTO', 'VALUE', 'VALUES'];
+                $keywords = array('INSERT', 'INTO', 'VALUE', 'VALUES');
                 $required = 2;
                 break;
 
@@ -214,7 +225,7 @@ class DoctrineExtension extends \Twig_Extension
         }
 
         // If we had a match then we should minify it
-        if ($result === '') {
+        if ($result == '') {
             $result = $this->composeMiniQuery($query, $keywords, $required);
         }
 
@@ -237,12 +248,12 @@ class DoctrineExtension extends \Twig_Extension
 
         switch (true) {
             // Check if result is non-unicode string using PCRE_UTF8 modifier
-            case is_string($result) && ! preg_match('//u', $result):
-                $result = '0x' . strtoupper(bin2hex($result));
+            case is_string($result) && !preg_match('//u', $result):
+                $result = '0x'. strtoupper(bin2hex($result));
                 break;
 
             case is_string($result):
-                $result = "'" . addslashes($result) . "'";
+                $result = "'".addslashes($result)."'";
                 break;
 
             case is_array($result):
@@ -257,7 +268,7 @@ class DoctrineExtension extends \Twig_Extension
                 $result = addslashes((string) $result);
                 break;
 
-            case $result === null:
+            case null === $result:
                 $result = 'NULL';
                 break;
 
@@ -272,21 +283,16 @@ class DoctrineExtension extends \Twig_Extension
     /**
      * Return a query with the parameters replaced
      *
-     * @param string     $query
-     * @param array|Data $parameters
+     * @param string $query
+     * @param array  $parameters
      *
      * @return string
      */
-    public function replaceQueryParameters($query, $parameters)
+    public function replaceQueryParameters($query, array $parameters)
     {
-        if ($parameters instanceof Data) {
-            // VarDumper < 3.3 compatibility layer
-            $parameters = method_exists($parameters, 'getValue') ? $parameters->getValue(true) : $parameters->getRawData();
-        }
-
         $i = 0;
 
-        if (! array_key_exists(0, $parameters) && array_key_exists(1, $parameters)) {
+        if (!array_key_exists(0, $parameters) && array_key_exists(1, $parameters)) {
             $i = 1;
         }
 
@@ -294,11 +300,11 @@ class DoctrineExtension extends \Twig_Extension
             '/\?|((?<!:):[a-z0-9_]+)/i',
             function ($matches) use ($parameters, &$i) {
                 $key = substr($matches[0], 1);
-                if (! array_key_exists($i, $parameters) && ($key === false || ! array_key_exists($key, $parameters))) {
+                if (!array_key_exists($i, $parameters) && (false === $key || !array_key_exists($key, $parameters))) {
                     return $matches[0];
                 }
 
-                $value  = array_key_exists($i, $parameters) ? $parameters[$i] : $parameters[$key];
+                $value = array_key_exists($i, $parameters) ? $parameters[$i] : $parameters[$key];
                 $result = DoctrineExtension::escapeFunction($value);
                 $i++;
 
@@ -320,16 +326,16 @@ class DoctrineExtension extends \Twig_Extension
      */
     public function formatQuery($sql, $highlightOnly = false)
     {
-        \SqlFormatter::$pre_attributes            = 'class="highlight highlight-sql"';
-        \SqlFormatter::$quote_attributes          = 'class="string"';
+        \SqlFormatter::$pre_attributes = 'class="highlight highlight-sql"';
+        \SqlFormatter::$quote_attributes = 'class="string"';
         \SqlFormatter::$backtick_quote_attributes = 'class="string"';
-        \SqlFormatter::$reserved_attributes       = 'class="keyword"';
-        \SqlFormatter::$boundary_attributes       = 'class="symbol"';
-        \SqlFormatter::$number_attributes         = 'class="number"';
-        \SqlFormatter::$word_attributes           = 'class="word"';
-        \SqlFormatter::$error_attributes          = 'class="error"';
-        \SqlFormatter::$comment_attributes        = 'class="comment"';
-        \SqlFormatter::$variable_attributes       = 'class="variable"';
+        \SqlFormatter::$reserved_attributes = 'class="keyword"';
+        \SqlFormatter::$boundary_attributes = 'class="symbol"';
+        \SqlFormatter::$number_attributes = 'class="number"';
+        \SqlFormatter::$word_attributes = 'class="word"';
+        \SqlFormatter::$error_attributes = 'class="error"';
+        \SqlFormatter::$comment_attributes = 'class="comment"';
+        \SqlFormatter::$variable_attributes = 'class="variable"';
 
         if ($highlightOnly) {
             $html = \SqlFormatter::highlight($sql);

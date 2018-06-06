@@ -11,7 +11,7 @@
 
 namespace Symfony\Bundle\FrameworkBundle\HttpCache;
 
-use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\HttpCache\HttpCache as BaseHttpCache;
 use Symfony\Component\HttpKernel\HttpCache\Esi;
 use Symfony\Component\HttpKernel\HttpCache\Store;
@@ -29,10 +29,12 @@ abstract class HttpCache extends BaseHttpCache
     protected $kernel;
 
     /**
-     * @param KernelInterface $kernel   A KernelInterface instance
-     * @param string          $cacheDir The cache directory (default used if null)
+     * Constructor.
+     *
+     * @param HttpKernelInterface $kernel   An HttpKernelInterface instance
+     * @param string              $cacheDir The cache directory (default used if null)
      */
-    public function __construct(KernelInterface $kernel, $cacheDir = null)
+    public function __construct(HttpKernelInterface $kernel, $cacheDir = null)
     {
         $this->kernel = $kernel;
         $this->cacheDir = $cacheDir;
@@ -53,6 +55,7 @@ abstract class HttpCache extends BaseHttpCache
     {
         $this->getKernel()->boot();
         $this->getKernel()->getContainer()->set('cache', $this);
+        $this->getKernel()->getContainer()->set($this->getSurrogate()->getName(), $this->getSurrogate());
 
         return parent::forward($request, $raw, $entry);
     }

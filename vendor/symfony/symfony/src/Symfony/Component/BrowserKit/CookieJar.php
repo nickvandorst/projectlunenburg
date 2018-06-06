@@ -20,6 +20,11 @@ class CookieJar
 {
     protected $cookieJar = array();
 
+    /**
+     * Sets a cookie.
+     *
+     * @param Cookie $cookie A Cookie instance
+     */
     public function set(Cookie $cookie)
     {
         $this->cookieJar[$cookie->getDomain()][$cookie->getPath()][$cookie->getName()] = $cookie;
@@ -43,21 +48,32 @@ class CookieJar
     {
         $this->flushExpiredCookies();
 
-        foreach ($this->cookieJar as $cookieDomain => $pathCookies) {
-            if ($cookieDomain && $domain) {
-                $cookieDomain = '.'.ltrim($cookieDomain, '.');
-                if ($cookieDomain !== substr('.'.$domain, -\strlen($cookieDomain))) {
-                    continue;
+        if (!empty($domain)) {
+            foreach ($this->cookieJar as $cookieDomain => $pathCookies) {
+                if ($cookieDomain) {
+                    $cookieDomain = '.'.ltrim($cookieDomain, '.');
+                    if ($cookieDomain != substr('.'.$domain, -strlen($cookieDomain))) {
+                        continue;
+                    }
+                }
+
+                foreach ($pathCookies as $cookiePath => $namedCookies) {
+                    if ($cookiePath != substr($path, 0, strlen($cookiePath))) {
+                        continue;
+                    }
+                    if (isset($namedCookies[$name])) {
+                        return $namedCookies[$name];
+                    }
                 }
             }
 
-            foreach ($pathCookies as $cookiePath => $namedCookies) {
-                if (0 !== strpos($path, $cookiePath)) {
-                    continue;
-                }
-                if (isset($namedCookies[$name])) {
-                    return $namedCookies[$name];
-                }
+            return;
+        }
+
+        // avoid relying on this behavior that is mainly here for BC reasons
+        foreach ($this->cookieJar as $cookies) {
+            if (isset($cookies[$path][$name])) {
+                return $cookies[$path][$name];
             }
         }
     }

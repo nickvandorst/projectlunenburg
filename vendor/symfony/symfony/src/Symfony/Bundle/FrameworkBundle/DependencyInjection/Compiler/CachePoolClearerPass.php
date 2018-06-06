@@ -11,7 +11,6 @@
 
 namespace Symfony\Bundle\FrameworkBundle\DependencyInjection\Compiler;
 
-use Symfony\Component\Cache\Adapter\AbstractAdapter;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -28,31 +27,15 @@ final class CachePoolClearerPass implements CompilerPassInterface
     {
         $container->getParameterBag()->remove('cache.prefix.seed');
 
-        foreach ($container->findTaggedServiceIds('cache.pool.clearer') as $id => $attr) {
-            $clearer = $container->getDefinition($id);
-            $pools = array();
-            foreach ($clearer->getArgument(0) as $id => $ref) {
-                if ($container->hasDefinition($id)) {
-                    $pools[$id] = new Reference($id);
+        foreach ($container->findTaggedServiceIds('cache.pool') as $id => $attributes) {
+            foreach (array_reverse($attributes) as $attr) {
+                if (isset($attr['clearer'])) {
+                    $clearer = $container->getDefinition($attr['clearer']);
+                    $clearer->addMethodCall('addPool', array(new Reference($id)));
                 }
-            }
-            $clearer->replaceArgument(0, $pools);
-        }
-
-        if (!$container->has('cache.annotations')) {
-            return;
-        }
-        $factory = array(AbstractAdapter::class, 'createSystemCache');
-        $annotationsPool = $container->findDefinition('cache.annotations');
-        if ($factory !== $annotationsPool->getFactory() || 4 !== count($annotationsPool->getArguments())) {
-            return;
-        }
-        if ($container->has('monolog.logger.cache')) {
-            $annotationsPool->addArgument(new Reference('monolog.logger.cache'));
-        } elseif ($container->has('cache.system')) {
-            $systemPool = $container->findDefinition('cache.system');
-            if ($factory === $systemPool->getFactory() && 5 <= count($systemArgs = $systemPool->getArguments())) {
-                $annotationsPool->addArgument($systemArgs[4]);
+                if (array_key_exists('clearer', $attr)) {
+                    break;
+                }
             }
         }
     }

@@ -1,5 +1,5 @@
 {
-    "Version": "2.1.39.37",
+    "Version": "2.1.32.73",
     "Names": {
         "ADP": [
             "ADP",
@@ -224,10 +224,6 @@
         "CLP": [
             "CLP",
             "Čileanski pezos"
-        ],
-        "CNH": [
-            "CNH",
-            "Kineski juan (ostrvski)"
         ],
         "CNY": [
             "CN¥",
@@ -623,10 +619,6 @@
         ],
         "MRO": [
             "MRO",
-            "Mauritanijska ogija (1973–2017)"
-        ],
-        "MRU": [
-            "MRU",
             "Mauritanijska ogija"
         ],
         "MTL": [
@@ -767,11 +759,11 @@
         ],
         "ROL": [
             "ROL",
-            "Rumunski lej (1952–2006)"
+            "Rumunski lej"
         ],
         "RON": [
             "RON",
-            "Rumunski lej"
+            "Rumunski lej (1952–2006)"
         ],
         "RSD": [
             "RSD",
@@ -855,10 +847,6 @@
         ],
         "STD": [
             "STD",
-            "Saotomska dobra (1977–2017)"
-        ],
-        "STN": [
-            "STN",
             "Saotomska dobra"
         ],
         "SUR": [

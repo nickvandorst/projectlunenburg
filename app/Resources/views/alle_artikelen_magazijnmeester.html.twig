@@ -14,25 +14,29 @@
   <h1>Artikeloverzicht</h1>
   <h5><button class="btn btn btn-primary"><span class="glyphicon glyphicon-home"></span><a href="{{ path('magazijnmeesterhome') }}"><font color="white"> Home</font></a><br/></button></h5>
   <table class="table table-striped table-hover">
-    <thead>
+      <thead>
       <tr>
-        <th>Artikelnummer</th>
-        <th>Magazijnlocatie</th>
-        <th>Voorraad</th>
-        <th>Code vervangend artikel</th>
-        <th>Artikelinformatie wijzigen:</th>
-       </tr>
-    </thead>
-    <tbody>
-     {% for artikel in artikelen %}
-      <tr>
-        <td>{{ artikel.artikelnummer }}</td>
-        <td>{{ artikel.magazijnlocatie }}</td>
-        <td>{{ artikel.voorraadaantal }}</td>
-        <td>{{ artikel.codevervangendartikel }}</td>
-        <td><a href="{{ path('magazijnmeesterwijzigartikel',{'artikelnummer':artikel.artikelnummer}) }}">Wijzigen</a></td></td>
+          <th>Artikelnummer</th>
+          <th>Magazijnlocatie</th>
+          <th>Vrije voorraad</th>
+          <th>Gereserveerde voorraad</th>
+          <th>Technische voorraad</th>
+          <th>Code vervangend artikel</th>
+          <th>Artikelinformatie wijzigen:</th>
       </tr>
-    </tbody>
+      </thead>
+      <tbody>
+      {% for artikel in artikelen %}
+      <tr>
+          <td>{{ artikel.artikelnummer }}</td>
+          <td>{{ artikel.magazijnlocatie }}</td>
+          <td>{{ artikel.vrijevoorraad }}</td>
+          <td>{{ artikel.gereserveerdevoorraad }}</td>
+          <td>{{ artikel.technischevoorraad }}</td>
+          <td>{{ artikel.codevervangendartikel }}</td>
+          <td><a href="{{ path('magazijnmeesterwijzigartikel',{'artikelnummer':artikel.artikelnummer}) }}">Wijzigen</a></td></td>
+      </tr>
+      </tbody>
     {% endfor %}
   </table>
 </div>

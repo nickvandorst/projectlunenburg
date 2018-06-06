@@ -29,7 +29,7 @@ class ParentDummy
     public $foo2;
 
     /**
-     * @var callable
+     * @var callback
      */
     public $foo3;
 

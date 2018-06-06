@@ -1,5 +1,5 @@
 {
-    "Version": "2.1.39.20",
+    "Version": "2.1.32.59",
     "Names": {
         "ADP": [
             "ADP",
@@ -27,7 +27,7 @@
         ],
         "ANG": [
             "ANG",
-            "Guilder Antille Hà Lan"
+            "Guilder Tây Ấn Hà Lan"
         ],
         "AOA": [
             "AOA",
@@ -256,10 +256,6 @@
         "CLP": [
             "CLP",
             "Peso Chile"
-        ],
-        "CNH": [
-            "CNH",
-            "Nhân dân tệ (hải ngoại)"
         ],
         "CNY": [
             "CN¥",
@@ -667,10 +663,6 @@
         ],
         "MRO": [
             "MRO",
-            "Ouguiya Mauritania (1973–2017)"
-        ],
-        "MRU": [
-            "MRU",
             "Ouguiya Mauritania"
         ],
         "MTL": [
@@ -899,10 +891,6 @@
         ],
         "STD": [
             "STD",
-            "Dobra São Tomé và Príncipe (1977–2017)"
-        ],
-        "STN": [
-            "STN",
             "Dobra São Tomé và Príncipe"
         ],
         "SUR": [

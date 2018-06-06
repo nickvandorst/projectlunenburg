@@ -19,7 +19,7 @@ use Symfony\Bridge\PsrHttpMessage\Tests\Fixtures\Response;
  * @author Kévin Dunglas <dunglas@gmail.com>
  * @requires PHP 5.4
  */
-class PsrResponseListenerTest extends \PHPUnit\Framework\TestCase
+class PsrResponseListenerTest extends \PHPUnit_Framework_TestCase
 {
     public function testConvertsControllerResult()
     {
@@ -32,7 +32,7 @@ class PsrResponseListenerTest extends \PHPUnit\Framework\TestCase
     public function testDoesNotConvertControllerResult()
     {
         $listener = new PsrResponseListener(new HttpFoundationFactory());
-        $event = $this->createEventMock([]);
+        $event = $this->createEventMock(array());
         $event->expects($this->never())->method('setResponse');
 
         $listener->onKernelView($event);

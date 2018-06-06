@@ -196,9 +196,7 @@ class TwigExtensionTest extends TestCase
             array(__DIR__.'/Fixtures/Bundle/ChildChildTwigBundle/Resources/views', 'Twig'),
             array(__DIR__.'/Fixtures/Bundle/ChildTwigBundle/Resources/views', 'Twig'),
             array(__DIR__.'/Fixtures/Resources/TwigBundle/views', 'Twig'),
-            array(__DIR__.'/Fixtures/templates/bundles/TwigBundle', 'Twig'),
             array(realpath(__DIR__.'/../..').'/Resources/views', 'Twig'),
-            array(realpath(__DIR__.'/../..').'/Resources/views', '!Twig'),
             array(__DIR__.'/Fixtures/Bundle/ChildChildChildChildTwigBundle/Resources/views', 'ChildTwig'),
             array(__DIR__.'/Fixtures/Bundle/ChildChildChildTwigBundle/Resources/views', 'ChildTwig'),
             array(__DIR__.'/Fixtures/Bundle/ChildChildTwigBundle/Resources/views', 'ChildTwig'),
@@ -207,7 +205,6 @@ class TwigExtensionTest extends TestCase
             array(__DIR__.'/Fixtures/Bundle/ChildChildChildTwigBundle/Resources/views', 'ChildChildTwig'),
             array(__DIR__.'/Fixtures/Bundle/ChildChildTwigBundle/Resources/views', 'ChildChildTwig'),
             array(__DIR__.'/Fixtures/Resources/views'),
-            array(__DIR__.'/Fixtures/templates'),
         ), $paths);
     }
 
@@ -232,10 +229,9 @@ class TwigExtensionTest extends TestCase
         }
         $container->registerExtension(new TwigExtension());
         $container->loadFromExtension('twig', array());
-        $container->setAlias('test.twig.extension.debug.stopwatch', 'twig.extension.debug.stopwatch')->setPublic(true);
         $this->compileContainer($container);
 
-        $tokenParsers = $container->get('test.twig.extension.debug.stopwatch')->getTokenParsers();
+        $tokenParsers = $container->get('twig.extension.debug.stopwatch')->getTokenParsers();
         $stopwatchIsAvailable = new \ReflectionProperty($tokenParsers[0], 'stopwatchIsAvailable');
         $stopwatchIsAvailable->setAccessible(true);
 
@@ -269,11 +265,11 @@ class TwigExtensionTest extends TestCase
         $container->compile();
 
         $loader = $container->getDefinition('twig.runtime_loader');
-        $args = $container->getDefinition((string) $loader->getArgument(0))->getArgument(0);
-        $this->assertArrayHasKey('Symfony\Component\Form\FormRenderer', $args);
+        $args = $loader->getArgument(1);
+        $this->assertArrayHasKey('Symfony\Bridge\Twig\Form\TwigRenderer', $args);
         $this->assertArrayHasKey('FooClass', $args);
-        $this->assertEquals('twig.form.renderer', $args['Symfony\Component\Form\FormRenderer']->getValues()[0]);
-        $this->assertEquals('foo', $args['FooClass']->getValues()[0]);
+        $this->assertContains('twig.form.renderer', $args);
+        $this->assertContains('foo', $args);
     }
 
     private function createContainer()
@@ -281,7 +277,6 @@ class TwigExtensionTest extends TestCase
         $container = new ContainerBuilder(new ParameterBag(array(
             'kernel.cache_dir' => __DIR__,
             'kernel.root_dir' => __DIR__.'/Fixtures',
-            'kernel.project_dir' => __DIR__,
             'kernel.charset' => 'UTF-8',
             'kernel.debug' => false,
             'kernel.bundles' => array(

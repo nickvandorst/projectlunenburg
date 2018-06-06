@@ -1,10 +1,6 @@
 @Template
 =========
 
-As of version 4.0 of the bundle, only Twig is supported by the ``@Template``
-annotation (and only when **not** used with the Symfony Templating component --
-no ``templating`` entry set in the ``framework`` configuration settings).
-
 Usage
 -----
 
@@ -13,7 +9,7 @@ The ``@Template`` annotation associates a controller with a template name::
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
     /**
-     * @Template("@SensioBlog/Post/show.html.twig")
+     * @Template("SensioBlogBundle:Post:show.html.twig")
      */
     public function showAction($id)
     {
@@ -57,6 +53,19 @@ case for the above example, you can even omit the annotation value::
         return array('post' => $post);
     }
 
+.. note::
+
+    If you are using PHP as a templating system, you need to make it
+    explicit::
+
+        /**
+         * @Template(engine="php")
+         */
+        public function showAction($id)
+        {
+            // ...
+        }
+
 And if the only parameters to pass to the template are method arguments, you
 can use the ``vars`` attribute instead of returning an array. This is very
 useful in combination with the ``@ParamConverter`` :doc:`annotation
@@ -64,7 +73,7 @@ useful in combination with the ``@ParamConverter`` :doc:`annotation
 
     /**
      * @ParamConverter("post", class="SensioBlogBundle:Post")
-     * @Template("@SensioBlog/Post/show.html.twig", vars={"post"})
+     * @Template("SensioBlogBundle:Post:show.html.twig", vars={"post"})
      */
     public function showAction(Post $post)
     {

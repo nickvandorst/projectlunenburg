@@ -9,8 +9,6 @@
     </parameters>
 
     <services>
-        <defaults public="false" />
-
         <service id="debug.debug_handlers_listener" class="Symfony\Component\HttpKernel\EventListener\DebugHandlersListener">
             <tag name="kernel.event_subscriber" />
             <tag name="monolog.logger" channel="php" />
@@ -23,9 +21,10 @@
             <argument>true</argument>
         </service>
 
-        <service id="debug.file_link_formatter" class="Symfony\Component\HttpKernel\Debug\FileLinkFormatter">
+        <service id="debug.stopwatch" class="Symfony\Component\Stopwatch\Stopwatch" />
+
+        <service id="debug.file_link_formatter" class="Symfony\Component\HttpKernel\Debug\FileLinkFormatter" public="false">
             <argument>%debug.file_link_format%</argument>
         </service>
-        <service id="Symfony\Component\HttpKernel\Debug\FileLinkFormatter" alias="debug.file_link_formatter" />
     </services>
 </container>

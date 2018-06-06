@@ -1,12 +1,12 @@
 <?php
 
 /*
- * This file is part of the Symfony package.
+ * This file is part of the Symfony framework.
  *
  * (c) Fabien Potencier <fabien@symfony.com>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Tests\Fixtures\FooBundle\Controller;
@@ -30,7 +30,7 @@ class SimpleController
 
     /**
      * @Route("/simple/multiple/{a}/{b}/")
-     * @Template("@Foo/simple/some.html.twig")
+     * @Template("FooBundle:Simple:some.html.twig")
      */
     public function someMoreAction($a, $b, $c = 'c')
     {
@@ -58,9 +58,9 @@ class SimpleController
      */
     public function streamedAction()
     {
-        return [
+        return array(
             'foo' => 'foo',
             'bar' => 'bar',
-        ];
+        );
     }
 }

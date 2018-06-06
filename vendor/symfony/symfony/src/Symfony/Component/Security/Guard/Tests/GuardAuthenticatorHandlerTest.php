@@ -14,7 +14,6 @@ namespace Symfony\Component\Security\Guard\Tests;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Guard\AuthenticatorInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
@@ -82,7 +81,7 @@ class GuardAuthenticatorHandlerTest extends TestCase
     /**
      * @dataProvider getTokenClearingTests
      */
-    public function testHandleAuthenticationClearsToken($tokenClass, $tokenProviderKey, $actualProviderKey)
+    public function testHandleAuthenticationClearsToken($tokenClass, $tokenProviderKey, $actualProviderKey, $shouldTokenBeCleared)
     {
         $token = $this->getMockBuilder($tokenClass)
             ->disableOriginalConstructor()
@@ -91,7 +90,12 @@ class GuardAuthenticatorHandlerTest extends TestCase
             ->method('getProviderKey')
             ->will($this->returnValue($tokenProviderKey));
 
-        $this->tokenStorage->expects($this->never())
+        // make the $token be the current token
+        $this->tokenStorage->expects($this->once())
+            ->method('getToken')
+            ->will($this->returnValue($token));
+
+        $this->tokenStorage->expects($shouldTokenBeCleared ? $this->once() : $this->never())
             ->method('setToken')
             ->with(null);
         $authException = new AuthenticationException('Bad password!');
@@ -111,9 +115,9 @@ class GuardAuthenticatorHandlerTest extends TestCase
     {
         $tests = array();
         // correct token class and matching firewall => clear the token
-        $tests[] = array('Symfony\Component\Security\Guard\Token\PostAuthenticationGuardToken', 'the_firewall_key', 'the_firewall_key');
-        $tests[] = array('Symfony\Component\Security\Guard\Token\PostAuthenticationGuardToken', 'the_firewall_key', 'different_key');
-        $tests[] = array('Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken', 'the_firewall_key', 'the_firewall_key');
+        $tests[] = array('Symfony\Component\Security\Guard\Token\PostAuthenticationGuardToken', 'the_firewall_key', 'the_firewall_key', true);
+        $tests[] = array('Symfony\Component\Security\Guard\Token\PostAuthenticationGuardToken', 'the_firewall_key', 'different_key', false);
+        $tests[] = array('Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken', 'the_firewall_key', 'the_firewall_key', false);
 
         return $tests;
     }
@@ -124,7 +128,7 @@ class GuardAuthenticatorHandlerTest extends TestCase
         $this->dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcherInterface')->getMock();
         $this->token = $this->getMockBuilder('Symfony\Component\Security\Core\Authentication\Token\TokenInterface')->getMock();
         $this->request = new Request(array(), array(), array(), array(), array(), array());
-        $this->guardAuthenticator = $this->getMockBuilder(AuthenticatorInterface::class)->getMock();
+        $this->guardAuthenticator = $this->getMockBuilder('Symfony\Component\Security\Guard\GuardAuthenticatorInterface')->getMock();
     }
 
     protected function tearDown()

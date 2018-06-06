@@ -31,7 +31,14 @@ class UserController extends Controller
     }
     return new Response($this->renderView('gebruikerregistreren.html.twig', array('form' => $form->createView())));
 }
-
+// een overzicht van alle gebruikers dit wordt gegenereerd als er een nieuwe gebruiker is aangemaakt door de administrator
+/**
+     * @Route("/administrator/allegebruikers", name="allegebruikers")
+     */
+     public function AlleGebruikers(Request $request) {
+      $gebruikers = $this->getDoctrine()->getRepository("AppBundle:Gebruiker")->findAll();
+        return new Response($this->renderView('alle_gebruikers.html.twig', array('gebruikers' => $gebruikers)));
+        }
 
 }
 

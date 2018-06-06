@@ -19,8 +19,6 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Form\AbstractType;
 
 /**
- * @group legacy
- *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
 class FormPassTest extends TestCase
@@ -41,7 +39,6 @@ class FormPassTest extends TestCase
         $container->addCompilerPass(new FormPass());
 
         $extDefinition = new Definition('Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension');
-        $extDefinition->setPublic(true);
         $extDefinition->setArguments(array(
             new Reference('service_container'),
             array(),
@@ -50,8 +47,8 @@ class FormPassTest extends TestCase
         ));
 
         $container->setDefinition('form.extension', $extDefinition);
-        $container->register('my.type1', __CLASS__.'_Type1')->addTag('form.type')->setPublic(true);
-        $container->register('my.type2', __CLASS__.'_Type2')->addTag('form.type')->setPublic(true);
+        $container->register('my.type1', __CLASS__.'_Type1')->addTag('form.type');
+        $container->register('my.type2', __CLASS__.'_Type2')->addTag('form.type');
 
         $container->compile();
 
@@ -77,7 +74,6 @@ class FormPassTest extends TestCase
             array(),
             array(),
         ));
-        $extDefinition->setPublic(true);
 
         $container->setDefinition('form.extension', $extDefinition);
 
@@ -140,7 +136,6 @@ class FormPassTest extends TestCase
             array(),
             array(),
         ));
-        $extDefinition->setPublic(true);
 
         $container->setDefinition('form.extension', $extDefinition);
         $container->register('my.type_extension', 'stdClass')
@@ -155,7 +150,6 @@ class FormPassTest extends TestCase
         $container->addCompilerPass(new FormPass());
 
         $extDefinition = new Definition('Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension');
-        $extDefinition->setPublic(true);
         $extDefinition->setArguments(array(
             new Reference('service_container'),
             array(),
@@ -185,7 +179,7 @@ class FormPassTest extends TestCase
     /**
      * @dataProvider privateTaggedServicesProvider
      */
-    public function testPrivateTaggedServices($id, $tagName)
+    public function testPrivateTaggedServices($id, $tagName, $expectedExceptionMessage)
     {
         $container = new ContainerBuilder();
         $container->addCompilerPass(new FormPass());
@@ -199,18 +193,24 @@ class FormPassTest extends TestCase
         ));
 
         $container->setDefinition('form.extension', $extDefinition);
-        $container->register($id, 'stdClass')->setPublic(false)->addTag($tagName, array('extended_type' => 'Foo'));
+        $container->register($id, 'stdClass')->setPublic(false)->addTag($tagName);
+
+        if (method_exists($this, 'expectException')) {
+            $this->expectException('InvalidArgumentException');
+            $this->expectExceptionMessage($expectedExceptionMessage);
+        } else {
+            $this->setExpectedException('InvalidArgumentException', $expectedExceptionMessage);
+        }
 
         $container->compile();
-        $this->assertTrue($container->getDefinition($id)->isPublic());
     }
 
     public function privateTaggedServicesProvider()
     {
         return array(
-            array('my.type', 'form.type'),
-            array('my.type_extension', 'form.type_extension'),
-            array('my.guesser', 'form.type_guesser'),
+            array('my.type', 'form.type', 'The service "my.type" must be public as form types are lazy-loaded'),
+            array('my.type_extension', 'form.type_extension', 'The service "my.type_extension" must be public as form type extensions are lazy-loaded'),
+            array('my.guesser', 'form.type_guesser', 'The service "my.guesser" must be public as form type guessers are lazy-loaded'),
         );
     }
 }

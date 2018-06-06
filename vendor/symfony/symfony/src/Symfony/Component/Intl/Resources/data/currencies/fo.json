@@ -1,5 +1,5 @@
 {
-    "Version": "2.1.39.11",
+    "Version": "2.1.31.86",
     "Names": {
         "AED": [
             "AED",
@@ -120,10 +120,6 @@
         "CLP": [
             "CLP",
             "Kili peso"
-        ],
-        "CNH": [
-            "CNH",
-            "kinesiskur yuan (úr landi)"
         ],
         "CNY": [
             "CN¥",
@@ -251,7 +247,7 @@
         ],
         "ILS": [
             "₪",
-            "Ísrael new shekel"
+            "Ísrael new sheqel"
         ],
         "INR": [
             "₹",
@@ -367,10 +363,6 @@
         ],
         "MRO": [
             "MRO",
-            "Móritania ouguiya (1973–2017)"
-        ],
-        "MRU": [
-            "MRU",
             "Móritania ouguiya"
         ],
         "MUR": [
@@ -519,10 +511,6 @@
         ],
         "STD": [
             "STD",
-            "Sao Tome & Prinsipi dobra (1977–2017)"
-        ],
-        "STN": [
-            "STN",
             "Sao Tome & Prinsipi dobra"
         ],
         "SYP": [

@@ -1,5 +1,5 @@
 {
-    "Version": "2.1.39.11",
+    "Version": "2.1.32.59",
     "Names": {
         "AED": [
             "AED",
@@ -341,10 +341,6 @@
             "MRO",
             "MRO"
         ],
-        "MRU": [
-            "MRU",
-            "MRU"
-        ],
         "MTL": [
             "MTL",
             "Lira Maltija"
@@ -492,10 +488,6 @@
         "STD": [
             "STD",
             "STD"
-        ],
-        "STN": [
-            "STN",
-            "STN"
         ],
         "SYP": [
             "SYP",

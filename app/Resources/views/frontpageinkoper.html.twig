@@ -9,28 +9,16 @@
 </head>
 
 <body>
+<div class="jumbotron text-center">
+  <h1 style="font-size: 50px; font-family: 'Garamond', cursive;"><font color="#DF0101"><B>Lunenburg</B></font><P/></h1>
+</div>
+
 <div class="pull-right" style="width: 15%">
 <h4><span class="glyphicon glyphicon-chevron-left"></span><a href="{{ path('home') }}"><font color="black"> Terug naar inlogscherm</font></a></br></h4>
 </div>
 
 <div class="container">
   <h2 style = "text-align:center; font-size: 30px">Welkom inkoper</h2>
-  {% set gevonden = false %}
-
-  {% for artikel in artikelen %}
-    {% if(artikel.bestelserie > 0) %}
-      {% set gevonden = true %}
-    {% endif %}
-  {% endfor %}
-  {% if gevonden == true %}
-  <div class="container">
-  <div class="alert alert-danger">
-    <div class="text-center">
-       <strong>Er is te weinig voorraad, er moeten artikelen besteld worden!</strong><a href="{{ path('inkoperalletebestellenartikelen') }}" class="alert-link"> Ga naar de te bestellen artikelen.</a>
-  </div>
-  </div>
-  </div>
-  {% endif %}
   <!--<h5 style ="text-align:right"><span class="glyphicon glyphicon-home"></span><a href="{{ path('home') }}"><font color="black"> Home</font></a></br></h5>-->
   <div class="row">
       <div class="col-sm-4">
@@ -41,7 +29,7 @@
       <div class="col-sm-4">
           <h3>Bestelorder</h3>
           <h4><button class="btn btn-info btn-lg"><a href="{{ path('inkoperallebestelorders') }}"><font color="white">Alle Bestelorders </font></a><span class="glyphicon glyphicon-chevron-right"></span></button></br></h4>
-          <h4><button class="btn btn-info btn-lg"><span class="glyphicon glyphicon-plus"></span><a href="{{ path('inkoperbestelorder') }}"><font color="white"> Bestelorder toevoegen</font></a></button></br></h4>
+          <h4><button class="btn btn-info btn-lg"><span class="glyphicon glyphicon-plus"></span><a href="{{ path('inkoperbestelorder') }}"><font color="white"> Nieuw bestelorder toevoegen</font></a></button></br></h4>
       </div>
   </div>
 

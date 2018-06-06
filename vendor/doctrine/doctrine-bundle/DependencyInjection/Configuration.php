@@ -1,9 +1,20 @@
 <?php
 
+/*
+ * This file is part of the Doctrine Bundle
+ *
+ * The code was originally distributed inside the Symfony framework.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ * (c) Doctrine Project, Benjamin Eberlei <kontakt@beberlei.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Doctrine\Bundle\DoctrineBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -12,20 +23,21 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  *
  * This information is solely responsible for how the different configuration
  * sections are normalized, and merged.
+ *
+ * @author Christophe Coevoet <stof@notk.org>
  */
 class Configuration implements ConfigurationInterface
 {
-    /** @var bool */
     private $debug;
 
     /**
      * Constructor
      *
-     * @param bool $debug Whether to use the debug mode
+     * @param Boolean $debug Whether to use the debug mode
      */
     public function __construct($debug)
     {
-        $this->debug = (bool) $debug;
+        $this->debug = (Boolean) $debug;
     }
 
     /**
@@ -34,7 +46,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode    = $treeBuilder->root('doctrine');
+        $rootNode = $treeBuilder->root('doctrine');
 
         $this->addDbalSection($rootNode);
         $this->addOrmSection($rootNode);
@@ -44,6 +56,8 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Add DBAL section to configuration tree
+     *
+     * @param ArrayNodeDefinition $node
      */
     private function addDbalSection(ArrayNodeDefinition $node)
     {
@@ -51,13 +65,11 @@ class Configuration implements ConfigurationInterface
             ->children()
             ->arrayNode('dbal')
                 ->beforeNormalization()
-                    ->ifTrue(function ($v) {
-                        return is_array($v) && ! array_key_exists('connections', $v) && ! array_key_exists('connection', $v);
-                    })
+                    ->ifTrue(function ($v) { return is_array($v) && !array_key_exists('connections', $v) && !array_key_exists('connection', $v); })
                     ->then(function ($v) {
                         // Key that should not be rewritten to the connection config
-                        $excludedKeys = ['default_connection' => true, 'types' => true, 'type' => true];
-                        $connection   = [];
+                        $excludedKeys = array('default_connection' => true, 'types' => true, 'type' => true);
+                        $connection = array();
                         foreach ($v as $key => $value) {
                             if (isset($excludedKeys[$key])) {
                                 continue;
@@ -66,7 +78,7 @@ class Configuration implements ConfigurationInterface
                             unset($v[$key]);
                         }
                         $v['default_connection'] = isset($v['default_connection']) ? (string) $v['default_connection'] : 'default';
-                        $v['connections']        = [$v['default_connection'] => $connection];
+                        $v['connections'] = array($v['default_connection'] => $connection);
 
                         return $v;
                     })
@@ -81,9 +93,7 @@ class Configuration implements ConfigurationInterface
                         ->prototype('array')
                             ->beforeNormalization()
                                 ->ifString()
-                                ->then(function ($v) {
-                                    return ['class' => $v];
-                                })
+                                ->then(function ($v) { return array('class' => $v); })
                             ->end()
                             ->children()
                                 ->scalarNode('class')->isRequired()->end()
@@ -106,9 +116,9 @@ class Configuration implements ConfigurationInterface
     private function getDbalConnectionsNode()
     {
         $treeBuilder = new TreeBuilder();
-        $node        = $treeBuilder->root('connections');
+        $node = $treeBuilder->root('connections');
 
-        /** @var ArrayNodeDefinition $connectionNode */
+        /** @var $connectionNode ArrayNodeDefinition */
         $connectionNode = $node
             ->requiresAtLeastOneElement()
             ->useAttributeAsKey('name')
@@ -181,6 +191,8 @@ class Configuration implements ConfigurationInterface
      * Adds config keys related to params processed by the DBAL drivers
      *
      * These keys are available for slave configurations too.
+     *
+     * @param ArrayNodeDefinition $node
      */
     private function configureDbalDriverNode(ArrayNodeDefinition $node)
     {
@@ -204,7 +216,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
                 ->scalarNode('servicename')
                     ->info(
-                        'Overrules dbname parameter if given and used as SERVICE_NAME or SID connection parameter ' .
+                        'Overrules dbname parameter if given and used as SERVICE_NAME or SID connection parameter '.
                         'for Oracle depending on the service parameter.'
                     )
                 ->end()
@@ -216,13 +228,13 @@ class Configuration implements ConfigurationInterface
                 ->end()
                 ->scalarNode('sslmode')
                     ->info(
-                        'Determines whether or with what priority a SSL TCP/IP connection will be negotiated with ' .
+                        'Determines whether or with what priority a SSL TCP/IP connection will be negotiated with '.
                         'the server for PostgreSQL.'
                     )
                 ->end()
                 ->scalarNode('sslrootcert')
                     ->info(
-                        'The name of a file containing SSL certificate authority (CA) certificate(s). ' .
+                        'The name of a file containing SSL certificate authority (CA) certificate(s). '.
                         'If the file exists, the server\'s certificate will be verified to be signed by one of these authorities.'
                     )
                 ->end()
@@ -231,24 +243,22 @@ class Configuration implements ConfigurationInterface
                 ->booleanNode('use_savepoints')->info('Use savepoints for nested transactions')->end()
                 ->scalarNode('instancename')
                 ->info(
-                    'Optional parameter, complete whether to add the INSTANCE_NAME parameter in the connection.' .
-                    ' It is generally used to connect to an Oracle RAC server to select the name' .
+                    'Optional parameter, complete whether to add the INSTANCE_NAME parameter in the connection.'.
+                    ' It is generally used to connect to an Oracle RAC server to select the name'.
                     ' of a particular instance.'
                 )
                 ->end()
                 ->scalarNode('connectstring')
                 ->info(
-                    'Complete Easy Connect connection descriptor, see https://docs.oracle.com/database/121/NETAG/naming.htm.' .
-                    'When using this option, you will still need to provide the user and password parameters, but the other ' .
-                    'parameters will no longer be used. Note that when using this parameter, the getHost and getPort methods' .
+                    'Complete Easy Connect connection descriptor, see https://docs.oracle.com/database/121/NETAG/naming.htm.'.
+                    'When using this option, you will still need to provide the user and password parameters, but the other '.
+                    'parameters will no longer be used. Note that when using this parameter, the getHost and getPort methods'.
                     ' from Doctrine\DBAL\Connection will no longer function as expected.'
                 )
                 ->end()
             ->end()
             ->beforeNormalization()
-                ->ifTrue(function ($v) {
-                    return ! isset($v['sessionMode']) && isset($v['session_mode']);
-                })
+                ->ifTrue(function ($v) {return !isset($v['sessionMode']) && isset($v['session_mode']);})
                 ->then(function ($v) {
                     $v['sessionMode'] = $v['session_mode'];
                     unset($v['session_mode']);
@@ -257,9 +267,7 @@ class Configuration implements ConfigurationInterface
                 })
             ->end()
             ->beforeNormalization()
-                ->ifTrue(function ($v) {
-                    return ! isset($v['MultipleActiveResultSets']) && isset($v['multiple_active_result_sets']);
-                })
+                ->ifTrue(function ($v) {return !isset($v['MultipleActiveResultSets']) && isset($v['multiple_active_result_sets']);})
                 ->then(function ($v) {
                     $v['MultipleActiveResultSets'] = $v['multiple_active_result_sets'];
                     unset($v['multiple_active_result_sets']);
@@ -272,6 +280,8 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Add the ORM section to configuration tree
+     *
+     * @param ArrayNodeDefinition $node
      */
     private function addOrmSection(ArrayNodeDefinition $node)
     {
@@ -281,21 +291,16 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->arrayNode('orm')
                     ->beforeNormalization()
-                        ->ifTrue(function ($v) {
-                            return $v === null || (is_array($v) && ! array_key_exists('entity_managers', $v) && ! array_key_exists('entity_manager', $v));
-                        })
+                        ->ifTrue(function ($v) { return null === $v || (is_array($v) && !array_key_exists('entity_managers', $v) && !array_key_exists('entity_manager', $v)); })
                         ->then(function ($v) {
                             $v = (array) $v;
                             // Key that should not be rewritten to the connection config
-                            $excludedKeys  = [
-                                'default_entity_manager' => true,
-                            'auto_generate_proxy_classes' => true,
-                                'proxy_dir' => true,
-                            'proxy_namespace' => true,
-                            'resolve_target_entities' => true,
+                            $excludedKeys = array(
+                                'default_entity_manager' => true, 'auto_generate_proxy_classes' => true,
+                                'proxy_dir' => true, 'proxy_namespace' => true, 'resolve_target_entities' => true,
                                 'resolve_target_entity' => true,
-                            ];
-                            $entityManager = [];
+                            );
+                            $entityManager = array();
                             foreach ($v as $key => $value) {
                                 if (isset($excludedKeys[$key])) {
                                     continue;
@@ -304,7 +309,7 @@ class Configuration implements ConfigurationInterface
                                 unset($v[$key]);
                             }
                             $v['default_entity_manager'] = isset($v['default_entity_manager']) ? (string) $v['default_entity_manager'] : 'default';
-                            $v['entity_managers']        = [$v['default_entity_manager'] => $entityManager];
+                            $v['entity_managers'] = array($v['default_entity_manager'] => $entityManager);
 
                             return $v;
                         })
@@ -334,7 +339,7 @@ class Configuration implements ConfigurationInterface
                             ->validate()
                                 ->ifString()
                                 ->then(function ($v) {
-                                    return constant('Doctrine\Common\Proxy\AbstractProxyFactory::AUTOGENERATE_' . strtoupper($v));
+                                    return constant('Doctrine\Common\Proxy\AbstractProxyFactory::AUTOGENERATE_'.strtoupper($v));
                                 })
                             ->end()
                         ->end()
@@ -353,12 +358,12 @@ class Configuration implements ConfigurationInterface
     /**
      * Return ORM target entity resolver node
      *
-     * @return NodeDefinition
+     * @return \Symfony\Component\Config\Definition\Builder\NodeDefinition
      */
     private function getOrmTargetEntityResolverNode()
     {
         $treeBuilder = new TreeBuilder();
-        $node        = $treeBuilder->root('resolve_target_entities');
+        $node = $treeBuilder->root('resolve_target_entities');
 
         $node
             ->useAttributeAsKey('interface')
@@ -373,55 +378,53 @@ class Configuration implements ConfigurationInterface
     /**
      * Return ORM entity listener node
      *
-     * @return NodeDefinition
+     * @return \Symfony\Component\Config\Definition\Builder\NodeDefinition
      */
     private function getOrmEntityListenersNode()
     {
-        $builder    = new TreeBuilder();
-        $node       = $builder->root('entity_listeners');
+        $builder = new TreeBuilder();
+        $node = $builder->root('entity_listeners');
         $normalizer = function ($mappings) {
-            $entities = [];
+            $entities = array();
 
             foreach ($mappings as $entityClass => $mapping) {
-                $listeners = [];
+                $listeners = array();
 
                 foreach ($mapping as $listenerClass => $listenerEvent) {
-                    $events = [];
+                    $events = array();
 
                     foreach ($listenerEvent as $eventType => $eventMapping) {
                         if ($eventMapping === null) {
-                            $eventMapping = [null];
+                            $eventMapping = array(null);
                         }
 
                         foreach ($eventMapping as $method) {
-                            $events[] = [
+                            $events[] = array(
                                'type' => $eventType,
                                'method' => $method,
-                            ];
+                            );
                         }
                     }
 
-                    $listeners[] = [
+                    $listeners[] = array(
                         'class' => $listenerClass,
                         'event' => $events,
-                    ];
+                    );
                 }
 
-                $entities[] = [
+                $entities[] = array(
                     'class' => $entityClass,
                     'listener' => $listeners,
-                ];
+                );
             }
 
-            return ['entities' => $entities];
+            return array('entities' => $entities);
         };
 
         $node
             ->beforeNormalization()
                 // Yaml normalization
-                ->ifTrue(function ($v) {
-                    return is_array(reset($v)) && is_string(key(reset($v)));
-                })
+                ->ifTrue(function ($v) { return is_array(reset($v)) && is_string(key(reset($v))); })
                 ->then($normalizer)
             ->end()
             ->fixXmlConfig('entity', 'entities')
@@ -464,7 +467,7 @@ class Configuration implements ConfigurationInterface
     private function getOrmEntityManagersNode()
     {
         $treeBuilder = new TreeBuilder();
-        $node        = $treeBuilder->root('entity_managers');
+        $node = $treeBuilder->root('entity_managers');
 
         $node
             ->requiresAtLeastOneElement()
@@ -483,7 +486,7 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('naming_strategy')->defaultValue('doctrine.orm.naming_strategy.default')->end()
                     ->scalarNode('quote_strategy')->defaultValue('doctrine.orm.quote_strategy.default')->end()
                     ->scalarNode('entity_listener_resolver')->defaultNull()->end()
-                    ->scalarNode('repository_factory')->defaultValue('doctrine.orm.container_repository_factory')->end()
+                    ->scalarNode('repository_factory')->defaultNull()->end()
                 ->end()
                 ->children()
                     ->arrayNode('second_level_cache')
@@ -540,12 +543,10 @@ class Configuration implements ConfigurationInterface
                         ->prototype('array')
                             ->beforeNormalization()
                                 ->ifString()
-                                ->then(function ($v) {
-                                    return ['type' => $v];
-                                })
+                                ->then(function ($v) { return array('type' => $v); })
                             ->end()
-                            ->treatNullLike([])
-                            ->treatFalseLike(['mapping' => false])
+                            ->treatNullLike(array())
+                            ->treatFalseLike(array('mapping' => false))
                             ->performNoDeepMerging()
                             ->children()
                                 ->scalarNode('mapping')->defaultValue(true)->end()
@@ -585,9 +586,7 @@ class Configuration implements ConfigurationInterface
                         ->prototype('array')
                             ->beforeNormalization()
                                 ->ifString()
-                                ->then(function ($v) {
-                                    return ['class' => $v];
-                                })
+                                ->then(function ($v) { return array('class' => $v); })
                             ->end()
                             ->beforeNormalization()
                                 // The content of the XML node is returned as the "value" key so we need to rename it
@@ -629,15 +628,13 @@ class Configuration implements ConfigurationInterface
     private function getOrmCacheDriverNode($name)
     {
         $treeBuilder = new TreeBuilder();
-        $node        = $treeBuilder->root($name);
+        $node = $treeBuilder->root($name);
 
         $node
             ->addDefaultsIfNotSet()
             ->beforeNormalization()
                 ->ifString()
-                ->then(function ($v) {
-                    return ['type' => $v];
-                })
+                ->then(function ($v) { return array('type' => $v); })
             ->end()
             ->children()
                 ->scalarNode('type')->defaultValue('array')->end()
@@ -663,24 +660,22 @@ class Configuration implements ConfigurationInterface
     private function getAutoGenerateModes()
     {
         $constPrefix = 'AUTOGENERATE_';
-        $prefixLen   = strlen($constPrefix);
-        $refClass    = new \ReflectionClass('Doctrine\Common\Proxy\AbstractProxyFactory');
+        $prefixLen = strlen($constPrefix);
+        $refClass = new \ReflectionClass('Doctrine\Common\Proxy\AbstractProxyFactory');
         $constsArray = $refClass->getConstants();
-        $namesArray  = [];
-        $valuesArray = [];
+        $namesArray = array();
+        $valuesArray = array();
 
         foreach ($constsArray as $key => $value) {
-            if (strpos($key, $constPrefix) !== 0) {
-                continue;
+            if (strpos($key, $constPrefix) === 0) {
+                $namesArray[] = substr($key, $prefixLen);
+                $valuesArray[] = (int) $value;
             }
-
-            $namesArray[]  = substr($key, $prefixLen);
-            $valuesArray[] = (int) $value;
         }
 
-        return [
+        return array(
             'names' => $namesArray,
             'values' => $valuesArray,
-        ];
+        );
     }
 }

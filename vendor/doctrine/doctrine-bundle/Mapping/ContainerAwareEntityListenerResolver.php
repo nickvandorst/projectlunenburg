@@ -6,15 +6,24 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ContainerAwareEntityListenerResolver implements EntityListenerServiceResolver
 {
-    /** @var ContainerInterface */
+    /**
+     * @var ContainerInterface
+     */
     private $container;
 
-    /** @var object[] Map to store entity listener instances. */
-    private $instances = [];
+    /**
+     * @var array Map to store entity listener instances.
+     */
+    private $instances = array();
 
-    /** @var string[] Map to store registered service ids */
-    private $serviceIds = [];
+    /**
+     * @var array Map to store registered service ids
+     */
+    private $serviceIds = array();
 
+    /**
+     * @param ContainerInterface $container
+     */
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
@@ -26,18 +35,16 @@ class ContainerAwareEntityListenerResolver implements EntityListenerServiceResol
     public function clear($className = null)
     {
         if ($className === null) {
-            $this->instances = [];
+            $this->instances = array();
 
             return;
         }
 
         $className = $this->normalizeClassName($className);
 
-        if (! isset($this->instances[$className])) {
-            return;
+        if (isset($this->instances[$className])) {
+            unset($this->instances[$className]);
         }
-
-        unset($this->instances[$className]);
     }
 
     /**
@@ -45,7 +52,7 @@ class ContainerAwareEntityListenerResolver implements EntityListenerServiceResol
      */
     public function register($object)
     {
-        if (! is_object($object)) {
+        if ( ! is_object($object)) {
             throw new \InvalidArgumentException(sprintf('An object was expected, but got "%s".', gettype($object)));
         }
 
@@ -69,7 +76,7 @@ class ContainerAwareEntityListenerResolver implements EntityListenerServiceResol
     {
         $className = $this->normalizeClassName($className);
 
-        if (! isset($this->instances[$className])) {
+        if (!isset($this->instances[$className])) {
             if (isset($this->serviceIds[$className])) {
                 $this->instances[$className] = $this->resolveService($this->serviceIds[$className]);
             } else {
@@ -87,7 +94,7 @@ class ContainerAwareEntityListenerResolver implements EntityListenerServiceResol
      */
     private function resolveService($serviceId)
     {
-        if (! $this->container->has($serviceId)) {
+        if (!$this->container->has($serviceId)) {
             throw new \RuntimeException(sprintf('There is no service named "%s"', $serviceId));
         }
 
@@ -95,7 +102,7 @@ class ContainerAwareEntityListenerResolver implements EntityListenerServiceResol
     }
 
     /**
-     * @param string $className
+     * @param $className
      *
      * @return string
      */
