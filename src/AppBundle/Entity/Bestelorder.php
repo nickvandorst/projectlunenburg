@@ -26,7 +26,7 @@ class Bestelorder
     /**
      * @var string
      *
-     * @ORM\Column(name="naamleverancier", type="string", length=6)
+     * @ORM\Column(name="naamleverancier")
      * @Assert\Length(
      *      max = 6,
      *      maxMessage = "De naam van de leverancier mag maar maximaal 6 karakters hebben"

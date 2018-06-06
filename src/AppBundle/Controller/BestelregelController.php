@@ -13,6 +13,8 @@ use AppBundle\Form\BestelregelType;
 use AppBundle\Entity\Bestelregel;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use AppBundle\Entity\Bestelorder;
+use AppBundle\Form\BestelorderType;
 
 
 class BestelregelController extends Controller

@@ -13,16 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
 class Bestelregel
 {
     /**
+     * @var int
      * @ORM\Column(name="bestelregelid", type="integer")
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Bestelorder", inversedBy="bestelorders")
      */
     private $bestelregelid;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="artikelnummer", type="string", length=10, unique=true)
+     * @ORM\Column(name="artikelnummer", length=10, unique=true)
      */
     private $artikelnummer;
 
@@ -39,16 +39,11 @@ class Bestelregel
     private $bestelregels;
 
     /**
-     * @ORM\Column(name="bestelordernummer", type="integer")
      * @ORM\ManyToOne(targetEntity="Bestelorder", inversedBy="bestelorders")
+     * @ORM\JoinColumn(name="bestelordernummer", referencedColumnName="bestelordernummer")
      */
     private $bestelordernummer;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="bestelorder", type="integer")
-     */
     private $bestelorder;
 
     /**
