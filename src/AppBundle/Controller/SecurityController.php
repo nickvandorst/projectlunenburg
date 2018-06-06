@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-
+// deze controller controleerd de credentials van de gebruiker. Als deze niet overeenkomen wordt er een error weergeven.
 class SecurityController extends Controller
 {
     /**

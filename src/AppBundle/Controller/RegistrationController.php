@@ -17,10 +17,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\Response;
 
+//registratie controller van nieuwe gebruikers. Alleen benaderbaar voor de administrator. 
 class RegistrationController extends Controller
 {
     /**
-     * @Route("/registeren", name="user_registration")
+     * @Route("/administrator/registeren", name="user_registration")
      */
     public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {

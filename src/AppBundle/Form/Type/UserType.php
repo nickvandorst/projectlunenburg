@@ -8,7 +8,7 @@
 
 // src/AppBundle/Form/Type/UserType.php
 namespace AppBundle\Form\Type;
-
+//registratie formulier voor een gebruiker
 use AppBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,11 +27,13 @@ class UserType extends AbstractType
             ->add('email', EmailType::class)
             ->add('username', TextType::class)
             ->add('lastname', TextType::class)
+            // wachtwoord moet 2 maal ingevuld worden en overeenkomen.
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat Password')
             ))
+            // hier wordt de role gekozen voor een nieuwe gebruiker. 
             ->add('roles', ChoiceType::class, [
                 'multiple' => true,
                 'expanded' => true, // render check-boxes

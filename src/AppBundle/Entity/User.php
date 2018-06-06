@@ -8,7 +8,7 @@
 
 // src/AppBundle/Entity/User.php
 namespace AppBundle\Entity;
-
+//gebruikers tabel
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -54,6 +54,7 @@ class User implements UserInterface, \Serializable
      * @Assert\NotBlank()
      * @Assert\Length(max=4096)
      */
+    // zorgt voor de hashing van het wachtwoord
     private $plainPassword;
 
     /**
