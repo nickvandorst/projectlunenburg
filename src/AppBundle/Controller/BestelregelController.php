@@ -18,13 +18,19 @@ use Symfony\Component\Serializer\Serializer;
 class BestelregelController extends Controller
 {
 
-//Magazijnmeester voegt een nieuwe ontvangstregel toe aan de hand van de onderstaande controller.
+//Magazijnmeester voegt een nieuwe bestelregel toe aan de hand van de onderstaande controller.
 
 /**
- * @Route("/inkoper/nieuwbestelregel", name="inkopernieuwbestelregel")
+ * @Route("/inkoper/nieuwbestelregel/{bestelordernummer}", name="inkopernieuwbestelregel")
  */
-public function inkoperNieuwbestelregel(Request $request) {
+public function inkoperNieuwbestelregel(Request $request, $bestelordernummer) {
   $nieuwBestelregel = new Bestelregel();
+  $bestelorder = $this->getDoctrine()->getRepository("AppBundle:Bestelorder")->findByBestelordernummer($bestelordernummer);
+  $nieuwBestelregel->setBestelorder($bestelorder);
+
+  //haal bestelorder op, met id parameter
+  //bestelregel->setBestelorder(de ophaalde order)
+
   $form = $this->createForm(BestelregelType::class, $nieuwBestelregel);
   $form->handleRequest($request);
 

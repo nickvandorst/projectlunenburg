@@ -34,8 +34,6 @@ class Bestelorder
      */
     private $naamleverancier;
 
-    private $bestelregelid;
-
     /**
      * @ORM\OneToMany(targetEntity="Bestelregel", mappedBy="bestelorder")
      */

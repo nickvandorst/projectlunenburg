@@ -13,8 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Bestelregel
 {
     /**
-     * @var int
-     *
      * @ORM\Column(name="bestelregelid", type="integer")
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Bestelorder", inversedBy="bestelorders")
@@ -41,9 +39,46 @@ class Bestelregel
     private $bestelregels;
 
     /**
+     * @ORM\Column(name="bestelordernummer", type="integer")
+     * @ORM\ManyToOne(targetEntity="Bestelorder", inversedBy="bestelorders")
+     */
+    private $bestelordernummer;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="bestelorder", type="integer")
+     */
+    private $bestelorder;
+
+    /**
+     * Set bestelorder
+     *
+     * @param integer $bestelorder
+     *
+     * @return Bestelregel
+     */
+    public function setBestelorder($bestelorder)
+    {
+        $this->bestelorder = $bestelorder;
+
+        return $this;
+    }
+
+    /**
+     * Get bestelorder
+     *
+     * @return integer
+     */
+    public function getBestelorder()
+    {
+        return $this->bestelorder;
+    }
+
+    /**
      * Set bestelregelid
      *
-     * @param string $bestelregelid
+     * @param integer $bestelregelid
      *
      * @return Bestelregel
      */
@@ -91,7 +126,7 @@ class Bestelregel
     /**
      * Set bestelordernummer
      *
-     * @param string $bestelordernummer
+     * @param IntegerType $bestelordernummer
      *
      * @return Bestelregel
      */
@@ -105,7 +140,7 @@ class Bestelregel
     /**
      * Get bestelordernummer
      *
-     * @return string
+     * @return integer
      */
     public function getBestelordernummer()
     {
