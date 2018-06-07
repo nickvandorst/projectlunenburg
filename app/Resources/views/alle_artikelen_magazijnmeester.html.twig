@@ -25,6 +25,7 @@
     <thead>
       <tr>
         <th>Artikelnummer</th>
+        <th>Omschrijving</th>
         <th>Magazijnlocatie</th>
         <th>Vrije voorraad</th>
         <th>Gereserveerde voorraad</th>
@@ -37,6 +38,7 @@
       {% for artikel in artikelen %}
       <tr>
         <td>{{ artikel.artikelnummer }}</td>
+        <td>{{ artikel.omschrijving }}</td>
         <td>{{ artikel.magazijnlocatie }}</td>
         <td>{{ artikel.vrijevoorraad }}</td>
         <td>{{ artikel.gereserveerdevoorraad }}</td>
