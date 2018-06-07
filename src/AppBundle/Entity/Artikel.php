@@ -117,13 +117,6 @@ class Artikel
     private $artikelen;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="inassortiment", type="string", length=3, nullable=false)
-     */
-    private $inassortiment;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="technischevoorraad", type="integer")
@@ -138,6 +131,13 @@ class Artikel
     private $gereserveerdevoorraad;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="inassortiment", type="integer", length=1, nullable=false)
+     */
+    private $inassortiment;
+
+    /**
      * Get id
      *
      * @return integer
@@ -146,7 +146,29 @@ class Artikel
     {
         return $this->id;
     }
+    /**
+     * Set inassortiment
+     *
+     * @param integer $inassortiment
+     *
+     * @return artikel
+     */
+    public function setInassortiment($inassortiment)
+    {
+        $this->inassortiment = $inassortiment;
 
+        return $this;
+    }
+
+    /**
+     * Get inassortiment
+     *
+     * @return integer
+     */
+    public function getInassortiment()
+    {
+        return $this->inassortiment;
+    }
     /**
      * Set artikelnummer
      *
@@ -386,30 +408,8 @@ class Artikel
         return $this->bestelregels;
     }
     Public function __construct()
-    {   $bestelregels = new ArrayCollection();
-    }
-    /**
-     * Get inassortiment
-     *
-     * @return string
-     */
-    public function getinassortiment()
     {
-        return $this->inassortiment;
-    }
-
-    /**
-     * Set inassortiment
-     *
-     * @param string $inassortiment
-     *
-     * @return artikel
-     */
-    public function setInassortiment($inassortiment)
-    {
-        $this->inassortiment = $inassortiment;
-
-        return $this;
+        $bestelregels = new ArrayCollection();
     }
 
     /**
@@ -461,4 +461,3 @@ class Artikel
     }
 }
 ?>
-
