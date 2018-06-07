@@ -12,11 +12,12 @@ use AppBundle\Form\ArtikelInkoperType;
 use AppBundle\Form\ArtikelMagazijnmeesterType;
 use AppBundle\Entity\Bestelorder;
 use AppBundle\Form\BestelorderType;
-use AppBundle\Form\ArtikelVerkoperType;
-//use Symfony\Component\HttpFoundation\Response;
 
+use AppBundle\Form\ArtikelVerkoperType;
+use Symfony\Component\HttpFoundation\Session\Session;
 class ArtikelController extends Controller
 {
+
     /**
      * @Route("/", name="homepage")
      */
@@ -47,6 +48,17 @@ class ArtikelController extends Controller
 
         $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
         return new Response($this->renderView('alle_verwijderde_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
+    }
+
+    //ROL: inkoper
+        //Hier wordt een overzicht van alle te bestellen artikelen aangeroepen
+    /**
+     * @Route("/inkoper/alletebestellenartikelen", name="inkoperalletebestellenartikelen")
+     */
+    public function inkoperAlletebestellenartikelen(Request $request) {
+
+        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+        return new Response($this->renderView('alle_tebestellen_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
     }
 
     //ROL: magazijnmeester
@@ -129,7 +141,6 @@ class ArtikelController extends Controller
     public function inkoperWijzigartikel(Request $request, $artikelnummer) {
         $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
         $form = $this->createForm(ArtikelInkoperType::class, $bestaandArtikel);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -137,6 +148,7 @@ class ArtikelController extends Controller
 
             if ($bestaandArtikel->getVrijeVoorraad() > $bestaandArtikel->getMinimumvoorraad()) {
                 $bestaandArtikel->setBestelserie(0);
+
             }else {
                 $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->gettechnischevoorraad());
             }
@@ -162,6 +174,7 @@ class ArtikelController extends Controller
             $bestaandArtikel->setVrijeVoorraad($bestaandArtikel->getTechnischeVoorraad() - $bestaandArtikel->getGereserveerdeVoorraad());
             if ($bestaandArtikel->gettechnischevoorraad() > $bestaandArtikel->getMinimumvoorraad()) {
                 $bestaandArtikel->setBestelserie(0);
+
             }else {
                 $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->gettechnischevoorraad());
             }
@@ -171,7 +184,6 @@ class ArtikelController extends Controller
         }
         return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
     }
-
 
     //ROL: Inkoper
     //De inkoper kan via onderstaande functie een nieuwe bestelserie toevoegen.
