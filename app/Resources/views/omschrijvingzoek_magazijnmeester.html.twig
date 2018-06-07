@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+  <title>Lunenburg</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Zoek op omschrijving</h2>
+  <span class="glyphicon glyphicon-chevron-left"></span><a href="{{ path('magazijnmeesteralleartikelen') }}"><font color="black"> Terug</font></a></br>
+
+  <form method="POST">
+
+    <input type='text' name="omschrijving">
+
+    <input class="btn btn-info" type='submit', name='submit' value="zoeken">
+
+  </form>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Artikelnummer</th>
+        <th>Omschrijving</th>
+        <th>Magazijnlocatie</th>
+       </tr>
+    </thead>
+    <tbody>
+     {% for artikel in artikelen %}
+      <tr>
+        <td>{{ artikel.artikelnummer }}</td>
+        <td>{{ artikel.omschrijving }}</td>
+        <td>{{ artikel.magazijnlocatie }}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+
+</body>
+</html>

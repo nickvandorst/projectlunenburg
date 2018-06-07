@@ -53,23 +53,23 @@ class Artikel
      *
      * @ORM\Column(name="Magazijnlocatie", type="string", length=6)
      * @Assert\Regex(
-     *    pattern = "/^20|[0-1]{1}[0-9]{1}\/[A-Z][0]{1}[0-9]{1}|10$/i",
+     *    pattern = "/^20|[0-1]{1}[1-9]{1}\/[A-Z][0]{1}[1-9]{1}|10$/i",
      *    match=true,
      *    message="Ongeldige locatie [ERROR1]")
      * @Assert\Regex(
-     *    pattern = "/^[2]{1}[1-9]{1}\/[A-Z]{1}[0-9]{1}$/i",
+     *    pattern = "/^[2]{1}[1-9]{1}\/[A-Z]{1}[1-9]{1}$/i",
      *    match=false,
      *    message="Ongeldige locatie [ERROR2]")
      * @Assert\Regex(
-     *    pattern = "/^[3-9]{1}[0-9]{1}\/[A-Z][0-9]{1}$/i",
+     *    pattern = "/^[3-9]{1}[1-9]{1}\/[A-Z][1-9]{1}$/i",
      *    match=false,
      *    message="Ongeldige locatie [ERROR3]")
      * @Assert\Regex(
-     *    pattern = "/^[0-1]{1}[0-9]{1}\/[A-Z][1]{1}[1-9]{1}$/i",
+     *    pattern = "/^[0-1]{1}[1-9]{1}\/[A-Z][1]{1}[1-9]{1}$/i",
      *    match=false,
      *    message="Ongeldige locatie [ERROR4]")
      * @Assert\Regex(
-     *    pattern = "/^[0-1]{1}[0-9]{1}\/[A-Z][2-9]{1}[0-9]{1}$/i",
+     *    pattern = "/^[0-1]{1}[1-9]{1}\/[A-Z][2-9]{1}[1-9]{1}$/i",
      *    match=false,
      *    message="Ongeldige locatie [ERROR5]")
      * @Assert\Regex(
