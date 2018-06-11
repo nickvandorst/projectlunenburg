@@ -43,6 +43,7 @@ security:
     access_control:
         - { path: '^/inkoper/*', roles: [ROLE_INKOPER] }
         - { path: '^/magazijnmeester/*', roles: [ROLE_MAGAZIJNMEESTER] }
+        - { path: '^/verkoper/*', roles: [ROLE_VERKOPER] }
         # require ROLE_ADMIN for /admin*
         - { path: '^/administrator/*', roles: [ROLE_ADMINISTRATOR] }
         #- { path: ^/, roles: ROLE_ADMIN }
