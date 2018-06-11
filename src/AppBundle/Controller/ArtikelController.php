@@ -37,7 +37,7 @@ class ArtikelController extends Controller
     public function inkoperAlleartikelen(Request $request) {
 
         $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
-        return new Response($this->renderView('alle_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
+        return new Response($this->renderView('alle_artikelen_inkoper.html.twig', array('artikelen' => $artikelen, 'bestelorders' => $bestelorders)));
     }
     //ROL: inkoper
         //Bij deze functie wordt het pad voor de pagina alle verwijderdea artikelem gedefinieerd en aangeroepen
