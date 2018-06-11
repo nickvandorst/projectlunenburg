@@ -12,25 +12,17 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class BestelorderType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('bestelordernummer', IntegerType::class)
-        ;
-        $builder
             ->add('naamleverancier', TextType::class)
         ;
         $builder
-            ->add('artikelnummer', TextType::class)
-        ;
-        $builder
-            ->add('omschrijving', TextType::class)
-        ;
-        $builder
-            ->add('hoeveelheid', IntegerType::class)
+            ->add('bestelordernummer', IntegerType::class)
         ;
     }
 
