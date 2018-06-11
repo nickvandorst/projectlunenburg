@@ -37,7 +37,7 @@ class ArtikelController extends Controller
     public function inkoperAlleartikelen(Request $request) {
 
         $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
-        return new Response($this->renderView('alle_artikelen_inkoper.html.twig', array('artikelen' => $artikelen, 'bestelorders' => $bestelorders)));
+        return new Response($this->renderView('alle_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
     }
     //ROL: inkoper
         //Bij deze functie wordt het pad voor de pagina alle verwijderdea artikelem gedefinieerd en aangeroepen
@@ -146,11 +146,18 @@ class ArtikelController extends Controller
             $em = $this->getDoctrine()->getManager();
             $bestaandArtikel->setVrijeVoorraad($bestaandArtikel->getTechnischeVoorraad() - $bestaandArtikel->getGereserveerdeVoorraad());
 
+            if ($bestaandArtikel->getVrijevoorraad() > 0) {
+                $bestaandArtikel->setVrijeVoorraad($bestaandArtikel->getTechnischeVoorraad() - $bestaandArtikel->getGereserveerdeVoorraad());
+            }
+            else {
+                $bestaandArtikel->setVrijeVoorraad(0);
+            }
+
             if ($bestaandArtikel->getVrijeVoorraad() > $bestaandArtikel->getMinimumvoorraad()) {
                 $bestaandArtikel->setBestelserie(0);
 
             }else {
-                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->gettechnischevoorraad());
+                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVrijeVoorraad());
             }
             $em->persist($bestaandArtikel);
             $em->flush();
@@ -172,6 +179,12 @@ class ArtikelController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $bestaandArtikel->setVrijeVoorraad($bestaandArtikel->getTechnischeVoorraad() - $bestaandArtikel->getGereserveerdeVoorraad());
+            if ($bestaandArtikel->getVrijevoorraad() > 0) {
+                $bestaandArtikel->setVrijeVoorraad($bestaandArtikel->getTechnischeVoorraad() - $bestaandArtikel->getGereserveerdeVoorraad());
+            }
+            else {
+                $bestaandArtikel->setVrijeVoorraad(0);
+            }
             if ($bestaandArtikel->gettechnischevoorraad() > $bestaandArtikel->getMinimumvoorraad()) {
                 $bestaandArtikel->setBestelserie(0);
 
@@ -218,8 +231,13 @@ class ArtikelController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $bestaandArtikel->setVrijeVoorraad($bestaandArtikel->getTechnischeVoorraad() - $bestaandArtikel->getGereserveerdeVoorraad());
 
+            if ($bestaandArtikel->getVrijevoorraad() > 0) {
+                $bestaandArtikel->setVrijeVoorraad($bestaandArtikel->getTechnischeVoorraad() - $bestaandArtikel->getGereserveerdeVoorraad());
+            }
+            else {
+                $bestaandArtikel->setVrijeVoorraad(0);
+            }
             if ($bestaandArtikel->getVrijeVoorraad() > $bestaandArtikel->getMinimumvoorraad()) {
                 $bestaandArtikel->setBestelserie(0);
             }else {

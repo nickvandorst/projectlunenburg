@@ -24,3 +24,5 @@
 .idea/modules.xml
 .idea/misc.xml
 var/logs/dev.log
+var/logs/prod.log
+*.log
