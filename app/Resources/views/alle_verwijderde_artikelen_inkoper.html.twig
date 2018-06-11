@@ -34,7 +34,7 @@
         <th>Omschrijving</th>
         <th>Technische specificaties</th>
         <th>Minimumvoorraad</th>
-        <th>Vrije voorraad</th>
+        <th>Voorraad</th>
         <th>Code vervangend artikel</th>
         <th>Bestelserie</th>
         <th>Inkoopprijs</th>
@@ -43,7 +43,7 @@
     </thead>
     <tbody>
      {% for artikel in artikelen %}
-     {% if (artikel.inassortiment == 1) %}
+     {% if (artikel.inassortiment == 0) %}
       <tr>
         <td>{{ artikel.artikelnummer }}</td>
         <td>{{ artikel.omschrijving }}</td>

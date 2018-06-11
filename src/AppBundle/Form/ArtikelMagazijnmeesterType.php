@@ -19,25 +19,13 @@ class ArtikelMagazijnmeesterType extends AbstractType
             ->add('artikelnummer', TextType::class, array('disabled' => true))
         ;
         $builder
-            ->add('codevervangendartikel', TextType::class, array('required'=>false))
-        ;
-        $builder
-            ->add('inkoopprijs', MoneyType::class)
-        ;
-        $builder
             ->add('magazijnlocatie', TextType::class)
-        ;
-        $builder
-            ->add('minimumvoorraad', IntegerType::class, array('disabled' => true))
         ;
         $builder
             ->add('omschrijving', TextType::class, array('required'=>false))
         ;
         $builder
-            ->add('technischespecificaties', TextType::class, array('required'=>false))
-        ;
-        $builder
-            ->add('voorraadaantal', TextType::class)
+            ->add('technischevoorraad', TextType::class)
         ;
     }
 

@@ -7,11 +7,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class ArtikelInkoperType extends AbstractType
+class ArtikelVerkoperType extends AbstractType
 {
     //Het formulier voor het wijzigen van artikelen wordt in deze klasse gegenereerd
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -20,32 +19,10 @@ class ArtikelInkoperType extends AbstractType
             ->add('artikelnummer', TextType::class, array('disabled' => true))
         ;
         $builder
-            ->add('codevervangendartikel', TextType::class, array('required'=>false))
+            ->add('omschrijving', TextType::class, array('disabled' => true))
         ;
         $builder
-            ->add('inkoopprijs', MoneyType::class)
-        ;
-        $builder
-            ->add('magazijnlocatie', TextType::class, array('disabled' => true))
-        ;
-        $builder
-            ->add('minimumvoorraad', IntegerType::class)
-        ;
-        $builder
-            ->add('omschrijving', TextType::class, array('required'=>false))
-        ;
-        $builder
-            ->add('technischespecificaties', TextType::class, array('required'=>false))
-        ;
-        $builder
-            ->add('vrijevoorraad', TextType::class)
-        ;
-        $builder
-            ->add('inassortiment', ChoiceType::class, array(
-            'choices'  => array(
-              'ja'=> true,
-              'nee'=> false,
-            )))
+            ->add('gereserveerdevoorraad', IntegerType::class)
         ;
     }
 

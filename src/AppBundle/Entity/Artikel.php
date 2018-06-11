@@ -53,23 +53,23 @@ class Artikel
      *
      * @ORM\Column(name="Magazijnlocatie", type="string", length=6)
      * @Assert\Regex(
-     *    pattern = "/^20|[0-1]{1}[0-9]{1}\/[A-Z][0]{1}[0-9]{1}|10$/i",
+     *    pattern = "/^20|[0-1]{1}[1-9]{1}\/[A-Z][0]{1}[1-9]{1}|10$/i",
      *    match=true,
      *    message="Ongeldige locatie [ERROR1]")
      * @Assert\Regex(
-     *    pattern = "/^[2]{1}[1-9]{1}\/[A-Z]{1}[0-9]{1}$/i",
+     *    pattern = "/^[2]{1}[1-9]{1}\/[A-Z]{1}[1-9]{1}$/i",
      *    match=false,
      *    message="Ongeldige locatie [ERROR2]")
      * @Assert\Regex(
-     *    pattern = "/^[3-9]{1}[0-9]{1}\/[A-Z][0-9]{1}$/i",
+     *    pattern = "/^[3-9]{1}[1-9]{1}\/[A-Z][1-9]{1}$/i",
      *    match=false,
      *    message="Ongeldige locatie [ERROR3]")
      * @Assert\Regex(
-     *    pattern = "/^[0-1]{1}[0-9]{1}\/[A-Z][1]{1}[1-9]{1}$/i",
+     *    pattern = "/^[0-1]{1}[1-9]{1}\/[A-Z][1]{1}[1-9]{1}$/i",
      *    match=false,
      *    message="Ongeldige locatie [ERROR4]")
      * @Assert\Regex(
-     *    pattern = "/^[0-1]{1}[0-9]{1}\/[A-Z][2-9]{1}[0-9]{1}$/i",
+     *    pattern = "/^[0-1]{1}[1-9]{1}\/[A-Z][2-9]{1}[1-9]{1}$/i",
      *    match=false,
      *    message="Ongeldige locatie [ERROR5]")
      * @Assert\Regex(
@@ -107,15 +107,36 @@ class Artikel
     /**
      * @var int
      *
-     * @ORM\Column(name="voorraadaantal", type="integer")
+     * @ORM\Column(name="vrijevoorraad", type="integer")
      */
-    private $voorraadaantal;
+    private $vrijevoorraad;
 
      /**
       * @ORM\OneToMany(targetEntity="Ontvangstregel", mappedBy="artikel")
       * @ORM\OneToMany(targetEntity="Bestelregel", mappedBy="artikel")
       */
     private $artikelen;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="technischevoorraad", type="integer")
+     */
+    private $technischevoorraad;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="gereserveerdevoorraad", type="integer")
+     */
+    private $gereserveerdevoorraad;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="inassortiment", type="integer", length=1, nullable=false)
+     */
+    private $inassortiment;
 
     /**
      * Get id
@@ -126,7 +147,29 @@ class Artikel
     {
         return $this->id;
     }
+    /**
+     * Set inassortiment
+     *
+     * @param integer $inassortiment
+     *
+     * @return artikel
+     */
+    public function setInassortiment($inassortiment)
+    {
+        $this->inassortiment = $inassortiment;
 
+        return $this;
+    }
+
+    /**
+     * Get inassortiment
+     *
+     * @return integer
+     */
+    public function getInassortiment()
+    {
+        return $this->inassortiment;
+    }
     /**
      * Set artikelnummer
      *
@@ -320,27 +363,27 @@ class Artikel
     }
 
     /**
-     * Set voorraadaantal
+     * Set vrijevoorraad
      *
-     * @param integer $voorraadaantal
+     * @param integer $vrijevoorraad
      *
      * @return artikel
      */
-    public function setVoorraadaantal($voorraadaantal)
+    public function setVrijeVoorraad($vrijevoorraad)
     {
-        $this->voorraadaantal = $voorraadaantal;
+        $this->vrijevoorraad = $vrijevoorraad;
 
         return $this;
     }
 
     /**
-     * Get voorraadaantal
+     * Get vrijevoorraad
      *
      * @return integer
      */
-    public function getVoorraadaantal()
+    public function getVrijeVoorraad()
     {
-        return $this->voorraadaantal;
+        return $this->vrijevoorraad;
     }
 
     /**
@@ -366,8 +409,56 @@ class Artikel
         return $this->bestelregels;
     }
     Public function __construct()
-    {   $bestelregels = new ArrayCollection();
+    {
+        $bestelregels = new ArrayCollection();
     }
 
+    /**
+     * Set technischevoorraad
+     *
+     * @param integer $technischevoorraad
+     *
+     * @return artikel
+     */
+    public function setTechnischeVoorraad($technischevoorraad)
+    {
+        $this->technischevoorraad = $technischevoorraad;
+
+        return $this;
+    }
+
+    /**
+     * Get technischevoorraad
+     *
+     * @return integer
+     */
+    public function getTechnischeVoorraad()
+    {
+        return $this->technischevoorraad;
+    }
+
+    /**
+     * Set gereserveerdevoorraad
+     *
+     * @param integer $gereserveerdevoorraad
+     *
+     * @return artikel
+     */
+    public function setGereserveerdeVoorraad($gereserveerdevoorraad)
+    {
+        $this->gereserveerdevoorraad = $gereserveerdevoorraad;
+
+        return $this;
+    }
+
+    /**
+     * Get gereserveerdevoorraad
+     *
+     * @return integer
+     */
+    public function getGereserveerdeVoorraad()
+    {
+        return $this->gereserveerdevoorraad;
+    }
 }
 ?>
