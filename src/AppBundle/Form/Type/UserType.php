@@ -41,6 +41,7 @@ class UserType extends AbstractType
                      'Administrator' => 'ROLE_ADMINISTRATOR',
                      'Inkoper' => 'ROLE_INKOPER',
                      'Magazijnmeester' => 'ROLE_MAGAZIJNMEESTER',
+                     'Verkoper' => 'ROLE_VERKOPER',
                     ],
                 ])
         ;

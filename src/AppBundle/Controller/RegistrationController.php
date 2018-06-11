@@ -57,6 +57,6 @@ class RegistrationController extends Controller
      public function AlleGebruikers(Request $request) {
       $gebruikers = $this->getDoctrine()->getRepository("AppBundle:User")->findAll();
         
-        return new Response($this->render('alle_gebruikers.html.twig', array('gebruikers' => $gebruikers)));
+        return new Response($this->renderview('alle_gebruikers.html.twig', array('gebruikers' => $gebruikers)));
             }
 }
