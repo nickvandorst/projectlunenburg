@@ -14,7 +14,7 @@ class Bestelregel
 {
     /**
      * @var int
-     * @ORM\Column(name="bestelregelid", type="integer")
+     * @ORM\Column(name="bestelordernummer", type="integer")
      * @ORM\Id
      */
     private $bestelregelid;
