@@ -361,7 +361,7 @@ class Artikel
     {
         return $this->technischespecificaties;
     }
-
+    //Magazijnmeester entiteit voor de vrije voorraad
     /**
      * Set vrijevoorraad
      *
@@ -413,6 +413,7 @@ class Artikel
         $bestelregels = new ArrayCollection();
     }
 
+    // Magazijnmeester: entiteit voor de technische voorraad
     /**
      * Set technischevoorraad
      *
@@ -426,7 +427,7 @@ class Artikel
 
         return $this;
     }
-
+    
     /**
      * Get technischevoorraad
      *
@@ -436,7 +437,7 @@ class Artikel
     {
         return $this->technischevoorraad;
     }
-
+    //Magazijnmeester entiteit voor de gereserveerde voorraad
     /**
      * Set gereserveerdevoorraad
      *
