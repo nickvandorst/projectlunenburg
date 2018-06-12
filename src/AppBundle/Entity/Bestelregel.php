@@ -46,6 +46,12 @@ class Bestelregel
 
     private $bestelorder;
 
+     /**
+     * @var string
+     * @ORM\Column(name="besteld", type="string")
+     */
+    private $besteld;
+
     /**
      * Set bestelorder
      *
@@ -164,5 +170,29 @@ class Bestelregel
     public function getHoeveelheid()
     {
         return $this->hoeveelheid;
+    }
+
+/**
+     * Set besteld
+     *
+     * @param string $besteld
+     *
+     * @return Bestelorder
+     */
+    public function setBesteld($besteld)
+    {
+        $this->besteld = $besteld;
+
+        return $this;
+    }
+
+    /**
+     * Get besteld
+     *
+     * @return string
+     */
+    public function getBesteld()
+    {
+        return $this->besteld;
     }
 }
