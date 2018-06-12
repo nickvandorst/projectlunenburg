@@ -28,8 +28,8 @@ class Bestelorder
      *
      * @ORM\Column(name="naamleverancier")
      * @Assert\Length(
-     *      max = 6,
-     *      maxMessage = "De naam van de leverancier mag maar maximaal 6 karakters hebben"
+     *      max = 25,
+     *      maxMessage = "De naam van de leverancier mag maar maximaal 25 karakters hebben"
      *)
      */
     private $naamleverancier;
