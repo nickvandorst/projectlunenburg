@@ -50,9 +50,9 @@ class Bestelregel
     private $bestelordernummer;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="keuringseisen", type="string", nullable=true)
+     * @ORM\Column(name="keuringseisen", type="integer", nullable=true)
      */
     private $keuringseisen;
 
