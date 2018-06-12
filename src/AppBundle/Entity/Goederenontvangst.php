@@ -16,10 +16,10 @@ class Goederenontvangst
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="goederenontvangstid", type="integer")
      * @ORM\Id
      */
-    private $id;
+    private $goederenontvangstid;
 
     /**
      * @var \DateTime
@@ -27,13 +27,6 @@ class Goederenontvangst
      * @ORM\Column(name="ontvangstdatum", type="date")
      */
     private $ontvangstdatum;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="ontvangstregel", type="integer", nullable=true)
-     */
-    private $ontvangstregel;
 
     /**
      * @var string
@@ -52,25 +45,25 @@ class Goederenontvangst
     }
 
     /**
-     * Get id
+     * Get goederenontvangstid
      *
      * @return integer
      */
-    public function getId()
+    public function getGoederenontvangstid()
     {
-        return $this->id;
+        return $this->goederenontvangstid;
     }
 
     /**
-     * Set id
+     * Set goederenontvangstid
      *
-     * @param integer $id
+     * @param integer $goederenontvangstid
      *
      * @return Goederenontvangst
      */
-    public function setId($id)
+    public function setGoederenontvangstid($goederenontvangstid)
     {
-        $this->id = $id;
+        $this->goederenontvangstid = $goederenontvangstid;
 
         return $this;
     }
@@ -98,30 +91,6 @@ class Goederenontvangst
     public function getOntvangstdatum()
     {
         return $this->ontvangstdatum;
-    }
-
-    /**
-     * Set ontvangstregel
-     *
-     * @param integer $ontvangstregel
-     *
-     * @return Goederenontvangst
-     */
-    public function setOntvangstregel($ontvangstregel)
-    {
-        $this->ontvangstregel = $ontvangstregel;
-
-        return $this;
-    }
-
-    /**
-     * Get ontvangstregel
-     *
-     * @return integer
-     */
-    public function getOntvangstregel()
-    {
-        return $this->ontvangstregel;
     }
 
     /**

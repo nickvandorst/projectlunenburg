@@ -27,7 +27,7 @@ class LeverancierToevoegenType extends AbstractType
         ;
 
         $builder
-            ->add('id', TextType::class)
+            ->add('goederenontvangstid', TextType::class)
         ;
     }
 

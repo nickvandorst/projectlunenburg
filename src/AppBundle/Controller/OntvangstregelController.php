@@ -21,10 +21,11 @@ class OntvangstregelController extends Controller
 //Magazijnmeester voegt een nieuwe ontvangstregel toe aan de hand van de onderstaande controller.
 
 /**
- * @Route("/magazijnmeester/nieuwontvangstregel", name="magazijnmeesternieuwontvangstregel")
+ * @Route("/magazijnmeester/nieuwontvangstregel/{goederenontvangstid}", name="magazijnmeesternieuwontvangstregel")
  */
-public function magazijnmeesterNieuwontvangstregel(Request $request) {
+public function magazijnmeesterNieuwontvangstregel(Request $request, $goederenontvangstid) {
   $nieuwOntvangstregel = new Ontvangstregel();
+  $goederen = $this->getDoctrine()->getRepository("AppBundle:Goederenontvangst")->findByGoederenontvangstid($goederenontvangstid);
   $form = $this->createForm(OntvangstregelType::class, $nieuwOntvangstregel);
   $form->handleRequest($request);
 
@@ -32,7 +33,7 @@ public function magazijnmeesterNieuwontvangstregel(Request $request) {
       $em = $this->getDoctrine()->getManager();
       $em->persist($nieuwOntvangstregel);
       $em->flush();
-      return $this->redirect($this->generateUrl("magazijnmeesterontvangstmelding"));
+      return $this->redirect($this->generateUrl("magazijnmeesterontvangstmelding", array('goederenontvangstid' => $goederenontvangstid)));
   }
   return new Response($this->renderView('nieuw_ontvangstregel.html.twig', array('form' => $form->createView())));
 }
