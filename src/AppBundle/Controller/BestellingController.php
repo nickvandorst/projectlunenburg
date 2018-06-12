@@ -36,7 +36,7 @@ class BestellingController extends Controller
         return new Response($this->renderView('nieuw_bestelorder.html.twig', array('form' => $form->createView())));
     }
 
-    //Hier wordt een overzicht van alle bestelorders voor de inkoper aangeroepen
+    //Hier wordt een overzicht van de desbetreffende bestelopdracht voor de inkoper aangeroepen
     /**
      * @Route("/inkoper/bestelopdracht", name="inkoperbestelopdracht")
      */
@@ -46,6 +46,7 @@ class BestellingController extends Controller
         return new Response($this->renderView('inkoper_bestelopdracht.html.twig', array('bestelorders' => $bestelorders)));
     }
 
+//Inkoper kan alle bestelorders inzien aan de hand van onderstaande controller
     /**
      * @Route("/inkoper/allebestelorders/{bestelordernummer}", name="inkoperallebestelorders")
      */

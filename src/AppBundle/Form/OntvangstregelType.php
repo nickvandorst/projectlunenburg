@@ -31,7 +31,7 @@ class OntvangstregelType extends AbstractType
         ;
 
         $builder
-            ->add('Regelid', IntegerType::class)
+            ->add('Goederenontvangstid', IntegerType::class)
         ;
 
     }

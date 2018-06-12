@@ -19,14 +19,25 @@ class GoederenontvangstController extends Controller
     //ROL: magazijnbeheerder
       //Hier wordt het overzicht van alle ontvangen goederen gegenereerd
   /**
-   * @Route("/magazijnmeester/ontvangstmelding", name="magazijnmeesterontvangstmelding")
+   * @Route("/magazijnmeester/ontvangstmelding/{goederenontvangstid}", name="magazijnmeesterontvangstmelding")
    */
-  public function magazijnmeesterOntvangstmelding(Request $request) {
+  public function magazijnmeesterOntvangstmelding(Request $request, $goederenontvangstid) {
 
-      $goederen = $this->getDoctrine()->getRepository("AppBundle:Goederenontvangst")->findAll();
+      $goederen = $this->getDoctrine()->getRepository("AppBundle:Goederenontvangst")->findByGoederenontvangstid($goederenontvangstid);
       $ontvangstregels = $this->getDoctrine()->getRepository("AppBundle:Ontvangstregel")->findAll();
       $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
       return new Response($this->renderView('ontvangstmelding.html.twig', array('goederen' => $goederen, 'ontvangstregels' => $ontvangstregels, 'artikelen' => $artikelen)));
+  }
+
+  //De magazijnmeester kan de ontvangstregistratie inzien.
+
+  /**
+   * @Route("/magazijnmeester/ontvangstregistratie", name="magazijnmeesterontvangstregistratie")
+   */
+  public function magazijnmeesterOntvangstregistratie(Request $request) {
+
+      $goederen = $this->getDoctrine()->getRepository("AppBundle:Goederenontvangst")->findAll();
+      return new Response($this->renderView('ontvangstregistratie.html.twig', array('goederen' => $goederen)));
   }
 
   //ROL: magazijnbeheerder
@@ -43,7 +54,7 @@ class GoederenontvangstController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($nieuwGoederenontvangst);
             $em->flush();
-            return $this->redirect($this->generateUrl("magazijnmeesterontvangstmelding"));
+            return $this->redirect($this->generateUrl("magazijnmeesterontvangstregistratie"));
         }
         return new Response($this->renderView('nieuw_leverancier.html.twig', array('form' => $form->createView())));
     }
