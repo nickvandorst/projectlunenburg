@@ -37,7 +37,8 @@
       <tr>
       <th>Artikelnummer</th>
       <th>Omschrijving</th>
-      <th>Hoeveelheid</th>
+      <th>Artikellocatie</th>
+        <th>Hoeveelheid</th>
       <th>Keuringseisen</th>
     </tr>
     <tr>
@@ -47,10 +48,11 @@
       {% for artikel in artikelen %}
       {% if(bestelregel.artikelnummer == artikel.artikelnummer) %}
       <td>{{ artikel.omschrijving }}</td>
+          <td>{{ artikel.magazijnlocatie }}</td>
       {% endif %}
       {% endfor %}
       <td>{{ bestelregel.hoeveelheid }}</td>
-        <td>{{ bestelregel.keuringseisen }}</td>
+      <td>{{ bestelregel.keuringseisen }}</td>
       </tr>
         {% endif %}
     {% endfor %}
