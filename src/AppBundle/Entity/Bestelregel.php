@@ -23,6 +23,7 @@ class Bestelregel
      * @var string
      *
      * @ORM\Column(name="artikelnummer", length=10, unique=true)
+     * @ORM\Id
      */
     private $artikelnummer;
 
@@ -39,8 +40,10 @@ class Bestelregel
     private $bestelregels;
 
     /**
+     * @ORM\Column(type="integer")
      * @ORM\ManyToOne(targetEntity="Bestelorder", inversedBy="bestelorders")
      * @ORM\JoinColumn(name="bestelordernummer", referencedColumnName="bestelordernummer")
+     * @ORM\Id
      */
     private $bestelordernummer;
 
@@ -71,30 +74,6 @@ class Bestelregel
     }
 
     /**
-     * Set bestelregelid
-     *
-     * @param integer $bestelregelid
-     *
-     * @return Bestelregel
-     */
-    public function setBestelregelid($bestelregelid)
-    {
-        $this->bestelregelid = $bestelregelid;
-
-        return $this;
-    }
-
-    /**
-     * Get bestelregelid
-     *
-     * @return integer
-     */
-    public function getBestelregelid()
-    {
-        return $this->bestelregelid;
-    }
-
-    /**
      * Set artikelnummer
      *
      * @param string $artikelnummer
@@ -121,7 +100,7 @@ class Bestelregel
     /**
      * Set bestelordernummer
      *
-     * @param IntegerType $bestelordernummer
+     * @param integer $bestelordernummer
      *
      * @return Bestelregel
      */

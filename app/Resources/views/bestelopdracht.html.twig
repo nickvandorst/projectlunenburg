@@ -14,40 +14,21 @@
   <div class="pull-left" style="width: 8%">
   <h5><button class="btn btn btn-primary"><span class="glyphicon glyphicon-home"></span><a href="{{ path('inkoperhome') }}"><font color="white"> Home</font></a></button></h5>
   </div>
-
   <table class="table table-striped table-hover">
-
-    {% for bestelorder in bestelorders %}
     <thead>
       <tr>
-        <th><h4><u><font color="blue">Leverancier:</font></u></h4></th>
-        <td><h4><font color="blue">{{ bestelorder.naamleverancier }}</font></h4></td>
+        <th><h4><b>Leverancier</b></h4></th>
+        <th><h4><b>Bestelordernummer</b></h4></th>
+        <th><h4><b>Informatie</b></h4></th>
       </tr>
       <tr>
-        <th><h4><u><font color="blue">Bestelordernummer:</font></u></h4></th>
-        <td><h4><font color="blue">{{ bestelorder.bestelordernummer }}</font></h4></td>
+          {% for bestelorder in bestelorders %}
+        <td><h4>{{ bestelorder.naamleverancier }}</h4></td>
+        <td><h4>{{ bestelorder.bestelordernummer }}</h4></td>
+        <td><span class="glyphicon glyphicon-plus"></span><a href="{{ path('inkoperallebestelorders',{'bestelordernummer':bestelorder.bestelordernummer}) }}"><font color="black"> Meer informatie</font></a></td>
+     </tr>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-      <th>Artikelnummer</th>
-      <th>Omschrijving</th>
-      <th>Hoeveelheid</th>
-      <th><button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><a href="{{ path('inkopernieuwbestelregel',{'bestelordernummer':bestelorder.bestelordernummer}) }}"><font color="white"> Artikel toevoegen aan bestelorder</font></a></button></th>
-
-    </tr>
-    <tr>
-      {% for bestelregel in bestelregels %}
-      <td>{{ bestelregel.artikelnummer }}</td>
-      {% for artikel in artikelen %}
-      {% if(bestelregel.artikelnummer == artikel.artikelnummer) %}
-      <td>{{ artikel.omschrijving }}</td>
-      {% endif %}
-      {% endfor %}
-      <td>{{ bestelregel.hoeveelheid }}</td>
-      </tr>
-    {% endfor %}
-    </tbody>
     {% endfor %}
     <tr>
     </tr>

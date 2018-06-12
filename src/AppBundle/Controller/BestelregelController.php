@@ -27,12 +27,7 @@ class BestelregelController extends Controller
  */
 public function inkoperNieuwbestelregel(Request $request, $bestelordernummer) {
   $nieuwBestelregel = new Bestelregel();
-  $bestelorder = $this->getDoctrine()->getRepository("AppBundle:Bestelorder")->findByBestelordernummer($bestelordernummer);
-  $nieuwBestelregel->setBestelorder($bestelorder);
-
-  //haal bestelorder op, met id parameter
-  //bestelregel->setBestelorder(de ophaalde order)
-
+  $bestelorders = $this->getDoctrine()->getRepository("AppBundle:Bestelorder")->findByBestelordernummer($bestelordernummer);
   $form = $this->createForm(BestelregelType::class, $nieuwBestelregel);
   $form->handleRequest($request);
 
@@ -40,7 +35,7 @@ public function inkoperNieuwbestelregel(Request $request, $bestelordernummer) {
       $em = $this->getDoctrine()->getManager();
       $em->persist($nieuwBestelregel);
       $em->flush();
-      return $this->redirect($this->generateUrl("inkoperallebestelorders"));
+      return $this->redirect($this->generateUrl("inkoperallebestelorders", array('bestelordernummer' => $bestelordernummer)));
   }
   return new Response($this->renderView('nieuw_bestelregel.html.twig', array('form' => $form->createView())));
 }
