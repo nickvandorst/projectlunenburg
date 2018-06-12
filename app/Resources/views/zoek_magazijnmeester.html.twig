@@ -11,8 +11,9 @@
 
 <div class="container">
   <h2>Zoek op artikelnummer</h2>
-  <span class="glyphicon glyphicon-chevron-left"></span><a href="{{ path('magazijnmeesteralleartikelen') }}"><font color="black"> Terug</font></a></br>
-
+  <div class="pull-right" style="width:8%">
+    <span class="glyphicon glyphicon-chevron-left"></span><a href="{{ path('magazijnmeesteralleartikelen') }}"><font color="black"> Terug</font></a></br>
+  </div>
   <form method="POST">
 
     <input type='text' name="artikelnummer">

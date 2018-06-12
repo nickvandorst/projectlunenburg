@@ -58,11 +58,6 @@ class ArtikelController extends Controller
             $em = $this->getDoctrine()->getManager();
             $bestaandArtikel->setVrijeVoorraad($bestaandArtikel->getTechnischeVoorraad() - $bestaandArtikel->getGereserveerdeVoorraad());
 
-            if ($bestaandArtikel->getVrijeVoorraad() > $bestaandArtikel->getMinimumvoorraad()) {
-                $bestaandArtikel->setBestelserie(0);
-            }else {
-                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getTechnischeVoorraad());
-            }
             if ($bestaandArtikel->getGereserveerdevoorraad() > $bestaandArtikel->getTechnischeVoorraad()) {
                 $bestaandArtikel->setVrijeVoorraad(0);
             }else {
@@ -181,7 +176,6 @@ class ArtikelController extends Controller
             $em = $this->getDoctrine()->getManager();
             if ($bestaandArtikel->getVrijeVoorraad() > $bestaandArtikel->getMinimumvoorraad()) {
                 $bestaandArtikel->setBestelserie(0);
-
             }else {
                 $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVrijeVoorraad());
             }
@@ -209,6 +203,11 @@ class ArtikelController extends Controller
 
             }else {
                 $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVrijeVoorraad());
+            }
+            if ($bestaandArtikel->getGereserveerdeVoorraad() > $bestaandArtikel->getTechnischeVoorraad()) {
+                $bestaandArtikel->setVrijeVoorraad(0);
+            }else {
+                $bestaandArtikel->setVrijeVoorraad($bestaandArtikel->getTechnischeVoorraad() - $bestaandArtikel->getGereserveerdeVoorraad());
             }
             $em->persist($bestaandArtikel);
             $em->flush();
