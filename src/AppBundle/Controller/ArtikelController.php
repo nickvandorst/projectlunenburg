@@ -88,10 +88,10 @@ class ArtikelController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            if ($nieuwArtikel->getVoorraadaantal() > $nieuwArtikel->getMinimumvoorraad()) {
+            if ($nieuwArtikel->getVrijeVoorraad() > $nieuwArtikel->getMinimumvoorraad()) {
                 $nieuwArtikel->setBestelserie(0);
             }else {
-                $nieuwArtikel->setBestelserie($nieuwArtikel->getMinimumvoorraad() - $nieuwArtikel->getVoorraadaantal());
+                $nieuwArtikel->setBestelserie($nieuwArtikel->getMinimumvoorraad() - $nieuwArtikel->getVrijeVoorraad());
             }
             $em->persist($nieuwArtikel);
             $em->flush();
@@ -112,10 +112,10 @@ class ArtikelController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            if ($nieuwArtikel->getVoorraadaantal() > $nieuwArtikel->getMinimumvoorraad()) {
+            if ($nieuwArtikel->getVrijeVoorraad() > $nieuwArtikel->getMinimumvoorraad()) {
                 $nieuwArtikel->setBestelserie(0);
             }else {
-                $nieuwArtikel->setBestelserie($nieuwArtikel->getMinimumvoorraad() - $nieuwArtikel->getVoorraadaantal());
+                $nieuwArtikel->setBestelserie($nieuwArtikel->getMinimumvoorraad() - $nieuwArtikel->getVrijeVoorraad());
             }
             $em->persist($nieuwArtikel);
             $em->flush();
@@ -135,11 +135,11 @@ class ArtikelController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            if ($bestaandArtikel->getVoorraadaantal() > $bestaandArtikel->getMinimumvoorraad()) {
+            if ($bestaandArtikel->getVrijeVoorraad() > $bestaandArtikel->getMinimumvoorraad()) {
                 $bestaandArtikel->setBestelserie(0);
 
             }else {
-                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVoorraadaantal());
+                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVrijeVoorraad());
             }
             $em->persist($bestaandArtikel);
             $em->flush();
@@ -160,11 +160,11 @@ class ArtikelController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            if ($bestaandArtikel->getVoorraadaantal() > $bestaandArtikel->getMinimumvoorraad()) {
+            if ($bestaandArtikel->getVrijeVoorraad() > $bestaandArtikel->getMinimumvoorraad()) {
                 $bestaandArtikel->setBestelserie(0);
 
             }else {
-                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVoorraadaantal());
+                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVrijeVoorraad());
             }
             $em->persist($bestaandArtikel);
             $em->flush();

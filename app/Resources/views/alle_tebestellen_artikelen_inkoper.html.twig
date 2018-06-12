@@ -31,17 +31,15 @@
         <td>{{ artikel.omschrijving }}</td>
         <td>{{ artikel.bestelserie }}</td>
 
-        {% for bestelregel in bestelregels %}
+      {% for bestelregel in bestelregels %}
         {% if(bestelregel.artikelnummer == artikel.artikelnummer) %}
         {% if(bestelregel.besteld != true) %}
-
-        <td><a href="{{ path('inkoperbestelorder',{'artikelnummer':artikel.artikelnummer}) }}">Bestellen</a></td></td>
-
-      {% else %}
-        <td>{{ bestelregel.besteld }}</td>
+          <td><a href="{{ path('inkoperbestelorder',{'artikelnummer':artikel.artikelnummer}) }}">Bestellen</a></td></td>
+        {% else %}
+          <td>{{ bestelregel.besteld }}</td>
         {% endif %}
         {%endif%}
-        {% endfor %}
+      {% endfor %}
         
       </tr>
 

@@ -20,12 +20,14 @@
     {% for goederenontvangst in goederen %}
     <thead>
       <tr>
-        <th><h4><u><font color="blue">Leverancier:</font></u></h4></th>
-        <td><h4><font color="blue">{{ goederenontvangst.naamleverancier }}</font></h4></td>
+        <th><h4><u>Leverancier:</u></h4></th>
+        <td><b><h4>{{ goederenontvangst.naamleverancier }}</b></h4></td>
+        <th><h4><u>Ontvangstmeldingnummer:</u></h4></th>
+        <td><b><h4>{{ goederenontvangst.goederenontvangstid }}</b></h4></td>
       </tr>
       <tr>
-        <th><h4><u><font color="blue">Ontvangstdatum:</font></u></h4></th>
-        <td><h4><font color="blue">{{ goederenontvangst.ontvangstdatum|date('d-m-Y') }}</font></h4></td>
+        <th><h4><u>Ontvangstdatum:</u></h4></th>
+        <td><b><h4>{{ goederenontvangst.ontvangstdatum|date('d-m-Y') }}</b></h4></td>
         <td><h5><button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><a href="{{ path('magazijnmeesternieuwontvangstregel',{'goederenontvangstid':goederenontvangst.goederenontvangstid}) }}"><font color="white"> Artikel toevoegen aan ontvangstmelding</font></a></button></h5></td>
 
       </tr>
