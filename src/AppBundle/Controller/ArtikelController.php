@@ -12,6 +12,7 @@ use AppBundle\Form\ArtikelInkoperType;
 use AppBundle\Form\ArtikelMagazijnmeesterType;
 use AppBundle\Entity\Bestelorder;
 use AppBundle\Form\BestelorderType;
+use AppBundle\Form\ArtikelVerkoperType;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 //use Symfony\Component\HttpFoundation\Response;
@@ -32,8 +33,50 @@ class ArtikelController extends Controller
         ]);
     }
 
-    //ROL: inkoper
+    //ROL: verkoper
         //Hier wordt een overzicht van alle artikelen aangeroepen
+    /**
+     * @Route("/verkoper/alleartikelen", name="verkoperalleartikelen")
+     */
+    public function verkoperAlleartikelen(Request $request) {
+
+        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+        return new Response($this->renderView('alle_artikelen_verkoper.html.twig', array('artikelen' => $artikelen)));
+    }
+
+    //ROL: Verkoper
+    //Bij deze functie kan de verkoper artikelen reserveren
+    /**
+     * @Route("/verkoper/reserveren/{artikelnummer}", name="verkoperreserveren")
+     */
+    public function verkoperReserveerArtikel(Request $request, $artikelnummer) {
+        $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
+        $form = $this->createForm(ArtikelVerkoperType::class, $bestaandArtikel);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $bestaandArtikel->setVrijeVoorraad($bestaandArtikel->getTechnischeVoorraad() - $bestaandArtikel->getGereserveerdeVoorraad());
+
+            if ($bestaandArtikel->getVrijeVoorraad() > $bestaandArtikel->getMinimumvoorraad()) {
+                $bestaandArtikel->setBestelserie(0);
+            }else {
+                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getTechnischeVoorraad());
+            }
+            if ($bestaandArtikel->getGereserveerdevoorraad() > $bestaandArtikel->getTechnischeVoorraad()) {
+                $bestaandArtikel->setVrijeVoorraad(0);
+            }else {
+                $bestaandArtikel->setVrijeVoorraad($bestaandArtikel->getTechnischeVoorraad() - $bestaandArtikel->getGereserveerdeVoorraad());
+            }
+            $em->persist($bestaandArtikel);
+            $em->flush();
+            return $this->redirect($this->generateurl("verkoperalleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
+        }
+        return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
+    }
+
+    //ROL: inkoper
+    //Hier wordt een overzicht van alle artikelen aangeroepen
     /**
      * @Route("/inkoper/alleartikelen", name="inkoperalleartikelen")
      */
@@ -42,6 +85,7 @@ class ArtikelController extends Controller
         $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
         return new Response($this->renderView('alle_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
     }
+
     //ROL: inkoper
         //Bij deze functie wordt het pad voor de pagina alle verwijderdea artikelem gedefinieerd en aangeroepen
     /**
