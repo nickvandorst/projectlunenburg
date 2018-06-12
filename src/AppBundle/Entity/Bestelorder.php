@@ -28,8 +28,8 @@ class Bestelorder
      *
      * @ORM\Column(name="naamleverancier")
      * @Assert\Length(
-     *      max = 6,
-     *      maxMessage = "De naam van de leverancier mag maar maximaal 6 karakters hebben"
+     *      max = 25,
+     *      maxMessage = "De naam van de leverancier mag maar maximaal 25 karakters hebben"
      *)
      */
     private $naamleverancier;
@@ -61,30 +61,6 @@ class Bestelorder
     public function getBestelordernummer()
     {
         return $this->bestelordernummer;
-    }
-
-    /**
-     * Set bestelregelid
-     *
-     * @param integer $bestelregelid
-     *
-     * @return Bestelorder
-     */
-    public function setBestelregelid($bestelregelid)
-    {
-        $this->bestelregelid = $bestelregelid;
-
-        return $this;
-    }
-
-    /**
-     * Get bestelregelid
-     *
-     * @return integer
-     */
-    public function getBestelregelid()
-    {
-        return $this->bestelregelid;
     }
 
     /**

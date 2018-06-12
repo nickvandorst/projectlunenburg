@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Bestelregel
@@ -12,17 +14,18 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Bestelregel
 {
-    /**
-     * @var int
-     * @ORM\Column(name="bestelordernummer", type="integer")
-     * @ORM\Id
-     */
-    private $bestelregelid;
 
     /**
      * @var string
      *
      * @ORM\Column(name="artikelnummer", length=10, unique=true)
+     * @ORM\Id
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 10,
+     *      minMessage = "artikelnummer moet 10 karakters hebben",
+     *      maxMessage = "artikelnummer moet 10 karakters hebben"
+     *)
      */
     private $artikelnummer;
 
@@ -39,10 +42,19 @@ class Bestelregel
     private $bestelregels;
 
     /**
+     * @ORM\Column(type="integer")
      * @ORM\ManyToOne(targetEntity="Bestelorder", inversedBy="bestelorders")
      * @ORM\JoinColumn(name="bestelordernummer", referencedColumnName="bestelordernummer")
+     * @ORM\Id
      */
     private $bestelordernummer;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="keuringseisen", type="integer", nullable=true)
+     */
+    private $keuringseisen;
 
     private $bestelorder;
 
@@ -68,30 +80,6 @@ class Bestelregel
     public function getBestelorder()
     {
         return $this->bestelorder;
-    }
-
-    /**
-     * Set bestelregelid
-     *
-     * @param integer $bestelregelid
-     *
-     * @return Bestelregel
-     */
-    public function setBestelregelid($bestelregelid)
-    {
-        $this->bestelregelid = $bestelregelid;
-
-        return $this;
-    }
-
-    /**
-     * Get bestelregelid
-     *
-     * @return integer
-     */
-    public function getBestelregelid()
-    {
-        return $this->bestelregelid;
     }
 
     /**
@@ -121,7 +109,7 @@ class Bestelregel
     /**
      * Set bestelordernummer
      *
-     * @param IntegerType $bestelordernummer
+     * @param integer $bestelordernummer
      *
      * @return Bestelregel
      */
@@ -143,12 +131,12 @@ class Bestelregel
     }
 
     /**
-     * Set hoeveelheid
-     *
-     * @param integer $hoeveelheid
-     *
-     * @return Bestelregel
-     */
+ * Set hoeveelheid
+ *
+ * @param integer $hoeveelheid
+ *
+ * @return Bestelregel
+ */
     public function setHoeveelheid($hoeveelheid)
     {
         $this->hoeveelheid = $hoeveelheid;
@@ -164,5 +152,29 @@ class Bestelregel
     public function getHoeveelheid()
     {
         return $this->hoeveelheid;
+    }
+
+    /**
+     * Set keuringseisen
+     *
+     * @param string $keuringseisen
+     *
+     * @return Bestelregel
+     */
+    public function setKeuringseisen($keuringseisen)
+    {
+        $this->keuringseisen = $keuringseisen;
+
+        return $this;
+    }
+
+    /**
+     * Get keuringseisen
+     *
+     * @return string
+     */
+    public function getKeuringseisen()
+    {
+        return $this->keuringseisen;
     }
 }

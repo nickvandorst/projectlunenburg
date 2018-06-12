@@ -3,22 +3,18 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Ontvangstregel
  *
  * @ORM\Table(name="ontvangstregel")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\OntvangstregelRepository")
+ * @UniqueEntity(fields={"artikelnummer"}, message="Het artikelnummer bestaat al.")
  */
 class Ontvangstregel
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="regelid", type="integer")
-     */
-    private $regelid;
-
     /**
      * @var int
      * @ORM\ManyToOne(targetEntity="Goederenontvangst", inversedBy="goederen")
@@ -31,6 +27,12 @@ class Ontvangstregel
      *
      * @ORM\ManyToOne(targetEntity="Artikel", inversedBy="artikelen")
      * @ORM\Column(name="artikelnummer", unique=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 10,
+     *      minMessage = "Het artikelnummer moet 10 karakters hebben",
+     *      maxMessage = "Het artikelnummer moet 10 karakters hebben"
+     *)
      */
     private $artikelnummer;
 
@@ -47,30 +49,6 @@ class Ontvangstregel
      * @ORM\Column(name="kwaliteit", type="string", length=11)
      */
     private $kwaliteit;
-
-    /**
-     * Get regelid
-     *
-     * @return integer
-     */
-    public function getRegelid()
-    {
-        return $this->regelid;
-    }
-
-    /**
-     * Set regelid
-     *
-     * @param integer $regelid
-     *
-     * @return Ontvangstregel
-     */
-    public function setRegelid($regelid)
-    {
-        $this->regelid = $regelid;
-
-        return $this;
-    }
 
     /**
      * Set goederenontvangstid
