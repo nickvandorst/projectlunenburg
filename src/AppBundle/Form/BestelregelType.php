@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
@@ -35,6 +36,9 @@ class BestelregelType extends AbstractType
             ->add('bestelordernummer', EntityType::class, array(
                   'class' => 'AppBundle:Bestelorder',
                   'choice_label' => 'bestelordernummer'))
+        ;
+        $builder
+            ->add('besteld', TextType::class)
         ;
 
     }

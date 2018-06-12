@@ -49,7 +49,7 @@ class ArtikelController extends Controller
     public function inkoperAlleverwijderdeartikelen(Request $request) {
 
         $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
-        return new Response($this->renderView('alle_verwijderde_artikelen_inkoper.html.twig', array('artikelen' => $artikelen, 'bestelregels' => $bestelregels)));
+        return new Response($this->renderView('alle_verwijderde_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
     }
 
     //ROL: inkoper
