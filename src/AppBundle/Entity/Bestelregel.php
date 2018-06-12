@@ -58,6 +58,12 @@ class Bestelregel
 
     private $bestelorder;
 
+     /**
+     * @var string
+     * @ORM\Column(name="besteld", type="string")
+     */
+    private $besteld;
+
     /**
      * Set bestelorder
      *
@@ -131,12 +137,12 @@ class Bestelregel
     }
 
     /**
- * Set hoeveelheid
- *
- * @param integer $hoeveelheid
- *
- * @return Bestelregel
- */
+    * Set hoeveelheid
+    *
+    * @param integer $hoeveelheid
+     *
+    * @return Bestelregel
+    */
     public function setHoeveelheid($hoeveelheid)
     {
         $this->hoeveelheid = $hoeveelheid;
@@ -154,6 +160,7 @@ class Bestelregel
         return $this->hoeveelheid;
     }
 
+
     /**
      * Set keuringseisen
      *
@@ -164,11 +171,10 @@ class Bestelregel
     public function setKeuringseisen($keuringseisen)
     {
         $this->keuringseisen = $keuringseisen;
-
-        return $this;
     }
 
     /**
+
      * Get keuringseisen
      *
      * @return string
@@ -177,4 +183,28 @@ class Bestelregel
     {
         return $this->keuringseisen;
     }
+
+    /**
+     * Set besteld
+     *
+     * @param string $besteld
+     *
+     * @return Bestelorder
+     */
+    public function setBesteld($besteld)
+    {
+        $this->besteld = $besteld;
+        return $this;
+    }
+
+    /**
+    * Get besteld
+    *
+    * @return string
+    */
+    public function getBesteld()
+    {
+        return $this->besteld;
+    }
 }
+

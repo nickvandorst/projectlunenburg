@@ -461,5 +461,7 @@ class Artikel
     {
         return $this->gereserveerdevoorraad;
     }
+
+   
 }
 ?>

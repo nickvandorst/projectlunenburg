@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
@@ -33,6 +34,9 @@ class BestelregelType extends AbstractType
 
         $builder
             ->add('keuringseisen', TextType::class, array('required'=>false))
+        ;
+        $builder
+            ->add('besteld', TextType::class)
         ;
 
     }

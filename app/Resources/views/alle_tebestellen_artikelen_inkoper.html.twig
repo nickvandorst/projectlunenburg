@@ -20,7 +20,7 @@
         <th>Artikelnummer</th>
         <th>Omschrijving</th>
         <th>Bestelserie</th>
-        <th>Artikel bestellen</th>
+        <th>Besteld/Artikel bestellen</th>
        </tr>
     </thead>
     <tbody>
@@ -30,11 +30,25 @@
         <td>{{ artikel.artikelnummer }}</td>
         <td>{{ artikel.omschrijving }}</td>
         <td>{{ artikel.bestelserie }}</td>
+
+        {% for bestelregel in bestelregels %}
+        {% if(bestelregel.artikelnummer == artikel.artikelnummer) %}
+        {% if(bestelregel.besteld != true) %}
+
         <td><a href="{{ path('inkoperbestelorder',{'artikelnummer':artikel.artikelnummer}) }}">Bestellen</a></td></td>
+
+      {% else %}
+        <td>{{ bestelregel.besteld }}</td>
+        {% endif %}
+        {%endif%}
+        {% endfor %}
+        
       </tr>
+
+      {% endif %}
+      {% endfor %}
     </tbody>
-    {% endif %}
-    {% endfor %}
+
   </table>
 </div>
 

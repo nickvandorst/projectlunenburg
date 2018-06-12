@@ -19,6 +19,8 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class ArtikelController extends Controller
 {
 
+
+
     /**
      * @Route("/", name="homepage")
      */
@@ -58,8 +60,9 @@ class ArtikelController extends Controller
      */
     public function inkoperAlletebestellenartikelen(Request $request) {
 
+        $bestelregels = $this->getDoctrine()->getRepository("AppBundle:Bestelregel")->findAll();
         $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
-        return new Response($this->renderView('alle_tebestellen_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
+        return new Response($this->renderView('alle_tebestellen_artikelen_inkoper.html.twig', array('artikelen' => $artikelen, 'bestelregels' => $bestelregels)));
     }
 
     //ROL: magazijnmeester
