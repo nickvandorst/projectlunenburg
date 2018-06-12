@@ -12,12 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Bestelregel
 {
-    /**
-     * @var int
-     * @ORM\Column(name="bestelordernummer", type="integer")
-     * @ORM\Id
-     */
-    private $bestelregelid;
 
     /**
      * @var string
@@ -46,6 +40,13 @@ class Bestelregel
      * @ORM\Id
      */
     private $bestelordernummer;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="keuringseisen", type="string", nullable=true)
+     */
+    private $keuringseisen;
 
     private $bestelorder;
 
@@ -122,12 +123,12 @@ class Bestelregel
     }
 
     /**
-     * Set hoeveelheid
-     *
-     * @param integer $hoeveelheid
-     *
-     * @return Bestelregel
-     */
+ * Set hoeveelheid
+ *
+ * @param integer $hoeveelheid
+ *
+ * @return Bestelregel
+ */
     public function setHoeveelheid($hoeveelheid)
     {
         $this->hoeveelheid = $hoeveelheid;
@@ -143,5 +144,29 @@ class Bestelregel
     public function getHoeveelheid()
     {
         return $this->hoeveelheid;
+    }
+
+    /**
+     * Set keuringseisen
+     *
+     * @param string $keuringseisen
+     *
+     * @return Bestelregel
+     */
+    public function setKeuringseisen($keuringseisen)
+    {
+        $this->keuringseisen = $keuringseisen;
+
+        return $this;
+    }
+
+    /**
+     * Get keuringseisen
+     *
+     * @return string
+     */
+    public function getKeuringseisen()
+    {
+        return $this->keuringseisen;
     }
 }

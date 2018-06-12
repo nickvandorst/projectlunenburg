@@ -31,6 +31,10 @@ class BestelregelType extends AbstractType
             ->add('bestelordernummer', IntegerType::class)
         ;
 
+        $builder
+            ->add('keuringseisen', TextType::class)
+        ;
+
     }
 
 	public function configureOptions(OptionsResolver $resolver)

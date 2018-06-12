@@ -12,11 +12,11 @@
 <div class="container">
   <h2>Bestelorder</h2>
   <div class="pull-right" style="width: 8%">
-  <h5><span class="glyphicon glyphicon-chevron-left"></span><a href="{{ path('inkoperbestelopdracht') }}"><font color="black"> Terug</font></a></h5>
+  <h5><span class="glyphicon glyphicon-chevron-left"></span><a href="{{ path('magazijnmeesterbestelopdracht') }}"><font color="black"> Terug</font></a></h5>
 </div>
 
   <div class="pull-left" style="width: 8%">
-  <h5><button class="btn btn btn-primary"><span class="glyphicon glyphicon-home"></span><a href="{{ path('inkoperhome') }}"><font color="white"> Home</font></a></button></h5>
+  <h5><button class="btn btn btn-primary"><span class="glyphicon glyphicon-home"></span><a href="{{ path('magazijnmeesterhome') }}"><font color="white"> Home</font></a></button></h5>
 </div>
 
   <table class="table table-striped table-hover">
@@ -24,14 +24,13 @@
     {% for bestelorder in bestelorders %}
     <thead>
       <tr>
-        <th><h4><u><font color="blue">Leverancier:</font></u></h4></th>
-        <td><h4><font color="blue">{{ bestelorder.naamleverancier }}</font></h4></td>
+        <th><h4><u>Leverancier:</u></h4></th>
+          <td><h4><b>{{ bestelorder.naamleverancier }}</b></h4></td>
      </tr>
       </tr>
       <tr>
-        <th><h4><u><font color="blue">Bestelordernummer:</font></u></h4></th>
-        <td><h4><font color="blue">{{ bestelorder.bestelordernummer }}</font></h4></td>
-        <td><button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><a href="{{ path('inkopernieuwbestelregel',{'bestelordernummer':bestelorder.bestelordernummer}) }}"><font color="white"> Artikel toevoegen aan bestelorder</font></a></button></td>
+        <th><h4><u>Bestelordernummer:</u></h4></th>
+        <td><h4><b>{{ bestelorder.bestelordernummer }}</b></h4></td>
       </tr>
     </thead>
     <tbody>
@@ -39,6 +38,7 @@
       <th>Artikelnummer</th>
       <th>Omschrijving</th>
       <th>Hoeveelheid</th>
+      <th>Keuringseisen</th>
     </tr>
     <tr>
       {% for bestelregel in bestelregels %}
@@ -50,6 +50,7 @@
       {% endif %}
       {% endfor %}
       <td>{{ bestelregel.hoeveelheid }}</td>
+        <td>{{ bestelregel.keuringseisen }}</td>
       </tr>
         {% endif %}
     {% endfor %}
