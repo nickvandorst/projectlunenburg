@@ -12,9 +12,10 @@ use AppBundle\Form\ArtikelInkoperType;
 use AppBundle\Form\ArtikelMagazijnmeesterType;
 use AppBundle\Entity\Bestelorder;
 use AppBundle\Form\BestelorderType;
-
-use AppBundle\Form\ArtikelVerkoperType;
 use Symfony\Component\HttpFoundation\Session\Session;
+
+//use Symfony\Component\HttpFoundation\Response;
+
 class ArtikelController extends Controller
 {
 
@@ -30,24 +31,14 @@ class ArtikelController extends Controller
     }
 
     //ROL: inkoper
-    //Hier wordt een overzicht van alle artikelen aangeroepen
+        //Hier wordt een overzicht van alle artikelen aangeroepen
     /**
      * @Route("/inkoper/alleartikelen", name="inkoperalleartikelen")
      */
     public function inkoperAlleartikelen(Request $request) {
 
         $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
-        return new Response($this->renderView('alle_artikelen_inkoper.html.twig', array('artikelen' => $artikelen, 'bestelorders' => $bestelorders)));
-    }
-    //ROL: inkoper
-        //Bij deze functie wordt het pad voor de pagina alle verwijderdea artikelem gedefinieerd en aangeroepen
-    /**
-     * @Route("inkoper/inkoperalleverwijderdeartikelen", name="inkoperalleverwijderdeartikelen")
-     */
-    public function inkoperAlleverwijderdeartikelen(Request $request) {
-
-        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
-        return new Response($this->renderView('alle_verwijderde_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
+        return new Response($this->renderView('alle_artikelen_inkoper.html.twig', array('artikelen' => $artikelen)));
     }
 
     //ROL: inkoper
@@ -62,7 +53,7 @@ class ArtikelController extends Controller
     }
 
     //ROL: magazijnmeester
-    //Hier wordt een overzicht van alle artikelen aangeroepen
+        //Hier wordt een overzicht van alle artikelen aangeroepen
     /**
      * @Route("/magazijnmeester/alleartikelen", name="magazijnmeesteralleartikelen")
      */
@@ -72,19 +63,8 @@ class ArtikelController extends Controller
         return new Response($this->renderView('alle_artikelen_magazijnmeester.html.twig', array('artikelen' => $artikelen)));
     }
 
-    //ROL: Verkoper
-    //Hier wordt een overzicht van alle artikelen aangeroepen
-    /**
-     * @Route("/verkoper/alleartikelen", name="verkoperalleartikelen")
-     */
-    public function verkoperAlleartikelen(Request $request) {
-
-        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
-        return new Response($this->renderView('alle_artikelen_verkoper.html.twig', array('artikelen' => $artikelen)));
-    }
-
     //ROL: inkoper
-    //Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
+        //Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
     /**
      * @Route("/inkoper/nieuwartikel", name="inkopernieuwartikel")
      */
@@ -95,11 +75,10 @@ class ArtikelController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $nieuwArtikel->setVrijeVoorraad($nieuwArtikel->getTechnischeVoorraad() - $nieuwArtikel->getGereserveerdeVoorraad());
-            if ($nieuwArtikel->gettechnischevoorraad() > $nieuwArtikel->getMinimumvoorraad()) {
+            if ($nieuwArtikel->getVoorraadaantal() > $nieuwArtikel->getMinimumvoorraad()) {
                 $nieuwArtikel->setBestelserie(0);
             }else {
-                $nieuwArtikel->setBestelserie($nieuwArtikel->getMinimumvoorraad() - $nieuwArtikel->gettechnischevoorraad());
+                $nieuwArtikel->setBestelserie($nieuwArtikel->getMinimumvoorraad() - $nieuwArtikel->getVoorraadaantal());
             }
             $em->persist($nieuwArtikel);
             $em->flush();
@@ -109,7 +88,7 @@ class ArtikelController extends Controller
     }
 
     //ROL: magazijnmeester
-    //Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
+        //Hier wordt het formulier geladen voor het aanmaken van een nieuw artikel
     /**
      * @Route("/magazijnmeester/nieuwartikel", name="magazijnmeesternieuwartikel")
      */
@@ -120,11 +99,10 @@ class ArtikelController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $nieuwArtikel->setVrijeVoorraad($nieuwArtikel->getTechnischeVoorraad() - $nieuwArtikel->getGereserveerdeVoorraad());
-            if ($nieuwArtikel->getVrijeVoorraad() > $nieuwArtikel->getMinimumvoorraad()) {
+            if ($nieuwArtikel->getVoorraadaantal() > $nieuwArtikel->getMinimumvoorraad()) {
                 $nieuwArtikel->setBestelserie(0);
             }else {
-                $nieuwArtikel->setBestelserie($nieuwArtikel->getMinimumvoorraad() - $nieuwArtikel->gettechnischevoorraad());
+                $nieuwArtikel->setBestelserie($nieuwArtikel->getMinimumvoorraad() - $nieuwArtikel->getVoorraadaantal());
             }
             $em->persist($nieuwArtikel);
             $em->flush();
@@ -134,7 +112,7 @@ class ArtikelController extends Controller
     }
 
     //ROL: inkoper
-    //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
+        //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
     /**
      * @Route("/inkoper/wijzigartikel/{artikelnummer}", name="inkoperwijzigartikel")
      */
@@ -144,13 +122,11 @@ class ArtikelController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $bestaandArtikel->setVrijeVoorraad($bestaandArtikel->getTechnischeVoorraad() - $bestaandArtikel->getGereserveerdeVoorraad());
-
-            if ($bestaandArtikel->getVrijeVoorraad() > $bestaandArtikel->getMinimumvoorraad()) {
+            if ($bestaandArtikel->getVoorraadaantal() > $bestaandArtikel->getMinimumvoorraad()) {
                 $bestaandArtikel->setBestelserie(0);
 
             }else {
-                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->gettechnischevoorraad());
+                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVoorraadaantal());
             }
             $em->persist($bestaandArtikel);
             $em->flush();
@@ -159,8 +135,8 @@ class ArtikelController extends Controller
         return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
     }
 
-    //ROL: Magazijnmeester
-    //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
+    //ROL: inkoper
+        //Bij deze functie wordt het formulier voor het wijzigen vna een formulier opgeroepen en gevalideerd
     /**
      * @Route("/magazijnmeester/wijzigartikel/{artikelnummer}", name="magazijnmeesterwijzigartikel")
      */
@@ -171,12 +147,11 @@ class ArtikelController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $bestaandArtikel->setVrijeVoorraad($bestaandArtikel->getTechnischeVoorraad() - $bestaandArtikel->getGereserveerdeVoorraad());
-            if ($bestaandArtikel->gettechnischevoorraad() > $bestaandArtikel->getMinimumvoorraad()) {
+            if ($bestaandArtikel->getVoorraadaantal() > $bestaandArtikel->getMinimumvoorraad()) {
                 $bestaandArtikel->setBestelserie(0);
 
             }else {
-                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->gettechnischevoorraad());
+                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->getVoorraadaantal());
             }
             $em->persist($bestaandArtikel);
             $em->flush();
@@ -185,8 +160,8 @@ class ArtikelController extends Controller
         return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
     }
 
-    //ROL: Inkoper
-    //De inkoper kan via onderstaande functie een nieuwe bestelserie toevoegen.
+//De inkoper kan via onderstaande functie een nieuwe bestelserie toevoegen.
+
     /**
      * @Route("/inkoper/bestelorder", name="inkoperbestelorder")
      */
@@ -206,30 +181,5 @@ class ArtikelController extends Controller
         return new Response($this->render('nieuw_bestelorder.html.twig', array('form' => $form->createView())));
     }
 
-    //ROL: Verkoper
-    //Bij deze functie kan de verkoper artikelen reserveren
-    /**
-     * @Route("/verkoper/reserveren/{artikelnummer}", name="verkoperreserveren")
-     */
-    public function verkoperReserveerArtikel(Request $request, $artikelnummer) {
-        $bestaandArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnummer);
-        $form = $this->createForm(ArtikelVerkoperType::class, $bestaandArtikel);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $bestaandArtikel->setVrijeVoorraad($bestaandArtikel->getTechnischeVoorraad() - $bestaandArtikel->getGereserveerdeVoorraad());
-
-            if ($bestaandArtikel->getVrijeVoorraad() > $bestaandArtikel->getMinimumvoorraad()) {
-                $bestaandArtikel->setBestelserie(0);
-            }else {
-                $bestaandArtikel->setBestelserie($bestaandArtikel->getMinimumvoorraad() - $bestaandArtikel->gettechnischevoorraad());
-            }
-            $em->persist($bestaandArtikel);
-            $em->flush();
-            return $this->redirect($this->generateurl("verkoperalleartikelen", array("artikelnummer" => $bestaandArtikel->getArtikelnummer())));
-        }
-        return new Response ($this->renderView('form_artikel_wijzigen.html.twig', array('form' =>$form->createView())));
-    }
 }
 ?>

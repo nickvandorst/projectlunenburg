@@ -64,30 +64,6 @@ class Bestelorder
     }
 
     /**
-     * Set bestelregelid
-     *
-     * @param integer $bestelregelid
-     *
-     * @return Bestelorder
-     */
-    public function setBestelregelid($bestelregelid)
-    {
-        $this->bestelregelid = $bestelregelid;
-
-        return $this;
-    }
-
-    /**
-     * Get bestelregelid
-     *
-     * @return integer
-     */
-    public function getBestelregelid()
-    {
-        return $this->bestelregelid;
-    }
-
-    /**
      * Set naamleverancier
      *
      * @param string $naamleverancier

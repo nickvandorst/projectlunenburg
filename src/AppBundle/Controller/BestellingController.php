@@ -31,21 +31,30 @@ class BestellingController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($nieuwBestelorder);
             $em->flush();
-            return $this->redirect($this->generateUrl("inkoperallebestelorders"));
+            return $this->redirect($this->generateUrl("inkoperbestelopdracht"));
         }
         return new Response($this->renderView('nieuw_bestelorder.html.twig', array('form' => $form->createView())));
     }
 
     //Hier wordt een overzicht van alle bestelorders voor de inkoper aangeroepen
     /**
-     * @Route("/inkoper/allebestelorders", name="inkoperallebestelorders")
+     * @Route("/inkoper/bestelopdracht", name="inkoperbestelopdracht")
      */
-    public function inkoperAllebestelorders(Request $request) {
+    public function inkoperBestelopdracht(Request $request) {
 
         $bestelorders = $this->getDoctrine()->getRepository("AppBundle:Bestelorder")->findAll();
+        return new Response($this->renderView('bestelopdracht.html.twig', array('bestelorders' => $bestelorders)));
+    }
+
+    /**
+     * @Route("/inkoper/allebestelorders/{bestelordernummer}", name="inkoperallebestelorders")
+     */
+    public function inkoperAllebestelorders(Request $request, $bestelordernummer) {
+
+        $bestelorders = $this->getDoctrine()->getRepository("AppBundle:Bestelorder")->findByBestelordernummer($bestelordernummer);
         $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
         $bestelregels = $this->getDoctrine()->getRepository("AppBundle:Bestelregel")->findAll();
-        return new Response($this->renderView('bestelopdracht.html.twig', array('bestelorders' => $bestelorders, 'artikelen' => $artikelen, 'bestelregels' => $bestelregels)));
+        return new Response($this->renderView('alle_bestelorder.html.twig', array('bestelorders' => $bestelorders, 'artikelen' => $artikelen, 'bestelregels' => $bestelregels)));
     }
 }
 ?>

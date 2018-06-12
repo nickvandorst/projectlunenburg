@@ -28,13 +28,7 @@ class BestelregelType extends AbstractType
         ;
 
         $builder
-            ->add('Bestelregelid', IntegerType::class)
-        ;
-
-        $builder
-            ->add('bestelordernummer', EntityType::class, array(
-                  'class' => 'AppBundle:Bestelorder',
-                  'choice_label' => 'bestelordernummer'))
+            ->add('bestelordernummer', IntegerType::class)
         ;
 
     }

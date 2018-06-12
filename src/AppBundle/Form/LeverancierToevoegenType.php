@@ -19,7 +19,7 @@ class LeverancierToevoegenType extends AbstractType
     {
         $builder
             ->add('ontvangstdatum', DateType::class, array(
-                'data' => new \DateTime()
+                  'data' => new \DateTime()
               ));
         ;
         $builder
