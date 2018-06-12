@@ -29,6 +29,8 @@ class GoederenontvangstController extends Controller
       return new Response($this->renderView('ontvangstmelding.html.twig', array('goederen' => $goederen, 'ontvangstregels' => $ontvangstregels, 'artikelen' => $artikelen)));
   }
 
+  //De magazijnmeester kan de ontvangstregistratie inzien.
+
   /**
    * @Route("/magazijnmeester/ontvangstregistratie", name="magazijnmeesterontvangstregistratie")
    */

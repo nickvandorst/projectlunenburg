@@ -20,7 +20,7 @@ use AppBundle\Form\BestelorderType;
 class BestelregelController extends Controller
 {
 
-//Magazijnmeester voegt een nieuwe bestelregel toe aan de hand van de onderstaande controller.
+//Inkoper voegt een nieuwe bestelregel toe aan de hand van de onderstaande controller. Hiermee wordt een paramter (bestelordernummer) meegegeven.
 
 /**
  * @Route("/inkoper/nieuwbestelregel/{bestelordernummer}", name="inkopernieuwbestelregel")
