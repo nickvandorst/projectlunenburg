@@ -178,6 +178,6 @@ class Bestelregel
     {
         return $this->keuringseisen;
     }
-    
+
 }
 
