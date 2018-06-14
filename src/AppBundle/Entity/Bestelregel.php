@@ -58,11 +58,6 @@ class Bestelregel
 
     private $bestelorder;
 
-     /**
-     * @var string
-     * @ORM\Column(name="besteld", type="string")
-     */
-    private $besteld;
 
     /**
      * Set bestelorder
@@ -183,28 +178,6 @@ class Bestelregel
     {
         return $this->keuringseisen;
     }
-
-    /**
-     * Set besteld
-     *
-     * @param string $besteld
-     *
-     * @return Bestelorder
-     */
-    public function setBesteld($besteld)
-    {
-        $this->besteld = $besteld;
-        return $this;
-    }
-
-    /**
-    * Get besteld
-    *
-    * @return string
-    */
-    public function getBesteld()
-    {
-        return $this->besteld;
-    }
+    
 }
 

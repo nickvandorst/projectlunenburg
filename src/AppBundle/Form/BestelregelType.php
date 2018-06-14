@@ -35,9 +35,6 @@ class BestelregelType extends AbstractType
         $builder
             ->add('keuringseisen', TextType::class, array('required'=>false))
         ;
-        $builder
-            ->add('besteld', TextType::class)
-        ;
 
     }
 

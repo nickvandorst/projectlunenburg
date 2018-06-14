@@ -25,25 +25,25 @@
     </thead>
     <tbody>
      {% for artikel in artikelen %}
+
+
      {% if(artikel.bestelserie > 0) %}
       <tr>
         <td>{{ artikel.artikelnummer }}</td>
         <td>{{ artikel.omschrijving }}</td>
         <td>{{ artikel.bestelserie }}</td>
-
-      {% for bestelregel in bestelregels %}
-        {% if(bestelregel.artikelnummer == artikel.artikelnummer) %}
-        {% if(bestelregel.besteld != true) %}
-          <td><a href="{{ path('inkoperbestelorder',{'artikelnummer':artikel.artikelnummer}) }}">Bestellen</a></td></td>
-        {% else %}
-          <td>{{ bestelregel.besteld }}</td>
-        {% endif %}
-        {%endif%}
-      {% endfor %}
+          {% for bestelregel in bestelregels %}
+          {% if artikel.artikelnummer != bestelregel.artikelnummer %}
+                <td><a href="{{ path('inkoperbestelorder',{'artikelnummer':artikel.artikelnummer}) }}">Bestellen</a></td></td>
+            {% else %}
+              <td>{{ bestelregel.besteld }}</td>
+            {% endif %}
+          {% endfor %}
         
       </tr>
 
       {% endif %}
+
       {% endfor %}
     </tbody>
 

@@ -15,7 +15,22 @@
 
 <div class="container">
   <h2 style = "text-align:center; font-size: 30px">Welkom inkoper</h2>
+  {% set gevonden = false %}
 
+  {% for artikel in artikelen %}
+    {% if(artikel.bestelserie > 0) %}
+      {% set gevonden = true %}
+    {% endif %}
+  {% endfor %}
+  {% if gevonden == true %}
+  <div class="container">
+  <div class="alert alert-danger">
+    <div class="text-center">
+       <strong>Er is te weinig op voorraad. Er moeten artikelen besteld worden!</strong><a href="{{ path('inkoperalletebestellenartikelen') }}" class="alert-link"> Ga naar de te bestellen artikelen.</a>
+  </div>
+  </div>
+  </div>
+  {% endif %}
   <!--<h5 style ="text-align:right"><span class="glyphicon glyphicon-home"></span><a href="{{ path('home') }}"><font color="black"> Home</font></a></br></h5>-->
   <div class="row">
       <div class="col-sm-4">
